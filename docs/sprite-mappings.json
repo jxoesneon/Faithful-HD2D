@@ -1,0 +1,7734 @@
+{
+  "sheets": {
+    "char-animist-4k-sheet": "/assets/sprites/char-animist-4k-sheet.png",
+    "char-technocrat-4k-sheet": "/assets/sprites/char-technocrat-4k-sheet.svg",
+    "char-interventionist-4k-sheet": "/assets/sprites/char-interventionist-4k-sheet.svg",
+    "char-nihilist-4k-sheet": "/assets/sprites/char-nihilist-4k-sheet.svg",
+    "char-elemental-4k-sheet": "/assets/sprites/char-elemental-4k-sheet.svg",
+    "bldg-animist-4k-sheet": "/assets/sprites/bldg-animist-4k-sheet.png",
+    "bldg-technocrat-4k-sheet": "/assets/sprites/bldg-technocrat-4k-sheet.png",
+    "bldg-interventionist-4k-sheet": "/assets/sprites/bldg-interventionist-4k-sheet.png",
+    "bldg-elemental-4k-sheet": "/assets/sprites/bldg-elemental-4k-sheet.png",
+    "bldg-nihilist-4k-sheet": "/assets/sprites/bldg-nihilist-4k-sheet.png",
+    "bldg-universal-4k-sheet": "/assets/sprites/bldg-universal-4k-sheet.png",
+    "flora-trees-4k-sheet": "/assets/sprites/flora-trees-4k-sheet.png",
+    "flora-exotic-4k-sheet": "/assets/sprites/flora-exotic-4k-sheet.png",
+    "flora-crops-4k-sheet": "/assets/sprites/flora-crops-4k-sheet.png",
+    "geo-base-4k-sheet": "/assets/sprites/geo-base-4k-sheet.png",
+    "geo-minerals-4k-sheet": "/assets/sprites/geo-minerals-4k-sheet.png",
+    "terrain-standard-4k-sheet": "/assets/sprites/terrain-standard-4k-sheet.png",
+    "vfx-miracles-4k-sheet": "/assets/sprites/vfx-miracles-4k-sheet.png",
+    "vfx-disasters-4k-sheet": "/assets/sprites/vfx-disasters-4k-sheet.png",
+    "equip-weapons-4k-sheet": "/assets/sprites/equip-weapons-4k-sheet.png",
+    "equip-armor-4k-sheet": "/assets/sprites/equip-armor-4k-sheet.png",
+    "logistics-vehicles-4k-sheet": "/assets/sprites/logistics-vehicles-4k-sheet.png",
+    "fauna-wild-4k-sheet": "/assets/sprites/fauna-wild-4k-sheet.svg",
+    "nano-banana-4k-sheet": "/assets/sprites/nano-banana-4k-sheet.svg",
+    "char-animist-walk-4k-sheet": "/assets/sprites/char-animist-walk-4k-sheet.png"
+  },
+  "config": {
+    "size": 1024,
+    "columns": 4,
+    "rows": 4,
+    "cellSize": 256,
+    "controlSurfaces": [
+      {
+        "id": "tactical_hitbox",
+        "type": "ISOMETRIC_QUAD",
+        "active": true
+      },
+      {
+        "id": "entity_interaction",
+        "type": "OVAL_VECTOR",
+        "active": true
+      },
+      {
+        "id": "weather_shield",
+        "type": "SCREEN_SPACE",
+        "active": false
+      }
+    ]
+  },
+  "mappings": {
+    "char_ani_gatherer_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "char_ani_gatherer_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "char_ani_gatherer_walk_1": {
+      "sheet": "char-animist-walk-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "char_ani_gatherer_walk_2": {
+      "sheet": "char-animist-walk-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "char_ani_gatherer_walk_3": {
+      "sheet": "char-animist-walk-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "char_ani_gatherer_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "char_ani_gatherer_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "char_ani_gatherer_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "char_ani_woodsman_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "char_ani_woodsman_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "char_ani_woodsman_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "char_ani_woodsman_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "char_ani_woodsman_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "char_ani_woodsman_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "char_ani_woodsman_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "char_ani_woodsman_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "char_ani_hunter_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "char_ani_hunter_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "char_ani_hunter_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "char_ani_hunter_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "char_ani_hunter_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "char_ani_hunter_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "char_ani_hunter_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "char_ani_hunter_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "char_ani_beastmaster_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "char_ani_beastmaster_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "char_ani_beastmaster_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "char_ani_beastmaster_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "char_ani_beastmaster_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "char_ani_beastmaster_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "char_ani_beastmaster_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "char_ani_beastmaster_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "char_ani_shaman_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "char_ani_shaman_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "char_ani_shaman_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "char_ani_shaman_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "char_ani_shaman_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "char_ani_shaman_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "char_ani_shaman_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "char_ani_shaman_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "char_ani_warrior_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "char_ani_warrior_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "char_ani_warrior_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "char_ani_warrior_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "char_ani_warrior_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "char_ani_warrior_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "char_ani_warrior_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "char_ani_warrior_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "char_ani_chieftain_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "char_ani_chieftain_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "char_ani_chieftain_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "char_ani_chieftain_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "char_ani_chieftain_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "char_ani_chieftain_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "char_ani_chieftain_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "char_ani_chieftain_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "char_ani_ent_idle_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "char_ani_ent_idle_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "char_ani_ent_walk_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "char_ani_ent_walk_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "char_ani_ent_walk_3": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "char_ani_ent_act_1": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "char_ani_ent_act_2": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "char_ani_ent_death": {
+      "sheet": "char-animist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "char_tec_worker_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "char_tec_worker_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "char_tec_worker_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "char_tec_worker_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "char_tec_worker_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "char_tec_worker_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "char_tec_worker_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "char_tec_worker_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "char_tec_miner_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "char_tec_miner_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "char_tec_miner_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "char_tec_miner_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "char_tec_miner_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "char_tec_miner_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "char_tec_miner_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "char_tec_miner_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "char_tec_engineer_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "char_tec_engineer_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "char_tec_engineer_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "char_tec_engineer_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "char_tec_engineer_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "char_tec_engineer_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "char_tec_engineer_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "char_tec_engineer_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "char_tec_soldier_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "char_tec_soldier_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "char_tec_soldier_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "char_tec_soldier_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "char_tec_soldier_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "char_tec_soldier_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "char_tec_soldier_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "char_tec_soldier_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "char_tec_biker_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "char_tec_biker_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "char_tec_biker_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "char_tec_biker_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "char_tec_biker_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "char_tec_biker_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "char_tec_biker_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "char_tec_biker_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "char_tec_droneop_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "char_tec_droneop_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "char_tec_droneop_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "char_tec_droneop_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "char_tec_droneop_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "char_tec_droneop_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "char_tec_droneop_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "char_tec_droneop_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "char_tec_director_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "char_tec_director_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "char_tec_director_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "char_tec_director_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "char_tec_director_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "char_tec_director_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "char_tec_director_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "char_tec_director_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "char_tec_mech_idle_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "char_tec_mech_idle_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "char_tec_mech_walk_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "char_tec_mech_walk_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "char_tec_mech_walk_3": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "char_tec_mech_act_1": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "char_tec_mech_act_2": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "char_tec_mech_death": {
+      "sheet": "char-technocrat-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "char_int_peasant_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "char_int_peasant_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "char_int_peasant_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "char_int_peasant_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "char_int_peasant_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "char_int_peasant_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "char_int_peasant_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "char_int_peasant_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "char_int_acolyte_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "char_int_acolyte_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "char_int_acolyte_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "char_int_acolyte_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "char_int_acolyte_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "char_int_acolyte_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "char_int_acolyte_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "char_int_acolyte_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "char_int_paladin_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "char_int_paladin_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "char_int_paladin_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "char_int_paladin_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "char_int_paladin_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "char_int_paladin_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "char_int_paladin_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "char_int_paladin_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "char_int_inquis_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "char_int_inquis_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "char_int_inquis_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "char_int_inquis_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "char_int_inquis_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "char_int_inquis_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "char_int_inquis_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "char_int_inquis_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "char_int_cleric_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "char_int_cleric_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "char_int_cleric_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "char_int_cleric_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "char_int_cleric_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "char_int_cleric_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "char_int_cleric_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "char_int_cleric_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "char_int_zealot_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "char_int_zealot_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "char_int_zealot_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "char_int_zealot_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "char_int_zealot_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "char_int_zealot_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "char_int_zealot_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "char_int_zealot_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "char_int_choir_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "char_int_choir_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "char_int_choir_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "char_int_choir_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "char_int_choir_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "char_int_choir_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "char_int_choir_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "char_int_choir_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "char_int_angel_idle_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "char_int_angel_idle_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "char_int_angel_walk_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "char_int_angel_walk_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "char_int_angel_walk_3": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "char_int_angel_act_1": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "char_int_angel_act_2": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "char_int_angel_death": {
+      "sheet": "char-interventionist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "char_nih_scav_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "char_nih_scav_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "char_nih_scav_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "char_nih_scav_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "char_nih_scav_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "char_nih_scav_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "char_nih_scav_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "char_nih_scav_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "char_nih_butcher_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "char_nih_butcher_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "char_nih_butcher_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "char_nih_butcher_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "char_nih_butcher_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "char_nih_butcher_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "char_nih_butcher_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "char_nih_butcher_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "char_nih_cultist_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "char_nih_cultist_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "char_nih_cultist_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "char_nih_cultist_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "char_nih_cultist_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "char_nih_cultist_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "char_nih_cultist_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "char_nih_cultist_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "char_nih_exec_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "char_nih_exec_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "char_nih_exec_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "char_nih_exec_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "char_nih_exec_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "char_nih_exec_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "char_nih_exec_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "char_nih_exec_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "char_nih_plague_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "char_nih_plague_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "char_nih_plague_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "char_nih_plague_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "char_nih_plague_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "char_nih_plague_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "char_nih_plague_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "char_nih_plague_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "char_nih_doom_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "char_nih_doom_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "char_nih_doom_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "char_nih_doom_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "char_nih_doom_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "char_nih_doom_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "char_nih_doom_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "char_nih_doom_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "char_nih_mutant_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "char_nih_mutant_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "char_nih_mutant_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "char_nih_mutant_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "char_nih_mutant_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "char_nih_mutant_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "char_nih_mutant_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "char_nih_mutant_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "char_nih_fiend_idle_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "char_nih_fiend_idle_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "char_nih_fiend_walk_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "char_nih_fiend_walk_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "char_nih_fiend_walk_3": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "char_nih_fiend_act_1": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "char_nih_fiend_act_2": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "char_nih_fiend_death": {
+      "sheet": "char-nihilist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "char_ele_mason_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "char_ele_mason_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "char_ele_mason_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "char_ele_mason_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "char_ele_mason_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "char_ele_mason_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "char_ele_mason_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "char_ele_mason_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "char_ele_ash_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "char_ele_ash_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "char_ele_ash_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "char_ele_ash_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "char_ele_ash_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "char_ele_ash_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "char_ele_ash_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "char_ele_ash_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "char_ele_pyro_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "char_ele_pyro_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "char_ele_pyro_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "char_ele_pyro_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "char_ele_pyro_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "char_ele_pyro_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "char_ele_pyro_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "char_ele_pyro_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "char_ele_frost_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "char_ele_frost_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "char_ele_frost_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "char_ele_frost_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "char_ele_frost_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "char_ele_frost_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "char_ele_frost_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "char_ele_frost_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "char_ele_earth_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "char_ele_earth_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "char_ele_earth_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "char_ele_earth_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "char_ele_earth_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "char_ele_earth_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "char_ele_earth_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "char_ele_earth_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "char_ele_smith_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "char_ele_smith_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "char_ele_smith_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "char_ele_smith_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "char_ele_smith_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "char_ele_smith_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "char_ele_smith_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "char_ele_smith_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "char_ele_khan_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "char_ele_khan_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "char_ele_khan_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "char_ele_khan_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "char_ele_khan_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "char_ele_khan_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "char_ele_khan_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "char_ele_khan_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "char_ele_golem_idle_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "char_ele_golem_idle_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "char_ele_golem_walk_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "char_ele_golem_walk_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "char_ele_golem_walk_3": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "char_ele_golem_act_1": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "char_ele_golem_act_2": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "char_ele_golem_death": {
+      "sheet": "char-elemental-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_ani_hut_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_ani_hut_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_ani_hut_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_ani_hut_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_ani_hut_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_ani_hut_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_ani_hut_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_ani_hut_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_ani_firepit_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_ani_firepit_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_ani_firepit_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_ani_firepit_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_ani_firepit_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_ani_firepit_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_ani_firepit_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_ani_firepit_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_ani_treehouse_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_ani_treehouse_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_ani_treehouse_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_ani_treehouse_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_ani_treehouse_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_ani_treehouse_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_ani_treehouse_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_ani_treehouse_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_ani_grove_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_ani_grove_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_ani_grove_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_ani_grove_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_ani_grove_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_ani_grove_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_ani_grove_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_ani_grove_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_ani_heartwood_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_ani_heartwood_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_ani_heartwood_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_ani_heartwood_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_ani_heartwood_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_ani_heartwood_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_ani_heartwood_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_ani_heartwood_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_ani_ecopod_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_ani_ecopod_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_ani_ecopod_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_ani_ecopod_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_ani_ecopod_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_ani_ecopod_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_ani_ecopod_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_ani_ecopod_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_ani_synthvat_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_ani_synthvat_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_ani_synthvat_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_ani_synthvat_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_ani_synthvat_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_ani_synthvat_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_ani_synthvat_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_ani_synthvat_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_ani_wonder_found": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_ani_wonder_scaffold": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_ani_wonder_idle_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_ani_wonder_idle_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_ani_wonder_act_1": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_ani_wonder_act_2": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_ani_wonder_damaged": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_ani_wonder_ruined": {
+      "sheet": "bldg-animist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_tec_depot_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_tec_depot_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_tec_depot_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_tec_depot_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_tec_depot_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_tec_depot_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_tec_depot_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_tec_depot_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_tec_well_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_tec_well_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_tec_well_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_tec_well_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_tec_well_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_tec_well_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_tec_well_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_tec_well_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_tec_block_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_tec_block_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_tec_block_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_tec_block_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_tec_block_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_tec_block_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_tec_block_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_tec_block_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_tec_mill_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_tec_mill_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_tec_mill_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_tec_mill_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_tec_mill_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_tec_mill_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_tec_mill_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_tec_mill_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_tec_uni_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_tec_uni_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_tec_uni_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_tec_uni_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_tec_uni_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_tec_uni_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_tec_uni_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_tec_uni_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_tec_skyscraper_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_tec_skyscraper_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_tec_forge_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_tec_forge_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_tec_forge_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_tec_forge_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_tec_forge_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_tec_forge_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_tec_forge_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_tec_forge_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_tec_wonder_found": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_tec_wonder_scaffold": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_tec_wonder_idle_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_tec_wonder_idle_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_tec_wonder_act_1": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_tec_wonder_act_2": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_tec_wonder_damaged": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_tec_wonder_ruined": {
+      "sheet": "bldg-technocrat-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_int_tent_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_int_tent_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_int_tent_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_int_tent_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_int_tent_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_int_tent_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_int_tent_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_int_tent_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_int_altar_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_int_altar_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_int_altar_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_int_altar_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_int_altar_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_int_altar_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_int_altar_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_int_altar_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_int_manse_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_int_manse_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_int_manse_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_int_manse_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_int_manse_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_int_manse_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_int_manse_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_int_manse_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_int_bath_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_int_bath_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_int_bath_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_int_bath_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_int_bath_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_int_bath_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_int_bath_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_int_bath_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_int_cathedral_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_int_cathedral_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_int_cathedral_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_int_cathedral_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_int_cathedral_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_int_cathedral_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_int_cathedral_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_int_cathedral_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_int_citadel_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_int_citadel_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_int_citadel_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_int_citadel_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_int_citadel_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_int_citadel_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_int_citadel_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_int_citadel_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_int_manafac_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_int_manafac_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_int_manafac_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_int_manafac_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_int_manafac_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_int_manafac_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_int_manafac_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_int_manafac_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_int_wonder_found": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_int_wonder_scaffold": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_int_wonder_idle_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_int_wonder_idle_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_int_wonder_act_1": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_int_wonder_act_2": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_int_wonder_damaged": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_int_wonder_ruined": {
+      "sheet": "bldg-interventionist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_ele_cave_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_ele_cave_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_ele_cave_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_ele_cave_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_ele_cave_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_ele_cave_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_ele_cave_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_ele_cave_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_ele_forge_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_ele_forge_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_ele_forge_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_ele_forge_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_ele_forge_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_ele_forge_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_ele_forge_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_ele_forge_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_ele_totem_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_ele_totem_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_ele_totem_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_ele_totem_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_ele_totem_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_ele_totem_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_ele_totem_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_ele_totem_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_ele_ziggurat_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_ele_ziggurat_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_ele_foundry_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_ele_foundry_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_ele_foundry_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_ele_foundry_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_ele_foundry_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_ele_foundry_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_ele_foundry_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_ele_foundry_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_ele_coretap_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_ele_coretap_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_ele_coretap_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_ele_coretap_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_ele_coretap_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_ele_coretap_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_ele_coretap_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_ele_coretap_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_ele_reactor_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_ele_reactor_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_ele_reactor_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_ele_reactor_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_ele_reactor_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_ele_reactor_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_ele_reactor_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_ele_reactor_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_ele_wonder_found": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_ele_wonder_scaffold": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_ele_wonder_idle_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_ele_wonder_idle_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_ele_wonder_act_1": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_ele_wonder_act_2": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_ele_wonder_damaged": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_ele_wonder_ruined": {
+      "sheet": "bldg-elemental-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_nih_shack_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_nih_shack_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_nih_shack_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_nih_shack_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_nih_shack_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_nih_shack_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_nih_shack_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_nih_shack_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_nih_pyre_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_nih_pyre_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_nih_pyre_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_nih_pyre_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_nih_pyre_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_nih_pyre_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_nih_pyre_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_nih_pyre_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_nih_arena_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_nih_arena_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_nih_arena_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_nih_arena_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_nih_arena_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_nih_arena_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_nih_arena_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_nih_arena_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_nih_slaughter_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_nih_slaughter_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_nih_slaughter_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_nih_slaughter_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_nih_slaughter_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_nih_slaughter_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_nih_slaughter_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_nih_slaughter_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_nih_fort_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_nih_fort_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_nih_fort_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_nih_fort_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_nih_fort_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_nih_fort_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_nih_fort_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_nih_fort_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_nih_scraptower_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_nih_scraptower_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_nih_scraptower_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_nih_scraptower_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_nih_scraptower_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_nih_scraptower_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_nih_scraptower_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_nih_scraptower_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_nih_factory_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_nih_factory_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_nih_factory_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_nih_factory_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_nih_factory_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_nih_factory_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_nih_factory_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_nih_factory_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_nih_wonder_found": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_nih_wonder_scaffold": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_nih_wonder_idle_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_nih_wonder_idle_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_nih_wonder_act_1": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_nih_wonder_act_2": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_nih_wonder_damaged": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_nih_wonder_ruined": {
+      "sheet": "bldg-nihilist-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "bldg_uni_granary_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "bldg_uni_granary_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "bldg_uni_granary_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "bldg_uni_granary_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "bldg_uni_granary_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "bldg_uni_granary_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "bldg_uni_granary_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "bldg_uni_granary_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "bldg_uni_stone_silo_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "bldg_uni_stone_silo_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "bldg_uni_wall_l1_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "bldg_uni_wall_l1_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "bldg_uni_wall_l2_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "bldg_uni_wall_l2_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "bldg_uni_wall_l3_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "bldg_uni_wall_l3_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "bldg_uni_tower_l1_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "bldg_uni_tower_l1_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "bldg_uni_tower_l2_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "bldg_uni_tower_l2_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "bldg_uni_turret_l3_found": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_scaffold": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_idle_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_idle_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_act_1": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_act_2": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_damaged": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "bldg_uni_turret_l3_ruined": {
+      "sheet": "bldg-universal-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "tree_oak_sum_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "tree_oak_sum_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "tree_oak_sum_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "tree_oak_sum_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "tree_oak_sum_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "tree_oak_sum_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "tree_oak_sum_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "tree_oak_sum_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "tree_oak_aut_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "tree_oak_aut_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "tree_oak_aut_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "tree_oak_aut_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "tree_oak_aut_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "tree_oak_aut_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "tree_oak_aut_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "tree_oak_aut_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "tree_birch_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "tree_birch_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "tree_birch_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "tree_birch_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "tree_birch_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "tree_birch_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "tree_birch_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "tree_birch_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "tree_willow_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "tree_willow_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "tree_willow_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "tree_willow_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "tree_willow_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "tree_willow_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "tree_willow_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "tree_willow_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "tree_pine_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "tree_pine_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "tree_pine_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "tree_pine_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "tree_pine_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "tree_pine_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "tree_pine_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "tree_pine_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "tree_spruce_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "tree_spruce_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "tree_spruce_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "tree_spruce_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "tree_spruce_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "tree_spruce_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "tree_spruce_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "tree_spruce_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "tree_cactus_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "tree_cactus_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "tree_cactus_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "tree_cactus_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "tree_cactus_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "tree_cactus_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "tree_cactus_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "tree_cactus_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "tree_dead_sway_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "tree_dead_sway_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "tree_dead_sway_3": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "tree_dead_sway_4": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "tree_dead_hit_1": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "tree_dead_hit_2": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "tree_dead_falling": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "tree_dead_stump": {
+      "sheet": "flora-trees-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "tree_ani_mother_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "tree_ani_mother_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "tree_ani_mother_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "tree_ani_mother_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "tree_ani_mother_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "tree_ani_mother_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "tree_ani_mother_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "tree_ani_mother_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "tree_glow_shroom_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "tree_glow_shroom_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "tree_glow_shroom_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "tree_glow_shroom_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "tree_glow_shroom_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "tree_glow_shroom_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "tree_glow_shroom_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "tree_glow_shroom_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "tree_ele_obsidian_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "tree_ele_obsidian_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "tree_ele_obsidian_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "tree_ele_obsidian_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "tree_ele_obsidian_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "tree_ele_obsidian_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "tree_ele_obsidian_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "tree_ele_obsidian_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "tree_ele_magma_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "tree_ele_magma_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "tree_ele_magma_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "tree_ele_magma_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "tree_ele_magma_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "tree_ele_magma_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "tree_ele_magma_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "tree_ele_magma_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "tree_tec_cyber_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "tree_tec_cyber_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "tree_tec_cyber_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "tree_tec_cyber_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "tree_tec_cyber_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "tree_tec_cyber_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "tree_tec_cyber_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "tree_tec_cyber_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "tree_nih_flesh_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "tree_nih_flesh_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "tree_nih_flesh_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "tree_nih_flesh_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "tree_nih_flesh_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "tree_nih_flesh_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "tree_nih_flesh_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "tree_nih_flesh_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "tree_void_lotus_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "tree_void_lotus_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "tree_void_lotus_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "tree_void_lotus_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "tree_void_lotus_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "tree_void_lotus_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "tree_void_lotus_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "tree_void_lotus_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "tree_crystal_sway_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "tree_crystal_sway_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "tree_crystal_sway_3": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "tree_crystal_sway_4": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "tree_crystal_hit_1": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "tree_crystal_hit_2": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "tree_crystal_falling": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "tree_crystal_stump": {
+      "sheet": "flora-exotic-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "crop_wheat_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "crop_wheat_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "crop_wheat_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "crop_wheat_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "crop_wheat_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "crop_wheat_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "crop_wheat_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "crop_wheat_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "crop_corn_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "crop_corn_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "crop_corn_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "crop_corn_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "crop_corn_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "crop_corn_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "crop_corn_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "crop_corn_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "crop_potato_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "crop_potato_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "crop_potato_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "crop_potato_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "crop_potato_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "crop_potato_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "crop_potato_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "crop_potato_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "crop_rice_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "crop_rice_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "crop_rice_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "crop_rice_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "crop_rice_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "crop_rice_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "crop_rice_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "crop_rice_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "crop_ani_mana_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "crop_ani_mana_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "crop_ani_mana_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "crop_ani_mana_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "crop_ani_mana_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "crop_ani_mana_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "crop_ani_mana_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "crop_ani_mana_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "crop_int_sun_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "crop_int_sun_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "crop_int_sun_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "crop_int_sun_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "crop_int_sun_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "crop_int_sun_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "crop_int_sun_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "crop_int_sun_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "crop_tec_algae_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "crop_tec_algae_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "crop_tec_algae_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "crop_tec_algae_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "crop_tec_algae_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "crop_tec_algae_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "crop_tec_algae_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "crop_tec_algae_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "crop_nih_blood_seeded": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "crop_nih_blood_sprout": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "crop_nih_blood_young": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "crop_nih_blood_mature_1": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "crop_nih_blood_mature_2": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "crop_nih_blood_harvested": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "crop_nih_blood_withered": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "crop_nih_blood_rotted": {
+      "sheet": "flora-crops-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "geo_granite_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "geo_granite_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "geo_granite_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "geo_granite_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "geo_granite_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "geo_granite_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "geo_granite_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "geo_granite_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "geo_limestone_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "geo_limestone_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "geo_limestone_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "geo_limestone_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "geo_limestone_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "geo_limestone_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "geo_limestone_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "geo_limestone_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "geo_sandstone_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "geo_sandstone_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "geo_sandstone_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "geo_sandstone_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "geo_sandstone_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "geo_sandstone_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "geo_sandstone_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "geo_sandstone_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "geo_obsidian_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "geo_obsidian_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "geo_obsidian_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "geo_obsidian_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "geo_obsidian_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "geo_obsidian_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "geo_obsidian_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "geo_obsidian_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "geo_ice_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "geo_ice_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "geo_ice_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "geo_ice_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "geo_ice_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "geo_ice_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "geo_ice_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "geo_ice_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "geo_cave_stalag_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "geo_cave_stalag_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "geo_cave_stalag_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "geo_cave_stalag_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "geo_cave_stalag_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "geo_cave_stalag_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "geo_cave_stalag_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "geo_cave_stalag_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "geo_fossil_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "geo_fossil_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "geo_fossil_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "geo_fossil_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "geo_fossil_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "geo_fossil_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "geo_fossil_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "geo_fossil_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "geo_oil_pristine_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "geo_oil_pristine_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "geo_oil_mined_1": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "geo_oil_mined_2": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "geo_oil_mined_3": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "geo_oil_depleted": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "geo_oil_crumbling": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "geo_oil_dust": {
+      "sheet": "geo-base-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "ore_coal_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "ore_coal_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "ore_coal_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "ore_coal_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "ore_coal_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "ore_coal_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "ore_coal_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "ore_coal_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "ore_iron_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "ore_iron_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "ore_iron_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "ore_iron_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "ore_iron_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "ore_iron_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "ore_iron_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "ore_iron_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "ore_copper_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "ore_copper_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "ore_copper_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "ore_copper_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "ore_copper_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "ore_copper_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "ore_copper_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "ore_copper_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "ore_gold_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "ore_gold_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "ore_gold_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "ore_gold_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "ore_gold_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "ore_gold_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "ore_gold_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "ore_gold_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "ore_diamond_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "ore_diamond_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "ore_diamond_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "ore_diamond_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "ore_diamond_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "ore_diamond_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "ore_diamond_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "ore_diamond_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "ore_uranium_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "ore_uranium_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "ore_uranium_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "ore_uranium_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "ore_uranium_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "ore_uranium_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "ore_uranium_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "ore_uranium_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "ore_divine_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "ore_divine_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "ore_divine_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "ore_divine_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "ore_divine_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "ore_divine_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "ore_divine_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "ore_divine_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "ore_void_pristine_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "ore_void_pristine_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "ore_void_mined_1": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "ore_void_mined_2": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "ore_void_mined_3": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "ore_void_depleted": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "ore_void_crumbling": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "ore_void_dust": {
+      "sheet": "geo-minerals-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "tile_grass_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "tile_grass_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "tile_grass_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "tile_grass_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "tile_grass_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "tile_grass_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "tile_grass_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "tile_grass_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "tile_dirt_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "tile_dirt_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "tile_dirt_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "tile_dirt_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "tile_dirt_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "tile_dirt_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "tile_dirt_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "tile_dirt_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "tile_sand_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "tile_sand_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "tile_sand_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "tile_sand_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "tile_sand_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "tile_sand_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "tile_sand_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "tile_sand_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "tile_snow_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "tile_snow_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "tile_snow_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "tile_snow_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "tile_snow_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "tile_snow_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "tile_snow_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "tile_snow_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "tile_water_shallow_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "tile_water_shallow_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "tile_water_shallow_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "tile_water_shallow_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "tile_water_shallow_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "tile_water_shallow_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "tile_water_shallow_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "tile_water_shallow_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "tile_water_deep_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "tile_water_deep_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "tile_water_deep_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "tile_water_deep_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "tile_water_deep_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "tile_water_deep_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "tile_water_deep_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "tile_water_deep_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "tile_lava_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "tile_lava_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "tile_lava_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "tile_lava_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "tile_lava_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "tile_lava_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "tile_lava_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "tile_lava_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "tile_toxic_base": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "tile_toxic_var_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "tile_toxic_var_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "tile_toxic_anim_1": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "tile_toxic_anim_2": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "tile_toxic_anim_3": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "tile_toxic_anim_4": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "tile_toxic_coast": {
+      "sheet": "terrain-standard-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "vfx_heal_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "vfx_heal_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "vfx_heal_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "vfx_heal_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "vfx_heal_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "vfx_heal_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "vfx_heal_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "vfx_heal_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "vfx_holy_beam_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "vfx_holy_beam_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "vfx_holy_beam_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "vfx_holy_beam_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "vfx_holy_beam_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "vfx_holy_beam_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "vfx_holy_beam_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "vfx_holy_beam_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "vfx_genesis_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "vfx_genesis_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "vfx_genesis_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "vfx_genesis_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "vfx_genesis_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "vfx_genesis_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "vfx_genesis_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "vfx_genesis_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "vfx_rain_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "vfx_rain_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "vfx_rain_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "vfx_rain_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "vfx_rain_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "vfx_rain_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "vfx_rain_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "vfx_rain_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "vfx_ascend_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "vfx_ascend_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "vfx_ascend_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "vfx_ascend_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "vfx_ascend_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "vfx_ascend_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "vfx_ascend_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "vfx_ascend_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "vfx_shield_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "vfx_shield_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "vfx_shield_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "vfx_shield_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "vfx_shield_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "vfx_shield_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "vfx_shield_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "vfx_shield_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "vfx_bless_aura_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "vfx_bless_aura_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "vfx_bless_aura_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "vfx_bless_aura_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "vfx_bless_aura_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "vfx_bless_aura_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "vfx_bless_aura_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "vfx_bless_aura_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "vfx_convert_f1": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "vfx_convert_f2": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "vfx_convert_f3": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "vfx_convert_f4": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "vfx_convert_f5": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "vfx_convert_f6": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "vfx_convert_f7": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "vfx_convert_f8": {
+      "sheet": "vfx-miracles-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "vfx_meteor_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "vfx_meteor_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "vfx_meteor_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "vfx_meteor_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "vfx_meteor_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "vfx_meteor_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "vfx_meteor_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "vfx_meteor_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "vfx_earthquake_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "vfx_earthquake_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "vfx_earthquake_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "vfx_earthquake_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "vfx_earthquake_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "vfx_earthquake_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "vfx_earthquake_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "vfx_earthquake_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "vfx_lightning_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "vfx_lightning_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "vfx_lightning_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "vfx_lightning_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "vfx_lightning_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "vfx_lightning_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "vfx_lightning_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "vfx_lightning_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "vfx_plague_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "vfx_plague_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "vfx_plague_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "vfx_plague_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "vfx_plague_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "vfx_plague_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "vfx_plague_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "vfx_plague_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "vfx_abyss_rift_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "vfx_abyss_rift_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "vfx_abyss_rift_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "vfx_abyss_rift_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "vfx_abyss_rift_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "vfx_abyss_rift_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "vfx_abyss_rift_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "vfx_abyss_rift_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "vfx_sparks_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "vfx_sparks_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "vfx_sparks_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "vfx_sparks_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "vfx_sparks_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "vfx_sparks_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "vfx_sparks_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "vfx_sparks_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "vfx_blood_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "vfx_blood_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "vfx_blood_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "vfx_blood_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "vfx_blood_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "vfx_blood_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "vfx_blood_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "vfx_blood_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "vfx_glitch_f1": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "vfx_glitch_f2": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "vfx_glitch_f3": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "vfx_glitch_f4": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "vfx_glitch_f5": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "vfx_glitch_f6": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "vfx_glitch_f7": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "vfx_glitch_f8": {
+      "sheet": "vfx-disasters-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "weap_spear_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "weap_spear_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "weap_spear_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "weap_spear_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "weap_spear_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "weap_spear_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "weap_spear_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "weap_spear_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "weap_sword_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "weap_sword_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "weap_sword_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "weap_sword_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "weap_sword_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "weap_sword_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "weap_sword_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "weap_sword_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "weap_axe_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "weap_axe_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "weap_axe_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "weap_axe_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "weap_axe_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "weap_axe_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "weap_axe_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "weap_axe_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "weap_rifle_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "weap_rifle_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "weap_rifle_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "weap_rifle_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "weap_rifle_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "weap_rifle_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "weap_rifle_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "weap_rifle_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "weap_staff_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "weap_staff_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "weap_staff_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "weap_staff_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "weap_staff_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "weap_staff_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "weap_staff_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "weap_staff_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "weap_cleaver_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "weap_cleaver_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "weap_cleaver_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "weap_cleaver_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "weap_cleaver_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "weap_cleaver_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "weap_cleaver_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "weap_cleaver_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "weap_bow_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "weap_bow_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "weap_bow_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "weap_bow_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "weap_bow_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "weap_bow_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "weap_bow_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "weap_bow_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "weap_pickaxe_idle_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "weap_pickaxe_idle_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "weap_pickaxe_walk_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "weap_pickaxe_walk_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "weap_pickaxe_walk_3": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "weap_pickaxe_act_1": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "weap_pickaxe_act_2": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "weap_pickaxe_dropped": {
+      "sheet": "equip-weapons-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "arm_shield_wood_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "arm_shield_wood_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "arm_shield_wood_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "arm_shield_wood_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "arm_shield_wood_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "arm_shield_wood_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "arm_shield_wood_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "arm_shield_wood_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "arm_shield_energy_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "arm_shield_energy_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "arm_shield_energy_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "arm_shield_energy_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "arm_shield_energy_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "arm_shield_energy_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "arm_shield_energy_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "arm_shield_energy_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "arm_helmet_iron_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "arm_helmet_iron_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "arm_helmet_iron_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "arm_helmet_iron_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "arm_helmet_iron_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "arm_helmet_iron_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "arm_helmet_iron_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "arm_helmet_iron_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "arm_helmet_mining_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "arm_helmet_mining_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "arm_helmet_mining_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "arm_helmet_mining_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "arm_helmet_mining_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "arm_helmet_mining_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "arm_helmet_mining_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "arm_helmet_mining_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "arm_visor_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "arm_visor_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "arm_visor_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "arm_visor_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "arm_visor_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "arm_visor_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "arm_visor_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "arm_visor_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "arm_halo_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "arm_halo_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "arm_halo_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "arm_halo_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "arm_halo_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "arm_halo_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "arm_halo_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "arm_halo_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "arm_cloak_fur_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "arm_cloak_fur_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "arm_cloak_fur_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "arm_cloak_fur_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "arm_cloak_fur_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "arm_cloak_fur_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "arm_cloak_fur_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "arm_cloak_fur_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "arm_jetpack_idle_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "arm_jetpack_idle_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "arm_jetpack_walk_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "arm_jetpack_walk_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "arm_jetpack_walk_3": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "arm_jetpack_act_1": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "arm_jetpack_act_2": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "arm_jetpack_dropped": {
+      "sheet": "equip-armor-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "veh_mule_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "veh_mule_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "veh_mule_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "veh_mule_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "veh_mule_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "veh_mule_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "veh_mule_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "veh_mule_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "veh_wagon_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "veh_wagon_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "veh_wagon_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "veh_wagon_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "veh_wagon_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "veh_wagon_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "veh_wagon_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "veh_wagon_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "veh_handcart_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "veh_handcart_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "veh_handcart_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "veh_handcart_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "veh_handcart_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "veh_handcart_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "veh_handcart_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "veh_handcart_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "veh_ship_galleon_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "veh_ship_galleon_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "veh_ship_galleon_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "veh_ship_galleon_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "veh_ship_galleon_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "veh_ship_galleon_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "veh_ship_galleon_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "veh_ship_galleon_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "veh_ship_steam_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "veh_ship_steam_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "veh_ship_steam_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "veh_ship_steam_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "veh_ship_steam_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "veh_ship_steam_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "veh_ship_steam_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "veh_ship_steam_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "veh_drone_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "veh_drone_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "veh_drone_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "veh_drone_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "veh_drone_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "veh_drone_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "veh_drone_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "veh_drone_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "veh_train_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "veh_train_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "veh_train_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "veh_train_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "veh_train_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "veh_train_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "veh_train_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "veh_train_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "veh_siege_idle_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "veh_siege_idle_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "veh_siege_walk_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "veh_siege_walk_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "veh_siege_walk_3": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "veh_siege_act_1": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "veh_siege_act_2": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "veh_siege_death": {
+      "sheet": "logistics-vehicles-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "fauna_wolf_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "fauna_wolf_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "fauna_wolf_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "fauna_wolf_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "fauna_wolf_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "fauna_wolf_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "fauna_wolf_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "fauna_wolf_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "fauna_deer_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "fauna_deer_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "fauna_deer_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "fauna_deer_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "fauna_deer_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "fauna_deer_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "fauna_deer_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "fauna_deer_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "fauna_cow_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "fauna_cow_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "fauna_cow_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "fauna_cow_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "fauna_cow_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "fauna_cow_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "fauna_cow_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "fauna_cow_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "fauna_sheep_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "fauna_sheep_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "fauna_sheep_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "fauna_sheep_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "fauna_sheep_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "fauna_sheep_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "fauna_sheep_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "fauna_sheep_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "fauna_bird_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "fauna_bird_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "fauna_bird_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "fauna_bird_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "fauna_bird_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "fauna_bird_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "fauna_bird_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "fauna_bird_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "fauna_fish_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "fauna_fish_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "fauna_fish_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "fauna_fish_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "fauna_fish_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "fauna_fish_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "fauna_fish_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "fauna_fish_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "fauna_whale_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "fauna_whale_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "fauna_whale_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "fauna_whale_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "fauna_whale_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "fauna_whale_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "fauna_whale_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "fauna_whale_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "fauna_locust_idle_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "fauna_locust_idle_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "fauna_locust_walk_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "fauna_locust_walk_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "fauna_locust_walk_3": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "fauna_locust_act_1": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "fauna_locust_act_2": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "fauna_locust_death": {
+      "sheet": "fauna-wild-4k-sheet",
+      "col": 7,
+      "row": 7
+    },
+    "banana_gold_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "banana_gold_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "banana_gold_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "banana_gold_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "banana_gold_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "banana_gold_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "banana_gold_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "banana_gold_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "banana_cyber_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "banana_cyber_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "banana_cyber_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "banana_cyber_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "banana_cyber_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "banana_cyber_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "banana_cyber_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "banana_cyber_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "banana_void_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "banana_void_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "banana_void_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "banana_void_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "banana_void_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "banana_void_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "banana_void_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "banana_void_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "banana_divine_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "banana_divine_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "banana_divine_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "banana_divine_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "banana_divine_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "banana_divine_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "banana_divine_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "banana_divine_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "banana_fire_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "banana_fire_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "banana_fire_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "banana_fire_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "banana_fire_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "banana_fire_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "banana_fire_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "banana_fire_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "banana_frost_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "banana_frost_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "banana_frost_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "banana_frost_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "banana_frost_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "banana_frost_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "banana_frost_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "banana_frost_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "banana_toxic_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "banana_toxic_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "banana_toxic_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "banana_toxic_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "banana_toxic_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "banana_toxic_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "banana_toxic_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "banana_toxic_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 6
+    },
+    "banana_cosmic_idle_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 0,
+      "row": 7
+    },
+    "banana_cosmic_idle_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 1,
+      "row": 7
+    },
+    "banana_cosmic_walk_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 2,
+      "row": 7
+    },
+    "banana_cosmic_walk_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 3,
+      "row": 7
+    },
+    "banana_cosmic_walk_3": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 4,
+      "row": 7
+    },
+    "banana_cosmic_act_1": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 5,
+      "row": 7
+    },
+    "banana_cosmic_act_2": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 6,
+      "row": 7
+    },
+    "banana_cosmic_death": {
+      "sheet": "nano-banana-4k-sheet",
+      "col": 7,
+      "row": 7
+    }
+  }
+}

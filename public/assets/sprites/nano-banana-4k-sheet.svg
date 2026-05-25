@@ -1,0 +1,979 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="4096" viewBox="0 0 4096 4096">
+  <defs>
+    <!-- Background grid color -->
+    <style>
+      .grid-border { stroke: rgba(255,255,255,0.03); stroke-width: 2; fill: none; }
+      .shadow-ellipse { fill: #000000; opacity: 0.35; }
+      .laser-glow { filter: drop-shadow(0 0 12px var(--glow-color)); }
+    </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="grad-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="60%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#ca8a04" />
+    </linearGradient>
+    
+    <linearGradient id="grad-cyber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#0891b2" />
+    </linearGradient>
+    
+    <linearGradient id="grad-void" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e879f9" />
+      <stop offset="60%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6b21a8" />
+    </linearGradient>
+    
+    <linearGradient id="grad-divine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+    
+    <linearGradient id="grad-fire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    
+    <linearGradient id="grad-frost" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    
+    <linearGradient id="grad-toxic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ccff33" />
+      <stop offset="50%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+    
+    <linearGradient id="grad-cosmic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f" />
+      <stop offset="50%" stop-color="#7000ff" />
+      <stop offset="100%" stop-color="#00ffff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep space premium dark canvas background -->
+  <rect width="4096" height="4096" fill="#040608" />
+  <!-- Row 0 Col 0: Golden Nano Banana -->
+  <rect x="8" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 256 112 L 448 256 L 256 400 L 64 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 277) rotate(0) scale(1, 1)">
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 1: Golden Nano Banana -->
+  <rect x="520" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 768 112 L 960 256 L 768 400 L 576 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 265) rotate(0) scale(1, 1)">
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 2: Golden Nano Banana -->
+  <rect x="1032" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 1280 112 L 1472 256 L 1280 400 L 1088 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 273) rotate(-18) scale(1, 1)">
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 3: Golden Nano Banana -->
+  <rect x="1544" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 1792 112 L 1984 256 L 1792 400 L 1600 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 267) rotate(0) scale(1, 1)">
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 4: Golden Nano Banana -->
+  <rect x="2056" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 2304 112 L 2496 256 L 2304 400 L 2112 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 273) rotate(18) scale(1, 1)">
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 5: Golden Nano Banana -->
+  <rect x="2568" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 2816 112 L 3008 256 L 2816 400 L 2624 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 259) rotate(0) scale(1.15, 1.15)">
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#eab308" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #eab308;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 6: Golden Nano Banana -->
+  <rect x="3080" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 3328 112 L 3520 256 L 3328 400 L 3136 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="380" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 263) rotate(0) scale(1.3, 0.9)">
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#eab308" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-gold)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 0 Col 7: Golden Nano Banana -->
+  <rect x="3592" y="8" width="496" height="496" class="grid-border" />
+  <path d="M 3840 112 L 4032 256 L 3840 400 L 3648 256 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="316" rx="130" ry="40" fill="#eab308" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="316" rx="100" ry="30" fill="#eab308" opacity="0.15" />
+  <g transform="translate(3840, 311) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#eab308" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-gold)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-gold)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 1 Col 0: Electric Cyber Banana -->
+  <rect x="8" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 256 624 L 448 768 L 256 912 L 64 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 789) rotate(0) scale(1, 1)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 1: Electric Cyber Banana -->
+  <rect x="520" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 768 624 L 960 768 L 768 912 L 576 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 777) rotate(0) scale(1, 1)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 2: Electric Cyber Banana -->
+  <rect x="1032" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 1280 624 L 1472 768 L 1280 912 L 1088 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 785) rotate(-18) scale(1, 1)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 3: Electric Cyber Banana -->
+  <rect x="1544" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 1792 624 L 1984 768 L 1792 912 L 1600 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 779) rotate(0) scale(1, 1)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 4: Electric Cyber Banana -->
+  <rect x="2056" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 2304 624 L 2496 768 L 2304 912 L 2112 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 785) rotate(18) scale(1, 1)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 5: Electric Cyber Banana -->
+  <rect x="2568" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 2816 624 L 3008 768 L 2816 912 L 2624 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 771) rotate(0) scale(1.15, 1.15)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#06b6d4" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #06b6d4;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 6: Electric Cyber Banana -->
+  <rect x="3080" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 3328 624 L 3520 768 L 3328 912 L 3136 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="892" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 775) rotate(0) scale(1.3, 0.9)">
+    <circle cx="0" cy="-20" r="95" stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.25" stroke-dasharray="8,8" />
+    <ellipse cx="0" cy="-20" rx="110" ry="35" stroke="#0891b2" stroke-width="1.5" fill="none" transform="rotate(30)" opacity="0.4" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#06b6d4" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cyber)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#06b6d4" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 1 Col 7: Electric Cyber Banana -->
+  <rect x="3592" y="520" width="496" height="496" class="grid-border" />
+  <path d="M 3840 624 L 4032 768 L 3840 912 L 3648 768 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="828" rx="130" ry="40" fill="#06b6d4" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="828" rx="100" ry="30" fill="#06b6d4" opacity="0.15" />
+  <g transform="translate(3840, 823) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#06b6d4" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-cyber)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-cyber)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 2 Col 0: Holographic Void Banana -->
+  <rect x="8" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 256 1136 L 448 1280 L 256 1424 L 64 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 1301) rotate(0) scale(1, 1)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 1: Holographic Void Banana -->
+  <rect x="520" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 768 1136 L 960 1280 L 768 1424 L 576 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 1289) rotate(0) scale(1, 1)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 2: Holographic Void Banana -->
+  <rect x="1032" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 1280 1136 L 1472 1280 L 1280 1424 L 1088 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 1297) rotate(-18) scale(1, 1)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 3: Holographic Void Banana -->
+  <rect x="1544" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 1792 1136 L 1984 1280 L 1792 1424 L 1600 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 1291) rotate(0) scale(1, 1)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 4: Holographic Void Banana -->
+  <rect x="2056" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 2304 1136 L 2496 1280 L 2304 1424 L 2112 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 1297) rotate(18) scale(1, 1)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 5: Holographic Void Banana -->
+  <rect x="2568" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 2816 1136 L 3008 1280 L 2816 1424 L 2624 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 1283) rotate(0) scale(1.15, 1.15)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#a855f7" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #a855f7;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 6: Holographic Void Banana -->
+  <rect x="3080" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 3328 1136 L 3520 1280 L 3328 1424 L 3136 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="1404" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 1287) rotate(0) scale(1.3, 0.9)">
+    <rect x="-85" y="-120" width="170" height="170" rx="40" stroke="#c084fc" stroke-width="1" fill="none" stroke-dasharray="15,10" opacity="0.18" />
+    <circle cx="-50" cy="-60" r="8" fill="#e879f9" opacity="0.6" />
+    <circle cx="50" cy="10" r="6" fill="#a855f7" opacity="0.85" />
+    <polygon points="0,-100 -5,-90 5,-90" fill="#c084fc" opacity="0.7"/>
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#a855f7" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-void)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#a855f7" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 2 Col 7: Holographic Void Banana -->
+  <rect x="3592" y="1032" width="496" height="496" class="grid-border" />
+  <path d="M 3840 1136 L 4032 1280 L 3840 1424 L 3648 1280 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="1340" rx="130" ry="40" fill="#a855f7" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="1340" rx="100" ry="30" fill="#a855f7" opacity="0.15" />
+  <g transform="translate(3840, 1335) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#a855f7" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-void)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-void)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 3 Col 0: Holy Divine Banana -->
+  <rect x="8" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 256 1648 L 448 1792 L 256 1936 L 64 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 1813) rotate(0) scale(1, 1)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 1: Holy Divine Banana -->
+  <rect x="520" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 768 1648 L 960 1792 L 768 1936 L 576 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 1801) rotate(0) scale(1, 1)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 2: Holy Divine Banana -->
+  <rect x="1032" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 1280 1648 L 1472 1792 L 1280 1936 L 1088 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 1809) rotate(-18) scale(1, 1)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 3: Holy Divine Banana -->
+  <rect x="1544" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 1792 1648 L 1984 1792 L 1792 1936 L 1600 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 1803) rotate(0) scale(1, 1)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 4: Holy Divine Banana -->
+  <rect x="2056" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 2304 1648 L 2496 1792 L 2304 1936 L 2112 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 1809) rotate(18) scale(1, 1)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 5: Holy Divine Banana -->
+  <rect x="2568" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 2816 1648 L 3008 1792 L 2816 1936 L 2624 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 1795) rotate(0) scale(1.15, 1.15)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#eab308" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #eab308;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 6: Holy Divine Banana -->
+  <rect x="3080" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 3328 1648 L 3520 1792 L 3328 1936 L 3136 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="1916" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 1799) rotate(0) scale(1.3, 0.9)">
+    <path d="M -30 -50 C -80 -120 -140 -80 -120 -20 C -110 10 -60 0 -30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 30 -50 C 80 -120 140 -80 120 -20 C 110 10 60 0 30 -30 Z" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="0" cy="-115" rx="55" ry="16" stroke="#fef08a" stroke-width="6" fill="none" opacity="0.9" filter="drop-shadow(0 0 8px #facc15)" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#eab308" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-divine)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#eab308" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 3 Col 7: Holy Divine Banana -->
+  <rect x="3592" y="1544" width="496" height="496" class="grid-border" />
+  <path d="M 3840 1648 L 4032 1792 L 3840 1936 L 3648 1792 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="1852" rx="130" ry="40" fill="#eab308" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="1852" rx="100" ry="30" fill="#eab308" opacity="0.15" />
+  <g transform="translate(3840, 1847) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#eab308" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-divine)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-divine)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 4 Col 0: Pyromaniac Fire Banana -->
+  <rect x="8" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 256 2160 L 448 2304 L 256 2448 L 64 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 2325) rotate(0) scale(1, 1)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 1: Pyromaniac Fire Banana -->
+  <rect x="520" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 768 2160 L 960 2304 L 768 2448 L 576 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 2313) rotate(0) scale(1, 1)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 2: Pyromaniac Fire Banana -->
+  <rect x="1032" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 1280 2160 L 1472 2304 L 1280 2448 L 1088 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 2321) rotate(-18) scale(1, 1)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 3: Pyromaniac Fire Banana -->
+  <rect x="1544" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 1792 2160 L 1984 2304 L 1792 2448 L 1600 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 2315) rotate(0) scale(1, 1)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 4: Pyromaniac Fire Banana -->
+  <rect x="2056" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 2304 2160 L 2496 2304 L 2304 2448 L 2112 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 2321) rotate(18) scale(1, 1)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 5: Pyromaniac Fire Banana -->
+  <rect x="2568" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 2816 2160 L 3008 2304 L 2816 2448 L 2624 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 2307) rotate(0) scale(1.15, 1.15)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#f97316" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #f97316;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 6: Pyromaniac Fire Banana -->
+  <rect x="3080" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 3328 2160 L 3520 2304 L 3328 2448 L 3136 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="2428" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 2311) rotate(0) scale(1.3, 0.9)">
+    <path d="M -40 -10 Q -60 -90 -20 -110 Q 0 -80 15 -120 Q 30 -70 40 0" fill="#ea580c" opacity="0.5" />
+    <path d="M -20 0 Q -30 -60 0 -95 Q 15 -55 25 -75 Q 35 -30 20 10" fill="#facc15" opacity="0.8" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#f97316" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-fire)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#f97316" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 4 Col 7: Pyromaniac Fire Banana -->
+  <rect x="3592" y="2056" width="496" height="496" class="grid-border" />
+  <path d="M 3840 2160 L 4032 2304 L 3840 2448 L 3648 2304 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="2364" rx="130" ry="40" fill="#f97316" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="2364" rx="100" ry="30" fill="#f97316" opacity="0.15" />
+  <g transform="translate(3840, 2359) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#f97316" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-fire)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-fire)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 5 Col 0: Glacial Frost Banana -->
+  <rect x="8" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 256 2672 L 448 2816 L 256 2960 L 64 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 2837) rotate(0) scale(1, 1)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 1: Glacial Frost Banana -->
+  <rect x="520" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 768 2672 L 960 2816 L 768 2960 L 576 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 2825) rotate(0) scale(1, 1)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 2: Glacial Frost Banana -->
+  <rect x="1032" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 1280 2672 L 1472 2816 L 1280 2960 L 1088 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 2833) rotate(-18) scale(1, 1)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 3: Glacial Frost Banana -->
+  <rect x="1544" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 1792 2672 L 1984 2816 L 1792 2960 L 1600 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 2827) rotate(0) scale(1, 1)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 4: Glacial Frost Banana -->
+  <rect x="2056" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 2304 2672 L 2496 2816 L 2304 2960 L 2112 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 2833) rotate(18) scale(1, 1)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 5: Glacial Frost Banana -->
+  <rect x="2568" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 2816 2672 L 3008 2816 L 2816 2960 L 2624 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 2819) rotate(0) scale(1.15, 1.15)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#38bdf8" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #38bdf8;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 6: Glacial Frost Banana -->
+  <rect x="3080" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 3328 2672 L 3520 2816 L 3328 2960 L 3136 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="2940" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 2823) rotate(0) scale(1.3, 0.9)">
+    <polygon points="-70,-60 -50,-80 -40,-60" fill="#bae6fd" opacity="0.8" />
+    <polygon points="70,-20 90,-40 60,-10" fill="#bae6fd" opacity="0.8" />
+    <polygon points="-50,20 -70,30 -40,40" fill="#bae6fd" opacity="0.6" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#38bdf8" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-frost)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 5 Col 7: Glacial Frost Banana -->
+  <rect x="3592" y="2568" width="496" height="496" class="grid-border" />
+  <path d="M 3840 2672 L 4032 2816 L 3840 2960 L 3648 2816 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="2876" rx="130" ry="40" fill="#38bdf8" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="2876" rx="100" ry="30" fill="#38bdf8" opacity="0.15" />
+  <g transform="translate(3840, 2871) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#38bdf8" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-frost)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-frost)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 6 Col 0: Radioactive Mutated Banana -->
+  <rect x="8" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 256 3184 L 448 3328 L 256 3472 L 64 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 3349) rotate(0) scale(1, 1)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 1: Radioactive Mutated Banana -->
+  <rect x="520" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 768 3184 L 960 3328 L 768 3472 L 576 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 3337) rotate(0) scale(1, 1)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 2: Radioactive Mutated Banana -->
+  <rect x="1032" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 1280 3184 L 1472 3328 L 1280 3472 L 1088 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 3345) rotate(-18) scale(1, 1)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 3: Radioactive Mutated Banana -->
+  <rect x="1544" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 1792 3184 L 1984 3328 L 1792 3472 L 1600 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 3339) rotate(0) scale(1, 1)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 4: Radioactive Mutated Banana -->
+  <rect x="2056" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 2304 3184 L 2496 3328 L 2304 3472 L 2112 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 3345) rotate(18) scale(1, 1)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 5: Radioactive Mutated Banana -->
+  <rect x="2568" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 2816 3184 L 3008 3328 L 2816 3472 L 2624 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 3331) rotate(0) scale(1.15, 1.15)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#22c55e" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #22c55e;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 6: Radioactive Mutated Banana -->
+  <rect x="3080" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 3328 3184 L 3520 3328 L 3328 3472 L 3136 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="3452" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 3335) rotate(0) scale(1.3, 0.9)">
+    <circle cx="-40" cy="-30" r="16" fill="#4ade80" opacity="0.3" filter="blur(6px)" />
+    <circle cx="45" cy="-50" r="22" fill="#22c55e" opacity="0.25" filter="blur(8px)" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#22c55e" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-toxic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 6 Col 7: Radioactive Mutated Banana -->
+  <rect x="3592" y="3080" width="496" height="496" class="grid-border" />
+  <path d="M 3840 3184 L 4032 3328 L 3840 3472 L 3648 3328 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="3388" rx="130" ry="40" fill="#22c55e" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="3388" rx="100" ry="30" fill="#22c55e" opacity="0.15" />
+  <g transform="translate(3840, 3383) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#22c55e" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-toxic)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-toxic)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+  <!-- Row 7 Col 0: Deep Cosmic Elder Banana -->
+  <rect x="8" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 256 3696 L 448 3840 L 256 3984 L 64 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="256" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(256, 3861) rotate(0) scale(1, 1)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 1: Deep Cosmic Elder Banana -->
+  <rect x="520" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 768 3696 L 960 3840 L 768 3984 L 576 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="768" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(768, 3849) rotate(0) scale(1, 1)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 2: Deep Cosmic Elder Banana -->
+  <rect x="1032" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 1280 3696 L 1472 3840 L 1280 3984 L 1088 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1280" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1280, 3857) rotate(-18) scale(1, 1)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 3: Deep Cosmic Elder Banana -->
+  <rect x="1544" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 1792 3696 L 1984 3840 L 1792 3984 L 1600 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="1792" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(1792, 3851) rotate(0) scale(1, 1)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 4: Deep Cosmic Elder Banana -->
+  <rect x="2056" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 2304 3696 L 2496 3840 L 2304 3984 L 2112 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2304" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2304, 3857) rotate(18) scale(1, 1)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 5: Deep Cosmic Elder Banana -->
+  <rect x="2568" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 2816 3696 L 3008 3840 L 2816 3984 L 2624 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="2816" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(2816, 3843) rotate(0) scale(1.15, 1.15)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <ellipse cx="0" cy="-20" rx="90" ry="90" stroke="#7000ff" stroke-width="4" fill="none" opacity="0.8" stroke-dasharray="15,10" class="laser-glow" style="--glow-color: #7000ff;" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 6: Deep Cosmic Elder Banana -->
+  <rect x="3080" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 3328 3696 L 3520 3840 L 3328 3984 L 3136 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3328" cy="3964" rx="64" ry="20" class="shadow-ellipse" />
+  <g transform="translate(3328, 3847) rotate(0) scale(1.3, 0.9)">
+    <ellipse cx="0" cy="-20" rx="120" ry="25" stroke="url(#grad-cosmic)" stroke-width="4" fill="none" transform="rotate(-15)" opacity="0.75" />
+    <path d="M -45,-90 L -40,-95 L -35,-90 L -40,-85 Z" fill="#ffffff" />
+    <path d="M 45,-60 L 50,-65 L 55,-60 L 50,-55 Z" fill="#00ffff" />
+    <path d="M -130 -60 L -170 -80 M 130 -60 L 170 -80 M -120 20 L -160 40 M 120 20 L 160 40" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    <path d="M -110 -110 Q 0 -180 110 -110" stroke="#7000ff" stroke-width="12" fill="none" opacity="0.9" stroke-linecap="round" />
+    <path d="M -12 -70 Q -3 -95 18 -105" stroke="#713f12" stroke-width="9" stroke-linecap="round" fill="none" />
+    <path d="M -42 -60 Q -5 +85 45 -45 Q 8 +105 -42 -60" fill="#1e293b" opacity="0.15" /> <!-- Inside shadow -->
+    <path d="M -40 -60 Q -5 +80 45 -45 Q 5 +100 -40 -60" fill="url(#grad-cosmic)" /> <!-- Main body -->
+    <path d="M -30 -55 Q -2 +65 35 -40" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45" />
+    <path d="M -36 -50 Q -3 +60 38 -38" stroke="#7000ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.3" />
+    <path d="M 40 -40 L 48 -46 L 43 -35 Z" fill="#451a03" />
+  </g>
+  <!-- Row 7 Col 7: Deep Cosmic Elder Banana -->
+  <rect x="3592" y="3592" width="496" height="496" class="grid-border" />
+  <path d="M 3840 3696 L 4032 3840 L 3840 3984 L 3648 3840 Z" fill="#0b0e14" stroke="#ffffff03" stroke-width="4" />
+  <ellipse cx="3840" cy="3900" rx="130" ry="40" fill="#7000ff" opacity="0.35" filter="blur(8px)" />
+  <ellipse cx="3840" cy="3900" rx="100" ry="30" fill="#7000ff" opacity="0.15" />
+  <g transform="translate(3840, 3895) scale(1.3, 0.45)">
+    <path d="M -80 -10 Q 0 -60 80 -10" stroke="#7000ff" stroke-dasharray="10,5" stroke-width="6" fill="none" opacity="0.6"/>
+    <path d="M -40 20 Q 0 -30 90 10 Q 0 40 -40 20" fill="url(#grad-cosmic)" />
+    <path d="M -90 -5 Q -10 10 40 -20 Q 0 -40 -90 -5" fill="url(#grad-cosmic)" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="45" ry="18" fill="#1e293b" opacity="0.8"/>
+  </g>
+</svg>

@@ -1,0 +1,691 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="4096" viewBox="0 0 4096 4096">
+<rect width="4096" height="4096" fill="#030406" />
+  <!-- CELL Col:0 Row:0 -->
+  <rect x="8" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 112 L 448 256 L 256 400 L 64 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 296) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:1 Row:0 -->
+  <rect x="520" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 112 L 960 256 L 768 400 L 576 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 296) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:2 Row:0 -->
+  <rect x="1032" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 112 L 1472 256 L 1280 400 L 1088 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 296) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:3 Row:0 -->
+  <rect x="1544" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 112 L 1984 256 L 1792 400 L 1600 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 296) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:4 Row:0 -->
+  <rect x="2056" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 112 L 2496 256 L 2304 400 L 2112 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 296) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:5 Row:0 -->
+  <rect x="2568" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 112 L 3008 256 L 2816 400 L 2624 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 316 Q 2816 346 2876 316 Q 2816 286 2756 316" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:6 Row:0 -->
+  <rect x="3080" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 112 L 3520 256 L 3328 400 L 3136 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 296) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:7 Row:0 -->
+  <rect x="3592" y="8" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 112 L 4032 256 L 3840 400 L 3648 256 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="316" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="311" r="8" fill="#374151" />
+  <circle cx="3870" cy="321" r="6" fill="#374151" />
+  <text x="3648" y="70" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="100" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 0</text>
+  <!-- CELL Col:0 Row:1 -->
+  <rect x="8" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 624 L 448 768 L 256 912 L 64 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 808) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:1 Row:1 -->
+  <rect x="520" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 624 L 960 768 L 768 912 L 576 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 808) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:2 Row:1 -->
+  <rect x="1032" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 624 L 1472 768 L 1280 912 L 1088 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 808) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:3 Row:1 -->
+  <rect x="1544" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 624 L 1984 768 L 1792 912 L 1600 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 808) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:4 Row:1 -->
+  <rect x="2056" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 624 L 2496 768 L 2304 912 L 2112 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 808) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:5 Row:1 -->
+  <rect x="2568" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 624 L 3008 768 L 2816 912 L 2624 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 828 Q 2816 858 2876 828 Q 2816 798 2756 828" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:6 Row:1 -->
+  <rect x="3080" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 624 L 3520 768 L 3328 912 L 3136 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 808) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:7 Row:1 -->
+  <rect x="3592" y="520" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 624 L 4032 768 L 3840 912 L 3648 768 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="828" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="823" r="8" fill="#374151" />
+  <circle cx="3870" cy="833" r="6" fill="#374151" />
+  <text x="3648" y="582" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="612" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 1</text>
+  <!-- CELL Col:0 Row:2 -->
+  <rect x="8" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 1136 L 448 1280 L 256 1424 L 64 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 1320) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:1 Row:2 -->
+  <rect x="520" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 1136 L 960 1280 L 768 1424 L 576 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 1320) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:2 Row:2 -->
+  <rect x="1032" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 1136 L 1472 1280 L 1280 1424 L 1088 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 1320) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:3 Row:2 -->
+  <rect x="1544" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 1136 L 1984 1280 L 1792 1424 L 1600 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 1320) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:4 Row:2 -->
+  <rect x="2056" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 1136 L 2496 1280 L 2304 1424 L 2112 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 1320) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:5 Row:2 -->
+  <rect x="2568" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 1136 L 3008 1280 L 2816 1424 L 2624 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 1340 Q 2816 1370 2876 1340 Q 2816 1310 2756 1340" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:6 Row:2 -->
+  <rect x="3080" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 1136 L 3520 1280 L 3328 1424 L 3136 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 1320) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:7 Row:2 -->
+  <rect x="3592" y="1032" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 1136 L 4032 1280 L 3840 1424 L 3648 1280 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="1340" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="1335" r="8" fill="#374151" />
+  <circle cx="3870" cy="1345" r="6" fill="#374151" />
+  <text x="3648" y="1094" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="1124" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 2</text>
+  <!-- CELL Col:0 Row:3 -->
+  <rect x="8" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 1648 L 448 1792 L 256 1936 L 64 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 1832) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:1 Row:3 -->
+  <rect x="520" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 1648 L 960 1792 L 768 1936 L 576 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 1832) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:2 Row:3 -->
+  <rect x="1032" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 1648 L 1472 1792 L 1280 1936 L 1088 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 1832) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:3 Row:3 -->
+  <rect x="1544" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 1648 L 1984 1792 L 1792 1936 L 1600 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 1832) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:4 Row:3 -->
+  <rect x="2056" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 1648 L 2496 1792 L 2304 1936 L 2112 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 1832) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:5 Row:3 -->
+  <rect x="2568" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 1648 L 3008 1792 L 2816 1936 L 2624 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 1852 Q 2816 1882 2876 1852 Q 2816 1822 2756 1852" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:6 Row:3 -->
+  <rect x="3080" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 1648 L 3520 1792 L 3328 1936 L 3136 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 1832) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:7 Row:3 -->
+  <rect x="3592" y="1544" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 1648 L 4032 1792 L 3840 1936 L 3648 1792 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="1852" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="1847" r="8" fill="#374151" />
+  <circle cx="3870" cy="1857" r="6" fill="#374151" />
+  <text x="3648" y="1606" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="1636" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 3</text>
+  <!-- CELL Col:0 Row:4 -->
+  <rect x="8" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 2160 L 448 2304 L 256 2448 L 64 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 2344) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:1 Row:4 -->
+  <rect x="520" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 2160 L 960 2304 L 768 2448 L 576 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 2344) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:2 Row:4 -->
+  <rect x="1032" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 2160 L 1472 2304 L 1280 2448 L 1088 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 2344) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:3 Row:4 -->
+  <rect x="1544" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 2160 L 1984 2304 L 1792 2448 L 1600 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 2344) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:4 Row:4 -->
+  <rect x="2056" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 2160 L 2496 2304 L 2304 2448 L 2112 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 2344) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:5 Row:4 -->
+  <rect x="2568" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 2160 L 3008 2304 L 2816 2448 L 2624 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 2364 Q 2816 2394 2876 2364 Q 2816 2334 2756 2364" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:6 Row:4 -->
+  <rect x="3080" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 2160 L 3520 2304 L 3328 2448 L 3136 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 2344) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:7 Row:4 -->
+  <rect x="3592" y="2056" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 2160 L 4032 2304 L 3840 2448 L 3648 2304 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="2364" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="2359" r="8" fill="#374151" />
+  <circle cx="3870" cy="2369" r="6" fill="#374151" />
+  <text x="3648" y="2118" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="2148" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 4</text>
+  <!-- CELL Col:0 Row:5 -->
+  <rect x="8" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 2672 L 448 2816 L 256 2960 L 64 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 2856) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:1 Row:5 -->
+  <rect x="520" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 2672 L 960 2816 L 768 2960 L 576 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 2856) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:2 Row:5 -->
+  <rect x="1032" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 2672 L 1472 2816 L 1280 2960 L 1088 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 2856) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:3 Row:5 -->
+  <rect x="1544" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 2672 L 1984 2816 L 1792 2960 L 1600 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 2856) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:4 Row:5 -->
+  <rect x="2056" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 2672 L 2496 2816 L 2304 2960 L 2112 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 2856) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:5 Row:5 -->
+  <rect x="2568" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 2672 L 3008 2816 L 2816 2960 L 2624 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 2876 Q 2816 2906 2876 2876 Q 2816 2846 2756 2876" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:6 Row:5 -->
+  <rect x="3080" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 2672 L 3520 2816 L 3328 2960 L 3136 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 2856) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:7 Row:5 -->
+  <rect x="3592" y="2568" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 2672 L 4032 2816 L 3840 2960 L 3648 2816 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="2876" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="2871" r="8" fill="#374151" />
+  <circle cx="3870" cy="2881" r="6" fill="#374151" />
+  <text x="3648" y="2630" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="2660" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 5</text>
+  <!-- CELL Col:0 Row:6 -->
+  <rect x="8" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 3184 L 448 3328 L 256 3472 L 64 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 3368) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:1 Row:6 -->
+  <rect x="520" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 3184 L 960 3328 L 768 3472 L 576 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 3368) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:2 Row:6 -->
+  <rect x="1032" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 3184 L 1472 3328 L 1280 3472 L 1088 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 3368) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:3 Row:6 -->
+  <rect x="1544" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 3184 L 1984 3328 L 1792 3472 L 1600 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 3368) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:4 Row:6 -->
+  <rect x="2056" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 3184 L 2496 3328 L 2304 3472 L 2112 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 3368) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:5 Row:6 -->
+  <rect x="2568" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 3184 L 3008 3328 L 2816 3472 L 2624 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 3388 Q 2816 3418 2876 3388 Q 2816 3358 2756 3388" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:6 Row:6 -->
+  <rect x="3080" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 3184 L 3520 3328 L 3328 3472 L 3136 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 3368) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:7 Row:6 -->
+  <rect x="3592" y="3080" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 3184 L 4032 3328 L 3840 3472 L 3648 3328 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="3388" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="3383" r="8" fill="#374151" />
+  <circle cx="3870" cy="3393" r="6" fill="#374151" />
+  <text x="3648" y="3142" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="3172" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 6</text>
+  <!-- CELL Col:0 Row:7 -->
+  <rect x="8" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 256 3696 L 448 3840 L 256 3984 L 64 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(256, 3880) scale(1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+  </g>
+  <text x="64" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 0</text>
+  <text x="64" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:1 Row:7 -->
+  <rect x="520" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 768 3696 L 960 3840 L 768 3984 L 576 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(768, 3880) scale(1.1)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <circle cx="-30" cy="-50" r="16" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+    <circle cx="30" cy="-30" r="12" fill="#ffffff" opacity="0.7" filter="blur(4px)" />
+  </g>
+  <text x="576" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 1</text>
+  <text x="576" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:2 Row:7 -->
+  <rect x="1032" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1280 3696 L 1472 3840 L 1280 3984 L 1088 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1280, 3880) scale(0.95)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1088" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 2</text>
+  <text x="1088" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:3 Row:7 -->
+  <rect x="1544" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 1792 3696 L 1984 3840 L 1792 3984 L 1600 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(1792, 3880) scale(0.75)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="1600" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 3</text>
+  <text x="1600" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:4 Row:7 -->
+  <rect x="2056" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2304 3696 L 2496 3840 L 2304 3984 L 2112 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(2304, 3880) scale(0.55)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="2112" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 4</text>
+  <text x="2112" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:5 Row:7 -->
+  <rect x="2568" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 2816 3696 L 3008 3840 L 2816 3984 L 2624 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <path d="M 2756 3900 Q 2816 3930 2876 3900 Q 2816 3870 2756 3900" fill="#0f172a" stroke="#334155" stroke-width="6" />
+  <text x="2624" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 5</text>
+  <text x="2624" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:6 Row:7 -->
+  <rect x="3080" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3328 3696 L 3520 3840 L 3328 3984 L 3136 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <g transform="translate(3328, 3880) scale(0.45)">
+    <path d="M 0 -80 L 70 -40 L 70 30 L 0 80 L -70 30 L -70 -40 Z" fill="#4b5563" stroke="#9ca3af" stroke-width="6" />
+    <path d="M 0 -80 L 0 80" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L 70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M 0 0 L -70 -40" stroke="#f3f4f6" stroke-width="3" opacity="0.6" />
+    <path d="M -30 -30 L -10 -10 L 20 -20 L 40 10 M -40 10 L -10 20 L 10 0" stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+  <text x="3136" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 6</text>
+  <text x="3136" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+  <!-- CELL Col:7 Row:7 -->
+  <rect x="3592" y="3592" width="496" height="496" fill="none" stroke="#ffffff03" stroke-width="2" />
+  <path d="M 3840 3696 L 4032 3840 L 3840 3984 L 3648 3840 Z" fill="#0d1017" stroke="#ffffff0d" stroke-width="4" />
+  <ellipse cx="3840" cy="3900" rx="80" ry="25" fill="#4b5563" opacity="0.4" filter="blur(4px)" />
+  <circle cx="3820" cy="3895" r="8" fill="#374151" />
+  <circle cx="3870" cy="3905" r="6" fill="#374151" />
+  <text x="3648" y="3654" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">COL 7</text>
+  <text x="3648" y="3684" fill="rgba(255,255,255,0.25)" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="bold">ROW 7</text>
+</svg>
