@@ -161,7 +161,8 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-7xl h-[90vh] bg-slate-950/90 border border-white/15 rounded-[2rem] flex flex-col shadow-[0_40px_100px_rgba(0,0,0,0.9)] overflow-hidden text-slate-300 font-sans backdrop-blur-3xl">
+    <div className="fixed inset-y-0 right-0 z-[9999] flex pointer-events-none">
+    <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }} className="w-[1000px] h-full bg-slate-950/95 border-l border-white/15 shadow-[-20px_0_100px_rgba(0,0,0,0.9)] overflow-hidden text-slate-300 font-sans backdrop-blur-3xl flex flex-col pointer-events-auto">
       {/* HEADER */}
       <div className="p-6 border-b border-white/5 bg-slate-900/40 shrink-0 flex items-center justify-between">
         <div className="flex items-center gap-5">
@@ -169,16 +170,16 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
           <div><h2 className="text-2xl font-black text-white tracking-tighter uppercase italic flex items-center gap-3">Registry Architect<span className="text-[10px] font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 py-1 px-3 rounded-full not-italic tracking-widest">v4.7 // SYNCED</span></h2><p className="text-[11px] text-slate-500 mt-1 font-mono uppercase tracking-wide">High-Fidelity Sprite Orchestration & Matrix Debugger</p></div>
         </div>
         <div className="flex items-center gap-4">
-          <button onClick={() => { const name = prompt("Unique Mapping ID:"); if(name) onAddMapping(name, { sheet: activeSheet, row: activeRow, col: activeCol }); }} className="flex items-center gap-2 px-5 py-2.5 bg-sky-500/10 border border-sky-500/30 text-sky-400 rounded-xl text-[11px] font-black uppercase hover:bg-sky-500 hover:text-black transition-all cursor-pointer"><Plus className="w-4 h-4" /> Add Mapping</button>
-          <button onClick={() => onSave(registry)} className="flex items-center gap-2 px-7 py-2.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all cursor-pointer shadow-lg shadow-emerald-500/10"><Save className="w-4 h-4" /> Persist Registry</button>
-          <div className="w-px h-10 bg-white/10 mx-2" /><button onClick={onClose} className="p-3 bg-white/5 hover:bg-red-500/20 hover:text-red-400 border border-white/10 rounded-2xl transition-all cursor-pointer group"><X className="w-5 h-5 group-hover:rotate-90 transition-transform" /></button>
+          <button onClick={() => { const name = prompt("Unique Mapping ID:"); if(name) onAddMapping(name, { sheet: activeSheet, row: activeRow, col: activeCol }); }} className="flex items-center gap-2 px-5 py-2.5 bg-sky-500/10 border border-sky-500/30 text-sky-400 rounded-xl text-[11px] font-black uppercase hover:bg-sky-500 hover:text-black transition-all cursor-pointer active:translate-y-[2px]"><Plus className="w-4 h-4" /> Add Mapping</button>
+          <button onClick={() => onSave(registry)} className="flex items-center gap-2 px-7 py-2.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all cursor-pointer active:translate-y-[2px] shadow-lg shadow-emerald-500/10"><Save className="w-4 h-4" /> Persist Registry</button>
+          <div className="w-px h-10 bg-white/10 mx-2" /><button onClick={onClose} className="p-3 bg-white/5 hover:bg-red-500/20 hover:text-red-400 border border-white/10 rounded-2xl transition-all cursor-pointer active:translate-y-[2px] group"><X className="w-5 h-5 group-hover:rotate-90 transition-transform" /></button>
         </div>
       </div>
 
       {/* TABS */}
       <div className="px-6 py-3.5 bg-black/40 border-b border-white/5 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
         {CATEGORIES.map(category => (
-          <button key={category.id} onClick={() => { AudioEngine.playClick(); setSelectedCategory(category.id); }} className={`px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 cursor-pointer ${selectedCategory === category.id ? 'bg-sky-500 text-white shadow-[0_8px_20px_rgba(14,165,233,0.4)]' : 'text-slate-500 hover:bg-white/5 border border-transparent'}`}>{category.label}</button>
+          <button key={category.id} onClick={() => { AudioEngine.playClick(); setSelectedCategory(category.id); }} className={`px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 cursor-pointer active:translate-y-[2px] ${selectedCategory === category.id ? 'bg-sky-500 text-white shadow-[0_8px_20px_rgba(14,165,233,0.4)]' : 'text-slate-500 hover:bg-white/5 border border-transparent'}`}>{category.label}</button>
         ))}
       </div>
 
@@ -186,7 +187,7 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
         {/* COL A */}
         <div className="w-80 p-6 flex flex-col gap-6 overflow-y-auto shrink-0 custom-scrollbar">
           <div className="space-y-3"><label className="text-[10px] uppercase font-black tracking-widest text-slate-500 block">Active Atlas</label><div className="relative group"><Search className="absolute left-3.5 top-3.5 text-slate-600" size={14} /><select value={activeSheet} onChange={e => { AudioEngine.playClick(); setActiveSheet(e.target.value); }} className="w-full bg-slate-900/60 border border-white/10 rounded-2xl p-3.5 pl-10 text-xs text-white appearance-none outline-none focus:border-sky-500/50 transition-all font-bold cursor-pointer">{sheetKeys.map(sheetId => (<option key={sheetId} value={sheetId}>{SHEET_METADATA[sheetId]?.label || sheetId.toUpperCase()}</option>))}</select></div></div>
-          <div className="space-y-3 flex-1 overflow-hidden flex flex-col"><label className="text-[10px] uppercase font-black tracking-widest text-slate-500 block">Row Subject Matrix</label><div className="flex-1 overflow-y-auto pr-1 space-y-1.5 custom-scrollbar">{activeSheetMeta.rows.map((rowName, idx) => (<button key={idx} onClick={() => { AudioEngine.playClick(); setActiveRow(idx); setActiveCol(0); }} className={`w-full flex items-center justify-between p-3.5 rounded-2xl border text-xs transition-all cursor-pointer ${activeRow === idx ? 'bg-sky-500/10 text-sky-300 border-sky-500/40 shadow-inner' : 'bg-white/[0.02] text-slate-500 border-white/5 hover:bg-white/[0.04]'}`}><span className="font-bold truncate text-left">{rowName}</span><ChevronRight size={14} className={activeRow === idx ? 'opacity-100' : 'opacity-0'} /></button>))}</div></div>
+          <div className="space-y-3 flex-1 overflow-hidden flex flex-col"><label className="text-[10px] uppercase font-black tracking-widest text-slate-500 block">Row Subject Matrix</label><div className="flex-1 overflow-y-auto pr-1 space-y-1.5 custom-scrollbar">{activeSheetMeta.rows.map((rowName, idx) => (<button key={idx} onClick={() => { AudioEngine.playClick(); setActiveRow(idx); setActiveCol(0); }} className={`w-full flex items-center justify-between p-3.5 rounded-2xl border text-xs transition-all cursor-pointer active:translate-y-[2px] ${activeRow === idx ? 'bg-sky-500/10 text-sky-300 border-sky-500/40 shadow-inner' : 'bg-white/[0.02] text-slate-500 border-white/5 hover:bg-white/[0.04]'}`}><span className="font-bold truncate text-left">{rowName}</span><ChevronRight size={14} className={activeRow === idx ? 'opacity-100' : 'opacity-0'} /></button>))}</div></div>
         </div>
 
         {/* COL B: GRID */}
@@ -208,7 +209,7 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
                     }}
                     className={`transition-all duration-100`}
                   />
-                  <button onClick={() => { AudioEngine.playClick(); setActiveRow(r); setActiveCol(c); }} className="absolute inset-0 z-20 cursor-pointer" />
+                  <button onClick={() => { AudioEngine.playClick(); setActiveRow(r); setActiveCol(c); }} className="absolute inset-0 z-20 cursor-pointer active:translate-y-[2px]" />
                   {isSelected && <div className="absolute inset-0 border-2 border-sky-400 rounded-2xl pointer-events-none shadow-[0_0_20px_rgba(56,189,248,0.5)] z-10" />}
                 </div>
               );
@@ -220,7 +221,7 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
         {/* COL C: FOCAL & TUNING */}
         <div className="w-[420px] p-8 flex flex-col gap-8 overflow-y-auto shrink-0 bg-slate-900/10 custom-scrollbar">
           <div className="space-y-4">
-            <div className="flex items-center justify-between"><label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Live Focal Node</label><div className="flex gap-2">{(['checker', 'slate', 'black', 'green'] as const).map(style => (<button key={style} onClick={() => setBgStyle(style)} className={`w-3.5 h-3.5 rounded-full border border-white/20 cursor-pointer ${bgStyle === style ? 'ring-2 ring-sky-500' : ''}`} style={{ backgroundColor: style === 'checker' ? '#111317' : style === 'slate' ? '#334155' : style === 'black' ? '#000000' : '#064e3b' }} />))}</div></div>
+            <div className="flex items-center justify-between"><label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Live Focal Node</label><div className="flex gap-2">{(['checker', 'slate', 'black', 'green'] as const).map(style => (<button key={style} onClick={() => setBgStyle(style)} className={`w-3.5 h-3.5 rounded-full border border-white/20 cursor-pointer active:translate-y-[2px] ${bgStyle === style ? 'ring-2 ring-sky-500' : ''}`} style={{ backgroundColor: style === 'checker' ? '#111317' : style === 'slate' ? '#334155' : style === 'black' ? '#000000' : '#064e3b' }} />))}</div></div>
             <div className={`aspect-[4/3] rounded-3xl border flex items-center justify-center relative overflow-hidden shadow-2xl ${bgClassMap[bgStyle]}`}>
                {sheetUrl ? (
                 <div style={{
@@ -236,9 +237,9 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
             {/* ANIMATION CONTROLS */}
             <div className="p-4 bg-black/40 border border-white/5 rounded-2xl flex items-center justify-between shadow-inner">
                <div className="flex gap-2">
-                  <button onClick={() => { AudioEngine.playClick(); setActiveCol(prev => (prev === 0 ? 3 : prev - 1)); }} className="p-2.5 bg-white/5 rounded-xl hover:bg-white/10 transition-all cursor-pointer"><ArrowLeft size={16} /></button>
-                  <button onClick={() => { AudioEngine.playClick(); setIsPlaying(!isPlaying); }} className={`p-2.5 px-5 rounded-xl flex items-center gap-2 text-[10px] font-black transition-all cursor-pointer ${isPlaying ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' : 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'}`}>{isPlaying ? <Pause size={14} /> : <Play size={14} />} {isPlaying ? "PAUSE" : "PLAY"}</button>
-                  <button onClick={() => { AudioEngine.playClick(); setActiveCol(prev => (prev + 1) % 4); }} className="p-2.5 bg-white/5 rounded-xl hover:bg-white/10 transition-all cursor-pointer"><ArrowRight size={16} /></button>
+                  <button onClick={() => { AudioEngine.playClick(); setActiveCol(prev => (prev === 0 ? 3 : prev - 1)); }} className="p-2.5 bg-white/5 rounded-xl hover:bg-white/10 transition-all cursor-pointer active:translate-y-[2px]"><ArrowLeft size={16} /></button>
+                  <button onClick={() => { AudioEngine.playClick(); setIsPlaying(!isPlaying); }} className={`p-2.5 px-5 rounded-xl flex items-center gap-2 text-[10px] font-black transition-all cursor-pointer active:translate-y-[2px] ${isPlaying ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' : 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'}`}>{isPlaying ? <Pause size={14} /> : <Play size={14} />} {isPlaying ? "PAUSE" : "PLAY"}</button>
+                  <button onClick={() => { AudioEngine.playClick(); setActiveCol(prev => (prev + 1) % 4); }} className="p-2.5 bg-white/5 rounded-xl hover:bg-white/10 transition-all cursor-pointer active:translate-y-[2px]"><ArrowRight size={16} /></button>
                </div>
                <div className="flex flex-col items-end gap-1"><span className="text-[10px] font-mono text-sky-400 font-bold">{fps} FPS</span><input type="range" min="1" max="24" value={fps} onChange={e => setFps(parseInt(e.target.value))} className="w-24 h-1 accent-sky-500 bg-slate-800 rounded-full appearance-none cursor-pointer" /></div>
             </div>
@@ -268,6 +269,7 @@ export function AssetInspector({ registry, onUpdate, onSave, onAddMapping, onRem
         </div>
       </div>
     </motion.div>
+    </div>
   );
 }
 
@@ -282,7 +284,7 @@ function TuningSlider({ label, value, min, max, step = 1, onChange, unit }: any)
 
 function AttrToggle({ label, active, onClick }: { label: string, active: boolean, onClick?: () => void }) {
   return (
-    <button onClick={onClick} className={`flex items-center justify-between p-3 rounded-2xl border text-[10px] font-black uppercase transition-all cursor-pointer ${active ? 'bg-amber-500/20 border-amber-500/40 text-amber-500 shadow-lg' : 'bg-black/40 border-white/10 text-slate-600 hover:border-white/20'}`}>
+    <button onClick={onClick} className={`flex items-center justify-between p-3 rounded-2xl border text-[10px] font-black uppercase transition-all cursor-pointer active:translate-y-[2px] ${active ? 'bg-amber-500/20 border-amber-500/40 text-amber-500 shadow-lg' : 'bg-black/40 border-white/10 text-slate-600 hover:border-white/20'}`}>
       <span>{label}</span>
       <div className={`w-2 h-2 rounded-full ${active ? 'bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.6)]' : 'bg-slate-800'}`} />
     </button>

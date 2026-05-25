@@ -14,6 +14,7 @@ pub struct ECS {
     pub faunas: HashMap<Entity, Fauna>,
     pub structures: HashMap<Entity, Structure>,
     pub movements: HashMap<Entity, Movement>,
+    pub prayers: HashMap<Entity, Prayer>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -87,6 +88,11 @@ impl ECS {
         self.movements.insert(entity, component);
     }
 
+    pub fn add_prayer(&mut self, entity: Entity, component: Prayer) {
+        self.entities.insert(entity.clone());
+        self.prayers.insert(entity, component);
+    }
+
     pub fn remove_entity(&mut self, entity: &Entity) {
         self.entities.remove(entity);
         self.positions.remove(entity);
@@ -98,6 +104,7 @@ impl ECS {
         self.faunas.remove(entity);
         self.structures.remove(entity);
         self.movements.remove(entity);
+        self.prayers.remove(entity);
     }
 
     pub fn clear(&mut self) {
@@ -111,6 +118,7 @@ impl ECS {
         self.faunas.clear();
         self.structures.clear();
         self.movements.clear();
+        self.prayers.clear();
     }
 
     pub fn get_entities_with(&self, types: &[&str]) -> Vec<Entity> {
@@ -128,6 +136,7 @@ impl ECS {
                 "fauna" => self.faunas.contains_key(*e),
                 "structure" => self.structures.contains_key(*e),
                 "movement" => self.movements.contains_key(*e),
+                "prayer" => self.prayers.contains_key(*e),
                 _ => false,
             })
         }).cloned().collect()
@@ -199,6 +208,13 @@ impl ECS {
                 data: serde_json::to_value(data).unwrap(),
             });
         }
+        for (entity, data) in &self.prayers {
+            components.push(ExportedComponent {
+                comp_type: "prayer".to_string(),
+                entity: entity.clone(),
+                data: serde_json::to_value(data).unwrap(),
+            });
+        }
 
         ExportedState {
             entities: self.entities.iter().cloned().collect(),
@@ -258,8 +274,91 @@ impl ECS {
                         self.movements.insert(comp.entity, data);
                     }
                 }
+                "prayer" => {
+                    if let Ok(data) = serde_json::from_value::<Prayer>(comp.data) {
+                        self.prayers.insert(comp.entity, data);
+                    }
+                }
                 _ => {}
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ecs_creation_and_entity_management() {
+        let mut ecs = ECS::new();
+        let entity = ecs.create_entity();
+        assert!(ecs.entities.contains(&entity));
+
+        ecs.remove_entity(&entity);
+        assert!(!ecs.entities.contains(&entity));
+    }
+
+    #[test]
+    fn test_ecs_add_components() {
+        let mut ecs = ECS::new();
+        let entity = ecs.create_entity();
+        
+        ecs.add_position(entity.clone(), Position { x: 0.0, y: 0.0, z: 0.0 });
+        assert!(ecs.positions.contains_key(&entity));
+        
+        ecs.add_physics(entity.clone(), Physics { temperature: 20.0, humidity: 0.5, height: 10.0 });
+        assert!(ecs.physics.contains_key(&entity));
+        
+        // Remove entity should clear components
+        ecs.remove_entity(&entity);
+        assert!(!ecs.positions.contains_key(&entity));
+        assert!(!ecs.physics.contains_key(&entity));
+    }
+
+    #[test]
+    fn test_ecs_get_entities_with() {
+        let mut ecs = ECS::new();
+        let e1 = ecs.create_entity();
+        let e2 = ecs.create_entity();
+        
+        ecs.add_position(e1.clone(), Position { x: 1.0, y: 1.0, z: 0.0 });
+        ecs.add_physics(e1.clone(), Physics { temperature: 20.0, humidity: 0.5, height: 10.0 });
+        
+        ecs.add_position(e2.clone(), Position { x: 2.0, y: 2.0, z: 0.0 });
+        
+        let with_pos = ecs.get_entities_with(&["position"]);
+        assert!(with_pos.contains(&e1));
+        assert!(with_pos.contains(&e2));
+        assert_eq!(with_pos.len(), 2);
+        
+        let with_pos_phys = ecs.get_entities_with(&["position", "physics"]);
+        assert!(with_pos_phys.contains(&e1));
+        assert!(!with_pos_phys.contains(&e2));
+        assert_eq!(with_pos_phys.len(), 1);
+        
+        let all = ecs.get_entities_with(&[]);
+        assert!(all.contains(&e1));
+        assert!(all.contains(&e2));
+    }
+
+    #[test]
+    fn test_ecs_export_import() {
+        let mut ecs = ECS::new();
+        let e1 = ecs.create_entity();
+        ecs.add_position(e1.clone(), Position { x: 5.0, y: 10.0, z: 1.0 });
+        
+        let exported = ecs.export_state();
+        assert_eq!(exported.entities.len(), 1);
+        assert_eq!(exported.components.len(), 1);
+        
+        let mut new_ecs = ECS::new();
+        new_ecs.import_state(exported);
+        
+        assert!(new_ecs.entities.contains(&e1));
+        assert!(new_ecs.positions.contains_key(&e1));
+        let pos = new_ecs.positions.get(&e1).unwrap();
+        assert_eq!(pos.x, 5.0);
+        assert_eq!(pos.y, 10.0);
     }
 }

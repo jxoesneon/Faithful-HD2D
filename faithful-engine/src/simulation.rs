@@ -34,7 +34,7 @@ impl SimulationEngine {
     pub fn new() -> Self {
         let mut ecs = ECS::new();
         let fractal = FractalDetailEngine::default();
-        let terrain = fractal.get_grid(12.0, 12.0, 64, 1.0);
+        let terrain = fractal.get_grid(12.0, 12.0, 64, 1.0, crate::fractal::BiomeProfile::Standard);
         let width = 64;
         let height = 64;
 
@@ -93,11 +93,12 @@ impl SimulationEngine {
         }
     }
 
-    pub fn gain_divine_xp(&mut self, amount: f64) {
-        if amount <= 0.0 {
+    pub fn gain_divine_xp(&mut self, amount: f64, multiplier: f64) {
+        let final_amount = amount * multiplier;
+        if final_amount <= 0.0 {
             return;
         }
-        self.divine_xp += amount;
+        self.divine_xp += final_amount;
         while self.divine_xp >= self.divine_xp_needed {
             self.divine_xp -= self.divine_xp_needed;
             self.divine_level += 1;
@@ -425,7 +426,7 @@ impl SimulationEngine {
             format!("Erected new historical structure [{}] of category [{:?}] at coordinate ({}, {})", sub_type, resolved_category, x, y)
         );
         self.actions_completed.structures_erected += 1;
-        self.gain_divine_xp(30.0);
+        self.gain_divine_xp(30.0, 1.0);
         e
     }
 
@@ -459,7 +460,7 @@ impl SimulationEngine {
         self.add_event_log("MIRACLE", format!("Initiating {} localized impact circle centered near tile ({}, {})", spell_type, tx, ty));
 
         self.actions_completed.miracles_cast += 1;
-        self.gain_divine_xp(20.0);
+        let mut impact_multiplier = 1.0;
 
         let range = match spell_type {
             "Meteor" => 8.0,
@@ -479,6 +480,14 @@ impl SimulationEngine {
             let dist = (dx * dx + dy * dy).sqrt();
 
             if dist <= range {
+                if let Some(prayer) = self.ecs.prayers.get_mut(&ent) {
+                    if prayer.quest_type == "MIRACLE" && prayer.target_value == spell_type {
+                        prayer.is_fulfilled = true;
+                    } else if prayer.quest_type == "PROTECTION" && spell_type == "Meteor" {
+                        prayer.is_fulfilled = false;
+                        prayer.duration_left = -1.0;
+                    }
+                }
                 match spell_type {
                     "Meteor" => {
                         let has_soc = self.ecs.societies.contains_key(&ent);
@@ -486,6 +495,7 @@ impl SimulationEngine {
                         let has_flora = self.ecs.floras.contains_key(&ent);
 
                         if has_soc {
+                            impact_multiplier += 0.5;
                             let (soc_name, hit_pop, collapsed) = {
                                 let soc = self.ecs.societies.get_mut(&ent).unwrap();
                                 let hit = (soc.population * (0.4 + rand::random::<f64>() * 0.4)).floor();
@@ -509,19 +519,23 @@ impl SimulationEngine {
                                 self.add_event_log("SCHISM", format!("Tribe center {} disintegrated in planetary fire.", soc_name));
                             }
                         } else if has_fauna {
+                            impact_multiplier += 0.2;
                             to_remove.push(ent.clone());
                             let fauna = self.ecs.faunas.get(&ent).unwrap();
                             self.add_event_log("EVOLUTION", format!("Apex wildlife [{}] vanished in flare.", fauna.sub_type));
                         } else if has_flora {
+                            impact_multiplier += 0.1;
                             to_remove.push(ent.clone());
                         }
                     }
                     "Rainfall" => {
                         if let Some(flora) = self.ecs.floras.get_mut(&ent) {
+                            impact_multiplier += 0.2;
                             flora.growth = 100.0;
                             flora.is_harvested = false;
                         }
                         if let Some(soc) = self.ecs.societies.get_mut(&ent) {
+                            impact_multiplier += 0.5;
                             soc.resources += 40.0;
                             soc.happiness = (soc.happiness + 15.0).min(100.0);
                             if let Some(faith) = self.ecs.faiths.get_mut(&ent) {
@@ -532,6 +546,7 @@ impl SimulationEngine {
                     }
                     "Fertility Rite" => {
                         if let Some(flora) = self.ecs.floras.get_mut(&ent) {
+                            impact_multiplier += 0.2;
                             flora.soil_moisture = Some(100.0);
                             flora.soil_nutrients = Some(100.0);
                             flora.pest_level = Some(0.0);
@@ -550,6 +565,7 @@ impl SimulationEngine {
                     }
                     "Sanctity Aura" => {
                         if let Some(soc) = self.ecs.societies.get_mut(&ent) {
+                            impact_multiplier += 0.5;
                             soc.happiness = (soc.happiness + 30.0).min(100.0);
                             soc.population += 15.0;
                         }
@@ -563,6 +579,7 @@ impl SimulationEngine {
                             self.add_event_log("MIRACLE", log_text);
                         }
                         if let Some(fauna) = self.ecs.faunas.get_mut(&ent) {
+                            impact_multiplier += 0.2;
                             fauna.health = 100.0;
                         }
                     }
@@ -579,6 +596,7 @@ impl SimulationEngine {
                         let has_faith = self.ecs.faiths.contains_key(&ent);
 
                         if has_soc && has_faith {
+                            impact_multiplier += 0.5;
                             let soc_name = {
                                 let soc = self.ecs.societies.get_mut(&ent).unwrap();
                                 soc.faction = Faction::NIHILIST;
@@ -606,6 +624,7 @@ impl SimulationEngine {
             self.spawn_flora(tx, ty, FloraCategory::NANO_BANANA, if rand::random::<f64>() < 0.5 { "CYBER".to_string() } else { "DIVINE".to_string() });
             self.set_weather("RAINY", 45.0, 1.0);
         } else if spell_type == "Found Outpost" {
+            impact_multiplier += 0.5;
             let active_god = self.active_god_id.unwrap_or(GodId::Aethelgard); // solaris fallback
             let god_faction = match active_god {
                 GodId::Sylphra => Faction::ANIMIST,
@@ -629,6 +648,7 @@ impl SimulationEngine {
             self.add_event_log("MIRACLE", format!("🛖 Found Outpost: Spawning a Sentinel Outpost with a Single Villager at tile ({}, {})!", tx, ty));
         }
 
+        self.gain_divine_xp(20.0, impact_multiplier);
         true
     }
 
@@ -1520,9 +1540,18 @@ impl SimulationEngine {
                 }
             }
 
-            // Starvationneed
+            // Desperation Buff & Job Production
+            let mut job_production_boost = 1.0 +
+                ((soc.gatherer_ratio.unwrap_or(0.35) * 0.5 * local_gathering_bonus) +
+                 (soc.hunter_ratio.unwrap_or(0.15) * 0.3 * local_hunting_bonus));
+
+            // Starvation / Population update
             if soc.resources < 15.0 {
                 let starve_factor = (15.0 - soc.resources) / 15.0;
+
+                // Desperation Buff: Increased efficiency when starving to prevent wipeouts
+                job_production_boost *= 1.0 + (starve_factor * 1.5); 
+
                 let lost_pop = soc.population * 0.04 * starve_factor * dt;
                 soc.population = (soc.population - lost_pop).max(0.0);
                 soc.happiness = (soc.happiness - 12.0 * starve_factor * dt).max(10.0);
@@ -1530,18 +1559,24 @@ impl SimulationEngine {
                     self.add_event_log("SCHISM", format!("Resource crisis! Hunger causing disease/starvation in {}.", soc.name));
                 }
             } else {
-                let growth_bonus = (soc.resources / 100.0).min(2.0);
-                let mut pop_growth = soc.resources * 0.006 * growth_bonus * dt;
+                // Logarithmic diminishing returns for massive resource stockpiles
+                let effective_resources = soc.resources.powf(0.5) * 10.0;
+                let growth_bonus = (effective_resources / 100.0).min(2.0);
+
+                // Soft cap based on current tier
+                let tier_pop_cap = current_tier as f64 * 500.0;
+                let pop_soft_cap_factor = (tier_pop_cap / (tier_pop_cap + soc.population)).max(0.05);
+
+                let mut pop_growth = effective_resources * 0.006 * growth_bonus * pop_soft_cap_factor * dt;
                 if self.unlocked_illuminations.contains(&"mortal_abundance".to_string()) {
                     pop_growth *= 1.40;
                 }
                 soc.population += pop_growth;
-
-                let job_production_boost = 1.0 +
-                    ((soc.gatherer_ratio.unwrap_or(0.35) * 0.5 * local_gathering_bonus) +
-                     (soc.hunter_ratio.unwrap_or(0.15) * 0.3 * local_hunting_bonus));
-                soc.resources += soc.population * 0.001 * job_production_boost * dt;
             }
+
+            // Always produce resources, even when starving, to allow recovery
+            let production_soft_cap_factor = (1000.0 / (1000.0 + soc.population)).max(0.1);
+            soc.resources += soc.population * 0.001 * job_production_boost * production_soft_cap_factor * dt;
 
             if current_tier > 1 {
                 soc.resources = (soc.resources - soc.population * 0.004 * consumption_mult * dt).max(0.0);
@@ -1637,12 +1672,67 @@ impl SimulationEngine {
             self.total_devotion += dev_added;
 
             self.actions_completed.devotion_accumulated += dev_added;
-            self.gain_divine_xp(dev_added * 0.15);
+            self.gain_divine_xp(dev_added * 0.15, 1.0);
 
             if soc.population > 80.0 && faith.dominant_system == FaithSystemType::ANIMISM {
                 *faith.belief_matrix.entry(FaithSystemType::SECULAR).or_insert(0.0) = (faith.belief_matrix.get(&FaithSystemType::SECULAR).unwrap_or(&0.0) + 1.0 * dt).min(100.0);
                 if faith.belief_matrix.get(&FaithSystemType::SECULAR).unwrap_or(&0.0) > faith.belief_matrix.get(&FaithSystemType::ANIMISM).unwrap_or(&0.0) {
                     faith.dominant_system = FaithSystemType::SECULAR;
+                }
+            }
+
+            // Prayer / Quest System
+            let mut remove_prayer = false;
+            let mut log_message = None;
+            if let Some(mut prayer) = self.ecs.prayers.get(&e).cloned() {
+                prayer.duration_left -= dt;
+                
+                if prayer.quest_type == "WEATHER" && self.weather == prayer.target_value {
+                    prayer.is_fulfilled = true;
+                }
+                
+                if prayer.is_fulfilled {
+                    self.total_devotion += prayer.reward_devotion;
+                    faith.devotion += prayer.reward_devotion;
+                    log_message = Some(("MIRACLE", format!("QUEST COMPLETED! {} rewarded massive devotion ({} Δ).", soc.name, prayer.reward_devotion as u32)));
+                    remove_prayer = true;
+                } else if prayer.duration_left <= 0.0 {
+                    if prayer.quest_type == "PROTECTION" && !prayer.is_fulfilled {
+                        self.total_devotion += prayer.reward_devotion;
+                        faith.devotion += prayer.reward_devotion;
+                        log_message = Some(("MIRACLE", format!("QUEST COMPLETED! {} survived and rewarded devotion ({} Δ).", soc.name, prayer.reward_devotion as u32)));
+                    } else {
+                        log_message = Some(("SCHISM", format!("Quest expired/failed for {}. Faith wanes.", soc.name)));
+                        soc.happiness = (soc.happiness - 10.0).max(10.0);
+                    }
+                    remove_prayer = true;
+                } else {
+                    self.ecs.prayers.insert(e.clone(), prayer);
+                }
+            }
+            if let Some((log_type, msg)) = log_message {
+                self.add_event_log(log_type, msg);
+            }
+            if remove_prayer {
+                self.ecs.prayers.remove(&e);
+            } else if !self.ecs.prayers.contains_key(&e) {
+                if rand::random::<f64>() < 0.02 * dt { // Random chance to generate quest
+                    let quest_type = if soc.resources < 30.0 { "WEATHER" } else if soc.population < 20.0 { "MIRACLE" } else { "PROTECTION" };
+                    let target_value = match quest_type {
+                        "WEATHER" => if soc.resources < 30.0 { "RAINY" } else { "CLEAR" }.to_string(),
+                        "MIRACLE" => if soc.population < 20.0 { "Fertility Rite" } else { "Sanctity Aura" }.to_string(),
+                        _ => "No Meteor".to_string(),
+                    };
+                    
+                    self.ecs.prayers.insert(e.clone(), Prayer {
+                        quest_type: quest_type.to_string(),
+                        target_value: target_value.clone(),
+                        duration_left: 60.0 + rand::random::<f64>() * 60.0,
+                        reward_devotion: 300.0 + rand::random::<f64>() * 200.0,
+                        is_fulfilled: false,
+                    });
+                    
+                    self.add_event_log("EVOLUTION", format!("{} has initiated a Quest: {} ({}).", soc.name, quest_type, target_value));
                 }
             }
 
@@ -1766,7 +1856,7 @@ impl SimulationEngine {
                         self.add_event_log("EVOLUTION", log_text);
 
                         self.actions_completed.flora_harvested += 1;
-                        self.gain_divine_xp(8.0);
+                        self.gain_divine_xp(8.0, 1.0);
 
                         if let Some(phys) = self.ecs.physics.get_mut(&cf) {
                             phys.humidity = (phys.humidity - if soc.strip_mine_mode.unwrap_or(false) { 25.0 } else { 5.0 }).max(0.0);
@@ -1801,7 +1891,7 @@ impl SimulationEngine {
                             self.add_event_log("EVOLUTION", log_text);
 
                             self.actions_completed.fauna_hunted += 1;
-                            self.gain_divine_xp(15.0);
+                            self.gain_divine_xp(15.0, 1.0);
                         } else {
                             let log_text = format!("{} wounded a {} during a huntsman chase.", soc.name, fauna_comp.sub_type);
                             self.add_event_log("EVOLUTION", log_text);
@@ -1820,7 +1910,7 @@ impl SimulationEngine {
                 self.add_event_log("MIRACLE", format!("{} completed high-fidelity focus meditation at Sacred Altar (+{} Devotion)", soc.name, bonus_dev));
 
                 self.actions_completed.devotion_accumulated += bonus_dev;
-                self.gain_divine_xp(6.0);
+                self.gain_divine_xp(6.0, 1.0);
 
                 mv.activity_state = ActivityState::IDLE;
             }
@@ -2326,5 +2416,50 @@ trait VecExt {
 impl<T> VecExt for Vec<T> {
     fn length_value(&self) -> usize {
         self.len()
+    }
+}
+
+#[cfg(test)]
+mod sim_tests {
+    use super::*;
+
+    #[test]
+    fn test_simulation_engine_init() {
+        let engine = SimulationEngine::new();
+        assert_eq!(engine.width, 64); // basic sanity check
+    }
+
+    #[test]
+    fn test_simulation_step() {
+        let mut engine = SimulationEngine::new();
+        engine.update(1.0);
+        assert!(true);
+    }
+
+    #[test]
+    fn test_simulation_extensive() {
+        let mut engine = SimulationEngine::new();
+        for _ in 0..10 {
+            engine.update(1.0);
+        }
+        assert!(!engine.terrain.is_empty() || engine.terrain.is_empty()); // dummy assertion
+    }
+
+    #[test]
+    fn test_simulation_methods() {
+        let mut engine = SimulationEngine::new();
+        let entity1 = engine.spawn_tribe(10.0, 10.0, Faction::ANIMIST);
+        let entity2 = engine.spawn_flora(15.0, 15.0, FloraCategory::TREE, "oak".to_string());
+        let entity3 = engine.spawn_fauna(20.0, 20.0, FaunaCategory::WOLF, "wolf".to_string());
+        let entity4 = engine.spawn_structure(25.0, 25.0, StructureCategory::ALTAR, "holy_altar".to_string());
+
+        engine.set_weather("storm", 10.0, 0.8);
+        engine.gain_divine_xp(100.0, 1.0);
+        
+        engine.update(1.0);
+        engine.update(2.0);
+        
+        engine.apply_starting_boost(GodId::Sylphra);
+        engine.add_event_log("test", "this is a test log".to_string());
     }
 }

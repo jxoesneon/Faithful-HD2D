@@ -54,6 +54,7 @@ pub struct SkillData {
     pub description: &'static str,
     pub cost: f64,
     pub reqs_desc: &'static str,
+    pub base_xp: f64,
 }
 
 pub struct GodData {
@@ -87,6 +88,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Instantly rejuvenates and brings all crop and banana flora reserves in the world to 100% maturity.",
                 cost: 30.0,
                 reqs_desc: "Possess at least 1 active tribe center on the dynamic map.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "sylphra_animist_bloom",
@@ -94,6 +96,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Deepens mortal roots. Adds +25 Animism devotion matrix points to all co-existing societies.",
                 cost: 75.0,
                 reqs_desc: "Total world population exceeds 80.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "sylphra_foliage_aegis",
@@ -101,6 +104,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Spawns 4 robust crop reserves and 1 Sacred Altar to shield local populations from predator attacks.",
                 cost: 120.0,
                 reqs_desc: "Average world happiness is above 75%.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "sylphra_vernal_sanctuary",
@@ -108,6 +112,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Summons three divine Holy Divine Bananas around tribal sectors to unleash massive spiritual energy harvests.",
                 cost: 200.0,
                 reqs_desc: "Total world population exceeds 150.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -128,6 +133,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Cracks open the geological grid, spawning 2 rare Pyromaniac Fire Bananas containing extreme energy metrics.",
                 cost: 40.0,
                 reqs_desc: "Have at least 50 co-existing mortals on the planet.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "vulcanus_smelter",
@@ -135,6 +141,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Equips tribal workers with thermal smelting tools. Instantly yields +200 resources to all societies.",
                 cost: 80.0,
                 reqs_desc: "Average world technology level is v1.50 or higher.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "vulcanus_igneous_surge",
@@ -142,6 +149,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Fills the mortal psyche with high-pressure conviction. Boosts Elementalist belief scores by +40 globally.",
                 cost: 140.0,
                 reqs_desc: "Total devotion surpasses 180 Δ.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "vulcanus_tectonic_prominence",
@@ -149,6 +157,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Forges massive crystal glass deposits. Spawns 5 valuable Ash Glass structures yielding double harvesting gains.",
                 cost: 250.0,
                 reqs_desc: "Average technological scale is above v2.20.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -169,6 +178,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Sends heavy condensation currents, boosting resources in all societies by +40 through quick crop irrigation.",
                 cost: 35.0,
                 reqs_desc: "Possess at least 60 total devotion reserves.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "thalassor_bio_light",
@@ -176,6 +186,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Imbues mortals with nocturnal tracking. Increases all tribal speed ratings by +1.5 units permanently.",
                 cost: 70.0,
                 reqs_desc: "Total world population is 90 or above.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "thalassor_blessing",
@@ -183,6 +194,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Instantly elevates average global happiness to 95% and triggers cool Rainfalls over all non-believing sectors.",
                 cost: 130.0,
                 reqs_desc: "Have at least one tribe centering dominant non-Secular belief.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "thalassor_aquatic_genesis",
@@ -190,6 +202,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Drowning dry ridges. Floods the terrain to spawn 6 aquatic barley plants and 2 majestic guardian Celestial Stags.",
                 cost: 210.0,
                 reqs_desc: "World population reaches 140.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -210,6 +223,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Summons 4 wild stags and spawns 10 thick oak trees around settlement perimeters to feed the food chain.",
                 cost: 30.0,
                 reqs_desc: "Possess at least 40 devotion points.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "xylorex_moss_siphon",
@@ -217,6 +231,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Absorbs minor biomaterials. Generates +120 Devotion dynamically of pure nature energy.",
                 cost: 65.0,
                 reqs_desc: "At least 2 tribes must carry Animism as their dominant system.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "xylorex_mycelium",
@@ -224,6 +239,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Establishes mycelial communications. Boosts tribe gathering speeds by +2.0 and gives +15 happiness.",
                 cost: 110.0,
                 reqs_desc: "Total world population is 110 or higher.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "xylorex_avatar",
@@ -231,6 +247,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Spawns a divine Holy Elder Banana tree and permanently doubles crop harvesting yields.",
                 cost: 180.0,
                 reqs_desc: "At least one Animist tribe has population scale >= 100.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -251,6 +268,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Unleashes stellar rays. Adds +30 Interventionist belief points globally, converting secular tribes.",
                 cost: 50.0,
                 reqs_desc: "At least 1 active structure exists on map.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "aethelgard_altar_ascension",
@@ -258,6 +276,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Permanently increases all structural temple efficiencies by +50%.",
                 cost: 90.0,
                 reqs_desc: "Own at least 2 active structures currently on the map.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "aethelgard_sacrament",
@@ -265,6 +284,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Fills and locks all tribal happiness to 100% and awards +100 raw materials to all active settlements.",
                 cost: 140.0,
                 reqs_desc: "Total world population size exceeds 100.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "aethelgard_apotheosis",
@@ -272,6 +292,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Triggers construction of 2 high-grade Sacred Altars and rewards +300 additional Devotion.",
                 cost: 240.0,
                 reqs_desc: "At least one society has population scale >= 120.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -292,6 +313,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Injects machine code into human brains, instantly raising global technology levels of all tribes by +0.7.",
                 cost: 45.0,
                 reqs_desc: "Ensure world technology average is above v2.00.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "null_scientific_method",
@@ -299,6 +321,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Secular factions gain +150 raw materials and double their food synthesis efficiency for 60 seconds.",
                 cost: 85.0,
                 reqs_desc: "Factions with secular dominance represent >= 50% of the active societies.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "null_lattice",
@@ -306,6 +329,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Synchronizes co-existing entities across the world, boosting movement rates to +3.0 and awarding +50 resources.",
                 cost: 150.0,
                 reqs_desc: "At least 3 separate tribal centers are on the coordinate grid.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "null_singularity",
@@ -313,6 +337,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Triggers extreme mental transcendence. Secular factions gain +3.5 technology levels, and maximum happiness is locked.",
                 cost: 260.0,
                 reqs_desc: "World technology average level has reached v3.50.",
+                base_xp: 25.0,
             },
         ],
     },
@@ -333,6 +358,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Stirs wild predators. Increases wolf movement speed by +4.0 and maxes hunger parameters to trigger quick tribal attrition.",
                 cost: 35.0,
                 reqs_desc: "At least 2 active wild wolves remain in the world.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "krigor_warriors",
@@ -340,6 +366,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Inspires non-secular factions, summoning +20 veteran warriors into their ranks.",
                 cost: 75.0,
                 reqs_desc: "Total world population exceeds 70.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "krigor_attrition",
@@ -347,6 +374,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Sacrifices weak populations of all societies, turning them into elite forgers: raises Tech scale by +1.1 but cuts population by 15%.",
                 cost: 130.0,
                 reqs_desc: "World total population is 130 or greater.",
+                base_xp: 25.0,
             },
             SkillData {
                 id: "krigor_doomsday",
@@ -354,6 +382,7 @@ pub const GODS_PANTHEON: &[GodData] = &[
                 description: "Triggers tectonic fission. Spawns 3 radioactive Mutated Bananas and drops a targeted high-impact meteor near the largest secular settlement.",
                 cost: 200.0,
                 reqs_desc: "World devotion is 180 Δ or higher.",
+                base_xp: 25.0,
             },
         ],
     },

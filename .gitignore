@@ -9,3 +9,7 @@ coverage/
 
 # Ciel local domain
 .ciel/
+
+# Playwright generated artifacts
+playwright-report/
+test-results/

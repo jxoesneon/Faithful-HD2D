@@ -175,6 +175,16 @@ pub struct Movement {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
+pub struct Prayer {
+    pub quest_type: String,
+    pub target_value: String,
+    pub duration_left: f64,
+    pub reward_devotion: f64,
+    pub is_fulfilled: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct EventLog {
     pub id: f64,
     pub time: String,

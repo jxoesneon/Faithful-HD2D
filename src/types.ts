@@ -95,6 +95,15 @@ export interface Movement extends Component {
   activityState: 'IDLE' | 'WANDERING' | 'MOVING_TO_RESOURCE' | 'PRAYING' | 'FLEEING';
 }
 
+export interface Prayer extends Component {
+  type: "prayer";
+  questType: string;
+  targetValue: string;
+  durationLeft: number;
+  rewardDevotion: number;
+  isFulfilled: boolean;
+}
+
 export interface GameState {
   entities: Map<Entity, Component[]>;
   time: number;

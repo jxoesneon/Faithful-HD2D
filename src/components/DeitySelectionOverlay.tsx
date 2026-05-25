@@ -32,7 +32,7 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-        className={`w-full max-w-7xl bg-slate-950/80 border border-white/10 rounded-3xl ${isMobile ? 'p-5' : 'p-10'} flex flex-col gap-6 shadow-[0_32px_96px_rgba(0,0,0,0.9)] max-h-[92vh] overflow-y-auto custom-scrollbar backdrop-blur-md`}
+        className={`w-full max-w-7xl bg-slate-950/80 border border-white/10 rounded-3xl ${isMobile ? 'p-5' : 'p-10'} flex flex-col gap-6 shadow-[0_32px_96px_rgba(0,0,0,0.9)] max-h-[92vh] overflow-y-auto custom-scrollbar backdrop-blur-md animate-in fade-in slide-in-from-bottom-2`}
       >
         
         {/* Main Header Descriptor */}
@@ -66,7 +66,7 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
                 onMouseLeave={() => setHoveredId(null)}
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="group flex flex-col justify-between bg-slate-950/45 border hover:bg-slate-900/30 rounded-2xl p-5 transition-all duration-300 relative flex-1"
+                className="group flex flex-col justify-between bg-slate-950/45 border hover:bg-slate-900/60 hover:border-white/20 rounded-2xl p-5 transition-all duration-300 relative flex-1"
                 style={{
                   borderColor: isHovered ? `${god.colorHex}66` : 'rgba(255, 255, 255, 0.08)',
                   boxShadow: isHovered ? `0 12px 36px -6px ${god.colorHex}25` : 'none'
@@ -155,7 +155,7 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
                     AudioEngine.playClick();
                     onSelect(god);
                   }}
-                  className="w-full py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-widest text-black transition-all cursor-pointer mt-5 pointer-events-auto shadow-md hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-widest text-black transition-all cursor-pointer mt-5 pointer-events-auto shadow-md hover:scale-[1.02] active:translate-y-[2px]"
                   style={{
                     backgroundColor: god.colorHex,
                     boxShadow: isHovered ? `0 6px 20px ${god.colorHex}55` : `0 4px 12px ${god.colorHex}22`

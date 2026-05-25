@@ -231,7 +231,7 @@ export function StartMenuOverlay({
             AudioEngine.setEnabled(nextSoundState);
             AudioEngine.playClick();
           }}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/5 bg-slate-950/60 hover:bg-slate-900 text-slate-400 hover:text-white transition-all text-xs font-mono cursor-pointer backdrop-blur-md"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/5 bg-slate-950/60 hover:bg-slate-900 text-slate-400 hover:text-white transition-all text-xs font-mono cursor-pointer active:translate-y-[2px] backdrop-blur-md"
         >
           {soundEnabled ? (
             <>
@@ -252,7 +252,7 @@ export function StartMenuOverlay({
         initial={{ scale: 0.96, opacity: 0, y: 15 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-        className={`relative w-full max-w-5xl bg-slate-950/75 border rounded-3xl overflow-hidden shadow-[0_35px_80px_rgba(0,0,0,0.95)] backdrop-blur-md flex ${isMobile ? 'flex-col' : 'flex-row'} min-h-[500px] ${isMobile ? 'max-h-[92vh]' : 'max-h-[85vh]'} z-[135] transition-all duration-1000 ease-out`}
+        className={`relative w-full max-w-5xl bg-slate-950/75 border rounded-3xl overflow-hidden shadow-[0_35px_80px_rgba(0,0,0,0.95)] backdrop-blur-md flex ${isMobile ? 'flex-col' : 'flex-row'} min-h-[500px] ${isMobile ? 'max-h-[92vh]' : 'max-h-[85vh]'} z-[135] transition-all duration-1000 ease-out animate-in fade-in slide-in-from-bottom-2`}
         style={{ 
           borderColor: `${activeColor}33`,
           boxShadow: `0 35px 80px rgba(0, 0, 0, 0.95), 0 0 50px ${activeColor}15`
@@ -266,7 +266,7 @@ export function StartMenuOverlay({
           <div className={`${isMobile ? 'space-y-2' : 'space-y-6'}`}>
             <div className="flex items-center gap-2.5">
               <div 
-                className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center border border-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer"
+                className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center border border-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer active:translate-y-[2px]"
                 onClick={() => {}}
               >
                 <Database className="w-5 h-5 text-indigo-100 animate-pulse" />
@@ -304,7 +304,7 @@ export function StartMenuOverlay({
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('hub'); }}
-              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer active:translate-y-[2px] ${
                 activeTab === 'hub'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
@@ -317,7 +317,7 @@ export function StartMenuOverlay({
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('genesis'); }}
-              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer active:translate-y-[2px] ${
                 activeTab === 'genesis'
                 ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[inset_0_1px_10px_rgba(245,158,11,0.15)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
@@ -330,7 +330,7 @@ export function StartMenuOverlay({
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('timelines'); }}
-              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer active:translate-y-[2px] ${
                 activeTab === 'timelines'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
@@ -343,7 +343,7 @@ export function StartMenuOverlay({
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('codex'); }}
-              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer active:translate-y-[2px] ${
                 activeTab === 'codex'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
@@ -393,7 +393,7 @@ export function StartMenuOverlay({
                     <button
                       onMouseEnter={menuHoverSound}
                       onClick={() => { selectConfirmSound(); onResume(); }}
-                      className="group p-5 bg-gradient-to-tr from-emerald-600/20 to-teal-600/20 hover:from-emerald-600/25 hover:to-teal-600/25 border border-emerald-500/25 hover:border-emerald-400/50 rounded-2xl text-left transition-all duration-300 cursor-pointer pointer-events-auto shadow-[0_4px_20px_rgba(16,185,129,0.05)]"
+                      className="group p-5 bg-gradient-to-tr from-emerald-600/20 to-teal-600/20 hover:from-emerald-600/25 hover:to-teal-600/25 border border-emerald-500/25 hover:border-emerald-400/50 rounded-2xl text-left transition-all duration-300 cursor-pointer active:translate-y-[2px] pointer-events-auto shadow-[0_4px_20px_rgba(16,185,129,0.05)]"
                     >
                       <div className="h-10 w-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-105 transition-transform">
                         <Play className="w-5 h-5 fill-current" />
@@ -410,7 +410,7 @@ export function StartMenuOverlay({
                     <button
                       onMouseEnter={menuHoverSound}
                       onClick={() => { selectConfirmSound(); setActiveTab('genesis'); }}
-                      className="group p-5 bg-gradient-to-tr from-amber-600/15 to-orange-600/15 hover:from-amber-600/20 hover:to-orange-600/20 border border-amber-500/25 hover:border-amber-400/50 rounded-2xl text-left transition-all duration-300 cursor-pointer pointer-events-auto"
+                      className="group p-5 bg-gradient-to-tr from-amber-600/15 to-orange-600/15 hover:from-amber-600/20 hover:to-orange-600/20 border border-amber-500/25 hover:border-amber-400/50 rounded-2xl text-left transition-all duration-300 cursor-pointer active:translate-y-[2px] pointer-events-auto"
                     >
                       <div className="h-10 w-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-105 transition-transform">
                         <Sliders className="w-5 h-5" />
@@ -427,7 +427,7 @@ export function StartMenuOverlay({
                     <button
                       onMouseEnter={menuHoverSound}
                       onClick={() => { selectConfirmSound(); setActiveTab('timelines'); }}
-                      className="group p-5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/15 rounded-2xl text-left transition-all duration-300 cursor-pointer pointer-events-auto"
+                      className="group p-5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/15 rounded-2xl text-left transition-all duration-300 cursor-pointer active:translate-y-[2px] pointer-events-auto"
                     >
                       <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-105 transition-transform">
                         <Download className="w-5 h-5" />
@@ -444,7 +444,7 @@ export function StartMenuOverlay({
                     <button
                       onMouseEnter={menuHoverSound}
                       onClick={() => { selectConfirmSound(); onImport(); }}
-                      className="group p-5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/15 rounded-2xl text-left transition-all duration-300 cursor-pointer pointer-events-auto"
+                      className="group p-5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/15 rounded-2xl text-left transition-all duration-300 cursor-pointer active:translate-y-[2px] pointer-events-auto"
                     >
                       <div className="h-10 w-10 rounded-xl bg-slate-800/20 border border-white/10 flex items-center justify-center text-slate-300 mb-4 group-hover:scale-105 transition-transform">
                         <FileCode className="w-5 h-5" />
@@ -503,7 +503,7 @@ export function StartMenuOverlay({
                           key={item.id}
                           onMouseEnter={menuHoverSound}
                           onClick={() => { modeSwitchSound(); setSelectedClimate(item.id as any); }}
-                          className={`p-3 rounded-xl border transition-all text-left flex flex-col justify-between cursor-pointer ${
+                          className={`p-3 rounded-xl border transition-all text-left flex flex-col justify-between cursor-pointer active:translate-y-[2px] ${
                             selectedClimate === item.id
                             ? 'bg-amber-500/10 border-amber-500 text-amber-200 shadow-[0_4px_12px_rgba(245,158,11,0.1)]'
                             : 'bg-slate-900 border-white/5 text-slate-400 hover:border-white/10'
@@ -535,7 +535,7 @@ export function StartMenuOverlay({
                           key={item.id}
                           onMouseEnter={menuHoverSound}
                           onClick={() => { modeSwitchSound(); setDevotionTier(item.id as any); }}
-                          className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                          className={`p-3 rounded-xl border text-left transition-all cursor-pointer active:translate-y-[2px] ${
                             devotionTier === item.id
                             ? 'bg-indigo-600/15 border-indigo-500 text-indigo-300 shadow-md'
                             : 'bg-slate-900 border-white/5 text-slate-400 hover:border-white/10'
@@ -560,7 +560,7 @@ export function StartMenuOverlay({
                           key={god.id}
                           onMouseEnter={menuHoverSound}
                           onClick={() => { modeSwitchSound(); setSelectedDeityId(god.id); }}
-                          className={`w-full p-2.5 rounded-xl border transition-all text-left flex items-start justify-between cursor-pointer ${
+                          className={`w-full p-2.5 rounded-xl border transition-all text-left flex items-start justify-between cursor-pointer active:translate-y-[2px] ${
                             selectedDeityId === god.id
                             ? 'bg-gradient-to-r from-indigo-950/20 to-transparent border-indigo-500 text-slate-100'
                             : 'bg-slate-900 border-white/5 text-slate-400 hover:border-white/10'
@@ -595,7 +595,7 @@ export function StartMenuOverlay({
                   </div>
                   <button
                     onClick={handleLaunchCustomCampaign}
-                    className="py-3 px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 hover:scale-[1.02] transform-all font-bold tracking-tight rounded-xl text-xs uppercase cursor-pointer flex items-center justify-center gap-2 shadow-[0_5px_15px_rgba(245,158,11,0.25)] transition-all"
+                    className="py-3 px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 hover:scale-[1.02] transform-all font-bold tracking-tight rounded-xl text-xs uppercase cursor-pointer active:translate-y-[2px] flex items-center justify-center gap-2 shadow-[0_5px_15px_rgba(245,158,11,0.25)] transition-all"
                   >
                     <Sparkles className="w-4 h-4 animate-spin animate-duration-5000" />
                     Materialize Seeding Matrix
@@ -663,7 +663,7 @@ export function StartMenuOverlay({
                             <button
                               onMouseEnter={menuHoverSound}
                               onClick={() => { selectConfirmSound(); onLoadGame(slot); }}
-                              className="px-4 py-2.5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-lg text-xs font-bold transition-all duration-150 cursor-pointer flex items-center gap-1.5 shadow-[0_3px_10px_rgba(99,102,241,0.2)] hover:scale-[1.02]"
+                              className="px-4 py-2.5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-lg text-xs font-bold transition-all duration-150 cursor-pointer active:translate-y-[2px] flex items-center gap-1.5 shadow-[0_3px_10px_rgba(99,102,241,0.2)] hover:scale-[1.02]"
                             >
                               <Download className="w-3.5 h-3.5" />
                               Materialize Sector
@@ -748,7 +748,7 @@ export function StartMenuOverlay({
               <button 
                 onMouseEnter={menuHoverSound}
                 onClick={() => { modeSwitchSound(); setActiveTab('hub'); }}
-                className="text-indigo-400 hover:text-indigo-300 font-mono tracking-tight font-black uppercase flex items-center gap-1 cursor-pointer"
+                className="text-indigo-400 hover:text-indigo-300 font-mono tracking-tight font-black uppercase flex items-center gap-1 cursor-pointer active:translate-y-[2px]"
               >
                 ← BACK TO CORE INTERFACES
               </button>
@@ -757,7 +757,7 @@ export function StartMenuOverlay({
               <button 
                 onMouseEnter={menuHoverSound}
                 onClick={() => { selectConfirmSound(); onResume(); }}
-                className="px-4 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-350 hover:text-white rounded-lg transition-colors cursor-pointer"
+                className="px-4 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-350 hover:text-white rounded-lg transition-colors cursor-pointer active:translate-y-[2px]"
               >
                 CLOSE UTILITY LAUNCHER [ESC]
               </button>

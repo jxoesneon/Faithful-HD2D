@@ -12,15 +12,13 @@ import {
   FaithSystemType, 
   Entity 
 } from '../types';
-import initWasm, { WasmSimulationEngine } from '../../faithful-engine/pkg/faithful_engine.js';
 
-// --- Shared Memory Architecture (Phase 1, Step 3) ---
 const MAX_ENTITIES = 100000;
 const ENTITY_STRIDE = 8; // x, y, vx, vy, age, life, type, state (all f32)
 const SHARED_BUFFER_SIZE = MAX_ENTITIES * ENTITY_STRIDE * 4; // in bytes
 
 export class SimulationEngine {
-  private wasm: WasmSimulationEngine;
+  private worker: Worker;
   private ecs: ECS;
   
   // Shared Memory Buffers
@@ -59,196 +57,202 @@ export class SimulationEngine {
     devotionAccumulated: 0
   };
 
+  private cachedTerrain: number[][] = [];
+  private isReady: boolean = false;
+  private readyPromise: Promise<void>;
+  private readyResolve!: () => void;
+  
+  private messageIdCounter = 0;
+  private pendingRequests = new Map<number, (result: any) => void>();
+
   public static async create(ecs: ECS): Promise<SimulationEngine> {
-    await initWasm();
-    return new SimulationEngine(ecs);
+    const sim = new SimulationEngine(ecs);
+    await sim.init();
+    return sim;
   }
 
   constructor(ecs: ECS) {
     this.sharedBuffer = new SharedArrayBuffer(SHARED_BUFFER_SIZE);
     this.entityDataView = new Float32Array(this.sharedBuffer);
     this.ecs = ecs;
-    this.wasm = new WasmSimulationEngine();
-    this.syncToTsEcs();
+    
+    this.readyPromise = new Promise((resolve) => {
+      this.readyResolve = resolve;
+    });
+
+    this.worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
+    
+    this.worker.onmessage = (e) => {
+      const { type, payload, msgId, result } = e.data;
+      if (type === 'INIT_DONE') {
+        this.cachedTerrain = payload.terrain;
+        this.syncToTsEcsFromExport(payload.state);
+        this.isReady = true;
+        this.readyResolve();
+      } else if (type === 'STATE_UPDATE') {
+        this.syncToTsEcsFromExport(payload.state);
+      } else if (type === 'CMD_RESULT') {
+        if (this.pendingRequests.has(msgId)) {
+          this.pendingRequests.get(msgId)!(result);
+          this.pendingRequests.delete(msgId);
+        }
+      }
+    };
   }
 
-  // Synchronizes full simulation and ECS state from the Rust WASM module into this JS class
-  private syncToTsEcs() {
-    const exportedState = this.wasm.export_state();
+  public async init() {
+    this.worker.postMessage({ type: 'INIT', payload: { sharedBuffer: this.sharedBuffer } });
+    return this.readyPromise;
+  }
+
+  private sendCommand(type: string, payload: any = {}): Promise<any> {
+    const msgId = this.messageIdCounter++;
+    return new Promise((resolve) => {
+      this.pendingRequests.set(msgId, resolve);
+      this.worker.postMessage({ type, msgId, payload });
+    });
+  }
+
+  private syncToTsEcsFromExport(exportedState: any) {
     if (exportedState) {
       if (exportedState.ecsState) {
         this.ecs.importState(exportedState.ecsState);
       }
-      this.totalDevotion = exportedState.totalDevotion ?? 100;
-      this.activeGodId = exportedState.activeGodId ?? null;
-      this.weather = (exportedState.weather as any) ?? 'CLEAR';
-      this.weatherTimer = exportedState.weatherTimer ?? 45;
-      this.weatherTimeLeft = exportedState.weatherTimeLeft ?? 45;
-      this.weatherIntensity = exportedState.weatherIntensity ?? 0.5;
-      this.globalTemperature = exportedState.globalTemperature ?? 22;
-      this.globalHumidity = exportedState.globalHumidity ?? 45;
-      this.eventLogs = exportedState.eventLogs ?? [];
-      this.tribalRelations = exportedState.tribalRelations ?? {};
-      this.divineLevel = exportedState.divineLevel ?? 1;
-      this.divineXP = exportedState.divineXP ?? 0;
-      this.divineXPNeeded = exportedState.divineXPNeeded ?? 100;
-      this.illuminationPoints = exportedState.illuminationPoints ?? 0;
-      this.unlockedIlluminations = exportedState.unlockedIlluminations ?? [];
+      this.totalDevotion = exportedState.totalDevotion ?? this.totalDevotion;
+      this.activeGodId = exportedState.activeGodId ?? this.activeGodId;
+      this.weather = (exportedState.weather as any) ?? this.weather;
+      this.weatherTimer = exportedState.weatherTimer ?? this.weatherTimer;
+      this.weatherTimeLeft = exportedState.weatherTimeLeft ?? this.weatherTimeLeft;
+      this.weatherIntensity = exportedState.weatherIntensity ?? this.weatherIntensity;
+      this.globalTemperature = exportedState.globalTemperature ?? this.globalTemperature;
+      this.globalHumidity = exportedState.globalHumidity ?? this.globalHumidity;
+      this.eventLogs = exportedState.eventLogs ?? this.eventLogs;
+      this.tribalRelations = exportedState.tribalRelations ?? this.tribalRelations;
+      this.divineLevel = exportedState.divineLevel ?? this.divineLevel;
+      this.divineXP = exportedState.divineXP ?? this.divineXP;
+      this.divineXPNeeded = exportedState.divineXPNeeded ?? this.divineXPNeeded;
+      this.illuminationPoints = exportedState.illuminationPoints ?? this.illuminationPoints;
+      this.unlockedIlluminations = exportedState.unlockedIlluminations ?? this.unlockedIlluminations;
       this.actionsCompleted = exportedState.actionsCompleted ?? this.actionsCompleted;
     }
   }
 
-  // Synchronizes full simulation and ECS state from this JS class back into the Rust WASM module
-  private syncToRustEcs() {
-    const tsExport = this.ecs.exportState();
-    this.wasm.import_state({
-      terrain: this.getTerrain(),
-      totalDevotion: this.totalDevotion,
-      activeGodId: this.activeGodId,
-      weather: this.weather,
-      weatherTimer: this.weatherTimer,
-      weatherTimeLeft: this.weatherTimeLeft,
-      weatherIntensity: this.weatherIntensity,
-      globalTemperature: this.globalTemperature,
-      globalHumidity: this.globalHumidity,
-      eventLogs: this.eventLogs,
-      divineLevel: this.divineLevel,
-      divineXP: this.divineXP,
-      divineXPNeeded: this.divineXPNeeded,
-      illuminationPoints: this.illuminationPoints,
-      unlockedIlluminations: this.unlockedIlluminations,
-      actionsCompleted: this.actionsCompleted,
-      tribalRelations: this.tribalRelations,
-      ecsState: tsExport
-    });
-  }
-
   public update(dt: number) {
-    this.syncToRustEcs();
-    this.wasm.update(dt);
-    this.syncToTsEcs();
+    if (!this.isReady) return;
+    const tsExport = this.ecs.exportState();
+    this.worker.postMessage({ type: 'UPDATE', payload: { dt, importState: tsExport } });
   }
 
   public setWeather(newWeather: 'CLEAR' | 'RAINY' | 'DROUGHT' | 'TEMPEST' | 'AURORA', duration: number = 45, intensity: number = 0.5) {
-    this.syncToRustEcs();
-    this.wasm.set_weather(newWeather, duration, intensity);
-    this.syncToTsEcs();
+    this.sendCommand('CMD_SET_WEATHER', { newWeather, duration, intensity });
   }
 
   public triggerLocalizedSpell(type: string, tx: number, ty: number): boolean {
-    this.syncToRustEcs();
-    const result = this.wasm.trigger_localized_spell(type, tx, ty);
-    this.syncToTsEcs();
-    return result;
+    this.sendCommand('CMD_TRIGGER_SPELL', { type, tx, ty });
+    return true; // Optimistic return for the UI
   }
 
   public execute_skill(skillId: string): string {
-    this.syncToRustEcs();
-    const logResult = this.wasm.execute_skill(skillId);
-    this.syncToTsEcs();
-    return logResult;
+    this.sendCommand('CMD_EXECUTE_SKILL', { skillId });
+    return "Skill request sent";
   }
 
-  // Expose camelCase version to support legacy calls in the UI
   public executeSkill(skillId: string): string {
     return this.execute_skill(skillId);
   }
 
   public applyStartingBoost(godId: any) {
-    this.syncToRustEcs();
     const godName = typeof godId === 'string' ? godId : (godId.id || '');
-    this.wasm.apply_starting_boost(godName);
-    this.syncToTsEcs();
+    this.sendCommand('CMD_APPLY_STARTING_BOOST', { godId: godName });
   }
 
   public spawnTribe(x: number, y: number, faction: 'ANIMIST' | 'TECHNOCRAT' | 'INTERVENTIONIST' | 'NIHILIST' | 'ELEMENTAL') {
-    this.syncToRustEcs();
-    const entityId = this.wasm.spawn_tribe(x, y, faction);
-    this.syncToTsEcs();
-    return entityId;
+    this.sendCommand('CMD_SPAWN_TRIBE', { x, y, faction });
+    return "spawn_pending";
   }
 
   public spawnFlora(x: number, y: number, category: 'CROP' | 'NANO_BANANA' | 'EXOTIC' | 'TREE', subType: string) {
-    this.syncToRustEcs();
-    const entityId = this.wasm.spawn_flora(x, y, category, subType);
-    this.syncToTsEcs();
-    return entityId;
+    this.sendCommand('CMD_SPAWN_FLORA', { x, y, category, subType });
+    return "spawn_pending";
   }
 
   public spawnFauna(x: number, y: number, category: 'WOLF' | 'STAG' | 'COW' | 'CELESTIAL', subType: string) {
-    this.syncToRustEcs();
-    const entityId = this.wasm.spawn_fauna(x, y, category, subType);
-    this.syncToTsEcs();
-    return entityId;
+    this.sendCommand('CMD_SPAWN_FAUNA', { x, y, category, subType });
+    return "spawn_pending";
   }
 
   public spawnStructure(x: number, y: number, category: 'ALTAR' | 'REACTOR' | 'HABITAT' | 'DEFENSE' | 'FARM', subType: string) {
-    this.syncToRustEcs();
-    const entityId = this.wasm.spawn_structure(x, y, category, subType);
-    this.syncToTsEcs();
-    return entityId;
+    this.sendCommand('CMD_SPAWN_STRUCTURE', { x, y, category, subType });
+    return "spawn_pending";
   }
 
   public addEventLog(type: 'MIRACLE' | 'SCHISM' | 'EVOLUTION', text: string) {
-    this.syncToRustEcs();
-    this.wasm.add_event_log(type, text);
-    this.syncToTsEcs();
+    this.sendCommand('CMD_ADD_EVENT_LOG', { type, text });
   }
 
-  public gainDivineXP(amount: number) {
-    this.syncToRustEcs();
-    this.wasm.gain_divine_xp(amount);
-    this.syncToTsEcs();
+  public gainDivineXP(amount: number, multiplier: number = 1.0) {
+    this.sendCommand('CMD_GAIN_DIVINE_XP', { amount, multiplier });
   }
 
   public exportState(): any {
-    this.syncToRustEcs();
-    return this.wasm.export_state();
+    return this.ecs.exportState(); // Since state is synced locally
   }
 
   public importState(state: any) {
-    this.wasm.import_state(state);
-    this.syncToTsEcs();
+    this.sendCommand('CMD_IMPORT_STATE', { state });
   }
 
   public getTerrain(): number[][] {
-    return this.wasm.get_terrain();
+    return this.cachedTerrain;
   }
 
   public getEntityAt(tx: number, ty: number) {
-    this.syncToRustEcs();
-    const entityInfo = this.wasm.get_entity_at(tx, ty);
-    if (!entityInfo || !Array.isArray(entityInfo) || entityInfo.length < 3) {
-      return undefined;
+    const entities = this.ecs.getEntitiesWith(['position']);
+    for (const id of entities) {
+      const pos = this.ecs.getComponent<Position>(id, 'position');
+      if (pos && Math.floor(pos.x) === Math.floor(tx) && Math.floor(pos.y) === Math.floor(ty)) {
+        let category = 'Unknown';
+        const society = this.ecs.getComponent(id, 'society');
+        const flora = this.ecs.getComponent(id, 'flora');
+        const fauna = this.ecs.getComponent(id, 'fauna');
+        const structure = this.ecs.getComponent(id, 'structure');
+        
+        if (society) category = 'Tribe';
+        else if (flora) category = 'Flora';
+        else if (fauna) category = 'Fauna';
+        else if (structure) category = 'Structure';
+        
+        return {
+          id,
+          category,
+          components: { position: pos, society, flora, fauna, structure }
+        };
+      }
     }
-    return {
-      id: entityInfo[0],
-      category: entityInfo[1],
-      components: entityInfo[2]
-    };
+    return undefined;
   }
 
   public getPlanetaryMesh(subdivisions: number): any {
-    return this.wasm.get_planetary_mesh(subdivisions);
+    return null;
   }
 
   public getRegionalFlowField(startX: number, startY: number, size: number, chunkRes: number): any {
-    return this.wasm.get_regional_flow_field(startX, startY, size, chunkRes);
+    return null;
   }
 
   public getIsometricTileBuffer(startX: number, startY: number, size: number, resolution: number): any {
-    return this.wasm.get_isometric_tile_buffer(startX, startY, size, resolution);
+    return null;
   }
 
   public getYSortedActors(actors: any[]): any[] {
-    return this.wasm.get_y_sorted_actors(actors);
+    return actors;
   }
 
   public getParticleEmissionBuffer(emitterX: number, emitterY: number, particleCount: number, seed: number): any {
-    return this.wasm.get_particle_emission_buffer(emitterX, emitterY, particleCount, seed);
+    return null;
   }
 
   public getAAAEffects(cameraZoom: number, targetDepth: number, activeDeityId: string | null): any {
-    return this.wasm.get_aaa_effects(cameraZoom, targetDepth, activeDeityId || undefined);
+    return null;
   }
 }

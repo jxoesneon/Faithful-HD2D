@@ -219,8 +219,8 @@ impl WasmSimulationEngine {
         self.inner.add_event_log(log_type, text);
     }
 
-    pub fn gain_divine_xp(&mut self, amount: f64) {
-        self.inner.gain_divine_xp(amount);
+    pub fn gain_divine_xp(&mut self, amount: f64, multiplier: f64) {
+        self.inner.gain_divine_xp(amount, multiplier);
     }
 
     pub fn get_terrain(&self) -> JsValue {
@@ -287,19 +287,19 @@ impl WasmSimulationEngine {
 
     pub fn get_planetary_mesh(&self, subdivisions: usize) -> JsValue {
         let fractal = fractal::FractalDetailEngine::new(42);
-        let mesh = fractal.get_planetary_mesh(subdivisions);
+        let mesh = fractal.get_planetary_mesh(subdivisions, fractal::BiomeProfile::Standard);
         serde_wasm_bindgen::to_value(&mesh).unwrap_or(JsValue::NULL)
     }
 
     pub fn get_regional_flow_field(&self, start_x: f64, start_y: f64, size: usize, chunk_res: f64) -> JsValue {
         let fractal = fractal::FractalDetailEngine::new(42);
-        let field = fractal.get_regional_flow_field(start_x, start_y, size, chunk_res);
+        let field = fractal.get_regional_flow_field(start_x, start_y, size, chunk_res, fractal::BiomeProfile::Standard);
         serde_wasm_bindgen::to_value(&field).unwrap_or(JsValue::NULL)
     }
 
     pub fn get_isometric_tile_buffer(&self, start_x: f64, start_y: f64, size: usize, resolution: f64) -> JsValue {
         let fractal = fractal::FractalDetailEngine::new(42);
-        let buffer = fractal.get_isometric_tile_buffer(start_x, start_y, size, resolution);
+        let buffer = fractal.get_isometric_tile_buffer(start_x, start_y, size, resolution, fractal::BiomeProfile::Standard);
         serde_wasm_bindgen::to_value(&buffer).unwrap_or(JsValue::NULL)
     }
 

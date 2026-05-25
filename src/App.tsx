@@ -644,6 +644,7 @@ export default function App() {
 
     const renderer = new GameRenderer(containerRef.current);
     rendererRef.current = renderer;
+    let requestId: number;
     
     SimulationEngine.create(ecsRef.current).then(simulation => {
         simulationRef.current = simulation;
@@ -723,9 +724,6 @@ export default function App() {
             }
           }
         };
-      });
-    }, []);
-    };
 
     renderer.onZoomChange = (z: number) => {
       if (appRootRef.current) {
@@ -912,13 +910,15 @@ export default function App() {
       requestAnimationFrame(frame);
     };
 
-    const requestId = requestAnimationFrame(frame);
+    requestId = requestAnimationFrame(frame);
 
-useEffect(() => {
+    });
+
     return () => {
       cancelAnimationFrame(requestId);
       renderer.destroy();
     };
+  }, []);
 
   const handleIntervention = (type: string) => {
     // Triggers localized divine magic at a random active tribe coordinates!
@@ -3714,4 +3714,4 @@ function SubButton({ active, onClick, label, title }: { active: boolean, onClick
     </button>
   );
 }
-});
+}

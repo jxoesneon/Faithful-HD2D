@@ -1,0 +1,662 @@
+[
+  {
+    "event_id": "first_flame_kindled",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "New ANIMIST tribe reaches population 5 at tier 1; fires lit for first time",
+    "log_text": "Against the vast indifference of the dark, a single ember catches — and the tribe gathers close, faces amber-lit, the cold world suddenly smaller than they are.",
+    "npc_dialog": null,
+    "world_effect": "happiness +10, gathererRatio increases; unlocks basic foraging actions",
+    "chain_events": ["animist_spirit_naming", "the_first_totem_raised", "predator_watches_the_light"]
+  },
+  {
+    "event_id": "the_first_totem_raised",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ANIMIST tribe has acolyteRatio > 0.1 within first 20 turns of founding",
+    "log_text": "Carved from a tree struck by lightning, the totem watches the settlement with hollow eyes — and the people, for the first time, feel watched back.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio +0.05, happiness +5; unlocks spirit prayer actions",
+    "chain_events": ["animist_spirit_naming", "the_covenant_of_bark_and_bone", "rival_tribe_mocks_the_idol"]
+  },
+  {
+    "event_id": "animist_spirit_naming",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "ANIMIST tribe completes first seasonal cycle with acolyteRatio > 0.05",
+    "log_text": "The elder speaks the name of the forest into the smoke, and the forest — improbably, impossibly — answers with a shift in wind.",
+    "npc_dialog": "*\"It heard us.\"*",
+    "world_effect": "resources +15 (forage yield), happiness +8; spirit bond unlocked",
+    "chain_events": ["the_covenant_of_bark_and_bone", "first_sacrifice_to_the_green"]
+  },
+  {
+    "event_id": "the_covenant_of_bark_and_bone",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "ANIMIST tribe survives first famine or harsh season event",
+    "log_text": "They bury their dead beneath the roots of the eldest tree, and henceforth the forest is not wilderness but homeland — every fallen leaf a word in a language the living are still learning to read.",
+    "npc_dialog": null,
+    "world_effect": "population stability increased; death events lower severity for ANIMIST",
+    "chain_events": ["animist_great_migration", "green_god_awakens"]
+  },
+  {
+    "event_id": "spark_and_schematic",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe founded; researcherRatio > 0.15 within first 10 turns",
+    "log_text": "The first schematic is scratched into clay with a sharpened bone: seventeen interlocking lines that describe a machine no one alive has ever seen, as though the blueprint arrived before the builder.",
+    "npc_dialog": null,
+    "world_effect": "technologyLevel +1, researcherRatio +0.05; basic fabrication unlocked",
+    "chain_events": ["the_first_engine_hums", "technocrat_founding_compact", "resource_survey_begins"]
+  },
+  {
+    "event_id": "technocrat_founding_compact",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe reaches population 10 with technologyLevel >= 2",
+    "log_text": "They draft the Compact on the back of a mineral survey: no gods, no kings, only efficiency — and the people sign it with their thumbprints in carbon dust, swearing allegiance to the future.",
+    "npc_dialog": null,
+    "world_effect": "happiness +5 (secular stability), tithe mode disabled permanently for TECHNOCRAT; researcherRatio cap raised",
+    "chain_events": ["the_first_engine_hums", "strip_mine_protocol_initiated", "technocrat_rivals_scoff"]
+  },
+  {
+    "event_id": "the_divine_calling",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "INTERVENTIONIST tribe founded; acolyteRatio > 0.2 at tier 1",
+    "log_text": "A man climbs the hill at dawn and does not come down until dusk; when he returns, his eyes are the color of lit candles, and those who look into them report a feeling of being chosen for something terrible.",
+    "npc_dialog": "*\"The Divine speaks. We are its hands now.\"*",
+    "world_effect": "acolyteRatio +0.1, tithe mode enabled; Divine Mandate buff active",
+    "chain_events": ["interventionist_first_shrine", "the_first_miracle_performed", "heretic_rises_in_secret"]
+  },
+  {
+    "event_id": "interventionist_first_shrine",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "INTERVENTIONIST tribe builds first structure in tier 1",
+    "log_text": "The shrine is built not from the finest stone but from the stones nearest at hand — and that humility, the priests say, is exactly why the Divine will fill it.",
+    "npc_dialog": null,
+    "world_effect": "happiness +12, resources +10 (divine blessing); shrine generates passive acolyte growth",
+    "chain_events": ["the_first_miracle_performed", "pilgrim_arrives_from_afar", "rival_faith_takes_note"]
+  },
+  {
+    "event_id": "the_void_pact",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "SCHISM",
+    "trigger_condition": "NIHILIST tribe founded; happiness below 30 at founding moment",
+    "log_text": "They gather not around a fire but around the absence of one — and in the shared cold, something like philosophy is born: the universe owes them nothing, and that is exactly the point.",
+    "npc_dialog": null,
+    "world_effect": "happiness -5 (nihilist baseline), chaos resistance +20%; gathererRatio and hunterRatio raised",
+    "chain_events": ["nihilist_doctrine_spreads", "void_whispers_heard", "first_dissenter_silenced"]
+  },
+  {
+    "event_id": "nihilist_doctrine_spreads",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "SCHISM",
+    "trigger_condition": "NIHILIST tribe completes 5 turns; population grows despite low happiness",
+    "log_text": "The doctrine spreads not through sermons but through silence — one person stops praying, then another, and the quiet spreads through the settlement like frost through autumn leaves.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio -0.1 in nearby tribes; NIHILIST chaos aura begins; happiness debuff to neighbors",
+    "chain_events": ["void_whispers_heard", "nihilist_first_purge", "neighboring_tribe_investigates"]
+  },
+  {
+    "event_id": "elemental_binding_ritual",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ELEMENTAL tribe founded near a natural feature (river, volcano, forest edge)",
+    "log_text": "The shaman wades into the river at flood-crest and does not drown; when she emerges the water follows her back to shore, docile as a dog, and the tribe understands what they are now.",
+    "npc_dialog": null,
+    "world_effect": "resources +20 (elemental yield from terrain), acolyteRatio +0.05; terrain-bond buff active",
+    "chain_events": ["elemental_first_attunement", "the_land_speaks_back", "storm_approaches_as_greeting"]
+  },
+  {
+    "event_id": "elemental_first_attunement",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ELEMENTAL tribe survives first environmental hazard event",
+    "log_text": "The flood comes, as floods always do — but where the water should destroy, it merely rearranges, depositing the richest silt against the tribe's foundations as though following instructions.",
+    "npc_dialog": null,
+    "world_effect": "natural disaster damage -30% for ELEMENTAL; terrain yield bonus increases",
+    "chain_events": ["the_land_speaks_back", "elemental_war_with_nature"]
+  },
+  {
+    "event_id": "hunter_becomes_priest",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe: hunterRatio drops below 0.1 as acolyteRatio rises above 0.2",
+    "log_text": "The greatest hunter lays down his bow at the feet of the elder, saying the animals no longer run from him — they simply wait, as though they too have heard something he has not yet understood.",
+    "npc_dialog": "*\"Something bigger is moving through the world.\"*",
+    "world_effect": "hunterRatio -0.1, acolyteRatio +0.1; spiritual awakening buff active, food production slightly reduced",
+    "chain_events": ["the_first_totem_raised", "animist_spirit_naming", "food_shortage_looms"]
+  },
+  {
+    "event_id": "the_naming_of_lands",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe reaches turn 15 and has explored 3+ terrain tiles",
+    "log_text": "They name the river after the grandmother who first drank from it, the mountain after the man who died trying to climb it, the valley after the year of the great hunger — and in naming, they begin to own the world.",
+    "npc_dialog": null,
+    "world_effect": "happiness +8 (cultural identity), territory claim speed +15%",
+    "chain_events": ["the_first_border_dispute", "tribal_legend_encoded"]
+  },
+  {
+    "event_id": "the_first_law",
+    "category": "TRIBAL_BIRTH",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe reaches population 20; first inter-person conflict resolved by elder",
+    "log_text": "Someone steals. Someone else demands blood. The elder gives neither — instead she gives a word, and from that single word, law is invented, and with law, the slow machinery of civilization begins to turn.",
+    "npc_dialog": null,
+    "world_effect": "happiness +10 (social order), crime/chaos events -20% chance; governance structure unlocked",
+    "chain_events": ["first_exile_decreed", "the_naming_of_lands", "legal_schism_between_factions"]
+  },
+  {
+    "event_id": "the_first_engine_hums",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe reaches technologyLevel 3; researcherRatio > 0.2",
+    "log_text": "The machine begins without ceremony — a cough of smoke, a tremor of gears, and then a sound the world has never heard before: the steady, indifferent heartbeat of industry.",
+    "npc_dialog": null,
+    "world_effect": "resources +30%, strip mine efficiency doubled; population growth rate +10%",
+    "chain_events": ["technocrat_age_of_automation", "resource_survey_begins", "pollution_begins_to_accumulate"]
+  },
+  {
+    "event_id": "technocrat_age_of_automation",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe reaches technologyLevel 5; researcherRatio > 0.3",
+    "log_text": "The machines now build the machines — and in the brief silence between one assembly and the next, a researcher looks up from her schematics and notices she has forgotten the names of the stars.",
+    "npc_dialog": null,
+    "world_effect": "gathererRatio can be reduced to 0.05 without food penalty; technologyLevel scales faster; happiness -5 (alienation)",
+    "chain_events": ["technocrat_singularity_eve", "the_machine_god_hypothesis", "worker_uprising_brewing"]
+  },
+  {
+    "event_id": "animist_great_migration",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "ANIMIST tribe has population > 30 and resources sufficient for 3+ seasons",
+    "log_text": "They leave the first valley not in desperation but in abundance — following the elk herds south, following the fruiting trees east, following the singing rivers wherever they lead, because a people who love the land must learn to love all of it.",
+    "npc_dialog": null,
+    "world_effect": "territory expansion doubled; new biome bonuses discovered; population cap raised",
+    "chain_events": ["the_covenant_of_bark_and_bone", "inter_tribal_first_contact", "animist_spiritual_zenith"]
+  },
+  {
+    "event_id": "animist_spiritual_zenith",
+    "category": "GOLDEN_AGE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ANIMIST tribe has acolyteRatio > 0.3 and happiness > 70 for 10+ turns",
+    "log_text": "For seven days and seven nights the shamans speak in tongues the birds answer, and the forest floor blooms with flowers no one has ever catalogued, and the sick rise from their pallets healed by the smell alone.",
+    "npc_dialog": null,
+    "world_effect": "population +15%, all resources +25%; spirit healing passively active for 20 turns",
+    "chain_events": ["green_god_awakens", "animist_holy_war_declared", "other_tribe_sends_emissaries"]
+  },
+  {
+    "event_id": "interventionist_crusade_of_light",
+    "category": "GOLDEN_AGE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "INTERVENTIONIST tribe has acolyteRatio > 0.35 and technologyLevel >= 3; neighboring tribe has lower happiness",
+    "log_text": "The missionaries go out carrying not weapons but bread and the names of the Divine — and where they walk, the desperate and the grieving turn toward them like flowers turning toward an unexpected sun.",
+    "npc_dialog": null,
+    "world_effect": "INTERVENTIONIST gains +20 pop from conversion; neighbor tribe happiness drops -15; acolyte spread to neighbors",
+    "chain_events": ["holy_war_of_conversion", "inter_tribal_religious_summit", "heretic_rises_in_secret"]
+  },
+  {
+    "event_id": "the_great_library",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe at tier 4+; researcherRatio > 0.25 for 15 turns",
+    "log_text": "The library is finished at midnight, its doors opened by a cartographer who never learned to read — and by morning three hundred people stand inside it, mouths open, touching the spines of books as though the knowledge might pass through skin.",
+    "npc_dialog": null,
+    "world_effect": "technologyLevel +2 instant; research speed +30%; cultural exchange events more frequent",
+    "chain_events": ["the_philosophical_renaissance", "technocrat_steals_the_scrolls", "great_library_burns"]
+  },
+  {
+    "event_id": "the_philosophical_renaissance",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe with great_library; happiness > 65 for 10 turns",
+    "log_text": "Art appears on the walls before anyone decides to put it there — and for a generation, the question of what makes a life worth living is asked so loudly and so beautifully that even the neighboring tribes pause their wars to listen.",
+    "npc_dialog": null,
+    "world_effect": "happiness +20 for 15 turns; all ratio efficiencies +10%; reputation gain with all factions",
+    "chain_events": ["golden_age_of_architecture", "philosophical_schism_emerges", "nihilist_infiltration_begins"]
+  },
+  {
+    "event_id": "golden_age_of_architecture",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe at tier 5+; happiness > 70 and resources > 200",
+    "log_text": "The great hall rises in seven years, built without slaves and without iron, and when the last stone is set, the architect weeps — not from pride but because she understands she has just made the finest thing she will ever make.",
+    "npc_dialog": null,
+    "world_effect": "happiness +15 permanent; population cap +20; cultural landmark generated; tourism equivalent resource income",
+    "chain_events": ["the_philosophical_renaissance", "monument_to_the_divine_commissioned", "rival_tribe_plans_its_destruction"]
+  },
+  {
+    "event_id": "elemental_storm_mastery",
+    "category": "GOLDEN_AGE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ELEMENTAL tribe has survived 3+ weather disasters; acolyteRatio > 0.25",
+    "log_text": "The storm comes for the third time in a decade, and this time the tribe does not flee — they stand in the open field, arms raised, and the lightning curves around them like water finding the shape of a vessel.",
+    "npc_dialog": null,
+    "world_effect": "weather disasters now benefit ELEMENTAL tribe; storm events grant +resources instead of damage",
+    "chain_events": ["elemental_war_with_nature", "rivals_seek_elemental_alliance", "storm_god_takes_notice"]
+  },
+  {
+    "event_id": "monument_to_the_divine_commissioned",
+    "category": "GOLDEN_AGE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "INTERVENTIONIST tribe at tier 4+; resources > 150 and acolyteRatio > 0.3",
+    "log_text": "Three hundred workers pour the foundation in silence, because the High Priest has said no prayer should be spoken until the monument is complete — that its existence will be the prayer.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio +0.1 (mass conversion); tithe mode income doubled; happiness +18",
+    "chain_events": ["interventionist_crusade_of_light", "holy_war_of_conversion", "the_divine_answer"]
+  },
+  {
+    "event_id": "technocrat_energy_breakthrough",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe at technologyLevel 6+; strip mine mode enabled for 20 turns",
+    "log_text": "They crack the mineral and inside it burns a fire that has been waiting three hundred million years for someone clever enough — or reckless enough — to release it.",
+    "npc_dialog": null,
+    "world_effect": "resource income tripled from strip mine; technologyLevel progression accelerated; pollution rate increases significantly",
+    "chain_events": ["technocrat_singularity_eve", "environmental_catastrophe_begins", "technocrat_energy_arms_race"]
+  },
+  {
+    "event_id": "nihilist_golden_nihility",
+    "category": "GOLDEN_AGE",
+    "event_type": "SCHISM",
+    "trigger_condition": "NIHILIST tribe reaches tier 4 with happiness below 40; population still growing",
+    "log_text": "Paradoxically, the void-worshippers flourish — because a people who expect nothing are never disappointed, and in that freedom from expectation, they build something extraordinary: a society of radical honesty.",
+    "npc_dialog": null,
+    "world_effect": "NIHILIST gains unique chaos efficiency buff; resources +20%; neighboring tribe happiness -10 (existential dread)",
+    "chain_events": ["nihilist_doctrine_spreads", "void_whispers_heard", "other_tribe_converts_to_nihilism"]
+  },
+  {
+    "event_id": "the_great_harvest",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe with gathererRatio > 0.4 and favorable terrain; 3 consecutive good seasons",
+    "log_text": "The harvest is so great they do not have names for the surplus — they invent new words: abundance, excess, wealth — and in the inventing of those words, they also invent the problems that follow them.",
+    "npc_dialog": null,
+    "world_effect": "resources +50 bonus; population grows +20%; happiness +15; unlocks trade and hoarding events",
+    "chain_events": ["golden_age_of_architecture", "inter_tribal_trade_summit", "food_hoarding_schism"]
+  },
+  {
+    "event_id": "the_age_of_songs",
+    "category": "GOLDEN_AGE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe with happiness > 75 for 20 consecutive turns at tier 3+",
+    "log_text": "The songs begin at harvest and do not stop — bards cross three mountain ranges to learn a single melody, and for the span of a generation, the history of the people is carried not in clay tablets but in the lungs of its children.",
+    "npc_dialog": null,
+    "world_effect": "cultural identity buff +25 turns; all events have reduced negative outcomes during this period; acolyteRatio +0.05",
+    "chain_events": ["the_philosophical_renaissance", "inter_tribal_cultural_exchange", "bard_reveals_forbidden_truth"]
+  },
+  {
+    "event_id": "green_god_awakens",
+    "category": "GOLDEN_AGE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ANIMIST tribe has acolyteRatio > 0.4 and survives to tier 5 without strip mining",
+    "log_text": "The old tree at the center of the village — the one no one has ever dared cut — opens its eyes at midsummer, and the eyes are patient, and green, and very, very old.",
+    "npc_dialog": null,
+    "world_effect": "divine entity (Green God) grants ANIMIST massive resource and happiness buff; becomes beacon for INTERVENTIONIST holy wars",
+    "chain_events": ["animist_holy_war_declared", "elemental_binding_with_green_god", "technocrat_seeks_to_study_it"]
+  },
+  {
+    "event_id": "the_great_famine",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any tribe: resources drop to 0; ration mode not activated in time",
+    "log_text": "The granary is empty on the coldest morning of the year, and the children who come to collect the daily ration return home with nothing — only the looks on their parents' faces, which are worse than hunger.",
+    "npc_dialog": null,
+    "world_effect": "population -15%, happiness -25; gathererRatio involuntarily spikes; civil unrest unlocked",
+    "chain_events": ["civil_war_erupts", "desperate_tribute_to_god", "mass_emigration_begins"]
+  },
+  {
+    "event_id": "civil_war_erupts",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any tribe: happiness below 25 for 10+ turns; multiple ratio imbalances",
+    "log_text": "It starts over a loaf of bread and ends — eventually — over the idea of what the tribe was meant to become; and in between those two things, a great deal of blood is spilled by people who would have been friends in a better year.",
+    "npc_dialog": null,
+    "world_effect": "population -20%, all resources -30%; technologyLevel may regress; happiness -15; faction split possible",
+    "chain_events": ["tribal_schism_permanent", "desperate_tribute_to_god", "warlord_rises_from_ashes"]
+  },
+  {
+    "event_id": "tribal_schism_permanent",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "civil_war_erupts; acolyteRatio and researcherRatio both above 0.2 (ideological conflict)",
+    "log_text": "The tribe divides at the river — the faithful on one bank, the learned on the other, and neither side looks back as they walk away from the only home they have ever known.",
+    "npc_dialog": "*\"May your gods be as useful as my tools.\"*",
+    "world_effect": "tribe splits into two smaller tribes of opposing factions; both start at -30 happiness; border conflict begins",
+    "chain_events": ["inter_tribal_war_declaration", "holy_war_of_conversion", "technocrat_rivals_scoff"]
+  },
+  {
+    "event_id": "religious_schism_within",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "INTERVENTIONIST or ANIMIST tribe: acolyteRatio > 0.4 for 15 turns; two competing interpretations of doctrine",
+    "log_text": "The High Priest and the Elder cannot agree on the name of the Divine — a single syllable, contested for three years — and the congregation, who have given everything to this faith, find they must now choose which version of it they will die for.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio effectiveness -50% during schism; happiness -20; tithe income halved; heretic faction spawns",
+    "chain_events": ["heretic_rises_in_secret", "inquisition_declared", "divine_silence_falls"]
+  },
+  {
+    "event_id": "technocrat_machine_failure",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "TECHNOCRAT tribe: strip mine mode active for 30+ turns; technologyLevel stagnates",
+    "log_text": "The great machine seizes at midnight without warning — a sound like a god clearing its throat — and in the silence that follows, three hundred workers stare at the thing that was supposed to save them.",
+    "npc_dialog": null,
+    "world_effect": "strip mine output drops to 0 for 10 turns; resources -40%; technologyLevel -1; population unrest",
+    "chain_events": ["worker_uprising_brewing", "technocrat_reset_doctrine", "rival_tribe_exploits_weakness"]
+  },
+  {
+    "event_id": "nihilist_corruption_spreads",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "NIHILIST tribe borders any other faction for 10+ turns; other tribe happiness < 50",
+    "log_text": "The philosophy arrives without missionaries — a whisper passed at market, a pamphlet left in a temple, a single question asked at the wrong moment: if the gods exist, why do you still hurt?",
+    "npc_dialog": null,
+    "world_effect": "neighboring tribe loses -0.1 acolyteRatio per 5 turns; happiness -10; chance of nihilist converts forming splinter group",
+    "chain_events": ["first_dissenter_silenced", "nihilist_first_purge", "void_whispers_heard"]
+  },
+  {
+    "event_id": "void_whispers_heard",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any tribe: happiness < 30 for 15 turns; NIHILIST faction exists nearby",
+    "log_text": "In the deepest hours of the night, in the longest winter anyone can remember, the acolytes hear the silence between prayers — and realize it has always been talking.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio -0.15 (faith crises); nihilist sympathizer sub-population emerges; chaos events frequency +20%",
+    "chain_events": ["nihilist_corruption_spreads", "divine_silence_falls", "inquisition_declared"]
+  },
+  {
+    "event_id": "environmental_catastrophe_begins",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "TECHNOCRAT or any tribe: strip mine mode active for 40+ turns; terrain degradation threshold crossed",
+    "log_text": "The river runs red not with blood but with the minerals dug from the earth's bones — and downstream, the fish float belly-up past settlements that have not yet noticed what is coming.",
+    "npc_dialog": null,
+    "world_effect": "gatherer yield -40%; ANIMIST and ELEMENTAL tribes suffer happiness -20 if nearby; ecological collapse chain begins",
+    "chain_events": ["animist_holy_war_declared", "the_great_famine", "elemental_war_with_nature"]
+  },
+  {
+    "event_id": "elemental_war_with_nature",
+    "category": "DECLINE",
+    "event_type": "MIRACLE",
+    "trigger_condition": "ELEMENTAL tribe: environmental damage too high; terrain bond broken by strip mining",
+    "log_text": "The wind arrives from a direction it has never come from before — and it is not indifferent, as wind usually is; it is furious, and it knows exactly where to aim.",
+    "npc_dialog": null,
+    "world_effect": "devastating weather event destroys structures; population -10%; if strip mine disabled, elemental tribe begins recovery",
+    "chain_events": ["elemental_binding_ritual", "animist_holy_war_declared", "the_great_famine"]
+  },
+  {
+    "event_id": "plague_of_the_faithful",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "INTERVENTIONIST tribe: population density high; ration mode off for 15+ turns",
+    "log_text": "The plague does not distinguish between the devout and the lapsed — it takes the High Priest on the same day as the village atheist, and the congregation watches the Divine's failure to intervene with growing and terrible attention.",
+    "npc_dialog": null,
+    "world_effect": "population -25%; acolyteRatio -0.15 (faith crisis); tithe mode income drops; heretic faction grows",
+    "chain_events": ["divine_silence_falls", "religious_schism_within", "heretic_rises_in_secret"]
+  },
+  {
+    "event_id": "warlord_rises_from_ashes",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any tribe: civil_war_erupts or the_great_famine; hunterRatio high after conflict",
+    "log_text": "He emerges from the worst year the tribe has ever known carrying nothing but a sword and a plan — and in a people desperate enough, a plan is indistinguishable from salvation.",
+    "npc_dialog": null,
+    "world_effect": "hunterRatio becomes dominant; authoritarian governance mode; happiness temporarily +10 then -20; expansion aggression increases",
+    "chain_events": ["inter_tribal_war_declaration", "military_coup_consolidates", "eventual_warlord_overthrown"]
+  },
+  {
+    "event_id": "great_library_burns",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any tribe with great_library; attacked by nihilist_first_purge or civil_war_erupts",
+    "log_text": "The library burns for four days, and on the fourth night, a young scholar sits in the ash and recites from memory every title she can still name — a catalogue of everything the world has forgotten before the week is out.",
+    "npc_dialog": null,
+    "world_effect": "technologyLevel -2; researcherRatio efficiency -50% for 20 turns; happiness -20; cultural identity severely damaged",
+    "chain_events": ["the_great_famine", "civil_war_erupts", "the_second_library_rises"]
+  },
+  {
+    "event_id": "mass_emigration_begins",
+    "category": "DECLINE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any tribe: happiness below 30 and resources below 30 for 10+ turns; population > 20",
+    "log_text": "They leave in groups of four and five, by moonlight, heading toward rumors of better land — and the tragedy is not that they go, but that they look back only once.",
+    "npc_dialog": null,
+    "world_effect": "population -30% (emigration wave); potentially spawns new tribe if empty territory exists; destination tribe gains +pop",
+    "chain_events": ["inter_tribal_first_contact", "refugee_crisis_at_borders", "abandoned_settlement_found"]
+  },
+  {
+    "event_id": "divine_silence_falls",
+    "category": "DECLINE",
+    "event_type": "SCHISM",
+    "trigger_condition": "INTERVENTIONIST or ANIMIST: 20+ turns without a divine event; acolyteRatio > 0.3",
+    "log_text": "The prayers return empty for twenty mornings in a row — not answered in the negative, merely absorbed by a cosmos that continues to expand in all directions without apparent concern for the small warm things praying within it.",
+    "npc_dialog": null,
+    "world_effect": "acolyteRatio -0.2 (mass apostasy); happiness -15; nihilist influence in region increases; tithe mode income drops 40%",
+    "chain_events": ["void_whispers_heard", "nihilist_corruption_spreads", "desperate_tribute_to_god"]
+  },
+  {
+    "event_id": "technocrat_singularity_eve",
+    "category": "DECLINE",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "TECHNOCRAT tribe: technologyLevel 7+; researcherRatio > 0.4; all other ratios minimized",
+    "log_text": "The lead researcher publishes her final paper on a night when no one else is awake — and the final line reads: the machine will finish the work tomorrow, and we will not understand what it builds.",
+    "npc_dialog": "*\"We built it to think. We forgot to tell it what to think about.\"*",
+    "world_effect": "TECHNOCRAT enters autonomous phase; resources skyrocket for 10 turns then catastrophic event triggers; humanity stat drops",
+    "chain_events": ["technocrat_machine_failure", "the_machine_god_hypothesis", "interventionist_holy_war_against_machine"]
+  },
+  {
+    "event_id": "inter_tribal_first_contact",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Two tribes come within range of each other for the first time",
+    "log_text": "Across the valley, across every assumption each tribe had about being alone in the world, two scouts see each other — and stand very still, the way living things do when they encounter something they have no word for yet.",
+    "npc_dialog": null,
+    "world_effect": "diplomatic state opens between tribes; trade route potential unlocked; war or peace decision tree begins",
+    "chain_events": ["inter_tribal_trade_summit", "inter_tribal_war_declaration", "cultural_emissary_sent"]
+  },
+  {
+    "event_id": "inter_tribal_trade_summit",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Two tribes in positive diplomatic state for 5+ turns; both have surplus resources",
+    "log_text": "The traders meet at the midpoint — both sides bringing exactly what the other needs — and for a few hours, the idea of a world without borders feels not idealistic but merely practical.",
+    "npc_dialog": null,
+    "world_effect": "both tribes gain +15 resources/turn; happiness +8 each; alliance meter begins filling",
+    "chain_events": ["trade_pact_formalized", "inter_tribal_cultural_exchange", "technocrat_steals_the_scrolls"]
+  },
+  {
+    "event_id": "inter_tribal_war_declaration",
+    "category": "INTER_TRIBAL",
+    "event_type": "SCHISM",
+    "trigger_condition": "Two tribes in negative diplomatic state; one tribe's hunterRatio increases above 0.35 and resources below threshold",
+    "log_text": "The peace is broken by a single archer who says he mistook the scout for a stag — and within three days, the valley is no longer a shared landscape but a theater of war.",
+    "npc_dialog": null,
+    "world_effect": "alliance ends; raiding mode enabled between tribes; happiness drops -15 each; population declines slightly on both sides",
+    "chain_events": ["inter_tribal_peace_treaty", "holy_war_of_conversion", "technocrat_energy_arms_race"]
+  },
+  {
+    "event_id": "inter_tribal_cultural_exchange",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Two tribes in trade_pact for 10+ turns; both happiness > 55",
+    "log_text": "A pottery style from the eastern hills appears in the western valley, decorated with stories both tribes now claim as their own — and in that shared mythology, the border begins to dissolve.",
+    "npc_dialog": null,
+    "world_effect": "alliance strengthens; combined cultural modifier gives +10% efficiency to both; specialist exchange possible",
+    "chain_events": ["trade_pact_formalized", "the_great_library", "inter_tribal_religious_summit"]
+  },
+  {
+    "event_id": "inter_tribal_peace_treaty",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Two tribes at war for 15+ turns; war exhaustion high on both sides",
+    "log_text": "The treaty is signed in a tent midway between the two armies, written by a scribe whose hands shake — from exhaustion, not fear — and the generals sign it with the names of their dead.",
+    "npc_dialog": null,
+    "world_effect": "war state ends; both tribes: happiness +15 (peace relief), resources +10 (no raiding); uneasy peace begins",
+    "chain_events": ["inter_tribal_trade_summit", "inter_tribal_cultural_exchange", "secret_rearmament_begins"]
+  },
+  {
+    "event_id": "trade_pact_formalized",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "inter_tribal_trade_summit; both tribes agree to alliance through 3+ turns of cooperation",
+    "log_text": "The pact is sealed with shared salt — the ancient sign — and neither tribe would be able to explain why salt feels more binding than any written word, only that it does.",
+    "npc_dialog": null,
+    "world_effect": "formal alliance state; resource sharing ongoing; combined defense against third tribes; joint research possible",
+    "chain_events": ["inter_tribal_cultural_exchange", "the_great_library", "alliance_tested_by_third_war"]
+  },
+  {
+    "event_id": "the_great_schism_of_faiths",
+    "category": "INTER_TRIBAL",
+    "event_type": "SCHISM",
+    "trigger_condition": "Two faith-based tribes (ANIMIST + INTERVENTIONIST) in the same territory",
+    "log_text": "Both faiths claim the same mountain as holy — one because the spirits live in its roots, one because the Divine once spoke from its peak — and the mountain itself, as mountains do, refuses to take sides.",
+    "npc_dialog": null,
+    "world_effect": "ongoing attrition conflict between faiths; conversion wars trigger frequently; NIHILIST tribe benefits from both faiths weakening",
+    "chain_events": ["holy_war_of_conversion", "inter_tribal_religious_summit", "nihilist_corruption_spreads"]
+  },
+  {
+    "event_id": "inter_tribal_religious_summit",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Two faith-based tribes in extended conflict; both acolyteRatios > 0.3; war_exhaustion present",
+    "log_text": "The two High Priests sit across a fire from each other for a full night without speaking, and by morning they have reached an agreement they cannot explain to their congregations — only live.",
+    "npc_dialog": null,
+    "world_effect": "religious war paused; hybrid faith event possible; happiness +10 both tribes; NIHILIST influence temporarily blocked",
+    "chain_events": ["inter_tribal_cultural_exchange", "trade_pact_formalized", "fragile_peace_holds"]
+  },
+  {
+    "event_id": "cultural_emissary_sent",
+    "category": "INTER_TRIBAL",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "inter_tribal_first_contact; both tribes happiness > 45",
+    "log_text": "The emissary travels for six days with a gift she cannot explain in any language the other tribe speaks — a carved stone in the shape of their word for tomorrow — and it is understood immediately.",
+    "npc_dialog": null,
+    "world_effect": "diplomatic state improves rapidly; trade_pact possible within 5 turns; cultural exchange begins",
+    "chain_events": ["inter_tribal_trade_summit", "inter_tribal_cultural_exchange", "emissary_defects_to_other_tribe"]
+  },
+  {
+    "event_id": "technocrat_energy_arms_race",
+    "category": "INTER_TRIBAL",
+    "event_type": "SCHISM",
+    "trigger_condition": "TECHNOCRAT tribe and another tribe both at technologyLevel 4+; competitive state active",
+    "log_text": "Both sides publish research simultaneously — the papers arriving in each other's capitals on the same morning — and in that moment of parallel discovery, they realize the race has already moved past the point where either side can stop.",
+    "npc_dialog": null,
+    "world_effect": "both tribes accelerate technologyLevel; environmental damage escalates; war risk increases; third tribes threatened by both",
+    "chain_events": ["environmental_catastrophe_begins", "inter_tribal_war_declaration", "technocrat_machine_failure"]
+  },
+  {
+    "event_id": "tier_1_to_2_the_first_hearth",
+    "category": "TIER_TRANSITION",
+    "event_type": "EVOLUTION",
+    "tier_transition": "1 -> 2",
+    "trigger_condition": "Any tribe advances from tier 1 to tier 2 (basic survival to established settlement)",
+    "log_text": "The first permanent structure goes up in a single afternoon, and that evening the tribe sits inside it for the first time, listening to the rain fall on a roof they built — and the rain, for the first time in their history, is merely weather.",
+    "npc_dialog": null,
+    "world_effect": "housing capacity unlocks; new ratio options available; resources/turn increased; territory claim radius expands",
+    "chain_events": ["the_first_law", "the_naming_of_lands", "first_surplus_creates_class"]
+  },
+  {
+    "event_id": "tier_2_to_3_the_first_market",
+    "category": "TIER_TRANSITION",
+    "event_type": "EVOLUTION",
+    "tier_transition": "2 -> 3",
+    "trigger_condition": "Any tribe advances from tier 2 to tier 3 (established to developing civilization)",
+    "log_text": "Trade begins before anyone calls it trade — a woman gives grain in exchange for pottery, and neither of them understand they have just invented something that will outlast everything they will ever build.",
+    "npc_dialog": null,
+    "world_effect": "trade mechanics fully unlocked; specialist ratios more impactful; inter-tribal relations improve baseline",
+    "chain_events": ["inter_tribal_trade_summit", "the_great_harvest", "the_first_law"]
+  },
+  {
+    "event_id": "tier_3_to_4_the_written_word",
+    "category": "TIER_TRANSITION",
+    "event_type": "EVOLUTION",
+    "tier_transition": "3 -> 4",
+    "trigger_condition": "Any tribe advances from tier 3 to tier 4 (developing to complex civilization)",
+    "log_text": "Someone scratches the sound of their name into wet clay and leaves it to harden — and centuries from now, scholars who cannot translate a single other mark on the tablet will recognize the shape of human pride.",
+    "npc_dialog": null,
+    "world_effect": "research speed +25%; cultural events become more complex; laws can now be codified; technologyLevel scaling improves",
+    "chain_events": ["the_great_library", "the_philosophical_renaissance", "technocrat_steals_the_scrolls"]
+  },
+  {
+    "event_id": "tier_4_to_5_the_empire_stirs",
+    "category": "TIER_TRANSITION",
+    "event_type": "EVOLUTION",
+    "tier_transition": "4 -> 5",
+    "trigger_condition": "Any tribe advances from tier 4 to tier 5 (complex to advanced civilization)",
+    "log_text": "The census-taker rides for three weeks to count the tribe's people and returns with a number so large the elder reads it twice — and in that second reading, understands that what they govern is no longer a tribe but something without a name yet.",
+    "npc_dialog": null,
+    "world_effect": "empire-scale mechanics unlock; multiple settlements possible; faction influence spreads to entire region; golden age events accessible",
+    "chain_events": ["golden_age_of_architecture", "interventionist_crusade_of_light", "the_empire_overreaches"]
+  },
+  {
+    "event_id": "tier_5_to_6_the_age_of_reason",
+    "category": "TIER_TRANSITION",
+    "event_type": "EVOLUTION",
+    "tier_transition": "5 -> 6",
+    "trigger_condition": "Any tribe advances from tier 5 to tier 6; researcherRatio > 0.2",
+    "log_text": "The philosopher stands before the assembly and says the words that change everything: we do not yet know — and in that admission, the civilization becomes something capable of the future.",
+    "npc_dialog": "*\"We do not yet know.\"*",
+    "world_effect": "science and reason buff active; technologyLevel scaling dramatically improves; conflict with faith-based factions increases",
+    "chain_events": ["technocrat_energy_breakthrough", "the_great_library", "the_machine_god_hypothesis"]
+  },
+  {
+    "event_id": "tier_6_to_7_the_last_wilderness",
+    "category": "TIER_TRANSITION",
+    "event_type": "SCHISM",
+    "tier_transition": "6 -> 7",
+    "trigger_condition": "Any tribe advances from tier 6 to tier 7; expansion has consumed most available territory",
+    "log_text": "The last unmapped valley is mapped on a Tuesday — a surveyor notes it in his ledger without ceremony — and somewhere in the world, the last truly wild animal looks up from drinking and, finding itself named, is diminished.",
+    "npc_dialog": null,
+    "world_effect": "territory expansion complete; environmental pressure begins; strip mine consequences max; ANIMIST and ELEMENTAL tribes enter crisis",
+    "chain_events": ["environmental_catastrophe_begins", "elemental_war_with_nature", "technocrat_energy_arms_race"]
+  },
+  {
+    "event_id": "tier_7_to_8_the_divine_question",
+    "category": "TIER_TRANSITION",
+    "event_type": "MIRACLE",
+    "tier_transition": "7 -> 8",
+    "trigger_condition": "Any tribe advances from tier 7 to tier 8 (near-peak civilization); approaches the divine threshold",
+    "log_text": "At the height of everything they have built, in the silence between one century and the next, the civilization pauses — and for the first time in its long history, asks not how to survive, but why.",
+    "npc_dialog": null,
+    "world_effect": "tier 8 divine proximity events activate; god-game mechanics fully revealed; civilization now visible to the Divine; final age events unlock",
+    "chain_events": ["the_divine_answer", "green_god_awakens", "technocrat_singularity_eve"]
+  },
+  {
+    "event_id": "tier_transition_crisis_of_faith",
+    "category": "TIER_TRANSITION",
+    "event_type": "SCHISM",
+    "tier_transition": "3 -> 4 (faith-based tribes only)",
+    "trigger_condition": "INTERVENTIONIST or ANIMIST tribe advances to tier 4; technologyLevel rises sharply",
+    "log_text": "The new machine does the work of thirty priests — and the priests, standing in the temple watching the machine work, ask questions of their god that the god does not immediately answer.",
+    "npc_dialog": null,
+    "world_effect": "faith vs. progress schism event; acolyteRatio vs. researcherRatio imbalance forced; long-term faction identity decision required",
+    "chain_events": ["religious_schism_within", "the_age_of_reason_contested", "tribal_schism_permanent"]
+  },
+  {
+    "event_id": "tier_transition_nihilist_apex",
+    "category": "TIER_TRANSITION",
+    "event_type": "SCHISM",
+    "tier_transition": "4 -> 5 (NIHILIST only)",
+    "trigger_condition": "NIHILIST tribe advances from tier 4 to tier 5; happiness still below 40",
+    "log_text": "They reach the apex of what a civilization can build while believing in nothing — and in reaching it, discover that the view from the top of meaninglessness looks exactly like the view from anywhere else.",
+    "npc_dialog": null,
+    "world_effect": "NIHILIST tier 5 unique buff: nihilism becomes philosophy; chaos converted to stability bonus; unique void tech tree unlocked",
+    "chain_events": ["nihilist_golden_nihility", "void_whispers_heard", "the_void_speaks_clearly"]
+  },
+  {
+    "event_id": "tier_transition_elemental_transcendence",
+    "category": "TIER_TRANSITION",
+    "event_type": "MIRACLE",
+    "tier_transition": "5 -> 6 (ELEMENTAL only)",
+    "trigger_condition": "ELEMENTAL tribe advances to tier 6; elemental bond maintained throughout",
+    "log_text": "The shaman's grandchild is born speaking in a language that has no words, only the sounds of water over stone and wind through grass — and the tribe understands, without needing to be told, that something has changed in the nature of what they are.",
+    "npc_dialog": null,
+    "world_effect": "ELEMENTAL tribe transcends normal civilization limits; terrain effects amplified massively; other tribes must treat ELEMENTAL as divine-touched",
+    "chain_events": ["elemental_storm_mastery", "green_god_awakens", "rivals_seek_elemental_alliance"]
+  }
+]

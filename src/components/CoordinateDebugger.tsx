@@ -20,22 +20,15 @@ export function CoordinateDebugger({ onOffsetChange, initialX = 0, initialY = 0,
   }, [offsetX, offsetY, scale]);
 
   return (
-    <div className="fixed bottom-24 left-6 z-[9999] pointer-events-auto">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-full bg-slate-900/80 border border-amber-500/50 flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-black transition-all shadow-lg backdrop-blur-md"
-        title="Coordinate Debugger"
-      >
-        {isOpen ? <X size={20} /> : <Settings size={20} />}
-      </button>
-
+    <div className="fixed top-1/4 left-0 z-[9999] pointer-events-auto flex items-start">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: -20, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -20, scale: 0.9 }}
-            className="absolute bottom-12 left-0 w-64 bg-slate-950/90 border border-white/10 rounded-2xl p-4 shadow-2xl backdrop-blur-xl space-y-4"
+            initial={{ opacity: 0, x: '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '-100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="w-64 bg-slate-950/90 border-r border-y border-white/10 rounded-r-2xl p-4 shadow-2xl backdrop-blur-xl space-y-4"
           >
             <div className="flex items-center justify-between border-b border-white/5 pb-2">
               <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">Tactical Debugger</span>
@@ -95,6 +88,13 @@ export function CoordinateDebugger({ onOffsetChange, initialX = 0, initialY = 0,
           </motion.div>
         )}
       </AnimatePresence>
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-10 h-10 bg-slate-900/80 border-y border-r border-white/10 rounded-r-xl flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-black transition-all shadow-lg backdrop-blur-md active:translate-y-[2px]"
+        title="Coordinate Debugger"
+      >
+        {isOpen ? <X size={20} /> : <Settings size={20} />}
+      </button>
     </div>
   );
 }

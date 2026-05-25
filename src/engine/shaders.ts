@@ -59,10 +59,21 @@ export const lightingFragmentShader = `
     uniform vec3 uSunColor;
     uniform vec3 uAmbientColor;
     
+    // Dynamic Point Lights
+    #define MAX_POINT_LIGHTS 16
+    uniform int uPointLightCount;
+    uniform vec3 uPointLightPositions[MAX_POINT_LIGHTS];
+    uniform vec3 uPointLightColors[MAX_POINT_LIGHTS];
+    uniform float uPointLightRadii[MAX_POINT_LIGHTS];
+    uniform float uPointLightIntensities[MAX_POINT_LIGHTS];
+
+    uniform vec2 uResolution;
+    
     // VFX Parameters
     uniform float uBloomIntensity;
     uniform float uGodRayIntensity;
     uniform vec2 uSunScreenPos; // Screen space sun position for God Rays
+    uniform float uGodsEyeMode;
 
     void main(void)
     {
@@ -78,10 +89,34 @@ export const lightingFragmentShader = `
         float diff = max(dot(normal, normalize(uSunDirection)), 0.0);
         vec3 diffuse = diff * uSunColor;
         
-        // 2. Final Color Synthesis
-        vec3 finalColor = albedo.rgb * (diffuse + uAmbientColor);
+        // 2. Point Lights
+        vec3 pointLightContrib = vec3(0.0);
+        for(int i=0; i<MAX_POINT_LIGHTS; i++) {
+            if (i >= uPointLightCount) break;
+            
+            vec2 lightPosUV = uPointLightPositions[i].xy;
+            float radius = uPointLightRadii[i];
+            
+            // Screen space distance
+            vec2 diffVec = (vTextureCoord - lightPosUV) * uResolution;
+            float dist = length(diffVec);
+            
+            if (dist < radius) {
+                float atten = 1.0 - clamp(dist / radius, 0.0, 1.0);
+                atten = atten * atten; // Quadratic falloff
+                
+                // Normal calculation for point light
+                vec3 lightDir = normalize(vec3(lightPosUV - vTextureCoord, 0.1));
+                float nDotL = max(dot(normal, lightDir), 0.0);
+                
+                pointLightContrib += uPointLightColors[i] * uPointLightIntensities[i] * atten * (nDotL * 0.5 + 0.5);
+            }
+        }
+
+        // 3. Final Color Synthesis
+        vec3 finalColor = albedo.rgb * (diffuse + uAmbientColor + pointLightContrib);
         
-        // 3. Volumetric Rays (Pseudo-God Rays)
+        // 4. Volumetric Rays (Pseudo-God Rays)
         // Simple radial blur centered on uSunScreenPos
         vec2 rayDir = vTextureCoord - uSunScreenPos;
         float rayWeight = 1.0;
@@ -90,6 +125,12 @@ export const lightingFragmentShader = `
             rays += texture2D(uAlbedoBuffer, vTextureCoord - rayDir * float(i) * 0.01).rgb;
         }
         finalColor += (rays / 8.0) * uGodRayIntensity;
+
+        if (uGodsEyeMode > 0.5) {
+            float lum = dot(finalColor, vec3(0.299, 0.587, 0.114));
+            vec3 ethereal = mix(vec3(lum), vec3(lum * 0.5, lum * 0.8, lum * 1.5), 0.8);
+            finalColor = mix(finalColor, ethereal, 1.0);
+        }
 
         gl_FragColor = vec4(finalColor, albedo.a);
     }

@@ -1,0 +1,528 @@
+[
+  {
+    "event_id": "sylphra_breath_returned",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Sylphra-aligned tribe completes a WEATHER prayer quest during drought conditions",
+    "log_text": "A hush fell before the wind returned — not as relief, but as a presence; the canopy exhaled and every leaf turned upward like a prayer finally heard. The tribe stood breathless in the sudden cool, their faces wet with something between rain and weeping.",
+    "world_effect": "Drought ends in a 5-tile radius; wind direction permanently shifts to favor Sylphra tribe's territory for 3 game-days; +15 devotion to Sylphra pool",
+    "chain_events": ["canopy_bloom_cascade", "rival_tribe_dustfall", "sylphra_feather_omen"],
+    "npc_whisper": "She was listening the whole time. She was waiting for us to mean it."
+  },
+  {
+    "event_id": "vulcanus_forge_ignition",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Vulcanus-aligned tribe completes a MIRACLE prayer quest during a resource scarcity event (iron/ore shortage)",
+    "log_text": "The mountain groaned once — a sound like a god clearing its throat — and where there had been cold stone, a vein of living ore blazed open, pulsing like a second heartbeat buried beneath the world. The forge-priests wept ash.",
+    "world_effect": "Rare ore vein spawns adjacent to tribe's forge structure; forge production rate +50% for 5 days; surrounding stone tiles shift to volcanic basalt variant",
+    "chain_events": ["magma_seep_spreading", "rival_forge_cold_iron", "vulcanus_ember_children"],
+    "npc_whisper": "Even gods have favorites. Today, we are his."
+  },
+  {
+    "event_id": "thalassor_monsoon_covenant",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Thalassor-aligned tribe fulfills a WEATHER prayer quest during the dry season with 3+ consecutive days of failed crop growth",
+    "log_text": "The sea sent its memory inland — a monsoon that smelled of deep water and ancient salt, that fell not from clouds but from the sky's own longing for the ocean it had once been. Dry riverbeds remembered themselves.",
+    "world_effect": "Full monsoon event triggers; all water tiles expand by 2 cells; crop tiles receive 3-season fertility boost; flood risk increases for low-elevation tiles",
+    "chain_events": ["flood_plain_emergence", "thalassor_reef_spawn", "downstream_overflow"],
+    "npc_whisper": "The river was always coming. We just had to keep asking."
+  },
+  {
+    "event_id": "xylorex_root_awakening",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Xylo-Rex-aligned tribe completes a PROTECTION prayer quest while under siege or encroachment from a rival tribe",
+    "log_text": "They came for the grove in the grey hours before dawn, but the grove had been thinking — had been deciding — and by first light the attackers found only walls of root and thorn where there had been open ground, the forest having quietly chosen a side.",
+    "world_effect": "Impassable root-wall barrier spawns along tribe's border (3-tile length); attacking tribe units are rooted in place for 24 in-game hours; Xylo-Rex devotion +20",
+    "chain_events": ["undergrowth_expansion", "root_network_pulse", "soil_reclamation_event"],
+    "npc_whisper": "The old wood remembers every axe. It was time to remember back."
+  },
+  {
+    "event_id": "aethelgard_golden_meridian",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Aethelgard-aligned tribe completes a MIRACLE prayer quest at solar noon (in-game time mechanic)",
+    "log_text": "At the precise moment the sun stood still above their altar, a column of gold light descended like a finger of the divine pressing a blessing into the earth — the grass scorched not from burning but from too much glory, and it grew back gold.",
+    "world_effect": "Targeted tile becomes permanently 'Blessed Ground' (crops yield 2x, structures cost -25% to build); golden grass visual variant applied to 2-tile radius",
+    "chain_events": ["solar_brand_spread", "aethelgard_radiant_vigil", "shade_tribe_blight"],
+    "npc_whisper": "The sun chose us. The sun chose this ground. We will not waste it."
+  },
+  {
+    "event_id": "nullv8_signal_descent",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Null-v8-aligned tribe fulfills a MIRACLE prayer quest while having the highest population density on the map",
+    "log_text": "A frequency no ear could hear but every body felt — a tremor of pure information passing through stone and bone — and in its wake the tribe's eldest found they could calculate rainfall, could feel the logic of the season, could solve what had seemed like fate.",
+    "world_effect": "Tribe gains 'Pattern Recognition' buff: weather events predicted 2 turns in advance on tribe's UI; research/tech speed +30% for 10 days; Null-v8 shrine pulses with cyan light",
+    "chain_events": ["data_cascade_overflow", "nullv8_echo_construct", "analog_tribe_confusion"],
+    "npc_whisper": "The signal was always there. We finally tuned ourselves to the right frequency."
+  },
+  {
+    "event_id": "krigor_shadow_mantle",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Krigor-aligned tribe completes a PROTECTION prayer quest while at less than 30% population health",
+    "log_text": "The shadows grew teeth that night — not metaphorically — and the predators that had been circling the weakened village turned at the forest's edge as though striking an invisible wall made of accumulated grief and ancient hunger older than their own.",
+    "world_effect": "Predator and raider units within 8 tiles retreat; tribe gains 'Shadow Mantle' immunity to ambush attacks for 7 days; 3 bone-totem structures auto-spawn at perimeter",
+    "chain_events": ["predator_redirect", "krigor_bone_sentinel", "shadow_bleed_outward"],
+    "npc_whisper": "Krigor does not love the weak. Krigor loves the ones who refuse to die."
+  },
+  {
+    "event_id": "sylphra_wind_scripture",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Sylphra-aligned tribe completes 3 consecutive WEATHER quests without failing any",
+    "log_text": "She did not speak in words but in wind-patterns — in the language of displaced air — and the tribe's shamans spent three days translating the sky's grammar into something the young could be taught, a scripture written on the inside of moving leaves.",
+    "world_effect": "Tribe unlocks 'Wind Scripture' passive: Rainfall miracle cost reduced by 40% permanently; new prayer option 'Ask the Sky' unlocked; shaman unit tier upgrades",
+    "chain_events": ["sky_reading_ritual", "rival_tribe_wind_envy"]
+  },
+  {
+    "event_id": "thalassor_drowned_gift",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Thalassor-aligned tribe completes a PROTECTION quest while adjacent to a water tile and below the map's food average",
+    "log_text": "The river offered what it had always been keeping — fish that swam upstream through the night as though summoned, appearing in nets that had been empty so long their owners had stopped checking them; the kind of abundance that feels like an apology.",
+    "world_effect": "All fishing tiles in tribe's territory yield 3x for 5 days; a new deep-water tile spawns adjacent to tribe's water access; Thalassor devotion +18",
+    "chain_events": ["aquatic_migration_event", "upstream_tribe_scarcity"],
+    "npc_whisper": "He did not forget us. He was fattening the river for us the whole time."
+  },
+  {
+    "event_id": "aethelgard_healer_light",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Aethelgard-aligned tribe completes a MIRACLE quest during a plague or disease event affecting 40%+ of population",
+    "log_text": "The light came through the smoke-holes of the sick-houses and it did not merely illuminate — it cauterized, it scoured, it passed through fevered bodies like a golden tide sweeping infection out through the skin; the recovered said afterward they had heard their own blood singing.",
+    "world_effect": "Plague/disease event immediately ends; all sick units restored to full health; a golden 'Sanctified Hearth' structure spawns that provides passive +1 health recovery to all units in range",
+    "chain_events": ["aethelgard_radiant_vigil", "recovered_zealotry", "shade_tribes_envy"],
+    "npc_whisper": "I thought I was dying. Then the light came and I understood I had only been sleeping."
+  },
+  {
+    "event_id": "xylorex_memory_forest",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Xylo-Rex-aligned tribe completes a MIRACLE quest after losing 50%+ of their forest tiles to deforestation or fire",
+    "log_text": "The burned ground was wrong for only a single night — by dawn, something underground had decided what the surface refused to accept, and green things came up through ash and char with a speed that was not natural but was entirely deliberate, the forest remembering itself back into being.",
+    "world_effect": "All deforested tiles in 6-tile radius restored to mature forest; destroyed forest structures auto-rebuild at 50% cost; Xylo-Rex gains a 'Restored Grove' sacred site on the map",
+    "chain_events": ["root_network_pulse", "undergrowth_expansion", "ancient_grove_emergence"],
+    "npc_whisper": "The forest doesn't die. It just goes underground and waits for you to understand."
+  },
+  {
+    "event_id": "vulcanus_war_blessing",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Vulcanus-aligned tribe completes a PROTECTION quest while actively in combat with a rival tribe",
+    "log_text": "Between one breath and the next, the warriors felt it — a heat that was not the sun, a weight in their weapons that was not iron — and they swung with the certainty of things that have been personally commissioned by something vast and merciless and intimately proud of them.",
+    "world_effect": "All tribe combat units gain +40% attack, +20% defense for the duration of current battle; enemy units have 15% chance of weapon 'melting' (disarmed debuff); Vulcanus devotion +12",
+    "chain_events": ["vulcanus_ember_children", "defeated_tribe_ash_curse"],
+    "npc_whisper": "He's watching. Fight like it."
+  },
+  {
+    "event_id": "nullv8_protocol_clarity",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Null-v8-aligned tribe fulfills a WEATHER quest during a Temporal Rift miracle event",
+    "log_text": "While other tribes saw only the impossible in the shattered sky, the Null-v8 faithful saw patterns — the rift was a function, the anomaly was a subroutine, and the god of logic reached through the tear in time to hand them an answer they hadn't known they were asking.",
+    "world_effect": "Tribe is immune to all Temporal Rift side-effects; they gain 'Temporal Data' resource that can be spent to rewind one building decision; Null-v8 devotion +25",
+    "chain_events": ["data_cascade_overflow", "time_fracture_closed", "rival_tribe_time_sickness"]
+  },
+  {
+    "event_id": "krigor_death_reckoning",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Krigor-aligned tribe completes a MIRACLE quest after the death of a tribe elder/hero unit",
+    "log_text": "They had buried her with the bones of predators, as Krigor required, and three nights later the shadow of something enormous passed over the grave and kept moving — Krigor had taken her death as a tithe and was satisfied, and in his satisfaction, he left behind something cold and useful.",
+    "world_effect": "Deceased hero unit returns as a 'Shadow-Bound' champion with enhanced stats and cannot die for 10 game-days; Krigor's approval grants tribe +2 predator-class units",
+    "chain_events": ["shadow_bleed_outward", "krigor_bone_sentinel", "rival_village_nightmare"],
+    "npc_whisper": "She is not gone. She is just on the other side of Krigor's patience."
+  },
+  {
+    "event_id": "aethelgard_dawn_architecture",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Aethelgard-aligned tribe completes 5 total prayer quests across all categories",
+    "log_text": "On the morning of the fifth answered prayer, the sun rose at a slightly different angle — not a mistake but a gift — and where its first light fell upon the tribe's highest structure, stone turned briefly to gold and back again, leaving something in the material that made it stronger than it had any right to be.",
+    "world_effect": "Tribe's tallest structure gains 'Solar Tempered' bonus: +100% durability, +1 sight range; unlocks 'Dawn Architecture' construction style (cheaper, stronger buildings); Aethelgard devotion +30",
+    "chain_events": ["solar_brand_spread", "rival_shadow_grief"]
+  },
+  {
+    "event_id": "sylphra_silence_drought",
+    "event_type": "SCHISM",
+    "trigger_condition": "Sylphra-aligned tribe's WEATHER prayer quest expires without fulfillment; drought continues 5+ days",
+    "log_text": "The shamans called until their voices were sand, and the sky remained indifferently blue — Sylphra, if she heard, gave no sign, and there is nothing quite as catastrophic as discovering that a god's silence is also a form of weather.",
+    "world_effect": "Drought intensifies to 'Severe Drought' (crops fail, water tiles shrink); Sylphra devotion decays -20; tribe loses 1 faith structure to abandonment",
+    "chain_events": ["faith_fracture_wind", "doubter_faction_emerges"],
+    "npc_whisper": "Maybe she's gone. Maybe she was never here and we just loved the wind."
+  },
+  {
+    "event_id": "vulcanus_cold_forge",
+    "event_type": "SCHISM",
+    "trigger_condition": "Vulcanus-aligned tribe's MIRACLE quest fails while forge structures are at 0 production output",
+    "log_text": "The forge fires, which had burned continuously for eleven generations, went out — not from lack of fuel but from something more final, a withdrawal of permission — and the forge-priests found themselves staring into cold stone, wondering what their god was made of if not fire.",
+    "world_effect": "All forge structures lose 50% production for 10 days; fire-based miracles cost +30% devotion; 1 forge-priest unit converts to 'Skeptic' class and begins spreading doubt in tile radius",
+    "chain_events": ["doubter_faction_emerges", "cold_iron_curse"],
+    "npc_whisper": "He doesn't owe us the fire. We forgot that. We're remembering it now."
+  },
+  {
+    "event_id": "thalassor_drowned_prayer",
+    "event_type": "SCHISM",
+    "trigger_condition": "Thalassor-aligned tribe's WEATHER quest fails during a flood event (prayer for relief goes unanswered)",
+    "log_text": "They prayed for the water to recede and the water deepened — they did not understand yet that Thalassor does not distinguish between the water that feeds you and the water that takes you, that to a god of oceans, your drowning is also a kind of attention.",
+    "world_effect": "Flood event escalates by 1 severity tier; 2 buildings destroyed; Thalassor devotion -25; surviving units gain 'Flood Trauma' debuff (-15% productivity for 5 days)",
+    "chain_events": ["faith_fracture_water", "upstream_tribe_scarcity", "thalassor_tide_debt"],
+    "npc_whisper": "He heard us. I think he just doesn't understand why we don't want this."
+  },
+  {
+    "event_id": "xylorex_deaf_roots",
+    "event_type": "SCHISM",
+    "trigger_condition": "Xylo-Rex-aligned tribe's PROTECTION quest fails while a deforestation event is actively occurring",
+    "log_text": "The axes rang and rang and nothing reached up from below to stop them — the roots did not wake, the grove did not resist — and the tribe who prayed for the forest's protection discovered, in the terrible quiet of falling trees, that perhaps the forest had grown tired of being needed.",
+    "world_effect": "Deforestation event cannot be interrupted for 3 days; Xylo-Rex devotion -22; any remaining sacred grove tiles begin a slow 'Withering' visual decay; protection miracle effectiveness -20%",
+    "chain_events": ["undergrowth_dying", "arsonist_emboldened"],
+    "npc_whisper": "The roots are still there. They just... chose not to answer."
+  },
+  {
+    "event_id": "aethelgard_clouded_sun",
+    "event_type": "SCHISM",
+    "trigger_condition": "Aethelgard-aligned tribe's MIRACLE quest fails during a solar eclipse in-game event",
+    "log_text": "On the day the sun swallowed itself, they prayed harder than they had ever prayed, and the eclipse lasted three hours longer than natural eclipses do — Aethelgard's silence during his own darkening felt less like absence and more like a god looking the other way.",
+    "world_effect": "Eclipse duration extended by 3 in-game hours (severe productivity penalty); Aethelgard devotion -30; 'Solar Doubt' status spreads: faith structures lose 1 devotion generation per day for 7 days",
+    "chain_events": ["shade_tribe_opportunism", "faith_fracture_solar"],
+    "npc_whisper": "He was there. I felt him there. He just... didn't think we were worth it today."
+  },
+  {
+    "event_id": "nullv8_null_response",
+    "event_type": "SCHISM",
+    "trigger_condition": "Null-v8-aligned tribe's MIRACLE quest expires while they had the lowest productivity rating on the map",
+    "log_text": "The shrine returned no signal — not static, not error, not refusal, just the particular emptiness of a channel that has been open for days and received nothing, and it was somehow worse than anger: logic, it turned out, felt very much like indifference when it chose not to answer.",
+    "world_effect": "Tech/research speed -40% for 10 days; Null-v8 devotion -20; shrine structure emits 'dead signal' visual (flickering, dark); 1 unit randomly re-assigns to a non-Null-v8 deity",
+    "chain_events": ["analog_tribe_mockery", "signal_static_spread"]
+  },
+  {
+    "event_id": "krigor_unpaid_tithe",
+    "event_type": "SCHISM",
+    "trigger_condition": "Krigor-aligned tribe's PROTECTION quest fails while their sacrifice rate has been below minimum for 5+ days",
+    "log_text": "Krigor does not protect those who haggle — the shadow pulled back like a tide going wrong, and the predators that had been circling at a respectful distance felt the permission lift and drew close again, sensing correctly that the covenant between the tribe and its dark god had quietly, messily lapsed.",
+    "world_effect": "Predator aggression in 10-tile radius increases to maximum; 1 outpost unit is lost to predator attack; Krigor devotion pool drops to 0",
+    "chain_events": ["predator_redirect", "faith_fracture_shadow"],
+    "npc_whisper": "We stopped feeding him. Did we think he wouldn't notice?"
+  },
+  {
+    "event_id": "faith_fracture_wind",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from sylphra_silence_drought; or triggered when a Sylphra tribe goes 10 days without completing a quest",
+    "log_text": "A young woman left her prayer-ribbons at the altar's base and walked into the open air, and the wind moved her hair without greeting her — the most devastating thing about faith cracking is that the world keeps going, serene and indifferent, exactly as it always had.",
+    "world_effect": "Tribe loses 1 dedicated Sylphra devotion structure; a 'Wanderer' unit spawns and begins moving toward nearest non-aligned settlement; Sylphra devotion pool drops -15",
+    "chain_events": ["doubter_faction_emerges"],
+    "npc_whisper": "The wind was never a god. We just named it one because we were lonely."
+  },
+  {
+    "event_id": "doubter_faction_emerges",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from any failed prayer event; or triggered after 2+ consecutive failed quests for any deity",
+    "log_text": "They called themselves nothing at first — they were just people who had stopped kneeling — and the most frightening thing about doubt is how quietly it organizes, how it finds others by the particular way they don't look at the altar anymore.",
+    "world_effect": "A 'Doubter Faction' emerges in the tribe: 10-20% population becomes non-devotional; faith structure output -25%; if not addressed within 7 days, faction may request player action or trigger civil unrest",
+    "chain_events": ["faith_fracture_wind", "rival_tribe_recruitment"],
+    "npc_whisper": "I'm not saying the gods don't exist. I'm saying they don't care. There's a difference."
+  },
+  {
+    "event_id": "cold_iron_curse",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from vulcanus_cold_forge; or when Vulcanus devotion drops below 10",
+    "log_text": "Without the god's heat behind it, the iron they smelted was wrong in a way that metallurgy alone could not explain — blades that dulled too quickly, joints that creaked in cold weather, a building material that felt apologetic — as though the ore itself remembered being loved by fire and knew it was not anymore.",
+    "world_effect": "All metal-based production quality reduced by 35%; existing metal structures have 10% chance per day of 'Corroding' (losing durability); effect lasts until Vulcanus devotion restored above 25",
+    "chain_events": ["rival_forge_cold_iron"]
+  },
+  {
+    "event_id": "thalassor_tide_debt",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from thalassor_drowned_prayer; or when Thalassor devotion drops below 10 during a flood",
+    "log_text": "The water that had refused to leave began to smell of deep ocean — brine where there had been freshwater, a cold current threading through the flooded fields like a reminder — Thalassor does not forget an unpaid debt, and the sea has patience that rivers don't.",
+    "world_effect": "Flooded tiles become 'Saltwater Corrupted' (cannot grow crops for 15 days); fishing yields drop by 60%; a mysterious 'Deep Current' event begins pulling trade routes off-course",
+    "chain_events": ["aquatic_migration_event"],
+    "npc_whisper": "He'll take it back. He'll take all of it back. That's what oceans do."
+  },
+  {
+    "event_id": "signal_static_spread",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from nullv8_null_response; or when Null-v8 devotion falls below 15",
+    "log_text": "The patterns stopped making sense — the tribe's calculations began returning wrong answers, not by much, but wrong in ways that cascaded; it was less like losing a tool and more like losing the certainty that tools worked, the particular vertigo of a rational mind losing faith in reason itself.",
+    "world_effect": "All prediction and weather-forecasting abilities disabled; 20% chance that construction projects fail on completion (wasted resources); 'Signal Noise' debuff spreads to adjacent Null-v8 tiles",
+    "chain_events": ["analog_tribe_mockery"]
+  },
+  {
+    "event_id": "krigor_abandonment_hunt",
+    "event_type": "SCHISM",
+    "trigger_condition": "Krigor-aligned tribe has gone 7+ days without any predator-related action or sacrifice; second failure event",
+    "log_text": "Krigor does not grieve those who leave — he hunts them; and the tribe that walked away from the shadow did not walk far before something large and patient and deeply unimpressed began following them, wearing all the darkness they had abandoned.",
+    "world_effect": "A unique 'Krigor's Hound' predator unit spawns and stalks the tribe's territory indefinitely until a sacrifice quest is completed; Krigor devotion -35; all non-faith units have -10% morale",
+    "chain_events": ["predator_redirect", "faith_fracture_shadow"],
+    "npc_whisper": "He doesn't punish unfaithfulness. He just stops pretending the darkness isn't there."
+  },
+  {
+    "event_id": "faith_fracture_solar",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from aethelgard_clouded_sun; or when an Aethelgard prayer is ignored during a natural darkness event",
+    "log_text": "The sun rose the next morning without ceremony, which was the problem — they had expected something, a sign, a warmth that felt personal — and its ordinary beauty felt like a betrayal after they had screamed at it, which is the particular cruelty of gods who never promised to perform.",
+    "world_effect": "Aethelgard solar structures produce 40% less devotion for 8 days; 'Mundane World' debuff: miracles feel 'less miraculous' to tribe (reduced visual effects, slower devotion gain from prayer)",
+    "chain_events": ["doubter_faction_emerges"],
+    "npc_whisper": "The sun rose. That's it. That's all it did. Just... rose."
+  },
+  {
+    "event_id": "undergrowth_dying",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from xylorex_deaf_roots; or when 60%+ of Xylo-Rex tribe's forest tiles are destroyed within a short window",
+    "log_text": "The undergrowth went first, which is how the forest always announces its grief — not dramatically, not with the crack of timber, but with the slow yellowing of the things closest to the ground, the smallest organisms losing faith before the trees have even been told.",
+    "world_effect": "All forest tiles in 4-tile radius begin 5-day 'Withering' process; Xylo-Rex devotion -15 per day during withering; animal units abandon the area",
+    "chain_events": ["xylorex_deaf_roots"]
+  },
+  {
+    "event_id": "canopy_bloom_cascade",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from sylphra_breath_returned; Rainfall miracle used in heavily forested tile",
+    "log_text": "The rain Sylphra sent was too generous — the canopy bloomed faster than it could hold itself, flowers opening in sequences not seen since older maps, and the pollen that followed was so thick it turned the air between tribes into a visible, beautiful, slightly suffocating argument.",
+    "world_effect": "Forested tiles bloom (productivity +30% for 3 days); pollen cloud spreads to adjacent 3 tiles causing 'Pollen Haze' (reduces visibility, affects non-forest tribes with -10% outdoor productivity); 1 new rare flower tile spawns",
+    "chain_events": ["rival_tribe_dustfall", "bee_migration_event"]
+  },
+  {
+    "event_id": "magma_seep_spreading",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from vulcanus_forge_ignition; Meteor Strike miracle lands on or adjacent to a forge tile",
+    "log_text": "The blessing went deeper than intended — the ore vein opened kept opening, and three days after the miracle, the forge district had a new geography: cracks in the earth trailing slow magma between the buildings like blood between the fingers of a god who had gripped too hard.",
+    "world_effect": "Magma seep tiles spawn between forge structures (impassable but heat source: reduces fuel costs for adjacent forges by 30%); 1 residential building too close is destroyed; +5 ore per day from new vein",
+    "chain_events": ["vulcanus_war_blessing", "rival_territory_lava_flow"],
+    "npc_whisper": "He gave us more than we asked for. He always gives more than we asked for."
+  },
+  {
+    "event_id": "flood_plain_emergence",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from thalassor_monsoon_covenant; monsoon event ends but leaves standing water",
+    "log_text": "When the monsoon retreated it left behind a new geography — low places that had been dry fields were now permanent marshlands, and the tribe stood at the edge of their transformed territory not knowing whether to mourn what was gone or name what was new.",
+    "world_effect": "2-4 tiles permanently convert to 'Wetland' biome (new resource: reeds, unique fish, medicinal herbs); previous crop tiles lost; trade routes must repath; Thalassor devotion +10 (gift acknowledged)",
+    "chain_events": ["aquatic_migration_event", "rival_territory_flooding"],
+    "npc_whisper": "He didn't fix what we had. He gave us something better and let us figure that out ourselves."
+  },
+  {
+    "event_id": "root_network_pulse",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from xylorex_root_awakening; any Kinetic Shield miracle overlaps with a Xylo-Rex sacred grove tile",
+    "log_text": "Something in the grove responded to the Kinetic Shield as though recognizing a kindred intention — shield and root-thought briefly merging — and for six hours the entire underground network of Xylo-Rex's territory was awake and sending, the trees communicating in frequencies that made nearby water shimmer.",
+    "world_effect": "Entire tribe's territory gains temporary 'Root Network Active' status: any threat within territory is instantly visible on map; Kinetic Shield duration extended by 2x; Xylo-Rex devotion +15; neighboring tribes sense 'Something moving underground' warning",
+    "chain_events": ["undergrowth_expansion", "soil_reclamation_event"]
+  },
+  {
+    "event_id": "solar_brand_spread",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from aethelgard_golden_meridian; Fertility Rite miracle used on a 'Blessed Ground' tile",
+    "log_text": "The Fertility Rite on golden ground created something the god had perhaps not anticipated — plants that grew upward into the light faster than physics comfortably allowed, that bore fruit tasting of warmth rather than season, that made the tribe's children temporarily golden-eyed at harvest.",
+    "world_effect": "Blessed Ground tile becomes 'Solar Garden' (max crop yield, unique 'Sunfruit' resource that boosts devotion generation); Fertility Rite now has 20% chance to create Solar Garden on any blessed tile for 15 days",
+    "chain_events": ["aethelgard_radiant_vigil", "rival_tribe_food_envy"],
+    "npc_whisper": "The sunfruit tastes like something you're supposed to remember but don't."
+  },
+  {
+    "event_id": "data_cascade_overflow",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from nullv8_signal_descent; Temporal Rift miracle used adjacent to a Null-v8 shrine",
+    "log_text": "The Temporal Rift and the data-network touched at the edge — briefly, accidentally — and the Null-v8 faithful experienced sixteen seconds of perfect predictive clarity, seeing every consequence of every choice branching forward like a shining decision tree, and when it ended they understood why gods were not usually this honest.",
+    "world_effect": "Tribe gains 3-day 'Temporal Dataset': can preview the outcome of any 1 construction or military decision before committing; shrine overloads (offline 1 day) then upgrades to 'Overclock Shrine' (+30% devotion gen)",
+    "chain_events": ["time_fracture_closed", "rival_tribe_time_sickness"],
+    "npc_whisper": "We saw everything. All of it. I didn't know making choices would hurt this much."
+  },
+  {
+    "event_id": "shadow_bleed_outward",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from krigor_shadow_mantle; shadow protection miracle overlaps with adjacent neutral territory",
+    "log_text": "The shadow Krigor cast for protection did not stop at the border — it bled outward as shadows do, and the neutral hunting grounds between tribes darkened into something that was no longer neutral, the predators there becoming Krigor-touched and serving no one clearly.",
+    "world_effect": "Adjacent neutral tiles become 'Shadow Claimed' (Krigor's influence zone); predators in these tiles become aggressive to all non-Krigor units; Krigor devotion +8; contested territory event begins",
+    "chain_events": ["predator_redirect", "divine_conflict_shadow_sun"]
+  },
+  {
+    "event_id": "temporal_rift_weather_loop",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Temporal Rift miracle used during an active WEATHER event (rain, storm, or drought)",
+    "log_text": "Someone used the Temporal Rift while it was raining — a mistake no one would describe as such in the aftermath — and the rain became recursive, falling upward and then down again, the same storm replaying itself in stuttering loops, a broken record of precipitation that the tribe had to live inside for three days.",
+    "world_effect": "Weather event repeats 3x in compressed time; all crops receive 3x normal weather effect (severe drought or extreme rain); Temporal Rift cannot be used again for 10 days; 'Weather Scar' tile spawns where rift occurred",
+    "chain_events": ["thalassor_tide_debt", "rival_tribe_time_sickness"],
+    "npc_whisper": "It rained yesterday. It will rain yesterday again."
+  },
+  {
+    "event_id": "fertility_rite_overgrowth",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Fertility Rite miracle used 3 times in the same 5-tile area within 10 game-days",
+    "log_text": "Three Fertility Rites in the same soil were two too many — the land, having been asked to grow, grew without restraint, vines threading through building foundations, tree roots erupting through granary floors, the village not destroyed but increasingly argued with by the unchecked ambitions of its own garden.",
+    "world_effect": "Overgrowth event: 2-3 buildings suffer structural damage from plant intrusion; crop yield increases by 150% but attracts 2x animal/forager raids; 1 building becomes permanently 'Vine-Claimed' (non-functional but provides Xylo-Rex devotion passively)",
+    "chain_events": ["undergrowth_expansion", "xylorex_memory_forest"],
+    "npc_whisper": "We asked too many times and now the land won't stop answering."
+  },
+  {
+    "event_id": "meteor_strike_ore_garden",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Meteor Strike miracle lands on a tile already containing a natural ore deposit",
+    "log_text": "The meteor found something it recognized in the ground — ore that had been cooling for ten thousand years suddenly remembering heat — and the impact did not destroy the deposit but transformed it, the crater becoming a garden of crystallized minerals in colours that had no names in any living language.",
+    "world_effect": "Ore deposit becomes 'Meteorite Fused Vein' (3x yield, produces rare 'Sky-Iron' resource); crater tiles can be built into 'Astral Forge' unique structure; Vulcanus and Aethelgard both gain +5 devotion (dual-attributed miracle)",
+    "chain_events": ["vulcanus_forge_ignition", "solar_brand_spread"],
+    "npc_whisper": "The sky sent down what the earth had been missing. I wonder if that was an accident."
+  },
+  {
+    "event_id": "kinetic_shield_reflection",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Kinetic Shield miracle is active when a Meteor Strike miracle is used in adjacent tile (by any player/deity)",
+    "log_text": "The shield caught the meteor's edge — not stopped it, but redirected it — and the divine geometries at play sent the impact at an angle that its caster had not intended, the gods of protection and destruction briefly making a decision together that neither would have made alone.",
+    "world_effect": "Meteor Strike redirects to a random adjacent tile (potentially hitting player's own or rival territory); Kinetic Shield upgrades to 'Reflective Barrier' for 5 days (returns 50% of projectile-type damage); wild event log generated for the new impact location",
+    "chain_events": ["meteor_strike_ore_garden", "vulcanus_war_blessing"]
+  },
+  {
+    "event_id": "outpost_spawn_haunting",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Outpost Spawn miracle used on a tile that was previously destroyed (ruins tile)",
+    "log_text": "The outpost materialized on haunted ground — the foundation incorporating whatever had stood there before — and its settlers found the place already half-known to them, as though their new home had been waiting with a very specific kind of patience, furnished with ghost-geography they could walk without stumbling.",
+    "world_effect": "Outpost gains 'Ruin-Rooted' bonus (+20% production, faster unit training); triggers memory of previous destruction (story event log reveals why the tile was destroyed); 15% chance a 'Ghost Unit' appears as a permanent advisor NPC",
+    "chain_events": ["doubter_faction_emerges", "rival_tribe_territorial_claim"],
+    "npc_whisper": "The walls already know where they want to be. We're just helping them remember."
+  },
+  {
+    "event_id": "rainfall_volcanic_steam",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Rainfall miracle used adjacent to an active magma tile or volcano feature",
+    "log_text": "Rain on magma — the meeting of Thalassor and Vulcanus in the physical world — produced something neither god had authored: a steam cloud that sat over the affected tiles for a week, a collaboration between opposing divinities that looked, from a distance, like an argument made visible.",
+    "world_effect": "Steam cloud covers 3-tile radius (reduces visibility, but +20% crop growth from moisture); magma tiles cool and harden into unique 'Obsidian' tiles (building material); Thalassor and Vulcanus devotion both +5; volcanic activity in region reduced for 20 days",
+    "chain_events": ["divine_conflict_fire_water", "thalassor_monsoon_covenant"]
+  },
+  {
+    "event_id": "localized_spell_resonance",
+    "event_type": "MIRACLE",
+    "trigger_condition": "3 different Localized Spells used within a 3-tile radius within 5 game-days",
+    "log_text": "Three local miracles in proximity created a resonance that the universe had not accounted for — the spells began talking to each other in frequencies below prayer, and the earth in that radius became briefly, beautifully strange, as though it had received more divine attention in one week than it was designed to hold.",
+    "world_effect": "Resonance Zone spawns: unique tile variant that amplifies any future miracle used on it by 50%; zone is visible to all tribes on the map as a glowing landmark; attracts pilgrim units from all factions",
+    "chain_events": ["root_network_pulse", "solar_brand_spread", "data_cascade_overflow"],
+    "npc_whisper": "When the gods talk through the ground instead of the sky, you know they're not talking to us."
+  },
+  {
+    "event_id": "aethelgard_radiant_vigil",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from any Aethelgard answered prayer; or when a tribe keeps a prayer structure active for 15+ consecutive days",
+    "log_text": "The tribe had not stopped praying — not once, not for fifteen days — and Aethelgard, who notices the sustained attention of mortals the way a fire notices wind, began to burn brighter in their direction, until the air around their altar was warm even at midnight, the god's gaze a kind of heat they could live inside.",
+    "world_effect": "All prayer structures within tribe territory produce +50% devotion for 7 days; 'Vigil Blessing' grants all units +15% speed and morale; nighttime visibility significantly increased in tribe territory",
+    "chain_events": ["solar_brand_spread", "shade_tribe_opportunism"]
+  },
+  {
+    "event_id": "divine_conflict_fire_water",
+    "event_type": "SCHISM",
+    "trigger_condition": "Vulcanus-aligned tribe and Thalassor-aligned tribe occupy adjacent territories and enter active conflict",
+    "log_text": "Where their borders met, the weather could not decide what it was — it rained upward from geysers, it snowed fire-ash, it produced, in one memorable afternoon, a thunderstorm that smelled of forge-smoke and deep ocean simultaneously — the gods expressing their incompatibility through meteorology.",
+    "world_effect": "Border tiles between the tribes become 'Divine Contested Zone' (no building allowed, random weather events daily); both tribes' miracles cost +20% in contested area; Meteor Strike and Rainfall miracles triggered in this zone interact via rainfall_volcanic_steam chain",
+    "chain_events": ["rainfall_volcanic_steam", "rival_forge_cold_iron", "thalassor_monsoon_covenant"],
+    "npc_whisper": "Our gods are fighting. We're just the ground they're fighting over."
+  },
+  {
+    "event_id": "divine_conflict_shadow_sun",
+    "event_type": "SCHISM",
+    "trigger_condition": "Krigor-aligned tribe and Aethelgard-aligned tribe occupy adjacent territories and both have active divine attention",
+    "log_text": "At the border between them, the day did something unusual — the sun cast shadows that moved in directions the light did not justify, and at night a residual golden glow persisted where there was no sun to cause it, the two gods having made of their worshippers' shared geography a battlefield of philosophy.",
+    "world_effect": "Border tiles cycle between 'Blinding Light' (Aethelgard bonus, Krigor units penalized) and 'Deep Shadow' (Krigor bonus, Aethelgard units penalized) on 6-hour cycles; predators and light-sensitive crops affected; dramatic visual event",
+    "chain_events": ["shadow_bleed_outward", "aethelgard_radiant_vigil", "rival_village_nightmare"],
+    "npc_whisper": "In the day the bones are just bones. In the night the sun is just a memory. This is the border."
+  },
+  {
+    "event_id": "divine_conflict_root_silicon",
+    "event_type": "SCHISM",
+    "trigger_condition": "Xylo-Rex-aligned tribe and Null-v8-aligned tribe expand into the same unclaimed forest territory",
+    "log_text": "The forest began running calculations it had no business running — the root-network interfacing with the Null-v8 signal in ways that neither god had authorized — producing, in the disputed grove, plants with geometric growth patterns and data-nodes with root systems, a hybrid zone both gods disowned.",
+    "world_effect": "Contested forest tiles become 'Biopunk Grove' (unique biome: +resources but unaligned, gives no devotion to either deity); Xylo-Rex and Null-v8 devotion both frozen for 5 days; player must resolve territorial dispute via diplomacy or force",
+    "chain_events": ["root_network_pulse", "data_cascade_overflow", "doubter_faction_emerges"],
+    "npc_whisper": "The trees are thinking in straight lines. Something is very wrong."
+  },
+  {
+    "event_id": "divine_conflict_wind_root",
+    "event_type": "SCHISM",
+    "trigger_condition": "Sylphra-aligned tribe uses Rainfall miracle adjacent to a Xylo-Rex sacred grove during drought",
+    "log_text": "Sylphra's rain fell into Xylo-Rex's root system without invitation, and the grove accepted it with the particular ingratitude of a thing that wanted to be asked — rain is not gift when it arrives sovereign, and the forest made a sound like a god turning away, brief and unbearable.",
+    "world_effect": "Sacred grove tiles reject Sylphra rain (no crop benefit); Xylo-Rex devotion in area drops -10 (the god feels trespassed upon); Sylphra's next WEATHER miracle in the area costs +30%; a 'Disputed Blessing' event spawns requiring player negotiation",
+    "chain_events": ["xylorex_deaf_roots", "canopy_bloom_cascade"],
+    "npc_whisper": "The forest doesn't want her rain. It wanted to want it. That's different."
+  },
+  {
+    "event_id": "divine_conflict_solar_monsoon",
+    "event_type": "SCHISM",
+    "trigger_condition": "Aethelgard Fertility Rite and Thalassor Rainfall miracle both active in overlapping tile range",
+    "log_text": "The sunlight and the monsoon met over the same fields and could not agree on what the season was — evaporation rate matched rainfall rate exactly, producing a perpetual warm mist that made everything grow and nothing ripen, a paradise of potential that could not resolve into harvest.",
+    "world_effect": "Overlap zone gets 'Eternal Summer Haze' status: crops grow but never become harvestable for 7 days; insect populations boom (some beneficial, some destructive); both Aethelgard and Thalassor devotion locked at current levels (no gain or loss) during conflict",
+    "chain_events": ["flood_plain_emergence", "solar_brand_spread"],
+    "npc_whisper": "Everything grows. Nothing finishes. I think this is what heaven would feel like if it couldn't end."
+  },
+  {
+    "event_id": "divine_conflict_forge_shadow",
+    "event_type": "SCHISM",
+    "trigger_condition": "Vulcanus-aligned and Krigor-aligned tribes both send raiding parties into the same neutral territory simultaneously",
+    "log_text": "The fire-worshippers and the shadow-faithful arrived at the neutral village at the same moment, which should have been a coincidence but felt, to everyone involved, like something that had been scheduled — the forge-light and the bone-dark combining into a torchlit scene that neither god would clearly claim.",
+    "world_effect": "Three-way conflict event: neutral village NPC faction becomes battleground; Vulcanus and Krigor both gain +10 devotion from resulting violence; looted resources split evenly if both tribes survive; 'Divine Stalemate' marker placed on neutral territory (future disputes here are cheaper to resolve)",
+    "chain_events": ["krigor_bone_sentinel", "vulcanus_war_blessing", "defeated_tribe_ash_curse"],
+    "npc_whisper": "Both gods showed up. I don't know if that's a blessing or just what happens when destruction can't decide which face to wear."
+  },
+  {
+    "event_id": "cosmic_sign_triple_deity",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Three separate tribes complete MIRACLE quests within the same 24 in-game hour period",
+    "log_text": "Three different skies happened at once — wind, fire, water — briefly occupying the same atmosphere over the central plains, the three gods stacking their attention in a column of competing weather that produced, for eleven minutes, a rainbow made of ash and spray and petals that no one alive would ever see again and everyone alive would spend their lives describing.",
+    "world_effect": "Global event: all tribes receive +5 devotion to their deity; a 'Celestial Confluence' landmark spawns at map center; any miracle used at this location for 10 days costs 50% less; rare 'Trinity Relic' item becomes available to the first tribe to send a unit to the landmark",
+    "chain_events": ["localized_spell_resonance", "rival_tribe_territorial_claim"],
+    "npc_whisper": "Three gods at once means something is coming that needs their attention. Something larger than us."
+  },
+  {
+    "event_id": "divine_schism_nullv8_xylorex",
+    "event_type": "SCHISM",
+    "trigger_condition": "Null-v8 tribe uses a Kinetic Shield miracle to block Xylo-Rex tribe's root-wall expansion",
+    "log_text": "Logic met instinct at the shield-edge, and what surprised everyone was that the shield held — the roots pressed and pressed and could not find a gap in a defense that had no gaps, only equations, and the forest was briefly and humiliatingly stopped by the fact that mathematics is not alive and does not care about urgency.",
+    "world_effect": "Root-wall expansion halted for 5 days; Xylo-Rex devotion -15 (affront to the god); Null-v8 devotion +12 (elegant defense acknowledged); a 'Logic-Root Interface' tile spawns where they met (future research events possible)",
+    "chain_events": ["divine_conflict_root_silicon", "root_network_pulse"],
+    "npc_whisper": "The forest hit a wall that doesn't bleed. I don't think it knows what to do with that."
+  },
+  {
+    "event_id": "thalassor_rival_trade_curse",
+    "event_type": "SCHISM",
+    "trigger_condition": "Thalassor-aligned tribe loses a trade route to a rival tribe through conflict or diplomatic breakdown",
+    "log_text": "Thalassor, who is an ocean and therefore remembers every river that has ever reached him, took the trade route's ending as a personal slight — the waterways between the tribes began to run backward, or to carry the wrong goods, or to deposit their cargo six inches below the surface of themselves.",
+    "world_effect": "Rival tribe's water-based trade routes suffer 40% efficiency loss; Thalassor subtly redirects a river tile toward Thalassor-tribe territory; 'Divine Trade War' event begins, requiring diplomatic resolution or continued conflict",
+    "chain_events": ["thalassor_drowned_gift", "downstream_overflow"],
+    "npc_whisper": "He rerouted the river. A god rerouted a river because we stopped trading. I'm not sure what to do with that."
+  },
+  {
+    "event_id": "predator_redirect",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from krigor_unpaid_tithe or shadow_bleed_outward; predators shift from Krigor territory to adjacent non-Krigor tribe",
+    "log_text": "The predators simply changed direction — no ceremony, no warning — and the settlement that had laughed at its Krigor-worshipping neighbors stopped laughing when it counted its livestock in the morning and found fewer than it had put to sleep the night before.",
+    "world_effect": "Predator units redirect to adjacent non-Krigor tribe territory; their aggression is doubled against this target for 7 days; Krigor-aligned tribe gains 'Protected by Shadow' status (no predator attacks for 10 days)",
+    "chain_events": ["krigor_abandonment_hunt", "rival_village_nightmare"],
+    "npc_whisper": "Krigor didn't send them at you. He just stopped holding them back."
+  },
+  {
+    "event_id": "defeated_tribe_ash_curse",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from divine_conflict_forge_shadow; or when a Vulcanus tribe defeats a rival tribe in a decisive battle",
+    "log_text": "Vulcanus does not forget who gave the victory, and the ash that fell over the defeated village for three days was not quite ordinary ash — it smelled of forge-smoke and it settled in a way that suggested intention, covering the evidence of the battle in a blanket that looked peaceful and was not.",
+    "world_effect": "Defeated tribe's territory gets 'Ash Shroud' status: all structures have -20% efficiency until cleared (takes 3 days of player action); Vulcanus tribe gains 1 free Forge construction; ash tiles are fertile if cleared (bonus crop season after)",
+    "chain_events": ["vulcanus_cold_forge", "doubter_faction_emerges"]
+  },
+  {
+    "event_id": "krigor_bone_sentinel",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Chained from krigor_death_reckoning or krigor_shadow_mantle; Krigor devotion above 60 at time of trigger",
+    "log_text": "At the perimeter of their territory, three figures stood at dawn that no one had placed there — bone-and-shadow constructs that were not alive in any way that biology describes but were clearly, unmistakably on duty — Krigor's idea of a gift: guardians that do not require feeding or sleep or faith, only presence.",
+    "world_effect": "3 'Bone Sentinel' structures auto-spawn at territory perimeter; each provides a 3-tile detection radius and deters predators/raiders from entering; Sentinels dissolve after 15 days or when Krigor devotion drops below 30",
+    "chain_events": ["shadow_bleed_outward"],
+    "npc_whisper": "They're not alive. But they're not not watching."
+  },
+  {
+    "event_id": "rival_village_nightmare",
+    "event_type": "SCHISM",
+    "trigger_condition": "Chained from krigor_shadow_mantle or predator_redirect; or when Krigor devotion above 70 and a rival non-Krigor tribe is adjacent",
+    "log_text": "For seven nights, the neighboring village dreamed the same dream — something large and patient standing just outside the firelight, regarding them with the specific attention of a god that has been asked about them by someone they wronged — and they woke each morning less certain that the world they lived in was as uncomplicated as they'd hoped.",
+    "world_effect": "Adjacent non-Krigor tribe suffers 'Divine Nightmares': -20% morale all units, sleep productivity lost, faith structure effectiveness halved; one NPC unit may defect to neutral status; Krigor tribe gains intelligence on rival unit positions",
+    "chain_events": ["doubter_faction_emerges", "faith_fracture_shadow"],
+    "npc_whisper": "It wasn't there when we looked. But we could feel it deciding."
+  },
+  {
+    "event_id": "cosmic_sign_divine_eclipse",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Krigor-aligned tribe achieves maximum devotion (100) on the same in-game day that an Aethelgard tribe has 0 devotion",
+    "log_text": "The eclipse that day was not astronomical — it was theological — the sun going dark not because the moon stood between but because something had tilted in the divine order, and those who understood such things recognized the shadow for what it was: a god at full attention, and another god humbled to nothing, and the world holding very still between them.",
+    "world_effect": "Global event: total darkness for 6 in-game hours; all Krigor blessings doubled; all light-dependent miracles (Aethelgard, Sylphra) disabled for duration; +30 Krigor devotion global to all Krigor-aligned tribes; 'Divine Eclipse' permanent map marker placed",
+    "chain_events": ["divine_conflict_shadow_sun", "faith_fracture_solar", "krigor_bone_sentinel"],
+    "npc_whisper": "This is what it looks like when a god wins something."
+  },
+  {
+    "event_id": "evolution_convergence_point",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Player has successfully resolved 3+ divine conflict events through diplomatic means (without combat) and all 7 deities have at least 1 active tribe",
+    "log_text": "Something extraordinary: all seven gods were paying attention at the same moment — not in harmony, not in peace, but in the way that things which are fundamentally different sometimes accidentally occupy the same breath — and in that moment the world was more itself than it had been since its beginning, vibrating at the frequency of seven simultaneous opinions about what it should be.",
+    "world_effect": "Global 'Divine Convergence' event: +20 devotion to all tribes for all deities; all miracles unlock a temporary 'Interfaith Version' (30% cheaper, half effectiveness) that can be shared between deity-aligned tribes; permanent 'Convergence Chronicle' entry added to game lore log",
+    "chain_events": ["cosmic_sign_triple_deity", "localized_spell_resonance"],
+    "npc_whisper": "Seven gods and none of them agreed. Seven gods and for one moment, none of them left."
+  }
+]

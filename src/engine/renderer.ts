@@ -2,6 +2,15 @@ import * as PIXI from 'pixi.js';
 import spriteMappings from '../../docs/sprite-mappings.json';
 import { spriteVertexShader, spriteFragmentShader, lightingFragmentShader } from './shaders';
 
+export interface PointLight {
+  id: string;
+  x: number;
+  y: number;
+  color: [number, number, number];
+  radius: number;
+  intensity: number;
+}
+
 export interface RenderableEntity {
   id: string;
   x: number;
@@ -30,6 +39,7 @@ export class GameRenderer {
   private interactions: PIXI.Container;
   private entities: PIXI.Container;
   private labelLayer: PIXI.Container;
+  private overlaysLayer: PIXI.Graphics;
   private isoWidth = 64;
   private isoHeight = 32;
   private initialized = false;
@@ -60,7 +70,8 @@ export class GameRenderer {
   }> = {};
 
   // Interactive Heatmap parameters
-  public heatmapMode: 'none' | 'devotion' | 'resource' = 'none';
+  public heatmapMode: 'none' | 'devotion' | 'resource' | 'moisture' | 'tension' = 'none';
+  public godsEyeMode: boolean = false;
   public lastTerrainMap: number[][] | null = null;
   public lastEntities: RenderableEntity[] = [];
   private animFrame = 0;
@@ -92,6 +103,10 @@ export class GameRenderer {
   public sunScreenPos = new Float32Array([0.5, 0.1]);
   public batterySaver = false;
 
+  // Dynamic Lights
+  public pointLights: PointLight[] = [];
+  private maxPointLights = 16;
+
   constructor(container: HTMLElement) {
     this.container = container;
     this.tiles = new PIXI.Container();
@@ -99,6 +114,7 @@ export class GameRenderer {
     this.interactions = new PIXI.Container();
     this.entities = new PIXI.Container();
     this.labelLayer = new PIXI.Container();
+    this.overlaysLayer = new PIXI.Graphics();
 
     this.container.addEventListener('contextmenu', (e) => e.preventDefault());
 
@@ -373,6 +389,13 @@ export class GameRenderer {
           uAmbientColor: this.ambientColor,
           uGodRayIntensity: this.godRayIntensity,
           uSunScreenPos: this.sunScreenPos,
+          uResolution: new Float32Array([this.app.screen.width, this.app.screen.height]),
+          uPointLightCount: 0,
+          uPointLightPositions: new Float32Array(this.maxPointLights * 3),
+          uPointLightColors: new Float32Array(this.maxPointLights * 3),
+          uPointLightRadii: new Float32Array(this.maxPointLights),
+          uPointLightIntensities: new Float32Array(this.maxPointLights),
+          uGodsEyeMode: this.godsEyeMode ? 1.0 : 0.0,
         }
       }) as any;
 
@@ -389,6 +412,7 @@ export class GameRenderer {
       this.app.stage.addChild(this.interactions);
       this.app.stage.addChild(this.entities);
       this.app.stage.addChild(this.labelLayer);
+      this.app.stage.addChild(this.overlaysLayer);
 
       // --- Post-Initialization: Two-Pass Rendering Loop (Phase 1, Step 1) ---
       this.app.ticker.add(() => {
@@ -418,6 +442,40 @@ export class GameRenderer {
            this.lightingShader.resources.uSunDirection = this.sunDirection;
            this.lightingShader.resources.uGodRayIntensity = this.godRayIntensity;
            this.lightingShader.resources.uSunScreenPos = this.sunScreenPos;
+           this.lightingShader.resources.uGodsEyeMode = this.godsEyeMode ? 1.0 : 0.0;
+           this.lightingShader.resources.uResolution = new Float32Array([this.app.screen.width, this.app.screen.height]);
+           
+           // Update point lights
+           const lightCount = Math.min(this.pointLights.length, this.maxPointLights);
+           this.lightingShader.resources.uPointLightCount = lightCount;
+           
+           const positions = new Float32Array(this.maxPointLights * 3);
+           const colors = new Float32Array(this.maxPointLights * 3);
+           const radii = new Float32Array(this.maxPointLights);
+           const intensities = new Float32Array(this.maxPointLights);
+           
+           for (let i = 0; i < lightCount; i++) {
+               const light = this.pointLights[i];
+               const iso = this.toIso(light.x, light.y);
+               const screenX = (iso.x + this.debugOffsetX) * this.zoom + this.app.stage.x;
+               const screenY = (iso.y + this.debugOffsetY) * this.zoom + this.app.stage.y;
+               
+               positions[i * 3] = screenX / this.app.screen.width;
+               positions[i * 3 + 1] = screenY / this.app.screen.height;
+               positions[i * 3 + 2] = 0.1;
+               
+               colors[i * 3] = light.color[0];
+               colors[i * 3 + 1] = light.color[1];
+               colors[i * 3 + 2] = light.color[2];
+               
+               radii[i] = light.radius * this.zoom;
+               intensities[i] = light.intensity;
+           }
+           
+           this.lightingShader.resources.uPointLightPositions = positions;
+           this.lightingShader.resources.uPointLightColors = colors;
+           this.lightingShader.resources.uPointLightRadii = radii;
+           this.lightingShader.resources.uPointLightIntensities = intensities;
 
            this.app.renderer.render({
              container: this.lightingQuad,
@@ -636,6 +694,7 @@ export class GameRenderer {
     }
 
     const activeIds = new Set<string>();
+    this.overlaysLayer.clear();
 
     // View Rect Culling (Phase 1, Step 3)
     const viewPadding = 128;
@@ -846,6 +905,31 @@ export class GameRenderer {
       nameText.x = -nameText.width / 2;
       subLabel.x = -subLabel.width / 2;
       subLabel.y = -actorSprite.height / 2 - 9;
+
+      // God's Eye: Threat Alerts & Tribal Tension
+      if (this.godsEyeMode || this.heatmapMode === 'tension') {
+        if (ent.health !== undefined && ent.health < 40) {
+          // Draw threat alert triangle
+          this.overlaysLayer.moveTo(iso.x + this.debugOffsetX, iso.y + this.debugOffsetY - 60);
+          this.overlaysLayer.lineTo(iso.x + this.debugOffsetX - 10, iso.y + this.debugOffsetY - 80);
+          this.overlaysLayer.lineTo(iso.x + this.debugOffsetX + 10, iso.y + this.debugOffsetY - 80);
+          this.overlaysLayer.lineTo(iso.x + this.debugOffsetX, iso.y + this.debugOffsetY - 60);
+          this.overlaysLayer.fill({ color: 0xff0000, alpha: 0.8 });
+          this.overlaysLayer.stroke({ width: 2, color: 0x000000 });
+        }
+        if (ent.category === 'Tribe') {
+          renderEntities.forEach(other => {
+            if (other.category === 'Tribe' && other.id > ent.id) {
+               if (ent.faction !== other.faction) {
+                  const otherIso = this.toIso(other.x, other.y);
+                  this.overlaysLayer.moveTo(iso.x + this.debugOffsetX, iso.y + this.debugOffsetY);
+                  this.overlaysLayer.lineTo(otherIso.x + this.debugOffsetX, otherIso.y + this.debugOffsetY);
+                  this.overlaysLayer.stroke({ width: 2, color: 0xff4444, alpha: 0.4 });
+               }
+            }
+          });
+        }
+      }
     });
 
     for (const [id, container] of this.entitySprites.entries()) {

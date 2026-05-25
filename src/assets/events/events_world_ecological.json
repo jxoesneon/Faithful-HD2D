@@ -1,0 +1,560 @@
+[
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "trophic_cascade_collapse",
+    "event_type": "SCHISM",
+    "trigger_condition": "Wolf population drops below 2 in a biome while Stag population exceeds 12; overgrazed tiles >= 30% of biome area.",
+    "log_text": "The wolves vanish, and in their absence the deer multiply like a fever dream — hooves stripping the earth to pale bone, the forest forgetting what it once was.",
+    "world_effect": "All TREE tiles in the biome lose 2 nutrient levels per season. STAG aggressiveness increases. CROP yields halved from overgrazing pressure. Wolf respawn rate halved for 3 seasons.",
+    "chain_events": ["desertification_creep", "stag_territorial_war", "famine_year"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "mycorrhizal_awakening",
+    "event_type": "MIRACLE",
+    "trigger_condition": "TREE density >= 60% of biome tiles AND soil moisture above 70% for 2 consecutive seasons AND no DROUGHT active.",
+    "log_text": "Beneath the roots, something ancient stirs — a fungal mind threading itself through the forest floor, breathing nutrients upward through ten thousand filaments of silent communion.",
+    "world_effect": "All TREE tiles within 5-tile radius gain +3 nutrients. CROP tiles adjacent to forest receive passive +1 nutrient per season for 4 seasons. Disease resistance of nearby flora increased by 40%.",
+    "chain_events": ["spore_bloom_festival", "fungal_blight_inversion", "ancient_grove_emergence"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "predator_bloom",
+    "event_type": "SCHISM",
+    "trigger_condition": "Wolf population exceeds 8 in a single biome AND Stag count drops below 3; wolves begin targeting COW tiles.",
+    "log_text": "The pack, starved of its covenant prey, turns its yellow eyes toward the pastures — and the sound of bells becomes the sound of grief.",
+    "world_effect": "COW tiles adjacent to forest edges lose 1 fauna unit per 2 game-days. Civilization anxiety stat increases. Hunters dispatched automatically if civilization has the relevant building.",
+    "chain_events": ["wolf_cull_miracle", "livestock_plague", "abandoned_farmstead"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "crop_blight_wave",
+    "event_type": "SCHISM",
+    "trigger_condition": "CROP disease parameter >= 0.8 on 5+ adjacent tiles AND humidity > 60% AND temperature below seasonal average.",
+    "log_text": "The blight moves like a slow exhalation across the fields — first the yellowing, then the black curl of leaf edges, then the terrible silence where harvest once sang.",
+    "world_effect": "Infected CROP tiles yield 0 for the season. Disease spreads to adjacent tiles at 35% probability per game-day. Soil nutrients depleted by 2. Civilization food reserves reduced by 20%.",
+    "chain_events": ["famine_year", "desperate_burning", "fungal_blight_inversion"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "locust_emergence",
+    "event_type": "SCHISM",
+    "trigger_condition": "DROUGHT active for 2+ seasons followed by sudden RAIN event; soil temperature above threshold; CROP tiles >= 40% of affected region.",
+    "log_text": "They rise from the cracked earth like a living shadow — a billion wings blotting the sun, the world holding its breath before the devouring begins.",
+    "world_effect": "All CROP tiles in a 10-tile sweep corridor reduced to 0 yield. EXOTIC flora pests parameter increases by 0.5. Swarm moves directionally with wind. Lasts 3 game-days before dispersal.",
+    "chain_events": ["famine_year", "avian_feast", "bare_earth_succession"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "avian_feast",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows locust_emergence OR insect_swarm_cascade; triggered when bird fauna units present in biome.",
+    "log_text": "A river of wings descends upon the swarm — the sky's ancient predators answering a hunger older than memory, and for a brief, furious hour, the balance holds.",
+    "world_effect": "Locust/pest parameters reduced by 60% in affected tiles. Bird fauna population increases. CROP tiles partially recover — yield restored to 40% of normal.",
+    "chain_events": ["raptor_territorial_claim", "ecosystem_rebound"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "great_stag_migration",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "STAG population >= 10 AND primary biome TREE density drops below 30% OR seasonal temperature shift of >15 degrees occurs.",
+    "log_text": "They move as one body — antlers like a moving forest, hooves drumming the old migration roads written into their blood before civilization had a name for roads.",
+    "world_effect": "STAG tiles relocate toward higher-moisture, higher-tree-density biomes. Vacated tiles show reduced grazing pressure, allowing soil regeneration. New destination biome sees increased animal activity.",
+    "chain_events": ["wolf_pursuit_migration", "biome_pressure_relief", "predator_bloom"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "forest_fire_natural",
+    "event_type": "SCHISM",
+    "trigger_condition": "DROUGHT active for 3+ seasons AND lightning strike event occurs (STORM weather) AND TREE density >= 40% of target biome.",
+    "log_text": "The lightning writes its signature in fire across the canopy, and the forest, too long denied rain, accepts the burning like a final confession.",
+    "world_effect": "TREE tiles in 8-tile radius reduced to bare earth. Flora disease/pest params cleared. After 2 seasons, EVOLUTION event post_fire_succession auto-triggers. Ash deposits increase soil nutrients by +4 long-term.",
+    "chain_events": ["post_fire_succession", "smoke_migration_pressure", "ash_bloom_phenomenon"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "post_fire_succession",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows forest_fire_natural or desperate_burning after 2-season gap; bare earth tiles present with high ash nutrient content.",
+    "log_text": "From the black cathedral of ash, the pioneers return first — the fireweed, the bracken, the audacious seedlings who know that destruction is only a prelude.",
+    "world_effect": "Bare earth tiles begin converting to EXOTIC flora at +2/season. CROP tiles may self-seed near ash zones. TREE tiles begin regrowing after 4 seasons. Pest and disease params reset to zero.",
+    "chain_events": ["ancient_grove_emergence", "ecosystem_rebound", "mycorrhizal_awakening"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "celestial_fauna_descent",
+    "event_type": "MIRACLE",
+    "trigger_condition": "CELESTIAL fauna unit active AND AURORA weather event active AND CROP cultivar tier >= 2 in biome.",
+    "log_text": "The celestial creature descends through curtains of magnetic fire, and where its hooves touch the soil, the crops remember a time before hunger.",
+    "world_effect": "All CROP tiles within 6-tile radius gain +3 nutrients and +2 cultivar advancement. CELESTIAL hunger reset to 0. Aurora weather extended by 1 season. All disease params in radius reduced to 0.",
+    "chain_events": ["divine_harvest_season", "mycorrhizal_awakening", "aurora_crop_communion"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "species_mutation_event",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Any single flora species exists on 50+ tiles for 8+ seasons with unchanged pest/disease parameters; no cultivation interventions logged.",
+    "log_text": "Without pressure, without predator, without the correcting hand — the plant begins to write a new chapter of itself, diverging from the original verse into something the world has never named.",
+    "world_effect": "A new EXOTIC variant spawns with randomized trait parameters (disease resistance +/- 30%, yield modifier +/- 20%, soil preference shifted). The original species density reduced by 20%.",
+    "chain_events": ["invasive_dominance", "cultivar_breakthrough", "ecological_novelty"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "invasive_dominance",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows species_mutation_event; mutated EXOTIC species spreads to 15+ tiles within 3 seasons of emergence.",
+    "log_text": "The newcomer does not negotiate — it simply wins, crowding the old inhabitants into memory with a cheerful, merciless efficiency.",
+    "world_effect": "Native CROP and EXOTIC tiles within spread zone converted at 25% per season. Soil nutrient profile changes to match invasive species preferences. Fauna that depended on native species lose 1 hunger unit/season.",
+    "chain_events": ["ecosystem_rebound", "trophic_cascade_collapse", "biome_pressure_relief"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "nano_banana_fermentation_bloom",
+    "event_type": "MIRACLE",
+    "trigger_condition": "NANO_BANANA tiles >= 8 AND adjacent water source AND temperature above seasonal average for 2 seasons.",
+    "log_text": "The nano-bananas ferment in the heat-swollen air, releasing a sweetness so total that the surrounding ecosystem reorganizes itself around the intoxicating abundance.",
+    "world_effect": "NANO_BANANA yield tripled for 1 season. Nearby fauna units gain full hunger satisfaction. STAG aggressiveness drops to minimum. Civilization happiness stat increases if trade route present.",
+    "chain_events": ["stag_territorial_war", "exotic_pollinator_cascade", "cultivar_breakthrough"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "wolf_genetic_divergence",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Wolf population isolated in single biome for 6+ seasons with no cross-biome migration; population >= 5.",
+    "log_text": "Cut off from the greater pack, generation by generation the wolves rewrite themselves — the new pack that emerges is not quite the old wolf, and the world takes notice.",
+    "world_effect": "Wolf subspecies spawned with modified aggressiveness and territory range parameters. Old wolf tiles replaced. New subspecies may be more or less dangerous to livestock based on RNG trait roll.",
+    "chain_events": ["predator_bloom", "wolf_cull_miracle", "trophic_cascade_collapse"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "bare_earth_succession",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "6+ bare earth tiles present for 3+ seasons in any configuration; no active DROUGHT.",
+    "log_text": "The earth does not accept defeat — moss first, then the grasses, then the quiet insurrection of the pioneer shrubs reaching toward the available sky.",
+    "world_effect": "Bare tiles begin converting to EXOTIC flora at a rate of 1 tile per 2 seasons. Soil moisture gradually restores. If adjacent to TREE tiles, forest re-colonization accelerates.",
+    "chain_events": ["ancient_grove_emergence", "mycorrhizal_awakening", "ecosystem_rebound"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "ecosystem_rebound",
+    "event_type": "MIRACLE",
+    "trigger_condition": "After any SCHISM ecological event ends; if civilization has not intervened in the biome for 4+ seasons and flora diversity > 3 types.",
+    "log_text": "The world remembers what it was before it was wounded — and with a quiet, vast determination, it begins the long work of becoming itself again.",
+    "world_effect": "All flora nutrient levels +2 across biome. All pest and disease params -0.3. Fauna population growth rate increases by 25% for 3 seasons. Soil moisture auto-corrects toward optimal.",
+    "chain_events": ["mycorrhizal_awakening", "great_stag_migration", "ancient_grove_emergence"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "insect_swarm_cascade",
+    "event_type": "SCHISM",
+    "trigger_condition": "Pest parameter >= 0.7 on 8+ tiles of same flora type AND warm, humid weather conditions AND no predator fauna nearby.",
+    "log_text": "The insects achieve critical mass — a living storm of mandibles and appetite that overwhelms the leaf, the stem, the patient structure of everything grown.",
+    "world_effect": "Affected flora tiles lose -2 yield per day during event. Pest parameter spreads +0.15 per day to adjacent tiles. Event lasts 4 days before natural dispersal. Disease parameter on affected tiles increases by 0.2.",
+    "chain_events": ["avian_feast", "crop_blight_wave", "bare_earth_succession"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "ancient_grove_emergence",
+    "event_type": "MIRACLE",
+    "trigger_condition": "TREE density at maximum on 15+ contiguous tiles for 10+ seasons AND no fire, disease, or lumber events logged in zone.",
+    "log_text": "Some trees pass through ordinary age into something else — the grove achieves a silence that has its own gravity, its own weather, its own dreaming.",
+    "world_effect": "Designated TREE tiles become Ancient tier — immune to disease and pest. Adjacent CROP tiles gain +4 nutrients passively. CELESTIAL fauna spawn probability increases by 50% in the zone.",
+    "chain_events": ["celestial_fauna_descent", "mycorrhizal_awakening", "sacred_biome_lock"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "biome_pressure_relief",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Overgrazing or over-cultivation has reduced nutrient levels to < 2 on 40%+_of biome tiles; no interventions in 3 seasons.",
+    "log_text": "Slowly, without announcement, the pressure lifts — the soil breathes again, the roots find purchase where before there was only exhaustion and dust.",
+    "world_effect": "Biome soil nutrients begin regenerating at +0.5 per season. Flora disease params slowly decline. Fauna aggressiveness decreases. Sets up conditions for the next ecological cycle.",
+    "chain_events": ["bare_earth_succession", "ecosystem_rebound", "mycorrhizal_awakening"]
+  },
+  {
+    "category": "ECOLOGICAL",
+    "event_id": "spore_bloom_festival",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows mycorrhizal_awakening OR RAIN after 2+ season drought AND EXOTIC flora tiles >= 10 AND wind event active.",
+    "log_text": "The air goes white with spores — the forest's quiet ambition carried on the wind to every empty corner of the world, an invisible and unstoppable colonization of hope.",
+    "world_effect": "EXOTIC flora spread range doubled for 2 seasons. Bare earth tiles within 12-tile radius have 40% chance of spontaneous flora colonization. Soil fertility +1 across all affected tiles.",
+    "chain_events": ["invasive_dominance", "ancient_grove_emergence", "species_mutation_event"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "volcanic_eruption_minor",
+    "event_type": "SCHISM",
+    "trigger_condition": "Volcanic biome active AND tectonic stress parameter >= 0.7 AND no eruption in 8+ seasons.",
+    "log_text": "The mountain finally loses patience — a column of fire and old stone thrown skyward, the earth's interior announcing itself to every living thing within sight.",
+    "world_effect": "Lava flow tiles created in 3-tile radius from vent — immediately destroying all flora and fauna in path. Ash cloud reduces solar irradiance -30% for 2 seasons. Long-term: volcanic soil fertility +5 after 4 seasons.",
+    "chain_events": ["volcanic_ash_bloom", "lava_field_succession", "pyroclastic_flora_wipe"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "volcanic_ash_bloom",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows volcanic_eruption_minor or volcanic_eruption_caldera; 2 seasons after ash deposition.",
+    "log_text": "From the gray sterility of the ashfall, the first green things emerge — impossibly tender, strangely luminous, as if the volcano itself wanted to apologize.",
+    "world_effect": "Ash-covered tiles convert to ultra-fertile soil (+6 nutrients). CROP yield bonus +40% for 3 seasons. EXOTIC species adapted to volcanic soil begin colonizing. Flora disease resistance maximized.",
+    "chain_events": ["cultivar_breakthrough", "ancient_grove_emergence", "mycorrhizal_awakening"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "karst_cave_collapse",
+    "event_type": "SCHISM",
+    "trigger_condition": "Karst biome AND heavy RAIN for 2+ seasons AND hydraulic erosion parameter >= 0.65 in target tile cluster.",
+    "log_text": "The earth swallows itself — a sudden, catastrophic silence where fields once were, the ground opening like a door to reveal the hollow architecture beneath.",
+    "world_effect": "3-5 surface tiles convert to sinkhole type, destroying all flora/fauna/structures. Water table disrupted — adjacent soil moisture fluctuates wildly for 3 seasons. New subterranean water feature created.",
+    "chain_events": ["underground_spring_emergence", "civilizational_displacement", "karst_lake_formation"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "flash_flood_event",
+    "event_type": "SCHISM",
+    "trigger_condition": "STORM weather AND rainfall > 200% of seasonal norm AND karst or low-elevation terrain with high soil saturation.",
+    "log_text": "The river forgets its name and becomes everything — a brown, relentless erasure racing down the valleys, rewriting the map the civilization thought it knew.",
+    "world_effect": "Low-elevation tiles flooded for 2 days, all flora yield = 0. CROP soil nutrients washed away (-3). COW and STAG fauna pushed to higher ground. Sediment deposited creates +2 fertile soil in flood plain post-event.",
+    "chain_events": ["flood_recession_bloom", "karst_cave_collapse", "civilizational_displacement"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "drought_land_cracking",
+    "event_type": "SCHISM",
+    "trigger_condition": "DROUGHT active for 4+ consecutive seasons AND soil moisture < 10% on 20+ tiles.",
+    "log_text": "The earth opens its palm and shows you nothing — the cracks deepen until the land resembles a map drawn by a cartographer who had given up on hope.",
+    "world_effect": "Cracked tiles impose -4 soil moisture modifier that persists 2 seasons post-drought. CROP tiles on cracked land yield 0. All fauna retreat. Underground water table permanently lowered by 1 tier in affected zone.",
+    "chain_events": ["desertification_creep", "underground_spring_drying", "dust_storm_sequence"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "aurora_crop_communion",
+    "event_type": "MIRACLE",
+    "trigger_condition": "AURORA weather active AND CROP cultivar tier >= 3 AND clear sky conditions AND nighttime game cycle.",
+    "log_text": "The magnetic fire descends to whisper against the highest leaves — and the crops, sensitized by cultivation across generations, lean upward into the colors as if remembering something divine.",
+    "world_effect": "CROP tiles with cultivar tier >= 3 gain +2 to current cultivar advancement. All CROP disease params reduced to 0. Yield bonus +25% for next season. Rare chance (15%) of celestial cultivar emergence.",
+    "chain_events": ["celestial_fauna_descent", "cultivar_breakthrough", "divine_harvest_season"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "electromagnetic_storm",
+    "event_type": "SCHISM",
+    "trigger_condition": "STORM weather AND magnetosphere_weakness parameter active AND civilization has metallic structures present.",
+    "log_text": "The sky becomes a weapon — invisible forces tearing through copper and iron and the delicate electrical agreements of civilization, leaving stunned silence in the crackling aftermath.",
+    "world_effect": "All civilization metallic infrastructure in affected zone disabled for 3 days. AURORA weather triggered as side effect. CELESTIAL fauna behavior becomes erratic. Soil mineral content altered — iron deposits increased.",
+    "chain_events": ["magnetosphere_weakening", "aurora_crop_communion", "electromagnetic_fauna_migration"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "meteor_shower_sequence",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Periodic astronomical event (every 12 seasons) AND clear sky conditions AND no active STORM.",
+    "log_text": "The sky rehearses its own destruction all night — stone after stone burning its signature across the dark, and the world watches with the understanding that it is perpetually renting its ground from the cosmos.",
+    "world_effect": "1-3 small impact craters created in random locations, destroying local flora. Impact sites have unique mineral composition (+7 soil nutrients, rare elements). CELESTIAL fauna drawn to impact sites. New Meteoritic biome type may emerge.",
+    "chain_events": ["impact_crater_ecology", "magnetosphere_weakening", "celestial_fauna_descent"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "soil_liquefaction",
+    "event_type": "SCHISM",
+    "trigger_condition": "STORM or seismic event AND water-saturated soil parameter >= 0.85 AND sedimentary terrain type.",
+    "log_text": "The ground stops being solid — it moves with the slow deliberation of a river made of earth, carrying everything built upon it as a passenger to an uncertain destination.",
+    "world_effect": "Affected tiles' structures and flora submerged or displaced. Soil compaction destroyed — replanted CROP yields -50% for 4 seasons until soil restructures. TREE tiles killed. Creates unique waterlogged terrain.",
+    "chain_events": ["flood_recession_bloom", "civilizational_displacement", "bare_earth_succession"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "lava_field_succession",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Follows volcanic_eruption_minor or volcanic_eruption_caldera; 3 seasons after lava cools and hardens.",
+    "log_text": "The frozen river of stone makes its peace with time — and time, in return, begins the ten-thousand-year argument of cracking it back into something that can be called soil.",
+    "world_effect": "Lava tiles begin slow conversion to volcanic rock, then proto-soil at rate of 1 tile per 3 seasons. Pioneer EXOTIC species begin colonizing edges. Geothermal vents may emerge adding persistent soil warmth bonus.",
+    "chain_events": ["volcanic_ash_bloom", "ancient_grove_emergence", "geothermal_vent_ecology"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "thermal_erosion_cascade",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Volcanic biome AND thermal_erosion parameter >= 0.6 AND RAIN active for 2+ seasons.",
+    "log_text": "Heat and water hold their ancient argument across the mountain's face, and the mountain, outvoted by time, begins to rearrange itself into something humbler.",
+    "world_effect": "New channel/ravine terrain features created downslope. Mineral-rich sediment deposited in lower biome (+3 soil nutrients). TREE tiles on erosion paths destroyed. New water routing changes downstream moisture distribution.",
+    "chain_events": ["flash_flood_event", "karst_cave_collapse", "underground_spring_emergence"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "dust_storm_sequence",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows drought_land_cracking OR desertification_creep AND wind speed parameter elevated.",
+    "log_text": "The desert teaches the sky its vocabulary — a wall of brown static that erases the horizon and fills the lungs of every living thing with the dust of what used to grow here.",
+    "world_effect": "All CROP and EXOTIC tiles in storm path lose -2 soil nutrients. Pest parameter +0.2 from buried seeds disturbed. Visibility-based civilization events disabled. TREE tiles lose -1 cultivar tier equivalent. Storm path shifts based on prevailing wind.",
+    "chain_events": ["desertification_creep", "dust_deposition_fertility", "civilizational_displacement"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "underground_spring_emergence",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Karst biome AND karst_cave_collapse has occurred within 6 tiles AND soil moisture differential >= 0.4 between deep and surface layers.",
+    "log_text": "Where the earth collapsed, water finds its ancient argument for upward motion — a cold, clear announcement rising through the rubble into a surprised and grateful world.",
+    "world_effect": "New permanent water source tile created. Adjacent tiles gain +3 soil moisture passively. CROP yield +20% within 4-tile radius indefinitely. Flora disease resistance +15%. Settlement growth rate increases if civilization present.",
+    "chain_events": ["karst_lake_formation", "ecosystem_rebound", "mycorrhizal_awakening"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "pyroclastic_flora_wipe",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows volcanic_eruption_caldera; pyroclastic flow extends beyond primary lava radius.",
+    "log_text": "The mountain's rage moves faster than fire, faster than sound — a superheated avalanche that does not discriminate between the old and the cultivated and the beloved.",
+    "world_effect": "All flora and fauna in 12-tile radius from vent immediately destroyed. Soil sterilized for 3 seasons — no growth possible. Ash layer deposited at maximum thickness. Biome type converts to volcanic wasteland temporarily.",
+    "chain_events": ["volcanic_ash_bloom", "lava_field_succession", "ecological_void_state"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "volcanic_eruption_caldera",
+    "event_type": "SCHISM",
+    "trigger_condition": "Volcanic biome AND tectonic stress >= 0.95 AND minor eruption occurred within 4 seasons without full pressure release.",
+    "log_text": "The mountain disagrees with the concept of itself — and in the space of an hour, it unmakes the summit, offering its interior to the sky in a transaction that reshapes the known horizon.",
+    "world_effect": "Caldera formed — permanent terrain feature replacing volcanic peak. 15-tile radius devastated immediately. Global weather temperature drops -10% for 3 seasons due to ash veil. New geothermal field created in caldera zone.",
+    "chain_events": ["pyroclastic_flora_wipe", "volcanic_winter_onset", "lava_field_succession"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "hydraulic_sinkhole_cluster",
+    "event_type": "SCHISM",
+    "trigger_condition": "Karst biome AND hydraulic erosion parameter >= 0.8 AND 3+ cave systems present below surface tiles in a cluster.",
+    "log_text": "The karst keeps its own accounting, and when the debt comes due, entire fields vanish simultaneously — a coordinated disappearance that suggests something beneath the earth planned it.",
+    "world_effect": "3-6 sinkholes open simultaneously in a cluster pattern. All surface structures and flora destroyed. New underground lakes may form. Zone becomes geologically unstable — future collapse risk increases for adjacent tiles.",
+    "chain_events": ["karst_lake_formation", "underground_spring_emergence", "civilizational_displacement"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "flood_recession_bloom",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows flash_flood_event after waters recede; sediment deposited on 5+ tiles AND temperature above seasonal average.",
+    "log_text": "The flood retreats and leaves behind its gift — a dark, mineral-rich skin across the valley floor, and within days the first seedlings read it like an invitation.",
+    "world_effect": "Flood-plain tiles receive +4 soil nutrients from sediment deposition. CROP and EXOTIC re-colonization rate doubled. TREE seedling probability 30% per bare tile. Soil moisture remains optimal for 2 seasons.",
+    "chain_events": ["ecosystem_rebound", "bare_earth_succession", "cultivar_breakthrough"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "karst_lake_formation",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Follows karst_cave_collapse or hydraulic_sinkhole_cluster AND sufficient groundwater accumulation parameter reached.",
+    "log_text": "The wound fills with water, and the water decides to stay — a new lake settling into the hollow of the earth's mistake, clear and still and immediately beginning to be beautiful.",
+    "world_effect": "Collapsed karst tiles become permanent lake feature. Adjacent tiles gain passive moisture +2. New aquatic ecosystem begins forming. STAG fauna drawn to lake edge. Civilization fishing and water access bonus if settled nearby.",
+    "chain_events": ["underground_spring_emergence", "ecosystem_rebound", "lacustrine_bloom"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "magnetic_aurora_pulse",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "AURORA active AND magnetosphere_weakness parameter >= 0.5 AND polar biome adjacency.",
+    "log_text": "The sky rewrites its geometry in sheets of green and violet, and the magnetic field bends below like a river responding to a distant earthquake — every compass, every navigating creature, suddenly uncertain.",
+    "world_effect": "Navigation-based civilization events disabled for 1 day. CELESTIAL fauna behavior altered — drawn to high-elevation tiles. All CROP disease parameters -0.2. EXOTIC flora near magnetic anomalies experience accelerated growth.",
+    "chain_events": ["aurora_crop_communion", "electromagnetic_storm", "magnetosphere_weakening"]
+  },
+  {
+    "category": "GEOLOGICAL_WEATHER",
+    "event_id": "geothermal_vent_ecology",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Geothermal vent terrain feature exists AND no DROUGHT AND mineral content in adjacent tiles above threshold.",
+    "log_text": "Life does not require permission — it finds the heated ground and the mineral-rich vapor of the deep earth and builds itself a small ecosystem without waiting for better conditions.",
+    "world_effect": "Unique EXOTIC flora variants develop around vents immune to cold temperatures. Year-round growth possible in zone regardless of season. CELESTIAL fauna spawn rate +30% near vents. New cultivar type unlockable.",
+    "chain_events": ["ancient_grove_emergence", "cultivar_breakthrough", "celestial_fauna_descent"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "multi_season_drought_chain",
+    "event_type": "SCHISM",
+    "trigger_condition": "3 consecutive DROUGHT seasons logged AND no rainfall event between them AND soil moisture < 15% globally.",
+    "log_text": "The rains have stopped holding their appointment with the earth — three seasons, then four, then the world stops counting and starts mourning what it took for granted.",
+    "world_effect": "Global soil moisture drops to critical levels. CROP yields -70%. Water sources begin drying. Underground water table lowered globally by 1 tier. Triggers drought_land_cracking in most-affected zones. All fauna aggressiveness increases.",
+    "chain_events": ["drought_land_cracking", "dust_storm_sequence", "desertification_creep"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "desertification_creep",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows multi_season_drought_chain OR drought_land_cracking; bare earth tiles >= 50% of a biome AND no water sources within 8 tiles.",
+    "log_text": "The desert is not a place — it is a process, an argument that the land has lost, one dry season at a time, until even the argument is too exhausted to continue.",
+    "world_effect": "Biome type begins converting to Desert at 1 tile per season. TREE and CROP tiles destroyed on conversion. Permanent soil moisture reduction persists even after rainfall events end. Sand dune terrain features begin forming.",
+    "chain_events": ["dust_storm_sequence", "underground_spring_drying", "oasis_emergence"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "oceanic_thermal_inversion",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Sea surface temperature parameter inverted (deep cold water upwelling) AND coastal biomes present AND temperature differential > 20 degrees.",
+    "log_text": "The ocean reverses its interior logic — cold and ancient water from unimaginable depths rises to meet the sky, carrying nutrients from the deep past and rewriting the weather in every coastal province.",
+    "world_effect": "All coastal biome temperatures drop -8 degrees for 3 seasons. Coastal CROP yields +50% from nutrient-rich moisture. RAIN events increase in frequency near coast. Inland areas become drier as weather patterns redirect.",
+    "chain_events": ["coastal_fog_era", "multi_season_drought_chain", "aquatic_bloom_cascade"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "permanent_biome_transition",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Temperature average shift of > 8 degrees persists for 6+ seasons AND precipitation pattern changes by > 40% from baseline.",
+    "log_text": "The world stops and considers the creature it was and the creature it is becoming — and in the long silence of geological time, it begins the slow work of remaking its own skin.",
+    "world_effect": "Target biome type permanently reclassified. All existing flora and fauna experience survival pressure matching new biome requirements. Some species go extinct, others thrive. New biome-specific EXOTIC flora emerges.",
+    "chain_events": ["species_extinction_event", "invasive_dominance", "climate_refugee_migration"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "glacial_advance",
+    "event_type": "SCHISM",
+    "trigger_condition": "Temperature globally below seasonal average for 5+ consecutive seasons AND polar or high-elevation biomes present.",
+    "log_text": "The ice remembers when it owned all of this — and something in the planetary mechanics gives it permission to remember, to advance, to reclaim the familiar cold geometries of its ancient dominion.",
+    "world_effect": "High-elevation tiles begin converting to permafrost. TREE and CROP tiles in glacial path destroyed. Glacial till deposited — ultra-fertile but locked until thaw. Global temperature drops additional -5%. Sea level decreases over time.",
+    "chain_events": ["glacial_ecology_band", "permafrost_fauna_emergence", "volcanic_winter_onset"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "magnetosphere_weakening",
+    "event_type": "SCHISM",
+    "trigger_condition": "Periodic cosmic event OR follows electromagnetic_storm 3+ times AND solar_activity parameter elevated.",
+    "log_text": "The invisible shield that the planet wears against the cosmos begins to thin — and through the gaps, the solar wind arrives with its news of stellar violence, unfiltered and direct.",
+    "world_effect": "AURORA frequency doubles. CROP disease rate increases globally +0.1 (UV damage). Electromagnetic_storm frequency triples. CELESTIAL fauna behave erratically. Civilization navigation and signal infrastructure disrupted.",
+    "chain_events": ["electromagnetic_storm", "aurora_crop_communion", "solar_flare_cascade"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "volcanic_winter_onset",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows volcanic_eruption_caldera AND ash_veil parameter >= 0.7 globally.",
+    "log_text": "The volcano's argument with the sky wins — ash hangs in the stratosphere like a drawn curtain, and the sun delivers its light to a world that can no longer properly receive it.",
+    "world_effect": "Global temperature -12% for 4 seasons. All CROP yields halved from reduced photosynthesis. TREE growth rate halved. AURORA frequency increases due to particulate refraction. Mass fauna migration toward equatorial zones.",
+    "chain_events": ["glacial_advance", "multi_season_drought_chain", "climate_refugee_migration"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "solar_flare_cascade",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows magnetosphere_weakening AND solar_activity parameter peaks; periodic event every 24 seasons.",
+    "log_text": "The star at the center of everything briefly forgets to be measured — and for three days the world is bathed in radiation that rewrites the rules of what a living thing can tolerate.",
+    "world_effect": "All CROP disease and mutation parameters +0.4 immediately. CELESTIAL fauna suffer -2 hunger. AURORA event triggered globally. 10% chance each EXOTIC flora species mutates. Civilization astronomy structures disrupted.",
+    "chain_events": ["species_mutation_event", "magnetosphere_weakening", "aurora_crop_communion"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "aquatic_bloom_cascade",
+    "event_type": "SCHISM",
+    "trigger_condition": "Nutrient-rich water upwelling (oceanic_thermal_inversion) AND high solar irradiance AND coastal water tiles present.",
+    "log_text": "The sea blooms with a green and toxic exuberance — algae in quantities that erase the blue, and beneath the beauty a quiet suffocation spreading through every creature that breathes the water.",
+    "world_effect": "Coastal water tiles become hypoxic — aquatic fauna die. Coastal CROP irrigation contaminated, yields -40%. Toxic bloom gases affect adjacent land tiles: STAG and COW fauna -1 health. Event clears in 2-3 seasons naturally.",
+    "chain_events": ["coastal_fog_era", "marine_ecosystem_reset", "civilizational_displacement"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "permafrost_fauna_emergence",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows glacial_advance; permafrost tiles present for 4+ seasons AND temperature rises above thaw threshold.",
+    "log_text": "The ice releases its archive — ancient fauna, preserved across impossible spans of time, blinking into a world that no longer has the vocabulary for what they are.",
+    "world_effect": "Unique ancient fauna type (pre-existing game fauna variant with maximized stat parameters) emerges from permafrost tiles. Carries ancient disease parameter (50% chance) that may or may not affect current ecosystem. New research unlocked for civilization.",
+    "chain_events": ["species_mutation_event", "ancient_disease_vector", "ecosystem_rebound"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "famine_year",
+    "event_type": "SCHISM",
+    "trigger_condition": "Global CROP yield < 30% of civilization food requirements for 2+ consecutive seasons AND food reserve parameter at 0.",
+    "log_text": "The granaries tell the story with their echoing emptiness — and the civilization learns, again, the oldest lesson: that everything built rests ultimately on the willingness of the earth to feed it.",
+    "world_effect": "Civilization population growth stops. Existing population begins declining at -2% per season. Civilization happiness crashes. Mass migration events trigger. Remaining CROP tiles gain desperate over-cultivation pressure, increasing future blight risk.",
+    "chain_events": ["desperate_burning", "civilizational_displacement", "climate_refugee_migration"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "desperate_burning",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows famine_year OR crop_blight_wave AND civilization agency present with no healing options available.",
+    "log_text": "Desperation is the oldest agricultural technique — they burn what is sick, hoping the fire will also consume the cause, not understanding that fire keeps its own counsel about what it takes.",
+    "world_effect": "Targeted flora tiles destroyed but pest/disease params cleared. Adjacent TREE tiles have 30% chance of catching fire (triggers forest_fire_natural chain). Soil nutrients +1 from ash but compaction increases. Sets ecological reset conditions.",
+    "chain_events": ["forest_fire_natural", "post_fire_succession", "ecological_void_state"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "climate_refugee_migration",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Follows famine_year OR desertification_creep OR volcanic_winter_onset AND civilization settlement becomes uninhabitable.",
+    "log_text": "The people carry only what matters — seed and fire and the memory of how things grew — and they walk toward the horizon that they pray is not the same as the one they are leaving.",
+    "world_effect": "Civilization tile of origin depopulated. Population pressure moves to adjacent viable biome. New settlement established in target zone. Origin zone begins unmanaged ecological succession. Migration path tiles show temporary resource depletion.",
+    "chain_events": ["bare_earth_succession", "ecosystem_rebound", "biome_pressure_relief"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "glacial_ecology_band",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows glacial_advance AND a band of temperate biome tiles exist at glacial margin.",
+    "log_text": "At the edge of the ice, where cold and warmth negotiate their boundary, life finds the compromise exhilarating — a narrow belt of astonishing density and variety pressed between two absolutes.",
+    "world_effect": "Tiles at glacial margin gain unique periglacial classification with +5 soil nutrients from glacial melt minerals. Unique EXOTIC flora types adapted to temperature extremes develop here exclusively. CELESTIAL fauna drawn to this zone.",
+    "chain_events": ["ancient_grove_emergence", "species_mutation_event", "permafrost_fauna_emergence"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "coastal_fog_era",
+    "event_type": "EVOLUTION",
+    "trigger_condition": "Follows oceanic_thermal_inversion OR aquatic_bloom_cascade AND coastal biomes present.",
+    "log_text": "The fog establishes residency — arriving each morning like a quiet government decree, muffling sound and light, rewriting the coastal world in soft grays and the smell of deep ocean.",
+    "world_effect": "Coastal biome tiles gain persistent +2 soil moisture from fog drip. Sunlight reduced -20% affecting CROP growth rates. Unique fog-adapted EXOTIC flora emerges. TREE tiles grow slowly taller and broader in permanent fog belt.",
+    "chain_events": ["mycorrhizal_awakening", "ancient_grove_emergence", "aquatic_bloom_cascade"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "underground_spring_drying",
+    "event_type": "SCHISM",
+    "trigger_condition": "Follows multi_season_drought_chain for 5+ seasons AND water table parameter depleted below critical threshold.",
+    "log_text": "The springs go quiet one by one — first the smallest, then the seasonal, then finally the ancient reliable ones, and the silence of their absence is a kind of geological grief.",
+    "world_effect": "All underground water source tiles dry permanently. Adjacent biome soil moisture drops -5. CROP and EXOTIC flora within 6 tiles suffer permanent -2 yield. Settlement water access critical — triggers civilization crisis event.",
+    "chain_events": ["desertification_creep", "dust_storm_sequence", "famine_year"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "species_extinction_event",
+    "event_type": "SCHISM",
+    "trigger_condition": "Any single fauna or flora species population drops to 0 globally OR follows permanent_biome_transition making habitat unavailable.",
+    "log_text": "The world does not mark the moment — there is no ceremony for the last of something, only the sudden accumulating absence where a presence used to be.",
+    "world_effect": "Species permanently removed from the world state. All ecological roles that species filled become vacuums. Trophic cascade parameters recalculate globally. If a keystone species, triggers chain of secondary effects. Cannot be undone.",
+    "chain_events": ["trophic_cascade_collapse", "invasive_dominance", "ecosystem_rebound"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "oasis_emergence",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows desertification_creep AND deep aquifer present in geological substrate AND 6+ tiles of desert classification adjacent.",
+    "log_text": "In the middle of the negation, water finds a voice — a circle of impossible green in the surrounding ochre, a rumor that refuses to be quiet, that life has not entirely conceded.",
+    "world_effect": "Oasis terrain tile created with permanent water source. 4-tile radius converts to fertile soil. Unique drought-resistant EXOTIC flora colonizes rapidly. CELESTIAL fauna drawn to oasis. Civilization can settle here with unique biome bonuses.",
+    "chain_events": ["ancient_grove_emergence", "cultivar_breakthrough", "celestial_fauna_descent"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "cultivar_breakthrough",
+    "event_type": "MIRACLE",
+    "trigger_condition": "CROP cultivar tier reaches maximum (4) on 5+ adjacent tiles AND no disease or pest params active AND a MIRACLE event active in same season.",
+    "log_text": "After countless generations of quiet selection, the plant arrives at something new — a version of itself that seems to remember the future, yielding beyond the limits of the expected.",
+    "world_effect": "New Tier 5 Cultivar unlocked — unique crop variant with +50% yield, enhanced disease resistance, and reduced soil nutrient consumption. Seeds spread to adjacent tiles at 15% per season. Civilization receives divine favor bonus.",
+    "chain_events": ["divine_harvest_season", "spore_bloom_festival", "aurora_crop_communion"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "divine_harvest_season",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows cultivar_breakthrough OR celestial_fauna_descent AND CLEAR weather AND civilization at peace (no SCHISM events active for 3 seasons).",
+    "log_text": "The season arrives already legendary — light at a particular angle, soil at the exact composition of maximum generosity, and the crops rising to meet the moment with a yield the civilization will remember as the year the gods were watching.",
+    "world_effect": "All CROP tiles yield 200% of normal for the season. Civilization food reserves filled to maximum. All flora disease and pest parameters reset to 0. Civilization happiness maximized. Population growth +10% for 2 seasons.",
+    "chain_events": ["cultivar_breakthrough", "mycorrhizal_awakening", "ancient_grove_emergence"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "ecological_void_state",
+    "event_type": "SCHISM",
+    "trigger_condition": "All flora and fauna in a biome reach 0 simultaneously — no species surviving in a 15-tile radius.",
+    "log_text": "Nothing lives here now. The world looks at the empty zone with an expression that, if the world had faces, might be called grief — or perhaps just the patient acknowledgment of its own capacity for silence.",
+    "world_effect": "Biome enters dead zone classification. No natural flora or fauna re-colonization for 3 seasons. Soil parameters locked at degraded state. After 3 seasons, bare_earth_succession fires automatically. The zone becomes historically marked — civilizations can investigate.",
+    "chain_events": ["bare_earth_succession", "oasis_emergence", "post_fire_succession"]
+  },
+  {
+    "category": "CLIMATE_EMERGENCE",
+    "event_id": "sacred_biome_lock",
+    "event_type": "MIRACLE",
+    "trigger_condition": "Follows ancient_grove_emergence AND CELESTIAL fauna has visited the grove AND civilization has observed the site (proximity condition).",
+    "log_text": "Something in the grove stops belonging entirely to the natural world — it exists at the intersection of the made and the divine, and even the weather seems to negotiate permission before entering.",
+    "world_effect": "Biome designated as Sacred — immune to civilization development, natural disaster damage reduced by 60%, unique shrine ecosystem rules apply. CELESTIAL fauna becomes permanent resident. Rare divine events have 3x probability here.",
+    "chain_events": ["divine_harvest_season", "celestial_fauna_descent", "aurora_crop_communion"]
+  }
+]
