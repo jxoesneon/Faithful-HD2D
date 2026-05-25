@@ -14,6 +14,25 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
+  // Sprite sheet mapping for each god (row, sheet)
+  const getGodSprite = (id: string) => {
+    const sheet1 = '/assets/sprites/char-gods-4k-sheet.png';
+    const sheet2 = '/assets/sprites/char-gods-2-4k-sheet.png';
+    switch (id) {
+      case 'sylphra':    return { sheet: sheet1, row: 0 };
+      case 'vulcanus':   return { sheet: sheet1, row: 1 };
+      case 'thalassor':  return { sheet: sheet1, row: 2 };
+      case 'xylorex':    return { sheet: sheet1, row: 3 };
+      case 'aethelgard': return { sheet: sheet1, row: 4 };
+      case 'null_v8':    return { sheet: sheet1, row: 5 };
+      case 'krigor':     return { sheet: sheet1, row: 6 };
+      case 'malakor':    return { sheet: sheet1, row: 7 };
+      case 'chrono':     return { sheet: sheet2, row: 0 };
+      case 'astraea':    return { sheet: sheet2, row: 1 };
+      default:           return { sheet: sheet1, row: 0 };
+    }
+  };
+
   // Return specific lucide icon depending on element
   const getElementIcon = (element: string) => {
     switch (element.toLowerCase()) {
@@ -91,22 +110,26 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
                     <span className="opacity-50 text-slate-400">PATRON {god.id.substring(3).toUpperCase()}</span>
                   </div>
 
-                  {/* Icon or Avatar Visual Descriptor */}
+                  {/* God Sprite Portrait */}
                   <div className="h-28 rounded-xl bg-black/45 border border-white/5 flex flex-col items-center justify-center p-3 relative overflow-hidden">
                     {/* Abstract Grid background */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:10px_10px] opacity-40" />
-                    <span className="text-4xl relative z-10 select-none filter drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]">
-                      {god.id.includes('shiva') ? '🔥' :
-                       god.id.includes('athena') ? '🦉' :
-                       god.id.includes('amaterasu') ? '☀️' :
-                       god.id.includes('horus') ? '🦅' :
-                       god.id.includes('quetzalcoatl') ? '🐍' :
-                       god.id.includes('thor') ? '⚡' :
-                       god.id.includes('huitzilopochtli') ? '⚔️' :
-                       god.id.includes('anubis') ? '⚖️' :
-                       god.id.includes('freya') ? '🐱' : '🐉'}
-                    </span>
-                    <span className="text-[8px] text-slate-500 font-mono tracking-widest uppercase mt-3 relative z-10">ALIGNED COGNITION</span>
+                    {(() => {
+                      const sprite = getGodSprite(god.id);
+                      return (
+                        <div
+                          className="relative z-10 w-20 h-20 rounded-lg border border-white/10 shadow-lg"
+                          style={{
+                            backgroundImage: `url(${sprite.sheet})`,
+                            backgroundSize: '800% 800%',
+                            backgroundPosition: `0% ${(sprite.row / 7) * 100}%`,
+                            backgroundRepeat: 'no-repeat',
+                            imageRendering: 'auto'
+                          }}
+                        />
+                      );
+                    })()}
+                    <span className="text-[8px] text-slate-500 font-mono tracking-widest uppercase mt-2 relative z-10">ALIGNED COGNITION</span>
                   </div>
 
                   {/* Deity Info */}
