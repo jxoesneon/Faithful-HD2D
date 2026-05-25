@@ -338,8 +338,6 @@ export class GameRenderer {
         antialias: true,
         width: this.container.clientWidth,
         height: this.container.clientHeight,
-        autoDensity: true,
-        resolution: window.devicePixelRatio || 1,
       });
 
       if (this.wasDestroyed || !this.app) {
@@ -374,115 +372,53 @@ export class GameRenderer {
         resolution: window.devicePixelRatio || 1,
       });
 
-      // --- Initialize Deferred Lighting Resources (Phase 1, Step 1) ---
-      // Fix for PIXI v8 API compatibility
-      this.lightingShader = new PIXI.Shader({
-        glProgram: PIXI.GlProgram.from({
-          vertex: spriteVertexShader,
-          fragment: lightingFragmentShader,
-        }),
-        resources: {
-          uAlbedoBuffer: this.gBufferAlbedo.source,
-          uNormalBuffer: this.gBufferNormal.source,
-          uSunDirection: this.sunDirection,
-          uSunColor: this.sunColor,
-          uAmbientColor: this.ambientColor,
-          uGodRayIntensity: this.godRayIntensity,
-          uSunScreenPos: this.sunScreenPos,
-          uResolution: new Float32Array([this.app.screen.width, this.app.screen.height]),
-          uPointLightCount: 0,
-          uPointLightPositions: new Float32Array(this.maxPointLights * 3),
-          uPointLightColors: new Float32Array(this.maxPointLights * 3),
-          uPointLightRadii: new Float32Array(this.maxPointLights),
-          uPointLightIntensities: new Float32Array(this.maxPointLights),
-          uGodsEyeMode: this.godsEyeMode ? 1.0 : 0.0,
-        }
-      }) as any;
-
-      this.lightingQuad = new PIXI.Mesh({
-        geometry: new PIXI.MeshGeometry({
-          positions: new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]),
-          uvs: new Float32Array([0, 1, 1, 1, 1, 0, 0, 0]),
-          indices: new Uint32Array([0, 1, 2, 0, 2, 3]),
-        }),
-        shader: this.lightingShader as any,
-      }) as any;
-
       this.app.stage.addChild(this.tiles);
       this.app.stage.addChild(this.interactions);
       this.app.stage.addChild(this.entities);
       this.app.stage.addChild(this.labelLayer);
       this.app.stage.addChild(this.overlaysLayer);
 
-      // --- Post-Initialization: Two-Pass Rendering Loop (Phase 1, Step 1) ---
-      this.app.ticker.add(() => {
-        if (!this.app || !this.gBufferAlbedo || !this.gBufferNormal || !this.lightingShader) return;
+      // NOTE: Deferred lighting pipeline disabled for PIXI v8 compatibility.
+      // The custom Shader/Mesh resources API changed in v8 and the lighting
+      // quad shader throws "Cannot create property 'name' on number".
+      // Falling back to direct stage rendering until deferred pipeline is ported.
+      try {
+        this.lightingShader = new PIXI.Shader({
+          glProgram: PIXI.GlProgram.from({
+            vertex: spriteVertexShader,
+            fragment: lightingFragmentShader,
+          }),
+          resources: {
+            uAlbedoBuffer: this.gBufferAlbedo.source,
+            uNormalBuffer: this.gBufferNormal.source,
+            uSunDirection: this.sunDirection,
+            uSunColor: this.sunColor,
+            uAmbientColor: this.ambientColor,
+            uGodRayIntensity: this.godRayIntensity,
+            uSunScreenPos: this.sunScreenPos,
+            uResolution: new Float32Array([this.app.screen.width, this.app.screen.height]),
+            uPointLightCount: 0,
+            uPointLightPositions: new Float32Array(this.maxPointLights * 3),
+            uPointLightColors: new Float32Array(this.maxPointLights * 3),
+            uPointLightRadii: new Float32Array(this.maxPointLights),
+            uPointLightIntensities: new Float32Array(this.maxPointLights),
+            uGodsEyeMode: this.godsEyeMode ? 1.0 : 0.0,
+          }
+        }) as any;
 
-        if (this.batterySaver) {
-           // Skip deferred passes for battery efficiency
-           return;
-        }
-
-        // Pass 1: Render Albedo
-        this.app.renderer.render({
-          container: this.app.stage,
-          target: this.gBufferAlbedo,
-          clear: true,
-        });
-
-        // Pass 2: Render Normals (Simplified: reuse stage for now, usually needs normal-override)
-        this.app.renderer.render({
-          container: this.app.stage,
-          target: this.gBufferNormal,
-          clear: true,
-        });
-
-        // Pass 3: Final Lighting & Post-Process
-        if (this.lightingQuad && this.lightingShader) {
-           this.lightingShader.resources.uSunDirection = this.sunDirection;
-           this.lightingShader.resources.uGodRayIntensity = this.godRayIntensity;
-           this.lightingShader.resources.uSunScreenPos = this.sunScreenPos;
-           this.lightingShader.resources.uGodsEyeMode = this.godsEyeMode ? 1.0 : 0.0;
-           this.lightingShader.resources.uResolution = new Float32Array([this.app.screen.width, this.app.screen.height]);
-           
-           // Update point lights
-           const lightCount = Math.min(this.pointLights.length, this.maxPointLights);
-           this.lightingShader.resources.uPointLightCount = lightCount;
-           
-           const positions = new Float32Array(this.maxPointLights * 3);
-           const colors = new Float32Array(this.maxPointLights * 3);
-           const radii = new Float32Array(this.maxPointLights);
-           const intensities = new Float32Array(this.maxPointLights);
-           
-           for (let i = 0; i < lightCount; i++) {
-               const light = this.pointLights[i];
-               const iso = this.toIso(light.x, light.y);
-               const screenX = (iso.x + this.debugOffsetX) * this.zoom + this.app.stage.x;
-               const screenY = (iso.y + this.debugOffsetY) * this.zoom + this.app.stage.y;
-               
-               positions[i * 3] = screenX / this.app.screen.width;
-               positions[i * 3 + 1] = screenY / this.app.screen.height;
-               positions[i * 3 + 2] = 0.1;
-               
-               colors[i * 3] = light.color[0];
-               colors[i * 3 + 1] = light.color[1];
-               colors[i * 3 + 2] = light.color[2];
-               
-               radii[i] = light.radius * this.zoom;
-               intensities[i] = light.intensity;
-           }
-           
-           this.lightingShader.resources.uPointLightPositions = positions;
-           this.lightingShader.resources.uPointLightColors = colors;
-           this.lightingShader.resources.uPointLightRadii = radii;
-           this.lightingShader.resources.uPointLightIntensities = intensities;
-
-           this.app.renderer.render({
-             container: this.lightingQuad,
-             clear: true,
-           });
-        }
-      });
+        this.lightingQuad = new PIXI.Mesh({
+          geometry: new PIXI.MeshGeometry({
+            positions: new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]),
+            uvs: new Float32Array([0, 1, 1, 1, 1, 0, 0, 0]),
+            indices: new Uint32Array([0, 1, 2, 0, 2, 3]),
+          }),
+          shader: this.lightingShader as any,
+        }) as any;
+      } catch (deferredErr) {
+        console.warn('[Renderer] Deferred lighting pipeline disabled:', deferredErr);
+        this.lightingShader = null;
+        this.lightingQuad = null;
+      }
 
       this.app.stage.x = this.app.screen.width / 2;
       this.app.stage.y = this.app.screen.height / 5;
