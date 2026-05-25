@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { AudioEngine } from '../engine/audio';
 import { motion } from 'motion/react';
+import { useDevice } from './AdaptiveUI';
 
 interface GameSystemSettings {
   gameSpeed: number;
@@ -78,6 +79,7 @@ export function CosmicSettingsHub({
   onImport,
   onClose
 }: CosmicSettingsHubProps) {
+  const { isMobile, isLandscape } = useDevice();
 
   const triggerChange = (key: keyof GameSystemSettings, value: any) => {
     AudioEngine.playClick();
@@ -89,16 +91,16 @@ export function CosmicSettingsHub({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: 'spring', stiffness: 280, damping: 25 }}
-      className="w-full max-w-5xl bg-slate-950/75 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-[0_24px_64px_rgba(0,0,0,0.8)] flex flex-col max-h-[90vh] text-white select-none"
+      className={`w-full max-w-5xl bg-slate-950/75 backdrop-blur-md border border-white/10 rounded-3xl ${isMobile ? 'p-5' : 'p-8'} shadow-[0_24px_64px_rgba(0,0,0,0.8)] flex flex-col max-h-[92vh] text-white select-none`}
     >
       
       {/* Header Bar */}
-      <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4 shrink-0 pointer-events-auto">
+      <div className={`flex justify-between items-center ${isMobile ? 'mb-4' : 'mb-6'} border-b border-white/10 pb-4 shrink-0 pointer-events-auto`}>
         <div className="flex flex-col">
           <span className="text-amber-500 font-mono text-[9px] uppercase tracking-widest block font-bold">L3 CONFIGURATION ARCHIVE</span>
-          <h3 className="text-2xl font-bold tracking-tight capitalize flex items-center gap-3 text-white font-sans">
-            <Settings className="text-amber-400 w-7 h-7 animate-spin animate-duration-10000" />
-            System Settings & Calibration
+          <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} font-bold tracking-tight capitalize flex items-center gap-3 text-white font-sans`}>
+            <Settings className={`text-amber-400 ${isMobile ? 'w-5 h-5' : 'w-7 h-7'} animate-spin animate-duration-10000`} />
+            {!isMobile ? 'System Settings & Calibration' : 'Calibration'}
           </h3>
         </div>
         <button 
@@ -114,10 +116,10 @@ export function CosmicSettingsHub({
       </div>
 
       {/* Main Panel Content */}
-      <div className="overflow-y-auto flex-1 pr-1.5 grid grid-cols-1 md:grid-cols-12 gap-6 custom-scrollbar select-text pointer-events-auto">
+      <div className={`overflow-y-auto flex-1 pr-1.5 grid grid-cols-1 ${isMobile ? '' : 'md:grid-cols-12'} gap-6 custom-scrollbar select-text pointer-events-auto`}>
         
         {/* Left Column: Realtime Tuning parameters */}
-        <div className="md:col-span-6 space-y-6">
+        <div className={`${isMobile ? '' : 'md:col-span-6'} space-y-6`}>
           
           {/* Section 1: Chronos Temporal Engine (Game Speed) */}
           <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl space-y-3.5">
@@ -534,7 +536,7 @@ export function CosmicSettingsHub({
 
 
         {/* Right Column: Timelines Save/Load Matrix */}
-        <div className="md:col-span-6 space-y-4">
+        <div className={`${isMobile ? '' : 'md:col-span-6'} space-y-4`}>
           <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold block">Chronite Storage Slots (Local Saves)</span>
           
           <div className="space-y-3 max-h-[48vh] overflow-y-auto pr-1">

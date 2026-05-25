@@ -1,53 +1,36 @@
 {
   "sheets": {
-    "char-animist-4k-sheet": "/assets/sprites/char-animist-4k-sheet.png",
+    "char-animist-4k-sheet": "/assets/sprites/char-animist-4k-sheet.svg",
     "char-technocrat-4k-sheet": "/assets/sprites/char-technocrat-4k-sheet.svg",
     "char-interventionist-4k-sheet": "/assets/sprites/char-interventionist-4k-sheet.svg",
     "char-nihilist-4k-sheet": "/assets/sprites/char-nihilist-4k-sheet.svg",
     "char-elemental-4k-sheet": "/assets/sprites/char-elemental-4k-sheet.svg",
-    "bldg-animist-4k-sheet": "/assets/sprites/bldg-animist-4k-sheet.png",
-    "bldg-technocrat-4k-sheet": "/assets/sprites/bldg-technocrat-4k-sheet.png",
-    "bldg-interventionist-4k-sheet": "/assets/sprites/bldg-interventionist-4k-sheet.png",
-    "bldg-elemental-4k-sheet": "/assets/sprites/bldg-elemental-4k-sheet.png",
-    "bldg-nihilist-4k-sheet": "/assets/sprites/bldg-nihilist-4k-sheet.png",
-    "bldg-universal-4k-sheet": "/assets/sprites/bldg-universal-4k-sheet.png",
-    "flora-trees-4k-sheet": "/assets/sprites/flora-trees-4k-sheet.png",
-    "flora-exotic-4k-sheet": "/assets/sprites/flora-exotic-4k-sheet.png",
-    "flora-crops-4k-sheet": "/assets/sprites/flora-crops-4k-sheet.png",
-    "geo-base-4k-sheet": "/assets/sprites/geo-base-4k-sheet.png",
-    "geo-minerals-4k-sheet": "/assets/sprites/geo-minerals-4k-sheet.png",
-    "terrain-standard-4k-sheet": "/assets/sprites/terrain-standard-4k-sheet.png",
-    "vfx-miracles-4k-sheet": "/assets/sprites/vfx-miracles-4k-sheet.png",
-    "vfx-disasters-4k-sheet": "/assets/sprites/vfx-disasters-4k-sheet.png",
-    "equip-weapons-4k-sheet": "/assets/sprites/equip-weapons-4k-sheet.png",
-    "equip-armor-4k-sheet": "/assets/sprites/equip-armor-4k-sheet.png",
-    "logistics-vehicles-4k-sheet": "/assets/sprites/logistics-vehicles-4k-sheet.png",
+    "bldg-animist-4k-sheet": "/assets/sprites/bldg-animist-4k-sheet.svg",
+    "bldg-technocrat-4k-sheet": "/assets/sprites/bldg-technocrat-4k-sheet.svg",
+    "bldg-interventionist-4k-sheet": "/assets/sprites/bldg-interventionist-4k-sheet.svg",
+    "bldg-elemental-4k-sheet": "/assets/sprites/bldg-elemental-4k-sheet.svg",
+    "bldg-nihilist-4k-sheet": "/assets/sprites/bldg-nihilist-4k-sheet.svg",
+    "bldg-universal-4k-sheet": "/assets/sprites/bldg-universal-4k-sheet.svg",
+    "flora-trees-4k-sheet": "/assets/sprites/flora-trees-4k-sheet.svg",
+    "flora-exotic-4k-sheet": "/assets/sprites/flora-exotic-4k-sheet.svg",
+    "flora-crops-4k-sheet": "/assets/sprites/flora-crops-4k-sheet.svg",
+    "geo-base-4k-sheet": "/assets/sprites/geo-base-4k-sheet.svg",
+    "geo-minerals-4k-sheet": "/assets/sprites/geo-minerals-4k-sheet.svg",
+    "terrain-standard-4k-sheet": "/assets/sprites/terrain-standard-4k-sheet.svg",
+    "vfx-miracles-4k-sheet": "/assets/sprites/vfx-miracles-4k-sheet.svg",
+    "vfx-disasters-4k-sheet": "/assets/sprites/vfx-disasters-4k-sheet.svg",
+    "equip-weapons-4k-sheet": "/assets/sprites/equip-weapons-4k-sheet.svg",
+    "equip-armor-4k-sheet": "/assets/sprites/equip-armor-4k-sheet.svg",
+    "logistics-vehicles-4k-sheet": "/assets/sprites/logistics-vehicles-4k-sheet.svg",
     "fauna-wild-4k-sheet": "/assets/sprites/fauna-wild-4k-sheet.svg",
     "nano-banana-4k-sheet": "/assets/sprites/nano-banana-4k-sheet.svg",
-    "char-animist-walk-4k-sheet": "/assets/sprites/char-animist-walk-4k-sheet.png"
+    "char-gods-4k-sheet": "/assets/sprites/char-gods-4k-sheet.svg"
   },
   "config": {
-    "size": 1024,
-    "columns": 4,
-    "rows": 4,
-    "cellSize": 256,
-    "controlSurfaces": [
-      {
-        "id": "tactical_hitbox",
-        "type": "ISOMETRIC_QUAD",
-        "active": true
-      },
-      {
-        "id": "entity_interaction",
-        "type": "OVAL_VECTOR",
-        "active": true
-      },
-      {
-        "id": "weather_shield",
-        "type": "SCREEN_SPACE",
-        "active": false
-      }
-    ]
+    "size": 4096,
+    "columns": 8,
+    "rows": 8,
+    "cellSize": 512
   },
   "mappings": {
     "char_ani_gatherer_idle_1": {
@@ -61,17 +44,17 @@
       "row": 0
     },
     "char_ani_gatherer_walk_1": {
-      "sheet": "char-animist-walk-4k-sheet",
+      "sheet": "char-animist-4k-sheet",
       "col": 2,
       "row": 0
     },
     "char_ani_gatherer_walk_2": {
-      "sheet": "char-animist-walk-4k-sheet",
+      "sheet": "char-animist-4k-sheet",
       "col": 3,
       "row": 0
     },
     "char_ani_gatherer_walk_3": {
-      "sheet": "char-animist-walk-4k-sheet",
+      "sheet": "char-animist-4k-sheet",
       "col": 4,
       "row": 0
     },
@@ -7729,6 +7712,286 @@
       "sheet": "nano-banana-4k-sheet",
       "col": 7,
       "row": 7
+    },
+    "god_sylphra_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 0
+    },
+    "god_sylphra_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 0
+    },
+    "god_sylphra_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 0
+    },
+    "god_sylphra_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 0
+    },
+    "god_sylphra_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 0
+    },
+    "god_sylphra_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 0
+    },
+    "god_sylphra_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 0
+    },
+    "god_sylphra_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 0
+    },
+    "god_vulcanus_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 1
+    },
+    "god_vulcanus_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 1
+    },
+    "god_vulcanus_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 1
+    },
+    "god_vulcanus_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 1
+    },
+    "god_vulcanus_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 1
+    },
+    "god_vulcanus_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 1
+    },
+    "god_vulcanus_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 1
+    },
+    "god_vulcanus_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 1
+    },
+    "god_thalassor_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 2
+    },
+    "god_thalassor_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 2
+    },
+    "god_thalassor_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 2
+    },
+    "god_thalassor_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 2
+    },
+    "god_thalassor_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 2
+    },
+    "god_thalassor_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 2
+    },
+    "god_thalassor_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 2
+    },
+    "god_thalassor_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 2
+    },
+    "god_xylorex_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 3
+    },
+    "god_xylorex_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 3
+    },
+    "god_xylorex_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 3
+    },
+    "god_xylorex_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 3
+    },
+    "god_xylorex_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 3
+    },
+    "god_xylorex_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 3
+    },
+    "god_xylorex_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 3
+    },
+    "god_xylorex_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 3
+    },
+    "god_aethelgard_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 4
+    },
+    "god_aethelgard_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 4
+    },
+    "god_aethelgard_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 4
+    },
+    "god_aethelgard_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 4
+    },
+    "god_aethelgard_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 4
+    },
+    "god_aethelgard_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 4
+    },
+    "god_aethelgard_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 4
+    },
+    "god_aethelgard_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 4
+    },
+    "god_nullv8_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 5
+    },
+    "god_nullv8_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 5
+    },
+    "god_nullv8_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 5
+    },
+    "god_nullv8_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 5
+    },
+    "god_nullv8_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 5
+    },
+    "god_nullv8_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 5
+    },
+    "god_nullv8_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 5
+    },
+    "god_nullv8_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 5
+    },
+    "god_krigor_idle_1": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 0,
+      "row": 6
+    },
+    "god_krigor_idle_2": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 1,
+      "row": 6
+    },
+    "god_krigor_idle_3": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 2,
+      "row": 6
+    },
+    "god_krigor_idle_4": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 3,
+      "row": 6
+    },
+    "god_krigor_idle_5": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 4,
+      "row": 6
+    },
+    "god_krigor_idle_6": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 5,
+      "row": 6
+    },
+    "god_krigor_idle_7": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 6,
+      "row": 6
+    },
+    "god_krigor_idle_8": {
+      "sheet": "char-gods-4k-sheet",
+      "col": 7,
+      "row": 6
     }
   }
 }

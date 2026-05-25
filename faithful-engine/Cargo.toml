@@ -21,10 +21,13 @@ serde-wasm-bindgen = { version = "0.6", optional = true }
 console_error_panic_hook = { version = "0.1", optional = true }
 
 [features]
-default = []
+default = ["wasm"]
 wasm = ["wasm-bindgen", "serde-wasm-bindgen", "console_error_panic_hook"]
 
 [profile.release]
 opt-level = 3
 lto = true
 codegen-units = 1
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false

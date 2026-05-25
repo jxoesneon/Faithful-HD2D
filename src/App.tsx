@@ -37,6 +37,7 @@ import { CosmicSettingsHub } from './components/CosmicSettingsHub';
 import { AudioEngine } from './engine/audio';
 import { CoordinateDebugger } from './components/CoordinateDebugger';
 import { AssetRegistryEditor } from './components/AssetRegistryEditor';
+import { useDevice, GlassPanel, AdaptiveContainer } from './components/AdaptiveUI';
 import spriteMappings from '../docs/sprite-mappings.json';
 
 const ILLUMINATION_BOOSTS = [
@@ -192,9 +193,10 @@ export const getTribeTierInfo = (pop: number) => {
     nextThreshold: 10,
     nextName: "Pioneer Clan"
   };
-};
+}
 
 export default function App() {
+  const { isMobile, isLandscape } = useDevice();
   const containerRef = useRef<HTMLDivElement>(null);
   const appRootRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<GameRenderer | null>(null);
@@ -643,95 +645,86 @@ export default function App() {
     const renderer = new GameRenderer(containerRef.current);
     rendererRef.current = renderer;
     
-    const simulation = new SimulationEngine(ecsRef.current);
-    simulationRef.current = simulation;
+    SimulationEngine.create(ecsRef.current).then(simulation => {
+        simulationRef.current = simulation;
 
-    // Load terrain maps upon startup
-    renderer.init().then(() => {
-      renderer.drawTerrain(simulation.getTerrain());
-    });
+        // Load terrain maps upon startup
+        renderer.init().then(() => {
+        renderer.drawTerrain(simulation.getTerrain());
+        });
 
-    // Wire up map interactions with the simulation engine
-    renderer.onTileHover = (gx, gy) => {
-      setHoveredCoordinate({ x: gx, y: gy });
-      const sim = simulationRef.current;
-      if (sim) {
-        setHoveredEntity(sim.getEntityAt(gx, gy));
-      } else {
-        setHoveredEntity(null);
-      }
-    };
+        // Wire up map interactions with the simulation engine
+        renderer.onTileHover = (gx, gy) => {
+            setHoveredCoordinate({ x: gx, y: gy });
+            const sim = simulationRef.current;
+            if (sim) {
+                setHoveredEntity(sim.getEntityAt(gx, gy));
+            } else {
+                setHoveredEntity(null);
+            }
+        };
 
-    renderer.onTileClick = (gx, gy) => {
-      const sim = simulationRef.current;
-      if (!sim) return;
-      const brush = brushRef.current;
+        renderer.onTileClick = (gx, gy) => {
+          const sim = simulationRef.current;
+          if (!sim) return;
+          const brush = brushRef.current;
 
-      if (brush.category === 'INSPECT') {
-        const ent = sim.getEntityAt(gx, gy);
-        if (ent) {
-          renderer.selectedEntityId = ent.id;
-          setSelectedEntity(ent);
-        } else {
-          renderer.selectedEntityId = null;
-          setSelectedEntity(null);
-        }
-      } 
-      
-      else if (brush.category === 'SPAWN_BANANA') {
-        const id = sim.spawnFlora(gx, gy, 'NANO_BANANA', brush.subType);
-        sim.addEventLog('EVOLUTION', `Deity manifested a new [${brush.subType} Nano Banana] at (${gx}, ${gy})`);
-        // Select newly created banana to let them check stats!
-        const ent = sim.getEntityAt(gx, gy);
-        if (ent) {
-          renderer.selectedEntityId = ent.id;
-          setSelectedEntity(ent);
-        }
-      } 
-      
-      else if (brush.category === 'SPAWN_FAUNA') {
-        const isWolf = brush.subType.toLowerCase().includes('wolf');
-        const id = sim.spawnFauna(gx, gy, isWolf ? 'WOLF' : 'STAG', brush.subType);
-        sim.addEventLog('EVOLUTION', `Deity materialised a wild [${brush.subType}] at coordinate (${gx}, ${gy})`);
-        const ent = sim.getEntityAt(gx, gy);
-        if (ent) {
-          renderer.selectedEntityId = ent.id;
-          setSelectedEntity(ent);
-        }
-      } 
-      
-      else if (brush.category === 'SPAWN_STRUCTURE') {
-        const id = sim.spawnStructure(gx, gy, 'ALTAR', brush.subType);
-        sim.addEventLog('EVOLUTION', `Deity erected a historical [${brush.subType}] at coordinate (${gx}, ${gy})`);
-        const ent = sim.getEntityAt(gx, gy);
-        if (ent) {
-          renderer.selectedEntityId = ent.id;
-          setSelectedEntity(ent);
-        }
-      } 
-      
-      else if (brush.category === 'SPAWN_TRIBE') {
-        const id = sim.spawnTribe(gx, gy, brush.subType as any);
-        const ent = sim.getEntityAt(gx, gy);
-        if (ent) {
-          renderer.selectedEntityId = ent.id;
-          setSelectedEntity(ent);
-        }
-      } 
-      
-      else if (brush.category === 'LOCALISED_SPELL') {
-        const succeeded = sim.triggerLocalizedSpell(brush.subType, gx, gy);
-        if (succeeded) {
-          // Trigger a query refresh in case we clicked an inspected item
-          const ent = sim.getEntityAt(gx, gy);
-          if (ent) {
-            setSelectedEntity(ent);
-          } else {
-            setSelectedEntity(null);
-            renderer.selectedEntityId = null;
+          if (brush.category === 'INSPECT') {
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            } else {
+              renderer.selectedEntityId = null;
+              setSelectedEntity(null);
+            }
+          } else if (brush.category === 'SPAWN_BANANA') {
+            const id = sim.spawnFlora(gx, gy, 'NANO_BANANA', brush.subType);
+            sim.addEventLog('EVOLUTION', `Deity manifested a new [${brush.subType} Nano Banana] at (${gx}, ${gy})`);
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            }
+          } else if (brush.category === 'SPAWN_FAUNA') {
+            const isWolf = brush.subType.toLowerCase().includes('wolf');
+            const id = sim.spawnFauna(gx, gy, isWolf ? 'WOLF' : 'STAG', brush.subType);
+            sim.addEventLog('EVOLUTION', `Deity materialised a wild [${brush.subType}] at coordinate (${gx}, ${gy})`);
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            }
+          } else if (brush.category === 'SPAWN_STRUCTURE') {
+            const id = sim.spawnStructure(gx, gy, 'ALTAR', brush.subType);
+            sim.addEventLog('EVOLUTION', `Deity erected a historical [${brush.subType}] at coordinate (${gx}, ${gy})`);
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            }
+          } else if (brush.category === 'SPAWN_TRIBE') {
+            const id = sim.spawnTribe(gx, gy, brush.subType as any);
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            }
+          } else if (brush.category === 'LOCALISED_SPELL') {
+            const succeeded = sim.triggerLocalizedSpell(brush.subType, gx, gy);
+            if (succeeded) {
+              const ent = sim.getEntityAt(gx, gy);
+              if (ent) {
+                setSelectedEntity(ent);
+              } else {
+                setSelectedEntity(null);
+                renderer.selectedEntityId = null;
+              }
+            }
           }
-        }
-      }
+        };
+      });
+    }, []);
     };
 
     renderer.onZoomChange = (z: number) => {
@@ -921,11 +914,11 @@ export default function App() {
 
     const requestId = requestAnimationFrame(frame);
 
+useEffect(() => {
     return () => {
       cancelAnimationFrame(requestId);
       renderer.destroy();
     };
-  }, []);
 
   const handleIntervention = (type: string) => {
     // Triggers localized divine magic at a random active tribe coordinates!
@@ -1345,68 +1338,129 @@ export default function App() {
       )}
 
       {/* Primary Floating Deity UI Overlay Layer (clicks stream through empty gaps) */}
-      <div className="absolute inset-0 z-10 pointer-events-none flex flex-col h-full">
+      <div className={`absolute inset-0 z-10 pointer-events-none flex ${isMobile ? 'flex-col-reverse' : 'flex-col'} h-full overflow-hidden`}>
         
-        {/* Top Status Bar (Floating Glass Bar) */}
-        <div className="h-16 m-4 px-6 bg-slate-950/45 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] pointer-events-auto shrink-0 z-30 transition-all duration-300 hover:border-white/15">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 bg-amber-500 rounded-lg rotate-45 flex items-center justify-center border border-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-              <div className="w-4 h-4 bg-black rounded-full"></div>
+        {/* Navigation Layer (Rail on Desktop, Bar on Mobile) */}
+        {!isMobile ? (
+          /* Top Status Bar (Desktop) */
+          <GlassPanel 
+            intensity="medium"
+            className="h-16 m-4 px-6 flex items-center justify-between pointer-events-auto shrink-0 z-30"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 bg-amber-500 rounded-lg rotate-45 flex items-center justify-center border border-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                <div className="w-4 h-4 bg-black rounded-full"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono text-amber-500/80 tracking-[0.2em] uppercase">Deity Interface</span>
+                <span className="text-sm font-bold tracking-tight text-white leading-none">FAITHFUL // SECTOR_804</span>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <span className="text-[10px] font-mono text-amber-500/80 tracking-[0.2em] uppercase">Deity Interface</span>
-              <span className="text-sm font-bold tracking-tight text-white leading-none">FAITHFUL // SECTOR_804</span>
+            
+            <div className="flex items-center gap-8 font-mono">
+              <TopStat label="Divine Devotion" value={devotion} unit="Δ" color="text-amber-400" />
+              <TopStat label="Sect Density" value="64x64 Grid" unit="LOD" color="text-emerald-400" />
+              <TopStat label="Population" value={stats.population.toLocaleString()} unit="SENTIENT" color="text-sky-400" />
             </div>
-          </div>
-          
-          <div className="flex items-center gap-8 font-mono">
-            <TopStat label="Divine Devotion" value={devotion} unit="Δ" color="text-amber-400" />
-            <TopStat label="Sect Density" value="64x64 Grid" unit="LOD" color="text-emerald-400" />
-            <TopStat label="Population" value={stats.population.toLocaleString()} unit="SENTIENT" color="text-sky-400" />
-          </div>
-        </div>
+          </GlassPanel>
+        ) : (
+          /* Bottom Navigation Bar (Mobile) */
+          <GlassPanel 
+            intensity="high"
+            className="m-2 p-3 flex items-center justify-around pointer-events-auto shrink-0 z-30 rounded-3xl"
+          >
+            <NavIcon active={activeTab === 'simulation'} onClick={() => setActiveTab('simulation')} isMobile>
+               <Globe className="w-6 h-6" />
+            </NavIcon>
+            <NavIcon active={activeTab === 'societies'} onClick={() => setActiveTab('societies')} isMobile>
+               <Users className="w-6 h-6" />
+            </NavIcon>
+            <NavIcon active={activeTab === 'faith'} onClick={() => setActiveTab('faith')} isMobile>
+               <TrendingUp className="w-6 h-6" />
+            </NavIcon>
+            <NavIcon active={activeTab === 'deity'} onClick={() => setActiveTab('deity')} isMobile>
+               <Sparkles className="w-6 h-6 text-amber-400" />
+            </NavIcon>
+            <NavIcon active={activeTab === 'progression'} onClick={() => setActiveTab('progression')} isMobile>
+               <Award className="w-6 h-6 text-indigo-400" />
+            </NavIcon>
+            <NavIcon active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} isMobile>
+              <Settings className={`w-6 h-6 ${activeTab === 'settings' ? 'rotate-90 text-amber-400' : ''}`} />
+            </NavIcon>
+          </GlassPanel>
+        )}
 
         {/* Global Floating Layout Columns */}
         <div className="flex-1 flex gap-4 px-4 pb-4 overflow-hidden min-h-0">
           
-          {/* Left Hand Navigation Rail (Floating Glass Card) */}
-          <div className="w-16 py-6 bg-slate-950/45 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col items-center gap-6 pointer-events-auto shrink-0 z-20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300 hover:border-white/15">
-            <NavIcon active={activeTab === 'simulation'} onClick={() => setActiveTab('simulation')}>
-               <Globe className="w-5 h-5" />
-            </NavIcon>
-            <NavIcon active={activeTab === 'societies'} onClick={() => setActiveTab('societies')}>
-               <Users className="w-5 h-5" />
-            </NavIcon>
-            <NavIcon active={activeTab === 'faith'} onClick={() => setActiveTab('faith')}>
-               <TrendingUp className="w-5 h-5" />
-            </NavIcon>
-            <NavIcon active={activeTab === 'deity'} onClick={() => setActiveTab('deity')} title="Divine Pantheon & Skill Tree">
-               <Sparkles className="w-5 h-5 animate-pulse text-amber-400" />
-            </NavIcon>
-            <NavIcon active={activeTab === 'progression'} onClick={() => setActiveTab('progression')} title="Divine Illumination & Achievements">
-               <Award className="w-5 h-5 text-indigo-400" />
-            </NavIcon>
-            <NavIcon active={activeTab === 'inspector'} onClick={() => setActiveTab('inspector')}>
-               <Layers className="w-5 h-5" />
-            </NavIcon>
-            <div className="mt-auto">
-              <NavIcon active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} title="Calibration & Timelines (Saves/Sectors)">
-                <Settings className={`w-5 h-5 transition-all duration-500 ${activeTab === 'settings' ? 'rotate-90 text-amber-400' : 'text-slate-400 hover:text-white'}`} />
+          {/* Left Hand Navigation Rail (Desktop Only) */}
+          {!isMobile && (
+            <GlassPanel 
+              intensity="medium"
+              className="w-16 py-6 flex flex-col items-center gap-6 pointer-events-auto shrink-0 z-20"
+            >
+              <NavIcon active={activeTab === 'simulation'} onClick={() => setActiveTab('simulation')}>
+                <Globe className="w-5 h-5" />
               </NavIcon>
-            </div>
-          </div>
+              <NavIcon active={activeTab === 'societies'} onClick={() => setActiveTab('societies')}>
+                <Users className="w-5 h-5" />
+              </NavIcon>
+              <NavIcon active={activeTab === 'faith'} onClick={() => setActiveTab('faith')}>
+                <TrendingUp className="w-5 h-5" />
+              </NavIcon>
+              <NavIcon active={activeTab === 'deity'} onClick={() => setActiveTab('deity')} title="Divine Pantheon & Skill Tree">
+                <Sparkles className="w-5 h-5 animate-pulse text-amber-400" />
+              </NavIcon>
+              <NavIcon active={activeTab === 'progression'} onClick={() => setActiveTab('progression')} title="Divine Illumination & Achievements">
+                <Award className="w-5 h-5 text-indigo-400" />
+              </NavIcon>
+              <NavIcon active={activeTab === 'inspector'} onClick={() => setActiveTab('inspector')}>
+                <Layers className="w-5 h-5" />
+              </NavIcon>
+              <div className="mt-auto">
+                <NavIcon active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} title="Calibration & Timelines (Saves/Sectors)">
+                  <Settings className={`w-5 h-5 transition-all duration-500 ${activeTab === 'settings' ? 'rotate-90 text-amber-400' : 'text-slate-400 hover:text-white'}`} />
+                </NavIcon>
+              </div>
+            </GlassPanel>
+          )}
 
-          {/* Central Command Column (Coordinates and Active Selection popup float within this spacer) */}
+          {/* Central Command Column */}
           <div className="flex-1 flex flex-col gap-4 relative min-h-0">
             
-            {/* Realtime coordinates & Tactical Map Filters HUD (Floats Top Left) */}
-            <div className="absolute top-0 left-0 w-80 p-4 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl pointer-events-auto z-20 font-sans transition-all duration-300 hover:border-white/15 flex flex-col gap-3.5">
-              <div>
-                <span className="text-[10px] text-emerald-400 font-mono tracking-widest font-bold block mb-1">BIOME // {getBiomeName(hoveredCoordinate)}</span>
-                <div className="flex items-center gap-2 text-xs text-slate-200 font-mono font-bold">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  {hoveredCoordinate ? `GRID: (${hoveredCoordinate.x}, ${hoveredCoordinate.y})` : 'TARGET CELL TO COMMAND'}
+            {/* Mobile Stats Bar (Floats Top) */}
+            {isMobile && (
+              <GlassPanel intensity="low" className="w-full p-2 flex items-center justify-between pointer-events-auto z-20 rounded-xl">
+                 <div className="flex gap-4 px-2">
+                    <TopStat label="DEVO" value={devotion} unit="Δ" color="text-amber-400" isMobile />
+                    <TopStat label="POP" value={stats.population} unit="S" color="text-sky-400" isMobile />
+                 </div>
+                 <div className="flex items-center gap-2">
+                    <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-tighter">
+                      {weatherInfo.weather} // {weatherInfo.temperature.toFixed(0)}°C
+                    </span>
+                 </div>
+              </GlassPanel>
+            )}
+
+            {/* Realtime coordinates & Tactical Map Filters HUD (Adaptive Width) */}
+            <div className={`${isMobile ? 'w-full' : 'w-80'} p-4 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl pointer-events-auto z-20 font-sans transition-all duration-300 hover:border-white/15 flex flex-col gap-3.5`}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] text-emerald-400 font-mono tracking-widest font-bold block mb-1 uppercase">BIOME // {getBiomeName(hoveredCoordinate)}</span>
+                  <div className="flex items-center gap-2 text-xs text-slate-200 font-mono font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    {hoveredCoordinate ? `GRID: (${hoveredCoordinate.x}, ${hoveredCoordinate.y})` : 'TARGET CELL TO COMMAND'}
+                  </div>
                 </div>
+                {isMobile && (
+                   <button 
+                     onClick={() => setActiveBrush({ category: 'INSPECT', subType: '' })}
+                     className="p-2 bg-white/5 rounded-lg text-slate-400"
+                   >
+                     <Crosshair className="w-4 h-4" />
+                   </button>
+                )}
               </div>
 
               {/* Context-aware Divine Cursor Tooltip */}
@@ -1496,10 +1550,10 @@ export default function App() {
             </div>
 
             {/* Realtime Weather & Climate Cycles HUD */}
-            <div className="absolute top-[280px] left-0 w-80 p-4 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl pointer-events-auto z-20 font-sans transition-all duration-300 hover:border-white/15 flex flex-col gap-3">
+            <div className={`absolute ${isMobile ? 'bottom-0 left-0 right-0 w-full rounded-t-3xl rounded-b-none border-b-0' : 'top-[280px] left-0 w-80 rounded-2xl'} p-4 bg-slate-950/80 backdrop-blur-md border border-white/10 shadow-2xl pointer-events-auto z-20 font-sans transition-all duration-300 hover:border-white/15 flex flex-col gap-3`}>
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-sky-400 font-mono tracking-widest font-bold block">ATMOSPHERE & PHYSICS</span>
+                  <span className="text-[10px] text-sky-400 font-mono tracking-widest font-bold block uppercase">ATMOSPHERE & PHYSICS</span>
                   <span className="text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
                     {weatherInfo.weather === 'CLEAR' && '☀️ SUNNY CLEAR'}
                     {weatherInfo.weather === 'RAINY' && '🌧️ REJUVENATING RAIN'}
@@ -1617,11 +1671,11 @@ export default function App() {
 
             {/* Entity details popup balloon panels (Floats Top Right inside viewport region) */}
             {selectedEntity && (
-              <div className="absolute top-0 right-0 w-80 bg-slate-950/75 backdrop-blur-lg border border-white/15 p-5 rounded-2xl z-20 shadow-2xl flex flex-col gap-3 font-sans max-h-[80%] overflow-y-auto pointer-events-auto transition-all duration-300 hover:border-white/20">
+              <div className={`absolute ${isMobile ? 'inset-0 w-full h-full rounded-none z-[100] bg-slate-950' : 'top-0 right-0 w-80 max-h-[80%] rounded-2xl'} bg-slate-950/75 backdrop-blur-lg border border-white/15 p-5 z-20 shadow-2xl flex flex-col gap-3 font-sans overflow-y-auto pointer-events-auto transition-all duration-300 hover:border-white/20`}>
                 <div className="flex justify-between items-center border-b border-white/10 pb-2">
                   <span className="text-[10px] uppercase tracking-widest text-amber-500 font-bold font-mono">Entity Inspector</span>
                   <button 
-                    className="text-slate-400 hover:text-white text-xs w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" 
+                    className="text-slate-400 hover:text-white text-xs w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" 
                     onClick={() => {
                       setSelectedEntity(null);
                       if (rendererRef.current) rendererRef.current.selectedEntityId = null;
@@ -3552,25 +3606,24 @@ export default function App() {
       </div>
     </div>
   );
-}
 
-function TopStat({ label, value, unit, color = "text-white" }: { label: string, value: string | number, unit: string, color?: string }) {
+function TopStat({ label, value, unit, color = "text-white", isMobile }: { label: string, value: string | number, unit: string, color?: string, isMobile?: boolean }) {
   return (
-    <div className="flex flex-col items-end">
-      <span className="text-[9px] uppercase tracking-widest opacity-40 font-mono mb-0.5">{label}</span>
-      <span className={`text-xl ${color} font-bold tracking-tight`}>
-        {value} <span className="text-[10px] opacity-60 font-mono ml-1">{unit}</span>
+    <div className={`flex flex-col ${isMobile ? 'items-start' : 'items-end'}`}>
+      <span className={`${isMobile ? 'text-[7px]' : 'text-[9px]'} uppercase tracking-widest opacity-40 font-mono mb-0.5`}>{label}</span>
+      <span className={`${isMobile ? 'text-xs' : 'text-xl'} ${color} font-bold tracking-tight`}>
+        {value} <span className={`${isMobile ? 'text-[8px]' : 'text-[10px]'} opacity-60 font-mono ml-0.5`}>{unit}</span>
       </span>
     </div>
   );
 }
 
-function NavIcon({ children, active, onClick, title }: { children: React.ReactNode, active?: boolean, onClick?: () => void, title?: string }) {
+function NavIcon({ children, active, onClick, title, isMobile }: { children: React.ReactNode, active?: boolean, onClick?: () => void, title?: string, isMobile?: boolean }) {
   return (
     <div 
       onClick={onClick}
       title={title}
-      className={`w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer ${
+      className={`${isMobile ? 'w-12 h-12' : 'w-11 h-11'} flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer ${
         active 
         ? 'bg-amber-500/20 border border-amber-500/40 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.2)]' 
         : 'bg-white/[0.03] text-slate-400 hover:bg-white/10 hover:text-white border border-transparent'
@@ -3661,3 +3714,4 @@ function SubButton({ active, onClick, label, title }: { active: boolean, onClick
     </button>
   );
 }
+});

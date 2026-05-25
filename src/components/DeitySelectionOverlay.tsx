@@ -3,12 +3,14 @@ import { GODS_PANTHEON, God } from '../engine/gods_data';
 import { Sparkles, ChevronDown, Award, Sun, Zap, Moon, Heart, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AudioEngine } from '../engine/audio';
+import { useDevice } from './AdaptiveUI';
 
 interface SelectedProps {
   onSelect: (god: God) => void;
 }
 
 export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
+  const { isMobile, isLandscape } = useDevice();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -30,7 +32,7 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-        className="w-full max-w-7xl bg-slate-950/80 border border-white/10 rounded-3xl p-6 md:p-10 flex flex-col gap-6 shadow-[0_32px_96px_rgba(0,0,0,0.9)] max-h-[92vh] overflow-y-auto custom-scrollbar backdrop-blur-md"
+        className={`w-full max-w-7xl bg-slate-950/80 border border-white/10 rounded-3xl ${isMobile ? 'p-5' : 'p-10'} flex flex-col gap-6 shadow-[0_32px_96px_rgba(0,0,0,0.9)] max-h-[92vh] overflow-y-auto custom-scrollbar backdrop-blur-md`}
       >
         
         {/* Main Header Descriptor */}
@@ -38,16 +40,18 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-[0.2em] bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase">
             ⚡ Transcendental Sanctum Seeding
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none uppercase">
+          <h2 className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-black text-white tracking-tight leading-none uppercase`}>
             Select Your Patron Deity
           </h2>
-          <p className="text-slate-400 text-xs md:text-sm font-light leading-relaxed">
-            Your choice constructs your civilization's starting genetic properties, applies immediate demographic boosts, and unlocks their massive custom skill system.
-          </p>
+          {!isMobile && (
+            <p className="text-slate-400 text-sm font-light leading-relaxed">
+              Your choice constructs your civilization's starting genetic properties, applies immediate demographic boosts, and unlocks their massive custom skill system.
+            </p>
+          )}
         </div>
 
-        {/* 10 Gods Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 items-stretch mt-4">
+        {/* 10 Gods Grid Container (Adaptive) */}
+        <div className={`grid ${isMobile ? 'grid-cols-1 sm:grid-cols-2' : 'lg:grid-cols-5'} gap-5 items-stretch mt-4`}>
           {GODS_PANTHEON.map((god: God) => {
             const isHovered = hoveredId === god.id;
             const isExpanded = expandedId === god.id;
@@ -68,7 +72,7 @@ export function DeitySelectionOverlay({ onSelect }: SelectedProps) {
                   boxShadow: isHovered ? `0 12px 36px -6px ${god.colorHex}25` : 'none'
                 }}
               >
-                {/* Micro Ambient Glow Line */}
+...                {/* Micro Ambient Glow Line */}
                 <div 
                   className="absolute top-0 left-12 right-12 h-[2px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity"
                   style={{ backgroundColor: god.colorHex }}

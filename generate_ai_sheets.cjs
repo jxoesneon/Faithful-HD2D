@@ -52,6 +52,17 @@ const f_char = (id, desc) => ({ category: desc, id, frames: [
     { id: "death", name: "Death", desc: `${desc} collapsed on the ground lifeless.` }
 ]});
 
+const f_bust = (id, desc) => ({ category: desc, id, frames: [
+    { id: "idle_1", name: "Idle 1", desc: `High-detail bust of ${desc}, eyes open.` },
+    { id: "idle_2", name: "Idle 2", desc: `High-detail bust of ${desc}, eyes glowing.` },
+    { id: "idle_3", name: "Idle 3", desc: `High-detail bust of ${desc}, subtle breathing/pulse.` },
+    { id: "idle_4", name: "Idle 4", desc: `High-detail bust of ${desc}, ambient particle shift.` },
+    { id: "idle_5", name: "Idle 5", desc: `High-detail bust of ${desc}, variant expression.` },
+    { id: "idle_6", name: "Idle 6", desc: `High-detail bust of ${desc}, secondary animation loop.` },
+    { id: "idle_7", name: "Idle 7", desc: `High-detail bust of ${desc}, tertiary animation loop.` },
+    { id: "idle_8", name: "Idle 8", desc: `High-detail bust of ${desc}, blink/cycle reset.` }
+]});
+
 const f_tree = (id, desc) => ({ category: desc, id, frames: [
     { id: "sway_1", name: "Sway 1", desc: `${desc} center position.` },
     { id: "sway_2", name: "Sway 2", desc: `${desc} leaning right in wind.` },
@@ -394,6 +405,17 @@ addSheet('nano-banana-4k-sheet.md', "Flora: Nano Banana 2", "Incredible procedur
     f_char('banana_cosmic', 'Deep Cosmic Elder Banana')
 ]);
 
+
+addSheet('char-gods-4k-sheet.md', "Characters: Pantheon of Gods (Selection Screen Busts)", "High-detail portraits of the supreme deities for the God Selection UI. These assets use the full 8-frame row for a rich idle animation loop (breathing, glowing, blinking).", [
+    f_bust('god_sylphra', 'Sylphra, Zephyr of the Canopy'),
+    f_bust('god_vulcanus', 'Vulcanus, Core Ignition'),
+    f_bust('god_thalassor', 'Thalassor, Deep Abyssal Logo'),
+    f_bust('god_xylorex', 'Xylo-Rex, Moss Sovereign'),
+    f_bust('god_aethelgard', 'Aethelgard, Solar Monarch'),
+    f_bust('god_nullv8', 'Null-v8, Neural Architect'),
+    f_bust('god_krigor', 'Krigor, Wrath Scribe'),
+    f_bust('empty', 'Empty Slot')
+]);
 
 const outJson = {
     sheets: jsonSheets,

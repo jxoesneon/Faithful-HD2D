@@ -59,6 +59,11 @@ export class SimulationEngine {
     devotionAccumulated: 0
   };
 
+  public static async create(ecs: ECS): Promise<SimulationEngine> {
+    await initWasm();
+    return new SimulationEngine(ecs);
+  }
+
   constructor(ecs: ECS) {
     this.sharedBuffer = new SharedArrayBuffer(SHARED_BUFFER_SIZE);
     this.entityDataView = new Float32Array(this.sharedBuffer);

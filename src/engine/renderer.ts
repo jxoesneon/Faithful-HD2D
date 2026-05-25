@@ -140,9 +140,9 @@ export class GameRenderer {
             for (const [id, container] of entitiesList) {
                if (!container.visible) continue;
                // Simple AABB check in stage-space
-               const localPos = container.toLocal(new PIXI.Point(mouseX, mouseY), this.container);
                const bounds = container.getBounds();
-               if (container.containsPoint(new PIXI.Point(mouseX, mouseY))) {
+               if (mouseX >= bounds.x && mouseX <= bounds.x + bounds.width && 
+                   mouseY >= bounds.y && mouseY <= bounds.y + bounds.height) {
                   const ent = this.lastEntities.find(e => e.id === id);
                   if (ent) {
                      this.hoveredTile = { x: ent.x, y: ent.y };
@@ -175,6 +175,39 @@ export class GameRenderer {
       this.isDragging = false;
       if (totalMove < 5 && this.onTileClick && this.hoveredTile) {
         this.onTileClick(this.hoveredTile.x, this.hoveredTile.y);
+      }
+    });
+
+    // --- Mobile Touch Interaction Support ---
+    this.container.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        this.isDragging = true;
+        this.lastPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        totalMove = 0;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (this.wasDestroyed || !this.isDragging || e.touches.length !== 1) return;
+      if (!this.app) return;
+      
+      const touch = e.touches[0];
+      const dx = touch.clientX - this.lastPos.x;
+      const dy = touch.clientY - this.lastPos.y;
+      totalMove += Math.sqrt(dx * dx + dy * dy);
+      
+      this.app.stage.x += dx;
+      this.app.stage.y += dy;
+      this.lastPos = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (this.wasDestroyed) return;
+      if (this.isDragging) {
+        this.isDragging = false;
+        if (totalMove < 15 && this.onTileClick && this.hoveredTile) {
+          this.onTileClick(this.hoveredTile.x, this.hoveredTile.y);
+        }
       }
     });
   }
@@ -326,7 +359,8 @@ export class GameRenderer {
       });
 
       // --- Initialize Deferred Lighting Resources (Phase 1, Step 1) ---
-      this.lightingShader = PIXI.Shader.from({
+      // Fix for PIXI v8 API compatibility
+      this.lightingShader = new PIXI.Shader({
         glProgram: PIXI.GlProgram.from({
           vertex: spriteVertexShader,
           fragment: lightingFragmentShader,
@@ -340,18 +374,16 @@ export class GameRenderer {
           uGodRayIntensity: this.godRayIntensity,
           uSunScreenPos: this.sunScreenPos,
         }
-      });
+      }) as any;
 
       this.lightingQuad = new PIXI.Mesh({
-        geometry: new PIXI.Geometry({
-          attributes: {
-            aVertexPosition: [-1, -1, 1, -1, 1, 1, -1, 1],
-            aTextureCoord: [0, 1, 1, 1, 1, 0, 0, 0],
-          },
-          indices: [0, 1, 2, 0, 2, 3],
+        geometry: new PIXI.MeshGeometry({
+          positions: new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]),
+          uvs: new Float32Array([0, 1, 1, 1, 1, 0, 0, 0]),
+          indices: new Uint32Array([0, 1, 2, 0, 2, 3]),
         }),
-        shader: this.lightingShader,
-      });
+        shader: this.lightingShader as any,
+      }) as any;
 
       this.app.stage.addChild(this.tiles);
       this.app.stage.addChild(this.interactions);
@@ -561,7 +593,8 @@ export class GameRenderer {
       if (this.app?.renderer) {
          // Perform pixel analysis for grounding point
          // We extract pixels from the bottom 20% of the sprite
-         const pixels = this.app.renderer.extract.pixels(texture);
+         const pixelData = this.app.renderer.extract.pixels(texture);
+         const pixelsArray = (pixelData as any).pixels || (pixelData as any).data || pixelData;
          const { width, height } = texture.frame;
          
          // Scan from bottom up to find the base-most non-transparent pixel
@@ -571,7 +604,7 @@ export class GameRenderer {
 
          for (let y = height - 1; y > height * 0.5; y--) {
             for (let x = 0; x < width; x++) {
-               const alpha = pixels.data[(y * width + x) * 4 + 3];
+               const alpha = pixelsArray[(y * width + x) * 4 + 3];
                if (alpha > 10) {
                   foundY = y;
                   foundX = x;

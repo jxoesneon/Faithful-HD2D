@@ -29,11 +29,16 @@
 - **3D-Aware Hitboxes:** Depth-sorted screen-space interaction detection for accurate entity selection.
 - **Registry Architect:** Unified tool for real-time asset property tuning (UV offsets, scaling).
 
-## 📂 Key Files
-- `src/engine/renderer.ts`: The main WebGL/PixiJS v8 rendering core.
-- `src/engine/shaders.ts`: Custom GLSL vertex and fragment shader suite.
-- `faithful-engine/src/fractal.rs`: Rust-based geological simulation algorithms.
-- `src/engine/simulation.ts`: The WASM bridge and SharedArrayBuffer manager.
+### 📱 5. AAA Mobile-Responsive UI Refactor (NEW)
+- **Responsive HUD:** Implemented a hybrid adaptive layout (Navigation Rail on desktop, Thumb-Zone Bottom Nav on mobile).
+- **Glassmorphism System:** Created `GlassPanel` and `AdaptiveContainer` primitives for "Divine OS" visual consistency.
+- **Cross-Platform Input:** Enhanced the renderer with touch-first interaction support (gesture-based dragging/selection).
+- **WASM Optimization:** Successfully built and optimized the WASM simulation engine with `wasm-opt -O3` and cross-origin isolation headers for `SharedArrayBuffer` support.
+
+## 📂 Key Files (Updated)
+- `src/components/AdaptiveUI.tsx`: Responsive detection hook and AAA material components.
+- `src/App.tsx`: Refactored HUD and HUD component logic for adaptive layout.
+- `faithful-engine/pkg/faithful_engine_bg.wasm`: Production-optimized binary.
 
 ## 🔭 Next Strategic Steps
 1. **Dynamic Light Volumes:** Implement actual world-space light entity spawning and management.

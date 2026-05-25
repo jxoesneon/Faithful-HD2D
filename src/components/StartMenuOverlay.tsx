@@ -24,6 +24,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { GODS_PANTHEON, God } from '../engine/gods_data';
 import { AudioEngine } from '../engine/audio';
+import { useDevice } from './AdaptiveUI';
 
 interface SaveSlotInfo {
   exists: boolean;
@@ -55,7 +56,7 @@ export function StartMenuOverlay({
   onImport,
   onLaunchNewGame
 }: StartMenuOverlayProps) {
-  
+  const { isMobile, isLandscape } = useDevice();
   const [activeTab, setActiveTab] = useState<'hub' | 'genesis' | 'timelines' | 'codex' | 'import'>('hub');
   const [soundEnabled, setSoundEnabled] = useState(AudioEngine.isEnabled());
 
@@ -251,7 +252,7 @@ export function StartMenuOverlay({
         initial={{ scale: 0.96, opacity: 0, y: 15 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-        className="relative w-full max-w-5xl bg-slate-950/75 border rounded-3xl overflow-hidden shadow-[0_35px_80px_rgba(0,0,0,0.95)] backdrop-blur-md flex flex-col md:flex-row min-h-[500px] max-h-[85vh] z-[135] transition-all duration-1000 ease-out"
+        className={`relative w-full max-w-5xl bg-slate-950/75 border rounded-3xl overflow-hidden shadow-[0_35px_80px_rgba(0,0,0,0.95)] backdrop-blur-md flex ${isMobile ? 'flex-col' : 'flex-row'} min-h-[500px] ${isMobile ? 'max-h-[92vh]' : 'max-h-[85vh]'} z-[135] transition-all duration-1000 ease-out`}
         style={{ 
           borderColor: `${activeColor}33`,
           boxShadow: `0 35px 80px rgba(0, 0, 0, 0.95), 0 0 50px ${activeColor}15`
@@ -259,10 +260,10 @@ export function StartMenuOverlay({
       >
         
         {/* SIDE BAR CONTROL RAIL & ART BRAND - 1/3 COLUMN */}
-        <div className="md:w-1/3 bg-slate-950/90 border-b md:border-b-0 md:border-r border-indigo-500/20 p-8 flex flex-col justify-between select-none">
+        <div className={`${isMobile ? 'w-full p-4' : 'md:w-1/3 p-8'} bg-slate-950/90 border-b md:border-b-0 md:border-r border-indigo-500/20 flex flex-col justify-between select-none shrink-0`}>
           
           {/* Logo & Subtitles */}
-          <div className="space-y-6">
+          <div className={`${isMobile ? 'space-y-2' : 'space-y-6'}`}>
             <div className="flex items-center gap-2.5">
               <div 
                 className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center border border-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer"
@@ -277,89 +278,95 @@ export function StartMenuOverlay({
             </div>
 
             {/* Glowing Retro Title Card */}
-            <div className="space-y-1 pt-4 relative">
-              <div className="absolute -top-1 -left-2 text-[8px] font-mono text-indigo-400/40 tracking-normal">GENESIS MODULE LIVE</div>
-              <h1 className="text-4xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-indigo-200 to-indigo-400 select-none">
-                FAITHFUL
-              </h1>
-              <p className="text-[10px] font-mono text-indigo-300 uppercase tracking-widest font-black">
-                Atmospheric God Simulator
-              </p>
-            </div>
+            {!isMobile && (
+              <div className="space-y-1 pt-4 relative">
+                <div className="absolute -top-1 -left-2 text-[8px] font-mono text-indigo-400/40 tracking-normal">GENESIS MODULE LIVE</div>
+                <h1 className="text-4xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-indigo-200 to-indigo-400 select-none">
+                  FAITHFUL
+                </h1>
+                <p className="text-[10px] font-mono text-indigo-300 uppercase tracking-widest font-black">
+                  Atmospheric God Simulator
+                </p>
+              </div>
+            )}
 
-            <p className="text-xs text-slate-400 leading-relaxed font-light mt-4">
-              Shape temperature biases, trigger lightning bolts, harvest Divine Bio-Bananas, dictates tribal parameters, and ascent your deity alignment to unlock planetary illumination nodes.
-            </p>
+            {!isMobile && (
+              <p className="text-xs text-slate-400 leading-relaxed font-light mt-4">
+                Shape temperature biases, trigger lightning bolts, harvest Divine Bio-Bananas, dictates tribal parameters, and ascent your deity alignment to unlock planetary illumination nodes.
+              </p>
+            )}
           </div>
 
           {/* Interactive Navigation Control Column (Game Menu options) */}
-          <div className="space-y-1.5 py-6">
-            <div className="text-[9px] font-mono text-slate-500 font-bold tracking-wider uppercase mb-1">PROGRAM FUNCTIONS</div>
+          <div className={`${isMobile ? 'flex flex-row overflow-x-auto gap-2 py-2 no-scrollbar' : 'space-y-1.5 py-6'}`}>
+            {!isMobile && <div className="text-[9px] font-mono text-slate-500 font-bold tracking-wider uppercase mb-1">PROGRAM FUNCTIONS</div>}
             
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('hub'); }}
-              className={`w-full py-2.5 px-4 rounded-xl text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
                 activeTab === 'hub'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${activeTab === 'hub' ? 'bg-indigo-400 animate-ping' : 'bg-slate-600'}`} />
-              [01] SECTOR COMMAND HUB
+              {!isMobile ? '[01] SECTOR COMMAND HUB' : 'HUB'}
             </button>
 
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('genesis'); }}
-              className={`w-full py-2.5 px-4 rounded-xl text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
                 activeTab === 'genesis'
                 ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[inset_0_1px_10px_rgba(245,158,11,0.15)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${activeTab === 'genesis' ? 'bg-amber-400 animate-ping' : 'bg-slate-600'}`} />
-              [02] CALIBRATE COGNITION
+              {!isMobile ? '[02] CALIBRATE COGNITION' : 'GENESIS'}
             </button>
 
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('timelines'); }}
-              className={`w-full py-2.5 px-4 rounded-xl text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
                 activeTab === 'timelines'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${activeTab === 'timelines' ? 'bg-indigo-400 animate-ping' : 'bg-slate-600'}`} />
-              [03] MEMORY CHRONOLOGY
+              {!isMobile ? '[03] MEMORY CHRONOLOGY' : 'SAVES'}
             </button>
 
             <button
               onMouseEnter={menuHoverSound}
               onClick={() => { modeSwitchSound(); setActiveTab('codex'); }}
-              className={`w-full py-2.5 px-4 rounded-xl text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
+              className={`${isMobile ? 'whitespace-nowrap px-3 py-1.5 rounded-lg' : 'w-full py-2.5 px-4 rounded-xl'} text-left text-xs font-mono font-semibold transition-all flex items-center gap-3 border cursor-pointer ${
                 activeTab === 'codex'
                 ? 'bg-indigo-600/15 border-indigo-500/50 text-indigo-300 shadow-[inset_0_1px_10px_rgba(99,102,241,0.2)]'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white hover:bg-white/[0.03]'
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${activeTab === 'codex' ? 'bg-indigo-400 animate-ping' : 'bg-slate-600'}`} />
-              [04] SACRED SCROLL CODEX
+              {!isMobile ? '[04] SACRED SCROLL CODEX' : 'CODEX'}
             </button>
           </div>
 
           {/* Underfooter credentials */}
-          <div className="text-[10px] font-mono text-slate-600 space-y-1 block hidden sm:block">
-            <div>PERSISTENCE REGISTRY: SECURE</div>
-            <div>STATUS: STANDBY GRID ACTIVE</div>
-            <div>© CREATIVE BIOSPHERE PLATFORM</div>
-          </div>
+          {!isMobile && (
+            <div className="text-[10px] font-mono text-slate-600 space-y-1 block hidden sm:block">
+              <div>PERSISTENCE REGISTRY: SECURE</div>
+              <div>STATUS: STANDBY GRID ACTIVE</div>
+              <div>© CREATIVE BIOSPHERE PLATFORM</div>
+            </div>
+          )}
 
         </div>
 
         {/* RIGHT DISPLAY VIEWPORTS - 2/3 COLUMN */}
-        <div className="flex-1 display-panel bg-slate-900/40 p-8 flex flex-col justify-between overflow-y-auto max-h-[85vh]">
+        <div className={`flex-1 display-panel bg-slate-900/40 ${isMobile ? 'p-4' : 'p-8'} flex flex-col justify-between overflow-y-auto max-h-[85vh]`}>
           
           <AnimatePresence mode="wait">
 
@@ -380,7 +387,7 @@ export function StartMenuOverlay({
                   </div>
 
                   {/* Main Action Large Grid Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className={`grid ${isMobile ? 'grid-cols-1' : 'sm:grid-cols-2'} gap-4 pt-2`}>
                     
                     {/* Standard Resume Resume */}
                     <button
@@ -444,11 +451,11 @@ export function StartMenuOverlay({
                       </div>
                       <h3 className="text-sm font-bold text-slate-300 tracking-tight flex items-center gap-1.5 uppercase font-mono">
                         Quantum Data Portal
-                  </h3>
-                  <p className="text-[11px] text-slate-400 mt-2 font-light leading-relaxed">
-                    Directly paste deep space matrix files or JSON states to materialize customized outer core sectors instantly.
-                  </p>
-                </button>
+                      </h3>
+                      <p className="text-[11px] text-slate-400 mt-2 font-light leading-relaxed">
+                        Directly paste deep space matrix files or JSON states to materialize customized outer core sectors instantly.
+                      </p>
+                    </button>
 
                   </div>
                 </div>
@@ -485,7 +492,7 @@ export function StartMenuOverlay({
                   {/* Option Block A: Climate System Preset */}
                   <div className="space-y-2">
                     <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">A. Environmental Thermodynamic Profile</label>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+                    <div className={`grid ${isMobile ? 'grid-cols-2' : 'lg:grid-cols-4'} gap-2.5`}>
                       {[
                         { id: 'temperate', name: 'Continental Silvan', desc: 'Balanced (22°C/45%)', icon: <Compass className="w-4 h-4 text-emerald-400" /> },
                         { id: 'scorched', name: 'Scorched Desert', desc: 'Arid Heat (39°C/9%)', icon: <Flame className="w-4 h-4 text-amber-400" /> },
@@ -518,7 +525,7 @@ export function StartMenuOverlay({
                   {/* Option Block B: Difficulty Starting Devotion */}
                   <div className="space-y-2">
                     <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">B. Initial Devotional Devoutness Catalyst</label>
-                    <div className="grid grid-cols-3 gap-2 text-xs font-mono">
+                    <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} gap-2 text-xs font-mono`}>
                       {[
                         { id: 'acolyte', label: 'Spiritual Acolytes', bonus: '250 starting devotion points, fast progress', text: 'Spoken' },
                         { id: 'scholar', label: 'Seeking Scholars', bonus: '100 starting devotion points, moderate path', text: 'Classic' },
