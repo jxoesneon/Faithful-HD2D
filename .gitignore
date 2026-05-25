@@ -10,6 +10,9 @@ coverage/
 # Ciel local domain
 .ciel/
 
+# Devin agent configuration
+.devin/
+
 # Playwright generated artifacts
 playwright-report/
 test-results/

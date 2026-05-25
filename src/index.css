@@ -6,9 +6,17 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+/* God Game Layout Grid: full-screen lock on root */
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   height: 100%;
+  width: 100%;
   overflow: hidden;
   background-color: #050608;
 }
@@ -17,4 +25,19 @@ body {
   body {
     @apply text-slate-300;
   }
+}
+
+/* Custom scrollbar for panel interiors */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
 }
