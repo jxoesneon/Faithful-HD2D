@@ -111,3 +111,19 @@ export interface GameState {
   currentIntervention: string | null;
 }
 
+export interface RenderableEntity {
+  id: string;
+  x: number;
+  y: number;
+  category: 'Tribe' | 'Flora' | 'Fauna' | 'Structure';
+  subType: string;
+  name: string;
+  faction?: 'ANIMIST' | 'TECHNOCRAT' | 'INTERVENTIONIST' | 'NIHILIST' | 'ELEMENTAL' | string;
+  activityState?: string;
+  population?: number;
+  resources?: number;
+  growth?: number;
+  health?: number;
+  isSelected?: boolean;
+}
+

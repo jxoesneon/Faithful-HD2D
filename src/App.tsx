@@ -894,6 +894,11 @@ export default function App() {
         simulation.update(dt * activeSpeed);
       }
 
+      // Sync entities to renderer every frame
+      if (renderer) {
+        renderer.updateEntities(simulation.getAllEntitiesForRender());
+      }
+
       // Synchronize progression levels & statistics
       setProgression({
         level: simulation.divineLevel,

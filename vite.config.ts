@@ -30,47 +30,45 @@ const assetRegistryPlugin = () => ({
   }
 });
 
-export default defineConfig(() => {
-  return {
-    plugins: [react(), tailwindcss(), assetRegistryPlugin()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
+export default defineConfig({
+  plugins: [react(), tailwindcss(), assetRegistryPlugin()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.'),
     },
-    build: {
-      target: 'esnext',
-    },
-    server: {
-      allowedHosts: true as true,
-      headers: process.env.PLAYWRIGHT
-        ? {}
-        : {
-            'Cross-Origin-Opener-Policy': 'same-origin',
-            'Cross-Origin-Embedder-Policy': 'require-corp',
-          },
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      setupFiles: './vitest.setup.ts',
-      exclude: ['tests/e2e/**', 'node_modules', 'dist'],
-      coverage: {
-        provider: 'v8',
-        include: [
-          'src/engine/simulation.ts',
-          'src/engine/ecs.ts',
-          'src/engine/gods_data.ts',
-          'src/engine/audio.ts',
-          'src/engine/fractal.ts',
-          'src/engine/shaders.ts'
-        ]
-      }
-    },
-  };
+  },
+  build: {
+    target: 'esnext',
+  },
+  server: {
+    allowedHosts: true as true,
+    headers: process.env.PLAYWRIGHT
+      ? {}
+      : {
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          'Cross-Origin-Embedder-Policy': 'require-corp',
+        },
+    // HMR is disabled in AI Studio via DISABLE_HMR env var.
+    // Do not modify—file watching is disabled to prevent flickering during agent edits.
+    hmr: process.env.DISABLE_HMR !== 'true',
+    // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
+    watch: process.env.DISABLE_HMR === 'true' ? null : {},
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './vitest.setup.ts',
+    exclude: ['tests/e2e/**', 'node_modules', 'dist'],
+    coverage: {
+      provider: 'v8' as const,
+      include: [
+        'src/engine/simulation.ts',
+        'src/engine/ecs.ts',
+        'src/engine/gods_data.ts',
+        'src/engine/audio.ts',
+        'src/engine/fractal.ts',
+        'src/engine/shaders.ts'
+      ]
+    }
+  },
 });

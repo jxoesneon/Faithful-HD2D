@@ -10,7 +10,8 @@ import {
   Physics, 
   Biology, 
   FaithSystemType, 
-  Entity 
+  Entity,
+  RenderableEntity
 } from '../types';
 
 const MAX_ENTITIES = 100000;
@@ -204,6 +205,43 @@ export class SimulationEngine {
 
   public getTerrain(): number[][] {
     return this.cachedTerrain;
+  }
+
+  public getAllEntitiesForRender(): RenderableEntity[] {
+    const result: RenderableEntity[] = [];
+    const entities = this.ecs.getEntitiesWith(['position']);
+    for (const id of entities) {
+      const pos = this.ecs.getComponent<Position>(id, 'position');
+      if (!pos) continue;
+      const society = this.ecs.getComponent<Society>(id, 'society');
+      const flora = this.ecs.getComponent<Flora>(id, 'flora');
+      const fauna = this.ecs.getComponent<Fauna>(id, 'fauna');
+      const structure = this.ecs.getComponent<Structure>(id, 'structure');
+      const movement = this.ecs.getComponent<Movement>(id, 'movement');
+
+      let category: 'Tribe' | 'Flora' | 'Fauna' | 'Structure' = 'Tribe';
+      if (society) category = 'Tribe';
+      else if (flora) category = 'Flora';
+      else if (fauna) category = 'Fauna';
+      else if (structure) category = 'Structure';
+      else continue;
+
+      result.push({
+        id,
+        x: pos.x,
+        y: pos.y,
+        category,
+        subType: society?.name || flora?.subType || fauna?.subType || structure?.subType || '',
+        name: society?.name || structure?.category || flora?.category || fauna?.category || '',
+        faction: society?.faction || structure?.category,
+        activityState: movement?.activityState || fauna?.actionState,
+        population: society?.population,
+        resources: society?.resources,
+        health: society ? 100 : flora ? (flora.growth) : fauna ? fauna.health : structure ? structure.durability : undefined,
+        growth: flora?.growth,
+      });
+    }
+    return result;
   }
 
   public getEntityAt(tx: number, ty: number) {
