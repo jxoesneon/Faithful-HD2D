@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-24
 **Status:** ARCHITECTURE STABILIZED (Phase 1 & 2 Complete)
-**Repository:** [GitHub URL Pending]
+**Repository:** [https://github.com/jxoesneon/Faithful-HD2D](https://github.com/jxoesneon/Faithful-HD2D)
 
 ## 🚀 Architectural Achievements
 
