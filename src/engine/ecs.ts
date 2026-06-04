@@ -76,7 +76,9 @@ export class ECS {
       this.entities.add(ent);
     }
     for (const comp of state.components) {
-      this.addComponent(comp.entity, comp.data);
+      // Use comp.type as the component type, not comp.data.type
+      const componentWithType = { ...comp.data, type: comp.type };
+      this.addComponent(comp.entity, componentWithType);
     }
   }
 }

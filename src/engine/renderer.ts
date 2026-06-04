@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import spriteMappings from '../../docs/sprite-mappings.json';
-import { spriteVertexShader, spriteFragmentShader, lightingFragmentShader } from './shaders';
+import { spriteVertexShader, spriteFragmentShader, lightingVertexShader, lightingFragmentShader } from './shaders';
+
 
 export interface PointLight {
   id: string;
@@ -40,6 +41,8 @@ export class GameRenderer {
   private entities: PIXI.Container;
   private labelLayer: PIXI.Container;
   private overlaysLayer: PIXI.Graphics;
+  private worldContainer = new PIXI.Container();
+  private uiWorldContainer = new PIXI.Container();
   private isoWidth = 64;
   private isoHeight = 32;
   private initialized = false;
@@ -78,6 +81,7 @@ export class GameRenderer {
 
   // Interaction delegation callbacks
   public onTileClick?: (x: number, y: number) => void;
+  public onTileDoubleClick?: (x: number, y: number) => void;
   public onTileHover?: (x: number, y: number) => void;
   public onZoomChange?: (zoom: number) => void;
 
@@ -94,6 +98,36 @@ export class GameRenderer {
   private customShader: PIXI.Shader | null = null;
   private lightingShader: PIXI.Shader | null = null;
   private lightingQuad: PIXI.Mesh | null = null;
+  public lightingUniforms: PIXI.UniformGroup | null = null;
+
+  // --- Pipeline Debug Mode ---
+  // 'composite' = full deferred lighting (default)
+  // 'albedo'    = raw G-buffer albedo only
+  // 'normal'    = raw G-buffer normals only
+  // 'direct'    = bypass deferred, render world directly
+  public debugPipelineMode: 'composite' | 'albedo' | 'normal' | 'direct' = 'direct'; // TEMP: use direct mode while debugging deferred pipeline
+
+  // Diagnostic state accessible to debug UI
+  public pipelineDiagnostics = {
+    deferredActive: false,
+    shaderCompiled: false,
+    gBufferAlive: false,
+    lastFrameMode: 'none' as string,
+    frameCount: 0,
+  };
+
+  /** Returns a snapshot of pipeline state for the debug panel. */
+  public getDiagnostics() {
+    return {
+      ...this.pipelineDiagnostics,
+      shaderCompiled: !!this.lightingShader,
+      gBufferAlive: !!this.gBufferAlbedo && !!this.gBufferNormal,
+      deferredActive: !this.batterySaver && !!this.lightingQuad && !!this.gBufferAlbedo,
+      debugMode: this.debugPipelineMode,
+      zoom: this.zoom,
+      batterySaver: this.batterySaver,
+    };
+  }
 
   // Lighting Uniforms
   public sunDirection = new Float32Array([1.0, 1.0, -1.0]);
@@ -126,6 +160,10 @@ export class GameRenderer {
     }, { passive: false });
 
     let totalMove = 0;
+    let lastClickTime = 0;
+    let lastClickTile: { x: number; y: number } | null = null;
+    const DOUBLE_CLICK_THRESHOLD = 300; // ms
+    
     this.container.addEventListener('mousedown', (e) => {
       this.isDragging = true;
       this.lastPos = { x: e.clientX, y: e.clientY };
@@ -139,8 +177,8 @@ export class GameRenderer {
         const dx = e.clientX - this.lastPos.x;
         const dy = e.clientY - this.lastPos.y;
         totalMove += Math.sqrt(dx * dx + dy * dy);
-        this.app.stage.x += dx;
-        this.app.stage.y += dy;
+        this.worldContainer.x += dx;
+        this.worldContainer.y += dy;
         this.lastPos = { x: e.clientX, y: e.clientY };
       } else {
         if (this.app && this.initialized) {
@@ -169,8 +207,8 @@ export class GameRenderer {
             }
 
             if (!entityFound) {
-              const worldX = (mouseX - this.app.stage.x) / this.zoom;
-              const worldY = (mouseY - this.app.stage.y) / this.zoom;
+              const worldX = (mouseX - this.worldContainer.x) / this.zoom;
+              const worldY = (mouseY - this.worldContainer.y) / this.zoom;
 
               const gx = Math.floor(worldX / this.isoWidth + worldY / this.isoHeight);
               const gy = Math.floor(worldY / this.isoHeight - worldX / this.isoWidth);
@@ -189,8 +227,21 @@ export class GameRenderer {
     window.addEventListener('mouseup', (e) => {
       if (this.wasDestroyed) return;
       this.isDragging = false;
-      if (totalMove < 5 && this.onTileClick && this.hoveredTile) {
-        this.onTileClick(this.hoveredTile.x, this.hoveredTile.y);
+      if (totalMove < 5 && this.hoveredTile) {
+        const now = Date.now();
+        const timeSinceLastClick = now - lastClickTime;
+        const isSameTile = lastClickTile && lastClickTile.x === this.hoveredTile.x && lastClickTile.y === this.hoveredTile.y;
+        
+        // Check for double-click on same tile
+        if (timeSinceLastClick < DOUBLE_CLICK_THRESHOLD && isSameTile && this.onTileDoubleClick) {
+          this.onTileDoubleClick(this.hoveredTile.x, this.hoveredTile.y);
+          lastClickTime = 0; // Reset to prevent triple-click triggering
+          lastClickTile = null;
+        } else if (this.onTileClick) {
+          this.onTileClick(this.hoveredTile.x, this.hoveredTile.y);
+          lastClickTime = now;
+          lastClickTile = { ...this.hoveredTile };
+        }
       }
     });
 
@@ -212,8 +263,8 @@ export class GameRenderer {
       const dy = touch.clientY - this.lastPos.y;
       totalMove += Math.sqrt(dx * dx + dy * dy);
       
-      this.app.stage.x += dx;
-      this.app.stage.y += dy;
+      this.worldContainer.x += dx;
+      this.worldContainer.y += dy;
       this.lastPos = { x: touch.clientX, y: touch.clientY };
     }, { passive: true });
 
@@ -257,7 +308,7 @@ export class GameRenderer {
   setZoom(val: number) {
     if (this.wasDestroyed || !this.app) return;
     this.zoom = Math.max(0.15, Math.min(5, val));
-    this.app.stage.scale.set(this.zoom);
+    this.worldContainer.scale.set(this.zoom);
 
     if (this.zoom < 0.35) this.lodLevel = 4;
     else if (this.zoom < 0.65) this.lodLevel = 2;
@@ -268,6 +319,46 @@ export class GameRenderer {
 
   public triggerZoom(factor: number) {
     this.setZoom(this.zoom * factor);
+  }
+
+  // --- Animated Zoom and Pan to Specific Tile ---
+  // Double-click handler: smoothly zooms in and centers on a tile
+  public animateToTile(gx: number, gy: number, targetZoom: number = 2.5, duration: number = 400) {
+    if (this.wasDestroyed || !this.app) return;
+    
+    // Calculate tile position in world space using isometric projection
+    const isoX = (gx - gy) * (this.isoWidth / 2);
+    const isoY = (gx + gy) * (this.isoHeight / 2);
+    
+    // Calculate target position to center this tile on screen
+    // Center at 1/3 from top for better view of surrounding terrain
+    const targetWorldX = (this.app.screen.width / 2) - (isoX * targetZoom);
+    const targetWorldY = (this.app.screen.height / 3) - (isoY * targetZoom);
+    
+    const startZoom = this.zoom;
+    const startX = this.worldContainer.x;
+    const startY = this.worldContainer.y;
+    const startTime = performance.now();
+    
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(1.0, elapsed / duration);
+      
+      // Ease out cubic for smooth deceleration
+      const ease = 1 - Math.pow(1 - progress, 3);
+      
+      // Interpolate and apply
+      const currentZoom = startZoom + (targetZoom - startZoom) * ease;
+      this.setZoom(currentZoom);
+      this.worldContainer.x = startX + (targetWorldX - startX) * ease;
+      this.worldContainer.y = startY + (targetWorldY - startY) * ease;
+      
+      if (progress < 1.0) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    requestAnimationFrame(animate);
   }
 
   private async loadAssets() {
@@ -333,11 +424,15 @@ export class GameRenderer {
     this.app = new PIXI.Application();
 
     try {
+      const width = this.container.clientWidth;
+      const height = this.container.clientHeight;
+      
       await this.app.init({
         background: '#040608',
         antialias: true,
-        width: this.container.clientWidth,
-        height: this.container.clientHeight,
+        width: width,
+        height: height,
+        autoStart: false,
       });
 
       if (this.wasDestroyed || !this.app) {
@@ -347,6 +442,11 @@ export class GameRenderer {
 
       if (this.app.canvas) {
         this.app.canvas.style.imageRendering = 'pixelated';
+        this.app.canvas.style.position = 'absolute';
+        this.app.canvas.style.top = '0';
+        this.app.canvas.style.left = '0';
+        this.app.canvas.style.width = '100%';
+        this.app.canvas.style.height = '100%';
         this.container.appendChild(this.app.canvas);
       }
 
@@ -372,59 +472,76 @@ export class GameRenderer {
         resolution: window.devicePixelRatio || 1,
       });
 
-      this.app.stage.addChild(this.tiles);
-      this.app.stage.addChild(this.interactions);
-      this.app.stage.addChild(this.entities);
-      this.app.stage.addChild(this.labelLayer);
-      this.app.stage.addChild(this.overlaysLayer);
+      this.worldContainer.addChild(this.tiles);
+      this.worldContainer.addChild(this.interactions);
+      this.worldContainer.addChild(this.entities);
 
-      // NOTE: Deferred lighting pipeline disabled for PIXI v8 compatibility.
-      // The custom Shader/Mesh resources API changed in v8 and the lighting
-      // quad shader throws "Cannot create property 'name' on number".
-      // Falling back to direct stage rendering until deferred pipeline is ported.
       try {
+        this.lightingUniforms = new PIXI.UniformGroup({
+          uSunDirection: { value: this.sunDirection, type: 'vec3<f32>' },
+          uSunColor: { value: this.sunColor, type: 'vec3<f32>' },
+          uAmbientColor: { value: this.ambientColor, type: 'vec3<f32>' },
+          uGodRayIntensity: { value: this.godRayIntensity, type: 'f32' },
+          uSunScreenPos: { value: this.sunScreenPos, type: 'vec2<f32>' },
+          uResolution: { value: new Float32Array([this.app.screen.width, this.app.screen.height]), type: 'vec2<f32>' },
+          uBloomIntensity: { value: 0.0, type: 'f32' },
+          uPointLightCount: { value: 0, type: 'i32' },
+          uPointLightPositions: { value: new Float32Array(this.maxPointLights * 3), type: 'vec3<f32>', size: 16 },
+          uPointLightColors: { value: new Float32Array(this.maxPointLights * 3), type: 'vec3<f32>', size: 16 },
+          uPointLightRadii: { value: new Float32Array(this.maxPointLights), type: 'f32', size: 16 },
+          uPointLightIntensities: { value: new Float32Array(this.maxPointLights), type: 'f32', size: 16 },
+          uGodsEyeMode: { value: this.godsEyeMode ? 1.0 : 0.0, type: 'f32' },
+        });
+
         this.lightingShader = new PIXI.Shader({
           glProgram: PIXI.GlProgram.from({
-            vertex: spriteVertexShader,
+            vertex: lightingVertexShader,
             fragment: lightingFragmentShader,
           }),
           resources: {
+            uLighting: this.lightingUniforms,
+            // PixiJS v8: texture resources must be TextureSource (.source), not RenderTexture
             uAlbedoBuffer: this.gBufferAlbedo.source,
             uNormalBuffer: this.gBufferNormal.source,
-            uSunDirection: this.sunDirection,
-            uSunColor: this.sunColor,
-            uAmbientColor: this.ambientColor,
-            uGodRayIntensity: this.godRayIntensity,
-            uSunScreenPos: this.sunScreenPos,
-            uResolution: new Float32Array([this.app.screen.width, this.app.screen.height]),
-            uPointLightCount: 0,
-            uPointLightPositions: new Float32Array(this.maxPointLights * 3),
-            uPointLightColors: new Float32Array(this.maxPointLights * 3),
-            uPointLightRadii: new Float32Array(this.maxPointLights),
-            uPointLightIntensities: new Float32Array(this.maxPointLights),
-            uGodsEyeMode: this.godsEyeMode ? 1.0 : 0.0,
           }
         }) as any;
 
-        this.lightingQuad = new PIXI.Mesh({
+         this.lightingQuad = new PIXI.Mesh({
           geometry: new PIXI.MeshGeometry({
-            positions: new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]),
-            uvs: new Float32Array([0, 1, 1, 1, 1, 0, 0, 0]),
+            positions: new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]),
+            uvs: new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]),
             indices: new Uint32Array([0, 1, 2, 0, 2, 3]),
           }),
           shader: this.lightingShader as any,
         }) as any;
+
+        // Note: lightingQuad is NOT added as a child of app.stage so we can render it manually in screen-space
       } catch (deferredErr) {
         console.warn('[Renderer] Deferred lighting pipeline disabled:', deferredErr);
         this.lightingShader = null;
         this.lightingQuad = null;
+        this.lightingUniforms = null;
       }
 
-      this.app.stage.x = this.app.screen.width / 2;
-      this.app.stage.y = this.app.screen.height / 5;
+      this.uiWorldContainer.addChild(this.labelLayer);
+      this.uiWorldContainer.addChild(this.overlaysLayer);
 
+      console.log('[Renderer Init] About to add lighting quad...');
+      if (this.lightingQuad) {
+        this.app.stage.addChild(this.lightingQuad);
+      }
+      console.log('[Renderer Init] About to add uiWorldContainer...');
+      this.app.stage.addChild(this.uiWorldContainer);
+
+      console.log('[Renderer Init] Setting world position...');
+      this.worldContainer.x = this.app.screen.width / 2;
+      this.worldContainer.y = this.app.screen.height / 5;
+
+      console.log('[Renderer Init] Adding resize listener...');
       window.addEventListener('resize', this.handleResize);
+      console.log('[Renderer Init] Setting initialized = true...');
       this.initialized = true;
+      console.log('[Renderer Init] Initialization complete!');
     } catch (e) {
       console.error("PIXI Initialization failed:", e);
       this.destroy();
@@ -437,8 +554,8 @@ export class GameRenderer {
     const height = this.container.clientHeight;
     
     this.app.renderer.resize(width, height);
-    this.app.stage.x = width / 2;
-    this.app.stage.y = height / 5;
+    this.worldContainer.x = width / 2;
+    this.worldContainer.y = height / 5;
 
     if (this.gBufferAlbedo) this.gBufferAlbedo.resize(width, height);
     if (this.gBufferNormal) this.gBufferNormal.resize(width, height);
@@ -619,11 +736,41 @@ export class GameRenderer {
     return pivot;
   }
 
-  updateEntities(renderEntities: RenderableEntity[]) {
+  updateEntities(renderEntities: RenderableEntity[], entityDataView?: Float32Array) {
     this.lastEntities = renderEntities;
-    if (this.wasDestroyed || !this.app || !this.initialized) return;
+    if (this.wasDestroyed || !this.app || !this.initialized) {
+      console.log('[updateEntities] SKIPPED - destroyed:', this.wasDestroyed, 'app:', !!this.app, 'initialized:', this.initialized);
+      return;
+    }
 
     this.animFrame++;
+    if (this.animFrame % 60 === 0) {
+      console.log('[updateEntities] Frame', this.animFrame, 'entities:', renderEntities.length, 'tiles:', this.tiles.children.length);
+    }
+
+    // --- Override positions from SharedArrayBuffer ---
+    if (entityDataView) {
+      const hashToEntity = new Map<number, RenderableEntity>();
+      renderEntities.forEach(ent => {
+        let hash = 0;
+        for (let i = 0; i < ent.id.length; i++) {
+          hash = (hash << 5) - hash + ent.id.charCodeAt(i);
+          hash |= 0;
+        }
+        hashToEntity.set(hash, ent);
+      });
+
+      for (let i = 0; i < 100000; i++) {
+        const idx = i * 8;
+        const hash = entityDataView[idx + 6];
+        if (hash === 0) continue;
+        const ent = hashToEntity.get(hash);
+        if (ent) {
+          ent.x = entityDataView[idx + 0];
+          ent.y = entityDataView[idx + 1];
+        }
+      }
+    }
 
     if (this.lastTerrainMap && this.animFrame % 10 === 0) {
       this.drawTerrain(this.lastTerrainMap);
@@ -633,13 +780,30 @@ export class GameRenderer {
     this.overlaysLayer.clear();
 
     // View Rect Culling (Phase 1, Step 3)
+    // Use worldContainer position since that's what gets moved during panning
     const viewPadding = 128;
     const viewRect = {
-        minX: -this.app.stage.x / this.zoom - viewPadding,
-        maxX: (this.app.screen.width - this.app.stage.x) / this.zoom + viewPadding,
-        minY: -this.app.stage.y / this.zoom - viewPadding,
-        maxY: (this.app.screen.height - this.app.stage.y) / this.zoom + viewPadding,
+        minX: -this.worldContainer.x / this.zoom - viewPadding,
+        maxX: (this.app.screen.width - this.worldContainer.x) / this.zoom + viewPadding,
+        minY: -this.worldContainer.y / this.zoom - viewPadding,
+        maxY: (this.app.screen.height - this.worldContainer.y) / this.zoom + viewPadding,
     };
+
+    // Diagnostic logging
+    if (this.animFrame % 60 === 0) {
+      console.log("[Renderer Diagnostic]", {
+        animFrame: this.animFrame,
+        tilesCount: this.tiles?.children?.length,
+        entitiesCount: this.entities?.children?.length,
+        entitySpritesCount: this.entitySprites.size,
+        incomingEntities: renderEntities.length,
+        hasTerrain: !!this.lastTerrainMap,
+        zoom: this.zoom,
+        worldPos: { x: this.worldContainer.x, y: this.worldContainer.y },
+        viewRect: viewRect,
+        debugOffset: { x: this.debugOffsetX, y: this.debugOffsetY },
+      });
+    }
 
     renderEntities.forEach(ent => {
       const iso = this.toIso(ent.x, ent.y);
@@ -675,6 +839,7 @@ export class GameRenderer {
         container.addChild(shadow);
 
         actorSprite = new PIXI.Sprite();
+        actorSprite.blendMode = 'screen'; // Makes black (0,0,0) transparent
         container.addChild(actorSprite);
 
         labelsContainer = new PIXI.Container();
@@ -755,7 +920,7 @@ export class GameRenderer {
         const factionColors = { ANIMIST: 0x10b981, TECHNOCRAT: 0x06b6d4, INTERVENTIONIST: 0xf59e0b, NIHILIST: 0x8b5cf6, ELEMENTAL: 0xef4444 };
         const facC = factionColors[faction as keyof typeof factionColors] || 0x94a3b8;
 
-        nameText.text = ent.name.split('[')[0].trim();
+        nameText.text = (ent.name || 'Unknown').split('[')[0].trim();
         subLabel.text = `${faction} // PO: ${ent.population || 0}`;
         subLabel.style.fill = facC;
         labelsContainer.visible = true;
@@ -766,13 +931,13 @@ export class GameRenderer {
         const isBanana = ent.subType && ['GOLD', 'CYBER', 'VOID', 'DIVINE', 'FIRE', 'FROST', 'TOXIC', 'COSMIC'].includes(ent.subType);
         if (isBanana) {
           sheetKey = 'nano-banana-4k-sheet';
-          row = ['GOLD', 'CYBER', 'VOID', 'DIVINE', 'FIRE', 'FROST', 'TOXIC', 'COSMIC'].indexOf(ent.subType);
+          row = ['GOLD', 'CYBER', 'VOID', 'DIVINE', 'FIRE', 'FROST', 'TOXIC', 'COSMIC'].indexOf(ent.subType || '');
         } else if (ent.name === 'CROP') {
           sheetKey = 'flora-crops-4k-sheet';
-          row = ['WHEAT', 'CORN', 'RICE', 'COTTON', 'POTATO', 'TOMATO', 'BERRY', 'GLOWSHROOM'].indexOf(ent.subType.toUpperCase());
+          row = ['WHEAT', 'CORN', 'RICE', 'COTTON', 'POTATO', 'TOMATO', 'BERRY', 'GLOWSHROOM'].indexOf((ent.subType || '').toUpperCase());
         } else {
           sheetKey = 'flora-trees-4k-sheet';
-          row = ['OAK', 'PINE', 'BIRCH', 'WILLOW', 'REDWOOD', 'PALM', 'CACTUS', 'BAMBOO'].indexOf(ent.subType.toUpperCase());
+          row = ['OAK', 'PINE', 'BIRCH', 'WILLOW', 'REDWOOD', 'PALM', 'CACTUS', 'BAMBOO'].indexOf((ent.subType || '').toUpperCase());
         }
 
         const growth = ent.growth !== undefined ? ent.growth : 100;
@@ -783,18 +948,18 @@ export class GameRenderer {
 
         texture = this.getSheetCellTexture(sheetKey, row, col);
         baseScale = 0.3 + 0.7 * (growth / 100);
-        nameText.text = isBanana ? `🍌 ${ent.subType}` : ent.subType;
+        nameText.text = isBanana ? `🍌 ${ent.subType || 'Unknown'}` : (ent.subType || 'Unknown');
         nameText.style.fill = isBanana ? '#facc15' : '#4ade80';
         subLabel.text = `GROWTH: ${growth}%`;
         labelsContainer.visible = true;
       }
       else if (ent.category === 'Fauna') {
         sheetKey = 'fauna-wild-4k-sheet';
-        const isWolf = ent.subType.toLowerCase().includes('wolf');
+        const isWolf = (ent.subType || '').toLowerCase().includes('wolf');
         row = isWolf ? 0 : 1;
         col = Math.floor(this.animFrame / 15) % 4;
         texture = this.getSheetCellTexture(sheetKey, row, col);
-        nameText.text = ent.subType;
+        nameText.text = ent.subType || 'Unknown';
         nameText.style.fill = isWolf ? '#f87171' : '#a7f3d0';
         subLabel.text = `WILDLIFE`;
         labelsContainer.visible = true;
@@ -813,7 +978,7 @@ export class GameRenderer {
         else col = (Math.floor(this.animFrame / 30) % 2);
 
         texture = this.getSheetCellTexture(sheetKey, row, col);
-        nameText.text = ent.subType || ent.name;
+        nameText.text = ent.subType || ent.name || 'Unknown';
         nameText.style.fill = '#facc15';
         subLabel.text = `DURABILITY: ${durability}%`;
         labelsContainer.visible = true;
@@ -875,6 +1040,154 @@ export class GameRenderer {
       }
     }
     this.entities.children.sort((a, b) => a.y - b.y);
+
+    // --- Pipeline Debug Mode Dispatch ---
+    this.pipelineDiagnostics.frameCount++;
+    const mode = this.debugPipelineMode;
+
+    // G-buffer prerequisites
+    const hasGBuffer = !this.batterySaver && this.app && this.initialized && this.lightingQuad && this.gBufferAlbedo && this.gBufferNormal;
+
+    if ((mode === 'composite' || mode === 'albedo' || mode === 'normal') && hasGBuffer) {
+      // ── Passes shared by all deferred modes ──────────────────────────────────
+
+      // 1. Prep scene visibility for G-Buffer capture
+      this.labelLayer.visible = false;
+      this.overlaysLayer.visible = false;
+      this.tiles.visible = true;
+      this.interactions.visible = true;
+      this.entities.visible = true;
+      if (this.lightingQuad) this.lightingQuad.cullable = false;
+
+      // 2. Render scene → Albedo G-Buffer
+      this.app!.renderer.render({
+        container: this.worldContainer,
+        target: this.gBufferAlbedo!,
+        clear: true,
+      });
+
+      // 3. Fill Normal G-Buffer (flat normals = 0.5,0.5,1.0)
+      this.app!.renderer.render({
+        container: new PIXI.Container(),
+        target: this.gBufferNormal!,
+        clear: true,
+        clearColor: [0.5, 0.5, 1.0, 1.0],
+      });
+
+      if (mode === 'albedo') {
+        // ── DEBUG: show raw albedo G-buffer via a plain sprite ───────────────
+        this.pipelineDiagnostics.lastFrameMode = 'albedo';
+        if (this.lightingQuad) this.lightingQuad.visible = false;
+
+        // Render albedo texture directly to screen using a full-screen sprite
+        const albedoSprite = new PIXI.Sprite(this.gBufferAlbedo!);
+        albedoSprite.width = this.app!.screen.width;
+        albedoSprite.height = this.app!.screen.height;
+        const debugContainer = new PIXI.Container();
+        debugContainer.addChild(albedoSprite);
+        this.app!.renderer.render({ container: debugContainer });
+        albedoSprite.destroy();
+
+      } else if (mode === 'normal') {
+        // ── DEBUG: show raw normal G-buffer ──────────────────────────────────
+        this.pipelineDiagnostics.lastFrameMode = 'normal';
+        if (this.lightingQuad) this.lightingQuad.visible = false;
+
+        const normalSprite = new PIXI.Sprite(this.gBufferNormal!);
+        normalSprite.width = this.app!.screen.width;
+        normalSprite.height = this.app!.screen.height;
+        const debugContainer = new PIXI.Container();
+        debugContainer.addChild(normalSprite);
+        this.app!.renderer.render({ container: debugContainer });
+        normalSprite.destroy();
+
+      } else {
+        // ── COMPOSITE: full deferred lighting pass ────────────────────────────
+        this.pipelineDiagnostics.lastFrameMode = 'composite';
+
+        // 4. Update lighting uniforms
+        if (this.lightingUniforms) {
+          const u = this.lightingUniforms.uniforms;
+          u.uPointLightCount = Math.min(this.pointLights.length, this.maxPointLights);
+          for (let i = 0; i < this.maxPointLights; i++) {
+            if (i < this.pointLights.length) {
+              const light = this.pointLights[i];
+              const iso = this.toIso(light.x, light.y);
+              const screenX = this.worldContainer.x + (iso.x + this.debugOffsetX) * this.zoom;
+              const screenY = this.worldContainer.y + (iso.y + this.debugOffsetY) * this.zoom;
+              u.uPointLightPositions[i * 3 + 0] = screenX / this.app!.screen.width;
+              u.uPointLightPositions[i * 3 + 1] = screenY / this.app!.screen.height;
+              u.uPointLightPositions[i * 3 + 2] = 0;
+              u.uPointLightColors[i * 3 + 0] = light.color[0];
+              u.uPointLightColors[i * 3 + 1] = light.color[1];
+              u.uPointLightColors[i * 3 + 2] = light.color[2];
+              u.uPointLightRadii[i] = light.radius * this.zoom;
+              u.uPointLightIntensities[i] = light.intensity;
+            } else {
+              u.uPointLightPositions[i * 3 + 0] = 0;
+              u.uPointLightPositions[i * 3 + 1] = 0;
+              u.uPointLightPositions[i * 3 + 2] = 0;
+              u.uPointLightColors[i * 3 + 0] = 0;
+              u.uPointLightColors[i * 3 + 1] = 0;
+              u.uPointLightColors[i * 3 + 2] = 0;
+              u.uPointLightRadii[i] = 0;
+              u.uPointLightIntensities[i] = 0;
+            }
+          }
+          u.uGodRayIntensity = this.godRayIntensity;
+          u.uGodsEyeMode = this.godsEyeMode ? 1.0 : 0.0;
+          u.uResolution[0] = this.app!.screen.width;
+          u.uResolution[1] = this.app!.screen.height;
+          u.uSunScreenPos[0] = this.sunScreenPos[0];
+          u.uSunScreenPos[1] = this.sunScreenPos[1];
+          this.lightingUniforms.update();
+        }
+
+        // 5. Size lightingQuad to fill screen, make visible
+        if (this.lightingQuad) {
+          this.lightingQuad.position.set(0, 0);
+          this.lightingQuad.scale.set(this.app!.screen.width, this.app!.screen.height);
+          this.lightingQuad.visible = true;
+        }
+
+        // 6. Sync UI container and restore label/overlay visibility
+        this.uiWorldContainer.x = this.worldContainer.x;
+        this.uiWorldContainer.y = this.worldContainer.y;
+        this.uiWorldContainer.scale.set(this.zoom);
+        this.labelLayer.visible = true;
+        this.overlaysLayer.visible = true;
+
+        // 7. Render full stage → screen
+        this.app!.renderer.render({ container: this.app!.stage });
+      }
+
+    } else {
+      // ── DIRECT / Battery-Saver / Fallback ────────────────────────────────────
+      this.pipelineDiagnostics.lastFrameMode = mode === 'direct' ? 'direct' : 'fallback';
+      console.log('[Render] DIRECT path - tiles children:', this.tiles.children.length, 'entities children:', this.entities.children.length, 'stage children:', this.app?.stage.children.length);
+
+      this.tiles.visible = true;
+      this.interactions.visible = true;
+      this.entities.visible = true;
+      this.labelLayer.visible = true;
+      this.overlaysLayer.visible = true;
+      if (this.lightingQuad) this.lightingQuad.visible = false;
+
+      // Ensure worldContainer is on stage for direct render
+      if (this.app && !this.app.stage.children.includes(this.worldContainer)) {
+        console.log('[Render] Adding worldContainer to stage');
+        this.app.stage.addChildAt(this.worldContainer, 0);
+      }
+
+      this.uiWorldContainer.x = this.worldContainer.x;
+      this.uiWorldContainer.y = this.worldContainer.y;
+      this.uiWorldContainer.scale.set(this.zoom);
+
+      if (this.app) {
+        console.log('[Render] Calling app.renderer.render()');
+        this.app.renderer.render({ container: this.app.stage });
+      }
+    }
   }
 
   destroy() {

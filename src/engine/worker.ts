@@ -3,6 +3,16 @@ import initWasm, { WasmSimulationEngine } from '../../faithful-engine/pkg/faithf
 let wasm: WasmSimulationEngine | null = null;
 let sharedBuffer: SharedArrayBuffer | null = null;
 let entityDataView: Float32Array | null = null;
+let prevLength = 0;
+
+function hashString(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return hash;
+}
 
 self.onmessage = async (e) => {
   const { type, payload, msgId } = e.data;
@@ -28,27 +38,21 @@ self.onmessage = async (e) => {
     
     wasm.update(payload.dt);
     
-    const exportedState = wasm.export_state();
-    
-    if (exportedState && exportedState.ecsState && exportedState.ecsState.entities && entityDataView) {
-        let i = 0;
-        for (const [id, entity] of Object.entries(exportedState.ecsState.entities)) {
-            if (i >= 100000) break;
-            const ent = entity as any;
-            const idx = i * 8; // ENTITY_STRIDE
-            entityDataView[idx + 0] = ent.position?.x || 0;
-            entityDataView[idx + 1] = ent.position?.y || 0;
-            entityDataView[idx + 2] = ent.movement?.vx || 0;
-            entityDataView[idx + 3] = ent.movement?.vy || 0;
-            entityDataView[idx + 4] = ent.biology?.age || 0;
-            entityDataView[idx + 5] = ent.biology?.health || 0;
-            entityDataView[idx + 6] = 0; // type placeholder
-            entityDataView[idx + 7] = 0; // state placeholder
-            i++;
+    if (entityDataView) {
+        const entityData = wasm.get_entity_data_flat();
+        entityDataView.set(entityData);
+        if (prevLength > entityData.length) {
+            entityDataView.fill(0, entityData.length, prevLength);
         }
+        prevLength = entityData.length;
     }
     
-    self.postMessage({ type: 'STATE_UPDATE', payload: { state: exportedState } });
+    if (payload.isSyncTick) {
+        const exportedState = wasm.export_state();
+        self.postMessage({ type: 'STATE_UPDATE', payload: { state: exportedState } });
+    } else {
+        self.postMessage({ type: 'STATE_UPDATE', payload: { state: null } });
+    }
   }
   else if (type.startsWith('CMD_')) {
     let result = undefined;

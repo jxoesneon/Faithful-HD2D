@@ -45,6 +45,23 @@ export const spriteFragmentShader = `
     }
 `;
 
+// --- Fullscreen Quad Vertex Shader for Deferred Lighting ---
+export const lightingVertexShader = `
+    attribute vec2 aPosition;
+    attribute vec2 aUV;
+
+    uniform mat3 projectionMatrix;
+    uniform mat3 translationMatrix;
+
+    varying vec2 vTextureCoord;
+
+    void main(void)
+    {
+        gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aPosition, 1.0)).xy, 0.0, 1.0);
+        vTextureCoord = aUV;
+    }
+`;
+
 // --- Deferred Lighting & Post-Processing Pass Shader ---
 export const lightingFragmentShader = `
     precision highp float;
@@ -77,61 +94,82 @@ export const lightingFragmentShader = `
 
     void main(void)
     {
+        // Sample albedo from G-buffer
         vec4 albedo = texture2D(uAlbedoBuffer, vTextureCoord);
-        vec3 normal = texture2D(uNormalBuffer, vTextureCoord).rgb * 2.0 - 1.0;
-        
-        if (albedo.a < 0.01) {
-            gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0); // Background
-            return;
-        }
 
-        // 1. Basic Lighting (Lambertian)
-        float diff = max(dot(normal, normalize(uSunDirection)), 0.0);
-        vec3 diffuse = diff * uSunColor;
-        
-        // 2. Point Lights
-        vec3 pointLightContrib = vec3(0.0);
-        for(int i=0; i<MAX_POINT_LIGHTS; i++) {
+        // Sample packed normal (0..1) and decode to (-1..1)
+        vec3 normalRaw = texture2D(uNormalBuffer, vTextureCoord).rgb;
+        vec3 normal = normalize(normalRaw * 2.0 - 1.0);
+
+        // --- Directional Sun Lighting ---
+        vec3 sunDir = normalize(uSunDirection);
+        float nDotL = max(dot(normal, sunDir), 0.0);
+        vec3 sunContrib = uSunColor * nDotL;
+
+        // --- Ambient ---
+        vec3 ambient = uAmbientColor;
+
+        // --- Point Lights ---
+        vec3 pointContrib = vec3(0.0);
+        vec2 fragScreenUV = vTextureCoord; // Already in 0..1 screen space
+        for (int i = 0; i < MAX_POINT_LIGHTS; i++) {
             if (i >= uPointLightCount) break;
-            
-            vec2 lightPosUV = uPointLightPositions[i].xy;
+            vec2 lightUV = uPointLightPositions[i].xy;
             float radius = uPointLightRadii[i];
-            
-            // Screen space distance
-            vec2 diffVec = (vTextureCoord - lightPosUV) * uResolution;
-            float dist = length(diffVec);
-            
-            if (dist < radius) {
-                float atten = 1.0 - clamp(dist / radius, 0.0, 1.0);
+            float intensity = uPointLightIntensities[i];
+            vec3 lightColor = uPointLightColors[i];
+
+            float dist = length(fragScreenUV - lightUV);
+            if (radius > 0.0 && dist < radius) {
+                float atten = 1.0 - (dist / radius);
                 atten = atten * atten; // Quadratic falloff
-                
-                // Normal calculation for point light
-                vec3 lightDir = normalize(vec3(lightPosUV - vTextureCoord, 0.1));
-                float nDotL = max(dot(normal, lightDir), 0.0);
-                
-                pointLightContrib += uPointLightColors[i] * uPointLightIntensities[i] * atten * (nDotL * 0.5 + 0.5);
+                pointContrib += lightColor * intensity * atten;
             }
         }
 
-        // 3. Final Color Synthesis
-        vec3 finalColor = albedo.rgb * (diffuse + uAmbientColor + pointLightContrib);
-        
-        // 4. Volumetric Rays (Pseudo-God Rays)
-        // Simple radial blur centered on uSunScreenPos
-        vec2 rayDir = vTextureCoord - uSunScreenPos;
-        float rayWeight = 1.0;
-        vec3 rays = vec3(0.0);
-        for(int i=0; i<8; i++) {
-            rays += texture2D(uAlbedoBuffer, vTextureCoord - rayDir * float(i) * 0.01).rgb;
+        // --- God Ray Volumetric Scattering ---
+        float godRay = 0.0;
+        if (uGodRayIntensity > 0.0) {
+            vec2 dir = vTextureCoord - uSunScreenPos;
+            float numSamples = 16.0;
+            vec2 delta = dir / numSamples;
+            vec2 samplePos = vTextureCoord;
+            float decay = 0.92;
+            float weight = 0.01;
+            float accum = 0.0;
+            for (float s = 0.0; s < 16.0; s++) {
+                samplePos -= delta;
+                vec4 sampleColor = texture2D(uAlbedoBuffer, clamp(samplePos, 0.0, 1.0));
+                float brightness = dot(sampleColor.rgb, vec3(0.299, 0.587, 0.114));
+                accum += brightness * weight;
+                weight *= decay;
+            }
+            godRay = accum * uGodRayIntensity;
         }
-        finalColor += (rays / 8.0) * uGodRayIntensity;
 
+        // --- Combine Lighting ---
+        vec3 lighting = ambient + sunContrib + pointContrib;
+        vec3 color = albedo.rgb * lighting;
+
+        // Add god rays as additive light scatter
+        color += vec3(godRay) * uSunColor;
+
+        // --- Bloom (simple threshold glow) ---
+        if (uBloomIntensity > 0.0) {
+            float brightness = dot(color, vec3(0.299, 0.587, 0.114));
+            if (brightness > 0.85) {
+                color += (color - vec3(0.85)) * uBloomIntensity * 2.0;
+            }
+        }
+
+        // --- God's Eye Mode: Desaturate world ---
         if (uGodsEyeMode > 0.5) {
-            float lum = dot(finalColor, vec3(0.299, 0.587, 0.114));
-            vec3 ethereal = mix(vec3(lum), vec3(lum * 0.5, lum * 0.8, lum * 1.5), 0.8);
-            finalColor = mix(finalColor, ethereal, 1.0);
+            float grey = dot(color, vec3(0.299, 0.587, 0.114));
+            color = mix(color, vec3(grey), 0.6);
+            // Add a subtle teal-green tint for strategic clarity
+            color = mix(color, vec3(0.2, 0.45, 0.4), 0.12);
         }
 
-        gl_FragColor = vec4(finalColor, albedo.a);
+        gl_FragColor = vec4(color, albedo.a);
     }
 `;

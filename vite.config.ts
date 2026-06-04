@@ -39,6 +39,32 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          const normalizedId = id.replace(/\\/g, '/');
+          if (normalizedId.includes('node_modules')) {
+            if (normalizedId.includes('/lucide-react/')) return 'ui';
+            return 'vendor';
+          }
+          if (normalizedId.includes('/src/engine/')) return 'engine';
+          if (normalizedId.includes('/src/components/')) {
+            if (
+              normalizedId.includes('/AssetInspector') ||
+              normalizedId.includes('/CosmicSettingsHub') ||
+              normalizedId.includes('/DeitySelectionOverlay') ||
+              normalizedId.includes('/RenderDebugPanel') ||
+              normalizedId.includes('/CoordinateDebugger') ||
+              normalizedId.includes('/AssetRegistryEditor')
+            ) {
+              return;
+            }
+            return 'ui';
+          }
+        },
+      },
+    },
   },
   server: {
     allowedHosts: true as true,
@@ -67,7 +93,9 @@ export default defineConfig({
         'src/engine/gods_data.ts',
         'src/engine/audio.ts',
         'src/engine/fractal.ts',
-        'src/engine/shaders.ts'
+        'src/engine/shaders.ts',
+        'src/engine/faith/**/*.ts',
+        'src/engine/economy/**/*.ts',
       ]
     }
   },

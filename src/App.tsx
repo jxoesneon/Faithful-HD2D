@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { ECS } from './engine/ecs';
 import { GameRenderer } from './engine/renderer';
 import { SimulationEngine } from './engine/simulation';
+import { EngineCoordinator } from './engine/engineCoordinator';
 import { Position, Society, Faith, Flora, Fauna, Structure, Movement, FaithSystemType } from './types';
 import { 
   Zap, 
@@ -30,6 +31,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AssetInspector } from './components/AssetInspector';
+import { SystemDiagnosticsPanel } from './components/SystemDiagnosticsPanel';
 import { GODS_PANTHEON, God, Skill } from './engine/gods_data';
 import { DeitySelectionOverlay } from './components/DeitySelectionOverlay';
 import { StartMenuOverlay } from './components/StartMenuOverlay';
@@ -38,6 +40,7 @@ import { AudioEngine } from './engine/audio';
 import { CoordinateDebugger } from './components/CoordinateDebugger';
 import { AssetRegistryEditor } from './components/AssetRegistryEditor';
 import { useDevice, GlassPanel, AdaptiveContainer } from './components/AdaptiveUI';
+import { RenderDebugPanel } from './components/RenderDebugPanel';
 import spriteMappings from '../docs/sprite-mappings.json';
 
 const ILLUMINATION_BOOSTS = [
@@ -46,7 +49,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Celestial Dew',
     description: 'Imbues global soils with microscopic celestial moisture, accelerating plant cell division.',
     effectDesc: '+35% vegetation & wild crop growth speed',
-    icon: '🌱',
+    icon: 'Ã°Å¸Å’Â±',
     colorBg: 'from-emerald-500/10 to-teal-500/10 border-emerald-500/20 text-emerald-300'
   },
   {
@@ -54,7 +57,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Astral Velocity',
     description: 'Deploys a localized quantum acceleration pulse, giving mortals celestial light steps across terrain.',
     effectDesc: '+30% mortal movement velocity globally',
-    icon: '✨',
+    icon: 'Ã¢Å“Â¨',
     colorBg: 'from-sky-500/10 to-indigo-500/10 border-sky-500/20 text-sky-300'
   },
   {
@@ -62,7 +65,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Cognitive Spark',
     description: 'Aligns micro-synaptic transmitters. Enlightened scholars receive major mental processing breakthroughs.',
     effectDesc: '+40% technology advancement rate in all tribes',
-    icon: '🧪',
+    icon: 'Ã°Å¸Â§Âª',
     colorBg: 'from-cyan-500/10 to-blue-500/10 border-cyan-500/20 text-cyan-300'
   },
   {
@@ -70,7 +73,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Aerosol of Serenity',
     description: 'Floods the atmospheric envelope with relaxing ozone, assuring minimum standard of living contentments.',
     effectDesc: 'Locks collective happiness feedback floor strictly at 45%',
-    icon: '💖',
+    icon: 'Ã°Å¸â€™â€“',
     colorBg: 'from-rose-500/10 to-pink-500/10 border-rose-500/20 text-rose-300'
   },
   {
@@ -78,7 +81,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Acolyte Resonance',
     description: 'Calibrates faith core frequency, allowing prayer structures to absorb extra spiritual energy.',
     effectDesc: '+25% global devotion generation from worship & tithes',
-    icon: '🔮',
+    icon: 'Ã°Å¸â€Â®',
     colorBg: 'from-violet-500/10 to-purple-500/10 border-violet-500/20 text-violet-300'
   },
   {
@@ -86,7 +89,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Kinetic Shielder',
     description: 'Projects defensive field layers, guarding tribal domains from storms and converting strikes to resources.',
     effectDesc: 'Shields mortals from lightning casualty; +3x Technocrat returns; reducing decay, 3x structure armor',
-    icon: '🛡️',
+    icon: 'Ã°Å¸â€ºÂ¡Ã¯Â¸Â',
     colorBg: 'from-amber-500/10 to-red-500/10 border-amber-500/20 text-amber-300'
   },
   {
@@ -94,7 +97,7 @@ const ILLUMINATION_BOOSTS = [
     name: 'Generative Bliss',
     description: 'Warms climate sectors with bios-favorable frequencies, provoking immediate family expansions.',
     effectDesc: '+40% natural birth rate & demographic increase speed',
-    icon: '👥',
+    icon: 'Ã°Å¸â€˜Â¥',
     colorBg: 'from-green-500/10 to-emerald-500/10 border-green-500/20 text-green-300'
   }
 ];
@@ -104,7 +107,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 8,
       name: "Sovereign Cosmic Empire",
-      icon: "👑",
+      icon: "Ã°Å¸â€˜â€˜",
       color: "from-purple-500 to-indigo-600 shadow-purple-500/20",
       description: "Ultimate peak of mortal evolution. An apex civilization wrapping entire biomes with weather immunity and double devotion output.",
       benefits: ["Double Devotion Output (+100%)", "Complete Weather Storm Immunity", "Happiness locked above 50% permanently"],
@@ -115,7 +118,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 7,
       name: "Sprawling Metropolis",
-      icon: "🌌",
+      icon: "Ã°Å¸Å’Å’",
       color: "from-blue-600 to-cyan-500 shadow-blue-500/10",
       description: "A monumental city attracting global attention. Passively generates resources and devotion automatically.",
       benefits: ["Auto yield: +3 Raw Materials/sec", "Auto yield: +1 Devotion/sec", "All natural hazards cushioned"],
@@ -127,7 +130,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 6,
       name: "Capital City",
-      icon: "⛪",
+      icon: "Ã¢â€ºÂª",
       color: "from-teal-600 to-emerald-500",
       description: "Centralized power house with division of labor and complex trade systems.",
       benefits: ["Devotion accumulation speed boosted by +50%", "Unlocks Tithe Offering toggle"],
@@ -139,7 +142,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 5,
       name: "Sovereign Town",
-      icon: "🏛️",
+      icon: "Ã°Å¸Ââ€ºÃ¯Â¸Â",
       color: "from-amber-600 to-orange-500",
       description: "Stonemason structures, central square, and organized craftsmen guilds.",
       benefits: ["+35% gathering speed", "+15% hunting speed", "Unlocks Strip mining options"],
@@ -151,7 +154,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 4,
       name: "Cohesive Village",
-      icon: "🏰",
+      icon: "Ã°Å¸ÂÂ°",
       color: "from-lime-600 to-green-500",
       description: "Thriving permanent settlement with automated defensive cross-bolt guard towers to repel wild wolves.",
       benefits: ["Automated perimeter defenses against wolves", "+25% Scholarly speed boost"],
@@ -163,7 +166,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 3,
       name: "Settled Hamlet",
-      icon: "🏡",
+      icon: "Ã°Å¸ÂÂ¡",
       color: "from-sky-700 to-indigo-500",
       description: "A solid permanent cluster with shared storage pits. Unlocks emergency Rationing commands.",
       benefits: ["+25% Hunting yield ", "Unlocks Rationing Mode to cut hunger"],
@@ -175,7 +178,7 @@ export const getTribeTierInfo = (pop: number) => {
     return {
       level: 2,
       name: "Pioneer Clan",
-      icon: "⛺",
+      icon: "Ã¢â€ºÂº",
       color: "from-yellow-700 to-amber-600",
       description: "Small family network establishing initial campsites and storage facilities.",
       benefits: ["+15% Forage gathering speed", "Acolytes begin prayers for Devotion"],
@@ -186,7 +189,7 @@ export const getTribeTierInfo = (pop: number) => {
   return {
     level: 1,
     name: "Sentinel Outpost",
-    icon: "🛖",
+    icon: "Ã°Å¸â€ºâ€“",
     color: "from-slate-700 to-slate-600",
     description: "A solitary villager or small scouting party seeking a foothold in the wild biome. Highly fragile.",
     benefits: ["Fleeing speed boosted to escape wildlife", "Zero base resource consumption"],
@@ -202,6 +205,7 @@ export default function App() {
   const rendererRef = useRef<GameRenderer | null>(null);
   const ecsRef = useRef(new ECS());
   const simulationRef = useRef<SimulationEngine | null>(null);
+  const coordinatorRef = useRef<EngineCoordinator | null>(null);
   
   const [devotion, setDevotion] = useState(100);
   const [stats, setStats] = useState({ population: 0, religions: {} as Record<string, number>, techAverage: 1.0 });
@@ -210,6 +214,8 @@ export default function App() {
 
   // Live start menu and simulation speed controls
   const [showStartMenu, setShowStartMenu] = useState(true);
+  const [showRenderDebug, setShowRenderDebug] = useState(false);
+  const [showSystemDiagnostics, setShowSystemDiagnostics] = useState(false);
   const [gameSpeed, setGameSpeed] = useState<number>(1.0);
   const [settings, setSettings] = useState({
     gameSpeed: 1.0,
@@ -219,20 +225,20 @@ export default function App() {
     showGridLines: true,
     tooltipAssist: true,
     bloomEnable: true,
-    bloomIntensity: 1.5,
+    bloomIntensity: 1.0,  // Calibrated: was 1.5, now 2.8px blur for subtler glow
     dofEnable: true,
-    dofBlur: 6,
+    dofBlur: 3,  // Calibrated: was 6, now 3px for natural depth transition
     colorGrading: 'vibrant' as 'none' | 'vibrant' | 'cold' | 'cinematic' | 'warm' | 'matrix' | 'neon',
     chromaticAberrationEnable: true,
-    chromaticAberrationOffset: 4,
+    chromaticAberrationOffset: 2,  // Calibrated: was 4, now 2px for subtle lens distortion
     lensFlareEnable: true,
-    lensDirtAlpha: 0.35,
+    lensDirtAlpha: 0.15,  // Calibrated: was 0.35, now 15% for cleaner lens effect
     vignetteEnable: true,
-    vignetteIntensity: 0.65,
+    vignetteIntensity: 0.45,  // Calibrated: was 0.65, now 45% for subtle edge darkening
     sunDirX: 1.0,
     sunDirY: 1.0,
     godRayIntensity: 0.35,
-    ambientLevel: 0.2,
+    ambientLevel: 0.28,  // Calibrated: was 0.2, now 28% for better visibility
     batterySaver: false
   });
 
@@ -414,7 +420,13 @@ export default function App() {
         }
       }
 
-      // 4. Deity Miracle Interventions: '1'-'5'
+      // 4. System Diagnostics toggle: F3
+      if (e.key === 'F3') {
+        e.preventDefault();
+        setShowSystemDiagnostics((v) => !v);
+      }
+
+      // 5. Deity Miracle Interventions: '1'-'5'
       if (['1', '2', '3', '4', '5'].includes(e.key)) {
         const index = parseInt(e.key) - 1;
         if (selectedGod && selectedGod.skills) {
@@ -428,7 +440,7 @@ export default function App() {
                   sim.totalDevotion -= skill.devotionCost;
                   const succeeded = sim.triggerLocalizedSpell(skill.spellType, hoveredCoordinate.x, hoveredCoordinate.y);
                   if (succeeded) {
-                    sim.addEventLog('MIRACLE', `🔥 Intervened with miracle [${skill.name}] at (${hoveredCoordinate.x}, ${hoveredCoordinate.y})`);
+                    sim.addEventLog('MIRACLE', `Ã°Å¸â€Â¥ Intervened with miracle [${skill.name}] at (${hoveredCoordinate.x}, ${hoveredCoordinate.y})`);
                     if (skill.spellType.toLowerCase().includes('rain')) {
                       AudioEngine.playMiracleRain();
                     } else if (skill.spellType.toLowerCase().includes('meteor')) {
@@ -444,7 +456,7 @@ export default function App() {
                   AudioEngine.playAlert();
                 }
               } else {
-                sim.addEventLog('SCHISM', `Insufficient devotion to invoke [${skill.name}]! (Need ${skill.devotionCost} Δ)`);
+                sim.addEventLog('SCHISM', `Insufficient devotion to invoke [${skill.name}]! (Need ${skill.devotionCost} ÃŽâ€)`);
                 AudioEngine.playAlert();
               }
             } else {
@@ -640,18 +652,254 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    console.log('[App Init] useEffect triggered, containerRef:', !!containerRef.current);
+    if (!containerRef.current) {
+      console.log('[App Init] No containerRef, returning early');
+      return;
+    }
+    
+    // Prevent double initialization in React StrictMode
+    if ((containerRef.current as any).__initialized) {
+      console.log('[App Init] Already initialized, skipping');
+      return;
+    }
+    (containerRef.current as any).__initialized = true;
 
     const renderer = new GameRenderer(containerRef.current);
     rendererRef.current = renderer;
+    (window as any).__renderer = renderer;
     let requestId: number;
     
     SimulationEngine.create(ecsRef.current).then(simulation => {
         simulationRef.current = simulation;
+        coordinatorRef.current = new EngineCoordinator(ecsRef.current);
+        coordinatorRef.current.init(simulation);
+        coordinatorRef.current = new EngineCoordinator(ecsRef.current);
+        coordinatorRef.current.init(simulation);
 
         // Load terrain maps upon startup
-        renderer.init().then(() => {
-        renderer.drawTerrain(simulation.getTerrain());
+        renderer.init().then(async () => {
+          const terrain = simulation.getTerrain();
+          console.log('[World Gen] Starting... terrain size:', terrain?.length);
+          renderer.drawTerrain(terrain);
+          
+          // Wait for simulation worker to finish initializing (prevents ECS overwrite)
+          await new Promise(r => setTimeout(r, 500));
+          
+          // --- Populate Immersive Starter World ---
+          // Creates a living, breathing world from the start
+          const worldSize = terrain.length;
+          
+          // Helper: Get biome from height
+          const getBiome = (h: number) => {
+            if (h < 0.4) return 'COASTAL';
+            if (h < 0.58) return 'PLAINS';
+            if (h < 0.75) return 'FOREST';
+            return 'HIGHLAND';
+          };
+
+          // Helper: Find tile in specific biome(s) with optional clustering
+          const findTileInBiome = (biomes: string[], near?: { x: number, y: number, radius?: number }) => {
+            let attempts = 0;
+            while (attempts < 200) {
+              let x: number, y: number;
+              if (near && Math.random() < 0.7) {
+                // 70% chance to spawn near reference point for clustering
+                const r = (near.radius || 3) * Math.sqrt(Math.random());
+                const theta = Math.random() * 2 * Math.PI;
+                x = Math.round(near.x + r * Math.cos(theta));
+                y = Math.round(near.y + r * Math.sin(theta));
+              } else {
+                x = Math.floor(Math.random() * worldSize);
+                y = Math.floor(Math.random() * worldSize);
+              }
+              // Clamp to world bounds
+              x = Math.max(0, Math.min(worldSize - 1, x));
+              y = Math.max(0, Math.min(worldSize - 1, y));
+              
+              const height = terrain[y]?.[x] || 0;
+              const biome = getBiome(height);
+              if (biomes.includes(biome) && height >= 0.35 && height <= 0.85) {
+                return { x, y, height, biome };
+              }
+              attempts++;
+            }
+            return null;
+          };
+
+          // Helper: Find any valid land tile (fallback)
+          const findLandTile = () => {
+            let attempts = 0;
+            while (attempts < 100) {
+              const x = Math.floor(Math.random() * worldSize);
+              const y = Math.floor(Math.random() * worldSize);
+              const height = terrain[y]?.[x] || 0;
+              if (height >= 0.35 && height <= 0.85) {
+                return { x, y, height, biome: getBiome(height) };
+              }
+              attempts++;
+            }
+            return null;
+          };
+          
+          // 1. Spawn Diverse Tribes (4 different factions)
+          const factions = ['ANIMIST', 'TECHNOCRAT', 'INTERVENTIONIST', 'NIHILIST'] as const;
+          factions.forEach((faction) => {
+            const tile = findLandTile();
+            if (tile) {
+              simulation.spawnTribe(tile.x, tile.y, faction);
+              console.log(`[World Gen] Spawned ${faction} tribe at (${tile.x}, ${tile.y}) - ${getBiome(tile.height)}`);
+            }
+          });
+          
+          // 2. Spawn Flora - Biome-aware density
+          // FOREST: Dense trees (40), some exotic, mushrooms
+          // PLAINS: Sparse trees (10), crops, grasslands
+          // COASTAL: Palm trees, sparse vegetation
+          // HIGHLAND: Pine trees, sparse, rugged
+
+          const forestTiles: Array<{ x: number, y: number }> = [];
+          
+          // FOREST biome - dense trees clustered together
+          for (let i = 0; i < 40; i++) {
+            const clusterCenter = i % 5 === 0 ? undefined : forestTiles[Math.floor(Math.random() * forestTiles.length)];
+            const tile = findTileInBiome(['FOREST'], clusterCenter ? { x: clusterCenter.x, y: clusterCenter.y, radius: 4 } : undefined);
+            if (tile) {
+              const forestTypes = ['OAK', 'BIRCH', 'REDWOOD', 'WILLOW'];
+              const type = forestTypes[Math.floor(Math.random() * forestTypes.length)];
+              simulation.spawnFlora(tile.x, tile.y, 'TREE', type);
+              if (i % 5 === 0) forestTiles.push(tile);
+            }
+          }
+          // FOREST - mushrooms and glowshrooms
+          for (let i = 0; i < 8; i++) {
+            const tile = findTileInBiome(['FOREST']);
+            if (tile) {
+              simulation.spawnFlora(tile.x, tile.y, 'EXOTIC', 'GLOWSHROOM');
+            }
+          }
+
+          // PLAINS biome - sparse trees, crops, open grass
+          for (let i = 0; i < 12; i++) {
+            const tile = findTileInBiome(['PLAINS']);
+            if (tile) {
+              const plainsTrees = ['OAK', 'WILLOW'];
+              const type = plainsTrees[Math.floor(Math.random() * plainsTrees.length)];
+              simulation.spawnFlora(tile.x, tile.y, 'TREE', type);
+            }
+          }
+          // PLAINS - crops in fertile areas
+          for (let i = 0; i < 15; i++) {
+            const tile = findTileInBiome(['PLAINS']);
+            if (tile) {
+              const cropTypes = ['WHEAT', 'CORN', 'RICE', 'BERRY'];
+              const type = cropTypes[Math.floor(Math.random() * cropTypes.length)];
+              simulation.spawnFlora(tile.x, tile.y, 'CROP', type);
+            }
+          }
+
+          // COASTAL biome - palm trees, sparse
+          for (let i = 0; i < 8; i++) {
+            const tile = findTileInBiome(['COASTAL']);
+            if (tile) {
+              simulation.spawnFlora(tile.x, tile.y, 'TREE', 'PALM');
+            }
+          }
+
+          // HIGHLAND biome - rugged pines, cacti on edges
+          for (let i = 0; i < 10; i++) {
+            const tile = findTileInBiome(['HIGHLAND']);
+            if (tile) {
+              const highlandTypes = ['PINE', 'CACTUS'];
+              const type = highlandTypes[Math.floor(Math.random() * highlandTypes.length)];
+              simulation.spawnFlora(tile.x, tile.y, type === 'CACTUS' ? 'EXOTIC' : 'TREE', type);
+            }
+          }
+
+          // Rare exotic plants scattered anywhere suitable
+          for (let i = 0; i < 6; i++) {
+            const tile = findLandTile();
+            if (tile) {
+              const exoticTypes = ['BAMBOO', 'GLOWSHROOM'];
+              const type = exoticTypes[Math.floor(Math.random() * exoticTypes.length)];
+              simulation.spawnFlora(tile.x, tile.y, 'EXOTIC', type);
+            }
+          }
+          
+          // 3. Spawn Wildlife - Biome-aware
+          // FOREST: Stags, wolves (predator-prey)
+          // PLAINS: Stags, occasional wolves
+          // COASTAL: Sparse wildlife
+          // HIGHLAND: Wolves (territorial)
+
+          // Forest wildlife - dense populations
+          for (let i = 0; i < 12; i++) {
+            const tile = findTileInBiome(['FOREST']);
+            if (tile) {
+              const isWolf = Math.random() < 0.25;
+              const type = isWolf ? 'DIRE_WOLF' : 'FOREST_STAG';
+              simulation.spawnFauna(tile.x, tile.y, isWolf ? 'WOLF' : 'STAG', type);
+            }
+          }
+          // Plains wildlife - moderate
+          for (let i = 0; i < 8; i++) {
+            const tile = findTileInBiome(['PLAINS']);
+            if (tile) {
+              const isWolf = Math.random() < 0.15;
+              const type = isWolf ? 'DIRE_WOLF' : 'FOREST_STAG';
+              simulation.spawnFauna(tile.x, tile.y, isWolf ? 'WOLF' : 'STAG', type);
+            }
+          }
+          // Coastal wildlife - sparse
+          for (let i = 0; i < 3; i++) {
+            const tile = findTileInBiome(['COASTAL']);
+            if (tile) {
+              simulation.spawnFauna(tile.x, tile.y, 'STAG', 'FOREST_STAG');
+            }
+          }
+          // Highland wildlife - wolves dominant
+          for (let i = 0; i < 5; i++) {
+            const tile = findTileInBiome(['HIGHLAND']);
+            if (tile) {
+              const isWolf = Math.random() < 0.6;
+              const type = isWolf ? 'DIRE_WOLF' : 'FOREST_STAG';
+              simulation.spawnFauna(tile.x, tile.y, isWolf ? 'WOLF' : 'STAG', type);
+            }
+          }
+          
+          // 4. Spawn Key Structures (6 landmarks)
+          const structureTypes = [
+            { name: 'CELESTIAL_OBSERVATORY', faction: 'TECHNOCRAT' },
+            { name: 'NATURE_SHRINE', faction: 'ANIMIST' },
+            { name: 'MEDITATION_TEMPLE', faction: 'INTERVENTIONIST' },
+            { name: 'VOID_ALTAR', faction: 'NIHILIST' },
+            { name: 'ELEMENTAL_FORGE', faction: 'ELEMENTAL' },
+            { name: 'UNIVERSAL_HUB', faction: 'UNIVERSAL' }
+          ];
+          
+          structureTypes.forEach(({ name, faction }) => {
+            const tile = findLandTile();
+            if (tile) {
+              simulation.spawnStructure(tile.x, tile.y, 'ALTAR', name);
+              console.log(`[World Gen] Placed ${name} at (${tile.x}, ${tile.y})`);
+            }
+          });
+          
+          // 5. Spawn Rare Nano-Bananas (8 mystical fruits)
+          const bananaTypes = ['GOLD', 'CYBER', 'VOID', 'DIVINE', 'FIRE', 'FROST'];
+          for (let i = 0; i < 8; i++) {
+            const tile = findLandTile();
+            if (tile && tile.height >= 0.5) {
+              const type = bananaTypes[Math.floor(Math.random() * bananaTypes.length)];
+              simulation.spawnFlora(tile.x, tile.y, 'NANO_BANANA', type);
+            }
+          }
+          
+          console.log('[World Gen] Immersive starter world populated! Ã°Å¸Å’ÂÃ¢Å“Â¨');
+          
+          // Wait for WASM worker to process all spawn commands
+          await new Promise(r => setTimeout(r, 1000));
+          console.log('[World Gen] Entities should now be in ECS');
         });
 
         // Wire up map interactions with the simulation engine
@@ -725,46 +973,124 @@ export default function App() {
           }
         };
 
+        // --- Double-click to Zoom and Focus ---
+        // Double-clicking any terrain cell zooms in and centers the camera on it
+        renderer.onTileDoubleClick = (gx: number, gy: number) => {
+          // Use the renderer's built-in animation method
+          // Zooms to 2.5x and centers on tile over 400ms with cubic easing
+          renderer.animateToTile(gx, gy, 2.5, 400);
+          
+          // After animation completes, update UI state
+          const sim = simulationRef.current;
+          if (sim) {
+            const ent = sim.getEntityAt(gx, gy);
+            if (ent) {
+              renderer.selectedEntityId = ent.id;
+              setSelectedEntity(ent);
+            }
+            setHoveredCoordinate({ x: gx, y: gy });
+            setHoveredEntity(ent);
+          }
+        };
+
+    // --- Context-Aware Dynamic Effects Calibration ---
+    // Effects adapt to: zoom level, visible entity density, weather intensity, time of day
     renderer.onZoomChange = (z: number) => {
-      if (appRootRef.current) {
-        const currentSettings = settingsRef.current;
-        const baseDof = currentSettings.dofBlur;
-        const dofVal = currentSettings.dofEnable 
-          ? Math.max(0, baseDof * (0.45 + Math.abs(Math.log2(z)) * 0.75))
+      if (!appRootRef.current) return;
+      
+      const currentSettings = settingsRef.current;
+      const sim = simulationRef.current;
+      
+      // Gather view context
+      const entityDensity = sim ? Math.min(1.0, sim.getAllEntitiesForRender().length / 50) : 0;
+      const weatherIntensity = sim ? (sim.weatherIntensity || 0.5) : 0.5;
+      const isStormy = sim ? ['Tempest', 'Meteor', 'Drought'].includes(sim.weather) : false;
+      const timeOfDay = sim ? (sim.timeOfDay || 0.5) : 0.5; // 0=dawn, 0.5=noon, 1=midnight
+      const isNight = timeOfDay < 0.2 || timeOfDay > 0.8;
+      
+      // Zoom factors (log2 scale: -2.7 to +2.3 typical range)
+      const zoomLog = Math.abs(Math.log2(z));
+      const zoomFactor = 0.6 + zoomLog * 0.9;
+      
+      // Context multipliers
+      const weatherFactor = isStormy ? 1.3 : (1.0 + weatherIntensity * 0.2);
+      const nightFactor = isNight ? 1.25 : 1.0;
+      const densityFactor = 1.0 - entityDensity * 0.3; // Reduce effects when crowded
+      
+      // --- Cinematic Focal-Plane DoF ---
+      // Based on: Circle of Confusion increases with distance from focal plane
+      // Near blur (foreground): increases faster than far blur (NVIDIA GPU Gems approach)
+      // Far blur (background): increases more gradually
+      const baseDof = currentSettings.dofBlur;
+      
+      // Calculate blur based on zoom and context
+      // At zoom=1 (normal): moderate blur
+      // At zoom extremes: stronger blur for cinematic effect
+      const nearBlur = currentSettings.dofEnable 
+        ? Math.max(0, baseDof * zoomFactor * weatherFactor * densityFactor * 0.6) // Near blur is 60% of base
+        : 0;
+      const farBlur = currentSettings.dofEnable
+        ? Math.max(0, baseDof * zoomFactor * weatherFactor * densityFactor * 1.0) // Far blur is 100% of base
+        : 0;
+      
+      // Focal plane shifts with zoom (when zoomed in, focus closer; zoomed out, focus farther)
+      const focalShift = Math.max(-15, Math.min(15, (z - 1) * 10)); // +/- 15% shift
+      const focalStart = `${40 + focalShift}%`;
+      const focalCenter = `${50 + focalShift}%`;
+      const focalEnd = `${60 + focalShift}%`;
+
+      // --- Dynamic Chromatic Aberration: increases at zoom extremes, during storms ---
+      const baseChromatic = currentSettings.chromaticAberrationOffset;
+      const chromVal = currentSettings.chromaticAberrationEnable
+        ? Math.max(0, baseChromatic * (0.5 + zoomLog * 1.1) * weatherFactor * nightFactor)
+        : 0;
+
+      // --- Dynamic Vignette: stronger at night, darker in storms ---
+      const baseVignette = currentSettings.vignetteIntensity;
+      const vigVal = currentSettings.vignetteEnable
+        ? Math.min(0.95, baseVignette * (0.7 + zoomLog * 0.15) * nightFactor * weatherFactor)
+        : 0;
+
+      // --- Dynamic Lens Dirt: more visible in bright conditions, zoomed in ---
+      const baseDirt = currentSettings.lensDirtAlpha;
+      const dirtVal = currentSettings.lensFlareEnable
+        ? Math.min(1.0, baseDirt * (0.6 + zoomLog * 0.25) * (isNight ? 0.6 : 1.0))
+        : 0;
+
+      // --- Dynamic Ambient/Bloom: brighter during day, blooms more at night ---
+      const baseAmbient = currentSettings.ambientLevel;
+      const ambientVal = isNight 
+        ? baseAmbient * 0.7 // Darker at night
+        : baseAmbient * (1.0 + (1 - weatherIntensity) * 0.2); // Brighter in clear weather
+
+      appRootRef.current.style.setProperty('--dof-near-blur', `${nearBlur}px`);
+      appRootRef.current.style.setProperty('--dof-far-blur', `${farBlur}px`);
+      appRootRef.current.style.setProperty('--focal-start', focalStart);
+      appRootRef.current.style.setProperty('--focal-center', focalCenter);
+      appRootRef.current.style.setProperty('--focal-end', focalEnd);
+      appRootRef.current.style.setProperty('--vignette-intensity-dynamic', vigVal.toString());
+      appRootRef.current.style.setProperty('--dirt-alpha-dynamic', dirtVal.toString());
+      appRootRef.current.style.setProperty('--camera-zoom-level', z.toString());
+      appRootRef.current.style.setProperty('--ambient-dynamic', ambientVal.toString());
+
+      const feOffsetRed = document.getElementById('ca-offset-red');
+      const feOffsetBlue = document.getElementById('ca-offset-blue');
+      if (feOffsetRed) feOffsetRed.setAttribute('dx', chromVal.toFixed(2));
+      if (feOffsetBlue) feOffsetBlue.setAttribute('dx', (-chromVal).toFixed(2));
+
+      const feBlur = document.getElementById('bloom-blur-node');
+      if (feBlur) {
+        const bloomVal = currentSettings.bloomEnable
+          ? Math.max(0.4, currentSettings.bloomIntensity * (0.6 + zoomLog * 0.45) * nightFactor)
           : 0;
-
-        const baseChromatic = currentSettings.chromaticAberrationOffset;
-        const chromVal = currentSettings.chromaticAberrationEnable
-          ? Math.max(0, baseChromatic * (0.6 + Math.abs(Math.log2(z)) * 0.85))
-          : 0;
-
-        const baseVignette = currentSettings.vignetteIntensity;
-        const vigVal = currentSettings.vignetteEnable
-          ? Math.min(0.95, Math.max(0.1, baseVignette * (0.85 + Math.abs(Math.log2(z)) * 0.18)))
-          : 0;
-
-        const baseDirt = currentSettings.lensDirtAlpha;
-        const dirtVal = currentSettings.lensFlareEnable
-          ? Math.min(1.0, Math.max(0.0, baseDirt * (0.8 + Math.abs(Math.log2(z)) * 0.2)))
-          : 0;
-
-        appRootRef.current.style.setProperty('--dof-blur-dynamic', `${dofVal}px`);
-        appRootRef.current.style.setProperty('--vignette-intensity-dynamic', vigVal.toString());
-        appRootRef.current.style.setProperty('--dirt-alpha-dynamic', dirtVal.toString());
-        appRootRef.current.style.setProperty('--camera-zoom-level', z.toString());
-
-        const feOffsetRed = document.getElementById('ca-offset-red');
-        const feOffsetBlue = document.getElementById('ca-offset-blue');
-        if (feOffsetRed) feOffsetRed.setAttribute('dx', chromVal.toFixed(2));
-        if (feOffsetBlue) feOffsetBlue.setAttribute('dx', (-chromVal).toFixed(2));
-
-        const feBlur = document.getElementById('bloom-blur-node');
-        if (feBlur) {
-          const bloomVal = currentSettings.bloomEnable
-            ? Math.max(0.4, currentSettings.bloomIntensity * (0.8 + Math.abs(Math.log2(z)) * 0.35))
-            : 0;
-          feBlur.setAttribute('stdDeviation', (bloomVal * 2.8).toFixed(2));
-        }
+        feBlur.setAttribute('stdDeviation', (bloomVal * 2.8).toFixed(2));
+      }
+      
+      // Sync dynamic ambient to renderer
+      if (renderer) {
+        renderer.ambientColor[0] = ambientVal;
+        renderer.ambientColor[1] = ambientVal;
+        renderer.ambientColor[2] = ambientVal + 0.05;
       }
     };
 
@@ -801,6 +1127,10 @@ export default function App() {
 
       // 1. Fetch Tribes
       const societies = ecsRef.current.getEntitiesWith(['society', 'faith', 'position', 'movement']);
+      const floras = ecsRef.current.getEntitiesWith(['flora', 'position']);
+      const faunas = ecsRef.current.getEntitiesWith(['fauna', 'position']);
+      const structures = ecsRef.current.getEntitiesWith(['structure', 'position']);
+      
       societies.forEach(e => {
         const soc = ecsRef.current.getComponent<Society>(e, 'society')!;
         const faith = ecsRef.current.getComponent<Faith>(e, 'faith')!;
@@ -825,8 +1155,7 @@ export default function App() {
         });
       });
 
-      // 2. Fetch Floras
-      const floras = ecsRef.current.getEntitiesWith(['flora', 'position']);
+      // 2. Process Floras
       floras.forEach(e => {
         const flo = ecsRef.current.getComponent<Flora>(e, 'flora')!;
         const pos = ecsRef.current.getComponent<Position>(e, 'position')!;
@@ -841,8 +1170,7 @@ export default function App() {
         });
       });
 
-      // 3. Fetch Faunas (Beasts)
-      const faunas = ecsRef.current.getEntitiesWith(['fauna', 'position']);
+      // 3. Process Faunas (Beasts)
       faunas.forEach(e => {
         const fau = ecsRef.current.getComponent<Fauna>(e, 'fauna')!;
         const pos = ecsRef.current.getComponent<Position>(e, 'position')!;
@@ -856,8 +1184,7 @@ export default function App() {
         });
       });
 
-      // 4. Fetch Structures
-      const structures = ecsRef.current.getEntitiesWith(['structure', 'position']);
+      // 4. Process Structures
       structures.forEach(e => {
         const str = ecsRef.current.getComponent<Structure>(e, 'structure')!;
         const pos = ecsRef.current.getComponent<Position>(e, 'position')!;
@@ -882,21 +1209,41 @@ export default function App() {
         renderer.sunDirection[0] = settingsRef.current.sunDirX;
         renderer.sunDirection[1] = settingsRef.current.sunDirY;
         renderer.godRayIntensity = settingsRef.current.godRayIntensity;
-        renderer.ambientColor[0] = settingsRef.current.ambientLevel;
-        renderer.ambientColor[1] = settingsRef.current.ambientLevel;
-        renderer.ambientColor[2] = settingsRef.current.ambientLevel + 0.05; // Atmospheric blue tint
         renderer.batterySaver = settingsRef.current.batterySaver;
+      }
+      
+      // Periodic context-aware effect update (every ~1 second at 60fps)
+      // Adapts effects to weather changes, time of day, entity density
+      if (renderer && Math.floor(time / 16) % 60 === 0) {
+        renderer.onZoomChange(renderer.zoom);
       }
 
       const activeSpeed = showStartMenuRef.current ? 0.0 : speedRef.current;
       // Throttling logic (Phase 2, Step 5)
       if (!settingsRef.current.batterySaver || (Math.floor(time / 16) % 2 === 0)) {
         simulation.update(dt * activeSpeed);
+      if (coordinatorRef.current) {
+        coordinatorRef.current.update(dt * activeSpeed);
+      }
+      if (coordinatorRef.current) {
+        coordinatorRef.current.update(dt * activeSpeed, time);
+      }
       }
 
       // Sync entities to renderer every frame
-      if (renderer) {
-        renderer.updateEntities(simulation.getAllEntitiesForRender());
+      const currentRenderer = rendererRef.current;
+      if (currentRenderer) {
+        if (Math.floor(time / 16) % 60 === 0) {
+          const ecsDebug = {
+            societies: societies.length, 
+            floras: floras.length, 
+            faunas: faunas.length, 
+            structures: structures.length,
+            totalInArray: entityDataForRenderer.length
+          };
+          console.log('[App Entity Debug]', JSON.stringify(ecsDebug));
+        }
+        currentRenderer.updateEntities(entityDataForRenderer, simulation.entityDataView);
       }
 
       // Synchronize progression levels & statistics
@@ -915,13 +1262,21 @@ export default function App() {
       requestAnimationFrame(frame);
     };
 
+    // Start game loop only after renderer is fully initialized
+    console.log('[App Init] Starting game loop');
     requestId = requestAnimationFrame(frame);
 
-    });
+    }); // closes renderer.init().then()
 
     return () => {
+      console.log('[App Init] Cleanup running, canceling animation frame:', requestId);
       cancelAnimationFrame(requestId);
-      renderer.destroy();
+      // Only destroy if this is the same initialization (not a React StrictMode double-mount)
+      if (containerRef.current && (containerRef.current as any).__initialized && rendererRef.current === renderer) {
+        console.log('[App Init] Destroying renderer');
+        renderer.destroy();
+        (containerRef.current as any).__initialized = false;
+      }
     };
   }, []);
 
@@ -953,7 +1308,7 @@ export default function App() {
 
     sim.illuminationPoints -= 1;
     sim.unlockedIlluminations.push(boostId);
-    sim.addEventLog('MIRACLE', `🌟 DIVINE ILLUMINATION: Mastered cosmic passive boost "${boostId.replace('_',' ')}"!`);
+    sim.addEventLog('MIRACLE', `Ã°Å¸Å’Å¸ DIVINE ILLUMINATION: Mastered cosmic passive boost "${boostId.replace('_',' ')}"!`);
 
     // Force synchronize immediate states
     setDevotion(Math.floor(sim.totalDevotion));
@@ -976,7 +1331,7 @@ export default function App() {
     if (key === 'gameSpeed') {
       speedRef.current = value;
       setGameSpeed(value);
-      simulationRef.current?.addEventLog('EVOLUTION', `⚙️ CHRONOMETER SYSTEM: Local target operational speed set to ${value}x.`);
+      simulationRef.current?.addEventLog('EVOLUTION', `Ã¢Å¡â„¢Ã¯Â¸Â CHRONOMETER SYSTEM: Local target operational speed set to ${value}x.`);
     }
   };
 
@@ -1014,7 +1369,7 @@ export default function App() {
       }
     }));
 
-    sim.addEventLog('MIRACLE', `💾 TIMELINE COMMITTED: Captured current quantum sector state into Chronite Slot ${slot}.`);
+    sim.addEventLog('MIRACLE', `Ã°Å¸â€™Â¾ TIMELINE COMMITTED: Captured current quantum sector state into Chronite Slot ${slot}.`);
   };
 
   const loadGame = (slot: number) => {
@@ -1057,7 +1412,7 @@ export default function App() {
           rendererRef.current.drawTerrain(sim.getTerrain());
         }
 
-        sim.addEventLog('MIRACLE', `🌌 TIMELINE RESTORED: Slipped local workspace into Chronite Slot ${slot} ["${parsed.name}"].`);
+        sim.addEventLog('MIRACLE', `Ã°Å¸Å’Å’ TIMELINE RESTORED: Slipped local workspace into Chronite Slot ${slot} ["${parsed.name}"].`);
         
         setShowStartMenu(false);
         setActiveTab('simulation');
@@ -1074,7 +1429,7 @@ export default function App() {
       ...prev,
       [slot]: null
     }));
-    simulationRef.current?.addEventLog('SCHISM', `🗑️ CHRONITE EXPUNGED: Purged timeline data for Slot ${slot}.`);
+    simulationRef.current?.addEventLog('SCHISM', `Ã°Å¸â€”â€˜Ã¯Â¸Â CHRONITE EXPUNGED: Purged timeline data for Slot ${slot}.`);
   };
 
   const exportStateToJSON = () => {
@@ -1134,7 +1489,7 @@ export default function App() {
           rendererRef.current.drawTerrain(sim.getTerrain());
         }
 
-        sim.addEventLog('MIRACLE', `🛸 QUANTUM PORTAL IMPORT: Loaded universe snapshot.`);
+        sim.addEventLog('MIRACLE', `Ã°Å¸â€ºÂ¸ QUANTUM PORTAL IMPORT: Loaded universe snapshot.`);
         setShowStartMenu(false);
         setActiveTab('simulation');
       } else {
@@ -1179,7 +1534,7 @@ export default function App() {
       setShowStartMenu(false);
       setActiveTab('simulation');
       
-      newSim.addEventLog('MIRACLE', '🧬 SECTOR HARD-RESET COMPLETE: Thermodynamic properties and biological spores re-generated.');
+      newSim.addEventLog('MIRACLE', 'Ã°Å¸Â§Â¬ SECTOR HARD-RESET COMPLETE: Thermodynamic properties and biological spores re-generated.');
     }
   };
 
@@ -1213,7 +1568,11 @@ export default function App() {
       ref={appRootRef}
       className="relative w-screen h-screen bg-[#020305] text-slate-300 font-sans overflow-hidden select-none flex flex-col"
       style={{
-        '--dof-blur-dynamic': `${settings.dofEnable ? settings.dofBlur : 0}px`,
+        '--dof-near-blur': `${settings.dofEnable ? settings.dofBlur * 0.8 : 0}px`,
+        '--dof-far-blur': `${settings.dofEnable ? settings.dofBlur : 0}px`,
+        '--focal-start': '40%',
+        '--focal-center': '50%',
+        '--focal-end': '60%',
         '--vignette-intensity-dynamic': `${settings.vignetteEnable ? settings.vignetteIntensity : 0}`,
         '--dirt-alpha-dynamic': `${settings.lensFlareEnable ? settings.lensDirtAlpha : 0}`,
         '--camera-zoom-level': '1.0'
@@ -1253,32 +1612,30 @@ export default function App() {
       <div 
         ref={containerRef} 
         className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing z-0 transition-all duration-500"
-        style={{ filter: getCameraStyleFilters() }}
+        style={{ /* filter: getCameraStyleFilters() */ }}
       />
  
-      {/* Layer 1: Tilt-Shift Depth of Field (DoF) Gradient Blur */}
+      {/* Layer 1: Cinematic Focal-Plane Depth of Field */}
+      {/* 
+        Proper cinematic DoF with:
+        - Focal plane: Sharp focus region at configurable Y position
+        - Near blur: Foreground blur increases with distance from focal plane
+        - Far blur: Background blur increases with distance from focal plane
+        - Circle of Confusion: Non-linear blur falloff for realistic lens behavior
+      */}
+      {/* DoF temporarily disabled for debugging
       {settings.dofEnable && (
-        <div 
-          className="absolute inset-0 pointer-events-none z-[1]"
-          style={{
-            backdropFilter: 'blur(var(--dof-blur-dynamic, 6px))',
-            WebkitBackdropFilter: 'blur(var(--dof-blur-dynamic, 6px))',
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 78%, rgba(0,0,0,1) 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 78%, rgba(0,0,0,1) 100%)'
-          }}
-        />
-      )}
+        <>
+          <div className="absolute inset-0 pointer-events-none z-[1]" style={{ backdropFilter: 'blur(calc(var(--dof-near-blur, 0px) * 0.5))', WebkitBackdropFilter: 'blur(calc(var(--dof-near-blur, 0px) * 0.5))', maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) var(--focal-start, 45%), rgba(0,0,0,1) var(--focal-center, 55%), rgba(0,0,0,1) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) var(--focal-start, 45%), rgba(0,0,0,1) var(--focal-center, 55%), rgba(0,0,0,1) 100%)' }} />
+          <div className="absolute inset-0 pointer-events-none z-[1]" style={{ backdropFilter: 'blur(var(--dof-far-blur, 0px))', WebkitBackdropFilter: 'blur(var(--dof-far-blur, 0px))', maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) var(--focal-center, 45%), rgba(0,0,0,0) var(--focal-end, 55%), rgba(0,0,0,0) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) var(--focal-center, 45%), rgba(0,0,0,0) var(--focal-end, 55%), rgba(0,0,0,0) 100%)' }} />
+          <div className="absolute inset-0 pointer-events-none z-[1]" style={{ backdropFilter: 'blur(calc(var(--dof-near-blur, 0px) * 1.5))', WebkitBackdropFilter: 'blur(calc(var(--dof-near-blur, 0px) * 1.5))', maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 85%, rgba(0,0,0,1) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 85%, rgba(0,0,0,1) 100%)' }} />
+        </>
+      )} */}
  
-      {/* Layer 2: Outer Border Vignette shadow */}
+      {/* Layer 2: Outer Border Vignette shadow - DISABLED for debugging
       {settings.vignetteEnable && (
-        <div 
-          className="absolute inset-0 pointer-events-none z-[2]"
-          style={{
-            background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,var(--vignette-intensity-dynamic, 0.65)) 100%)',
-            mixBlendMode: 'multiply'
-          }}
-        />
-      )}
+        <div className="absolute inset-0 pointer-events-none z-[2]" style={{ background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,var(--vignette-intensity-dynamic, 0.65)) 100%)', mixBlendMode: 'multiply' }} />
+      )} */}
  
       {/* Layer 3: Screen Dirt & Glass Smudges */}
       {settings.lensFlareEnable && (
@@ -1363,7 +1720,7 @@ export default function App() {
             </div>
             
             <div className="flex items-center gap-8 font-mono">
-              <TopStat label="Divine Devotion" value={devotion} unit="Δ" color="text-amber-400" />
+              <TopStat label="Divine Devotion" value={devotion} unit="ÃŽâ€" color="text-amber-400" />
               <TopStat label="Sect Density" value="64x64 Grid" unit="LOD" color="text-emerald-400" />
               <TopStat label="Population" value={stats.population.toLocaleString()} unit="SENTIENT" color="text-sky-400" />
             </div>
@@ -1437,12 +1794,12 @@ export default function App() {
             {isMobile && (
               <GlassPanel intensity="low" className="w-full p-2 flex items-center justify-between pointer-events-auto z-20 rounded-xl">
                  <div className="flex gap-4 px-2">
-                    <TopStat label="DEVO" value={devotion} unit="Δ" color="text-amber-400" isMobile />
+                    <TopStat label="DEVO" value={devotion} unit="ÃŽâ€" color="text-amber-400" isMobile />
                     <TopStat label="POP" value={stats.population} unit="S" color="text-sky-400" isMobile />
                  </div>
                  <div className="flex items-center gap-2">
                     <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-tighter">
-                      {weatherInfo.weather} // {weatherInfo.temperature.toFixed(0)}°C
+                      {weatherInfo.weather} // {weatherInfo.temperature.toFixed(0)}Ã‚Â°C
                     </span>
                  </div>
               </GlassPanel>
@@ -1560,11 +1917,11 @@ export default function App() {
                 <div className="flex flex-col">
                   <span className="text-[10px] text-sky-400 font-mono tracking-widest font-bold block uppercase">ATMOSPHERE & PHYSICS</span>
                   <span className="text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
-                    {weatherInfo.weather === 'CLEAR' && '☀️ SUNNY CLEAR'}
-                    {weatherInfo.weather === 'RAINY' && '🌧️ REJUVENATING RAIN'}
-                    {weatherInfo.weather === 'DROUGHT' && '🏜️ SEVERE DROUGHT'}
-                    {weatherInfo.weather === 'TEMPEST' && '⚡ ION STORM TEMPEST'}
-                    {weatherInfo.weather === 'AURORA' && '🌌 COSMIC AURORA'}
+                    {weatherInfo.weather === 'CLEAR' && 'Ã¢Ëœâ‚¬Ã¯Â¸Â SUNNY CLEAR'}
+                    {weatherInfo.weather === 'RAINY' && 'Ã°Å¸Å’Â§Ã¯Â¸Â REJUVENATING RAIN'}
+                    {weatherInfo.weather === 'DROUGHT' && 'Ã°Å¸ÂÅ“Ã¯Â¸Â SEVERE DROUGHT'}
+                    {weatherInfo.weather === 'TEMPEST' && 'Ã¢Å¡Â¡ ION STORM TEMPEST'}
+                    {weatherInfo.weather === 'AURORA' && 'Ã°Å¸Å’Å’ COSMIC AURORA'}
                   </span>
                 </div>
                 <div className="text-[9px] font-mono text-slate-400 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">
@@ -1592,7 +1949,7 @@ export default function App() {
                   <span className={`text-sm font-semibold font-mono flex items-center gap-1 ${
                     weatherInfo.temperature > 30 ? 'text-red-400' : weatherInfo.temperature < 12 ? 'text-blue-300' : 'text-slate-200'
                   }`}>
-                    🌡️ {weatherInfo.temperature.toFixed(1)}°C
+                    Ã°Å¸Å’Â¡Ã¯Â¸Â {weatherInfo.temperature.toFixed(1)}Ã‚Â°C
                   </span>
                 </div>
                 <div className="flex flex-col">
@@ -1600,7 +1957,7 @@ export default function App() {
                   <span className={`text-sm font-semibold font-mono flex items-center gap-1 ${
                     weatherInfo.humidity > 70 ? 'text-sky-300' : weatherInfo.humidity < 15 ? 'text-orange-400' : 'text-slate-200'
                   }`}>
-                    💧 {weatherInfo.humidity.toFixed(0)}%
+                    Ã°Å¸â€™Â§ {weatherInfo.humidity.toFixed(0)}%
                   </span>
                 </div>
               </div>
@@ -1612,22 +1969,22 @@ export default function App() {
                 )}
                 {weatherInfo.weather === 'RAINY' && (
                   <span>
-                    🌧️ <strong className="text-sky-300 font-bold">Biomass Catalyst:</strong> Crop growth is boosted by <strong className="text-emerald-400 font-bold">+100%</strong>. <span className="text-emerald-400">Animist zones</span> generate <strong className="text-white font-bold">+1.2 happiness/s</strong>, <strong className="text-white font-bold">additional devotion</strong>, and spawn rare <strong className="text-amber-300 font-bold">Golden Bananas</strong>.
+                    Ã°Å¸Å’Â§Ã¯Â¸Â <strong className="text-sky-300 font-bold">Biomass Catalyst:</strong> Crop growth is boosted by <strong className="text-emerald-400 font-bold">+100%</strong>. <span className="text-emerald-400">Animist zones</span> generate <strong className="text-white font-bold">+1.2 happiness/s</strong>, <strong className="text-white font-bold">additional devotion</strong>, and spawn rare <strong className="text-amber-300 font-bold">Golden Bananas</strong>.
                   </span>
                 )}
                 {weatherInfo.weather === 'DROUGHT' && (
                   <span>
-                    🏜️ <strong className="text-orange-400 font-bold">Biological Extinction:</strong> Flora biomass decays. Fauna hunger speeds up. Societies lose <strong className="text-white font-bold">-2.5 happiness/s</strong>, and raw resource production drops by <strong className="text-red-400 font-bold">-50%</strong>.
+                    Ã°Å¸ÂÅ“Ã¯Â¸Â <strong className="text-orange-400 font-bold">Biological Extinction:</strong> Flora biomass decays. Fauna hunger speeds up. Societies lose <strong className="text-white font-bold">-2.5 happiness/s</strong>, and raw resource production drops by <strong className="text-red-400 font-bold">-50%</strong>.
                   </span>
                 )}
                 {weatherInfo.weather === 'TEMPEST' && (
                   <span>
-                    ⚡ <strong className="text-purple-400 font-bold">Lightning Hazards:</strong> High tension atmosphere with random strikes damaging societies and structures. <span className="text-emerald-400 font-bold">Technocrats</span> absorb strikes to boost resources!
+                    Ã¢Å¡Â¡ <strong className="text-purple-400 font-bold">Lightning Hazards:</strong> High tension atmosphere with random strikes damaging societies and structures. <span className="text-emerald-400 font-bold">Technocrats</span> absorb strikes to boost resources!
                   </span>
                 )}
                 {weatherInfo.weather === 'AURORA' && (
                   <span>
-                    🌌 <strong className="text-pink-400 font-bold">Cosmic Super-Conductor:</strong> Spiritual affinity increases. Global devotion speed boosted by <strong className="text-white font-bold">+180%</strong>. Mortal beliefs drift towards elementalism.
+                    Ã°Å¸Å’Å’ <strong className="text-pink-400 font-bold">Cosmic Super-Conductor:</strong> Spiritual affinity increases. Global devotion speed boosted by <strong className="text-white font-bold">+180%</strong>. Mortal beliefs drift towards elementalism.
                   </span>
                 )}
               </div>
@@ -1651,7 +2008,7 @@ export default function App() {
                     className="py-1 px-1.5 rounded border border-sky-500/30 hover:bg-sky-500/20 text-[9px] text-sky-300 font-bold uppercase transition-all duration-300 cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
                     title="Manifest Rain (Cost: 30 Devotion)"
                   >
-                    🌧️ CALL RAIN
+                    Ã°Å¸Å’Â§Ã¯Â¸Â CALL RAIN
                   </button>
                   <button
                     onClick={() => {
@@ -1668,7 +2025,7 @@ export default function App() {
                     className="py-1 px-1.5 rounded border border-amber-500/30 hover:bg-amber-500/20 text-[9px] text-amber-300 font-bold uppercase transition-all duration-300 cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
                     title="Disperse Weather (Cost: 30 Devotion)"
                   >
-                    ☀️ CLEAR SKY
+                    Ã¢Ëœâ‚¬Ã¯Â¸Â CLEAR SKY
                   </button>
                 </div>
               </div>
@@ -1686,7 +2043,7 @@ export default function App() {
                       if (rendererRef.current) rendererRef.current.selectedEntityId = null;
                     }}
                   >
-                    ✕
+                    Ã¢Å“â€¢
                   </button>
                 </div>
 
@@ -1757,11 +2114,11 @@ export default function App() {
                       <div className="grid grid-cols-2 gap-1.5 bg-white/[0.02] p-2 rounded-xl border border-white/5 text-[11px]">
                         <div>
                           <span className="text-slate-500 block text-[9px]">LOCAL TEMP:</span>
-                          <span className="font-bold font-mono text-slate-200">🌡️ {selectedEntity.components.physics.temperature.toFixed(1)}°C</span>
+                          <span className="font-bold font-mono text-slate-200">Ã°Å¸Å’Â¡Ã¯Â¸Â {selectedEntity.components.physics.temperature.toFixed(1)}Ã‚Â°C</span>
                         </div>
                         <div>
                           <span className="text-slate-500 block text-[9px]">HUMIDITY:</span>
-                          <span className="font-bold font-mono text-slate-200">💧 {selectedEntity.components.physics.humidity.toFixed(0)}%</span>
+                          <span className="font-bold font-mono text-slate-200">Ã°Å¸â€™Â§ {selectedEntity.components.physics.humidity.toFixed(0)}%</span>
                         </div>
                       </div>
                     </div>
@@ -1773,11 +2130,11 @@ export default function App() {
                       <div className="grid grid-cols-2 gap-1.5 bg-white/[0.02] p-2 rounded-xl border border-white/5 text-[11px]">
                         <div>
                           <span className="text-slate-500 block text-[9px]">ACTIVE BIOMASS:</span>
-                          <span className="font-bold font-mono text-emerald-400">🌱 {Math.round(selectedEntity.components.biology.biomass)}</span>
+                          <span className="font-bold font-mono text-emerald-400">Ã°Å¸Å’Â± {Math.round(selectedEntity.components.biology.biomass)}</span>
                         </div>
                         <div>
                           <span className="text-slate-500 block text-[9px]">DNA SEQUENCE:</span>
-                          <span className="font-semibold font-mono text-amber-300 truncate block text-[10px]" title={selectedEntity.components.biology.dna}>🧬 {selectedEntity.components.biology.dna}</span>
+                          <span className="font-semibold font-mono text-amber-300 truncate block text-[10px]" title={selectedEntity.components.biology.dna}>Ã°Å¸Â§Â¬ {selectedEntity.components.biology.dna}</span>
                         </div>
                       </div>
                     </div>
@@ -1828,32 +2185,32 @@ export default function App() {
                               {/* Workforce fractions summary */}
                               <div className="flex flex-col gap-0.5 mt-1 border-t border-white/5 pt-1 text-[9px] font-mono text-slate-400">
                                 <div className="flex justify-between">
-                                  <span>🌾 Gatherers:</span>
+                                  <span>Ã°Å¸Å’Â¾ Gatherers:</span>
                                   <span className="text-sky-300 font-bold">{Math.round((selectedEntity.components.society.gathererRatio ?? 0.35) * 100)}%</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span>🏹 Hunters:</span>
+                                  <span>Ã°Å¸ÂÂ¹ Hunters:</span>
                                   <span className="text-amber-500 font-bold">{Math.round((selectedEntity.components.society.hunterRatio ?? 0.15) * 100)}%</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span>🧪 Scholars:</span>
+                                  <span>Ã°Å¸Â§Âª Scholars:</span>
                                   <span className="text-cyan-400 font-bold">{Math.round((selectedEntity.components.society.researcherRatio ?? 0.20) * 100)}%</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span>🔮 Acolytes:</span>
+                                  <span>Ã°Å¸â€Â® Acolytes:</span>
                                   <span className="text-purple-400 font-bold">{Math.round((selectedEntity.components.society.acolyteRatio ?? 0.30) * 100)}%</span>
                                 </div>
                               </div>
                               {/* Active mandates summary */}
                               <div className="flex flex-wrap gap-1 mt-1.5 border-t border-white/5 pt-1.5">
                                 {selectedEntity.components.society.rationMode && (
-                                  <span className="px-1.5 py-0.5 bg-rose-500/20 text-rose-300 text-[8px] font-mono rounded font-medium border border-rose-500/20">🍲 RATIONING</span>
+                                  <span className="px-1.5 py-0.5 bg-rose-500/20 text-rose-300 text-[8px] font-mono rounded font-medium border border-rose-500/20">Ã°Å¸ÂÂ² RATIONING</span>
                                 )}
                                 {selectedEntity.components.society.stripMineMode && (
-                                  <span className="px-1.5 py-0.5 bg-amber-600/20 text-amber-300 text-[8px] font-mono rounded font-medium border border-amber-500/20">⛏️ STRIP-MINING</span>
+                                  <span className="px-1.5 py-0.5 bg-amber-600/20 text-amber-300 text-[8px] font-mono rounded font-medium border border-amber-500/20">Ã¢â€ºÂÃ¯Â¸Â STRIP-MINING</span>
                                 )}
                                 {selectedEntity.components.society.titheMode && (
-                                  <span className="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 text-[8px] font-mono rounded font-medium border border-emerald-500/20">🩸 TITHE OFFERS</span>
+                                  <span className="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 text-[8px] font-mono rounded font-medium border border-emerald-500/20">Ã°Å¸Â©Â¸ TITHE OFFERS</span>
                                 )}
                                 {!selectedEntity.components.society.rationMode && !selectedEntity.components.society.stripMineMode && !selectedEntity.components.society.titheMode && (
                                   <span className="text-[8px] text-slate-500 italic font-mono uppercase">No active mandates</span>
@@ -1881,11 +2238,11 @@ export default function App() {
                                 <span className="font-bold text-indigo-400">
                                   {(() => {
                                     const cultLabels = [
-                                      "🌱 Wild Cultivar",
-                                      "🌾 Selected Seedline",
-                                      "🧪 Bio-Grafted",
-                                      "✨ Quantum Crop",
-                                      "🤖 Cyber-Apex"
+                                      "Ã°Å¸Å’Â± Wild Cultivar",
+                                      "Ã°Å¸Å’Â¾ Selected Seedline",
+                                      "Ã°Å¸Â§Âª Bio-Grafted",
+                                      "Ã¢Å“Â¨ Quantum Crop",
+                                      "Ã°Å¸Â¤â€“ Cyber-Apex"
                                     ];
                                     return cultLabels[(selectedEntity.components.flora.cultivarTier || 1) - 1] || cultLabels[0];
                                   })()}
@@ -1912,7 +2269,7 @@ export default function App() {
                               <div className="flex justify-between text-[11px]">
                                 <span className="text-slate-500 font-sans">Diseases / Rust blights:</span>
                                 <span className={`font-bold uppercase ${selectedEntity.components.flora.diseaseActive ? 'text-red-500 font-extrabold animate-pulse' : 'text-slate-400'}`}>
-                                  {selectedEntity.components.flora.diseaseActive ? '⚠️ Rust Blight' : '✅ Healthy'}
+                                  {selectedEntity.components.flora.diseaseActive ? 'Ã¢Å¡Â Ã¯Â¸Â Rust Blight' : 'Ã¢Å“â€¦ Healthy'}
                                 </span>
                               </div>
                             </>
@@ -1959,7 +2316,7 @@ export default function App() {
                   }}
                   className="w-full mt-2 py-2 bg-rose-950/50 hover:bg-rose-900/80 border border-rose-500/30 hover:border-rose-500/60 text-rose-300 font-mono text-[9px] font-bold uppercase tracking-widest rounded-md transition-all duration-300"
                 >
-                  ☄️ localized meteor disintegration (Cost 65)
+                  Ã¢Ëœâ€žÃ¯Â¸Â localized meteor disintegration (Cost 65)
                 </button>
               </div>
             )}
@@ -2050,7 +2407,7 @@ export default function App() {
                         spawnCategory === 'banana' ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-450' : 'bg-transparent border-transparent text-slate-400 hover:text-slate-200'
                       }`}
                     >
-                      🍌 Flora Species
+                      Ã°Å¸ÂÅ’ Flora Species
                     </button>
                     <button
                       onClick={() => {
@@ -2061,7 +2418,7 @@ export default function App() {
                         spawnCategory === 'fauna' ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-450' : 'bg-transparent border-transparent text-slate-400 hover:text-slate-200'
                       }`}
                     >
-                      🐺 Fauna Beasts
+                      Ã°Å¸ÂÂº Fauna Beasts
                     </button>
                     <button
                       onClick={() => {
@@ -2072,7 +2429,7 @@ export default function App() {
                         spawnCategory === 'structure' ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-450' : 'bg-transparent border-transparent text-slate-400 hover:text-slate-200'
                       }`}
                     >
-                      ⛩️ Shrines & Totems
+                      Ã¢â€ºÂ©Ã¯Â¸Â Shrines & Totems
                     </button>
                     <button
                       onClick={() => {
@@ -2083,7 +2440,7 @@ export default function App() {
                         spawnCategory === 'tribe' ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-450' : 'bg-transparent border-transparent text-slate-400 hover:text-slate-200'
                       }`}
                     >
-                      🛖 Civilizations
+                      Ã°Å¸â€ºâ€“ Civilizations
                     </button>
                   </motion.div>
                 )}
@@ -2198,7 +2555,7 @@ export default function App() {
                           key={spell.name}
                           active={activeBrush.subType === spell.name}
                           onClick={() => setActiveBrush({ category: 'LOCALISED_SPELL', subType: spell.name })}
-                          label={`${spell.name} (${cost} Δ)`}
+                          label={`${spell.name} (${cost} ÃŽâ€)`}
                           title={spell.desc}
                         />
                       );
@@ -2380,7 +2737,7 @@ export default function App() {
                   }}
                   className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl transition-all shadow-[0_0_20px_rgba(245,158,11,0.2)]"
                 >
-                  EXECUTE OVERCHARGE (+100 Δ)
+                  EXECUTE OVERCHARGE (+100 ÃŽâ€)
                 </button>
               </div>
             </div>
@@ -2482,7 +2839,7 @@ export default function App() {
                       </h3>
                     </div>
                     <button onClick={() => setActiveTab('simulation')} className="p-2 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-colors cursor-pointer">
-                      ✕
+                      Ã¢Å“â€¢
                     </button>
                   </div>
 
@@ -2536,7 +2893,7 @@ export default function App() {
                         </>
                       ) : (
                         <div className="h-full flex flex-col items-center justify-center text-center p-4">
-                          <span className="text-4xl">🔮</span>
+                          <span className="text-4xl">Ã°Å¸â€Â®</span>
                           <h4 className="text-lg font-bold text-white mt-4">Unassigned Alignment</h4>
                           <p className="text-xs text-slate-405 mt-2">Pick your ascendancy path below to align with high stellar parameters.</p>
                         </div>
@@ -2590,7 +2947,7 @@ export default function App() {
                                   <div className="flex justify-between items-center">
                                     <span className="text-slate-500">Unlocking Requirements:</span>
                                     <span className={`font-bold uppercase ${reqsMet ? 'text-emerald-400' : 'text-orange-400'}`}>
-                                      {reqsMet ? '✓ Cleared' : '✗ Blocked'}
+                                      {reqsMet ? 'Ã¢Å“â€œ Cleared' : 'Ã¢Å“â€” Blocked'}
                                     </span>
                                   </div>
                                   <div className="p-2 rounded-lg bg-black/40 text-[9px] text-slate-400 border border-white/5 leading-relaxed">
@@ -2598,7 +2955,7 @@ export default function App() {
                                   </div>
                                   <div className="flex justify-between items-center text-slate-400">
                                     <span>Devotion Cost:</span>
-                                    <span className="text-amber-400 font-bold">{skill.cost} Δ</span>
+                                    <span className="text-amber-400 font-bold">{skill.cost} ÃŽâ€</span>
                                   </div>
                                 </div>
 
@@ -2617,7 +2974,7 @@ export default function App() {
                                         sim.addEventLog('MIRACLE', logText);
                                         setLogs([...sim.eventLogs]);
                                       } else {
-                                        sim.addEventLog('SCHISM', `Insufficient devotion to reactivate ${skill.name} (needs ${skill.cost} Δ)`);
+                                        sim.addEventLog('SCHISM', `Insufficient devotion to reactivate ${skill.name} (needs ${skill.cost} ÃŽâ€)`);
                                       }
                                     } else {
                                       // Unlock power first
@@ -2639,7 +2996,7 @@ export default function App() {
                                     : 'bg-amber-500 hover:bg-amber-400 text-black border border-amber-400 shadow-[0_4px_12px_rgba(245,158,11,0.25)]'
                                   }`}
                                 >
-                                  {unlocked ? `Re-Invoke Power (${skill.cost} Δ)` : `Acquire Power (${skill.cost} Δ)`}
+                                  {unlocked ? `Re-Invoke Power (${skill.cost} ÃŽâ€)` : `Acquire Power (${skill.cost} ÃŽâ€)`}
                                 </button>
                               </div>
                             );
@@ -2647,7 +3004,7 @@ export default function App() {
                         </div>
                       ) : (
                         <div className="flex-1 flex flex-col items-center justify-center border border-dashed border-white/10 rounded-2xl p-12 text-center">
-                          <span className="text-3xl">🌌</span>
+                          <span className="text-3xl">Ã°Å¸Å’Å’</span>
                           <span className="text-sm text-slate-300 font-bold mt-3">Select a Patron Deity First</span>
                           <p className="text-xs text-slate-500 mt-1 max-w-sm font-light leading-relaxed">Align yourself in the primary Selection overlay at startup or inside settings to unlock active cybernetic and nature trees.</p>
                         </div>
@@ -2666,7 +3023,7 @@ export default function App() {
                       </h3>
                     </div>
                     <button onClick={() => setActiveTab('simulation')} className="p-2 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-colors cursor-pointer">
-                      ✕
+                      Ã¢Å“â€¢
                     </button>
                   </div>
 
@@ -2717,7 +3074,7 @@ export default function App() {
                                 }}
                                 className="absolute top-4 right-4 bg-white/5 hover:bg-sky-500 hover:text-white border border-white/10 hover:border-sky-400 py-1.5 px-3 rounded-lg text-[9px] font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer pointer-events-auto"
                               >
-                                🎯 Locate Camera
+                                Ã°Å¸Å½Â¯ Locate Camera
                               </button>
 
                               <div className="space-y-1">
@@ -2763,7 +3120,7 @@ export default function App() {
                                     <div className="flex flex-wrap gap-1 mt-1">
                                       {info.benefits.map((b, idx) => (
                                         <span key={idx} className="text-[8px] uppercase font-bold tracking-tight text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/10">
-                                          ✓ {b}
+                                          Ã¢Å“â€œ {b}
                                         </span>
                                       ))}
                                     </div>
@@ -2803,7 +3160,7 @@ export default function App() {
                                   {/* Gatherers Slider */}
                                   <div className="flex flex-col gap-1">
                                     <div className="flex justify-between text-slate-400 text-[9px]">
-                                      <span>🌾 Gatherers (Vegetation)</span>
+                                      <span>Ã°Å¸Å’Â¾ Gatherers (Vegetation)</span>
                                       <span className="text-sky-300 font-bold">{Math.round((t.soc.gathererRatio ?? 0.35) * 100)}%</span>
                                     </div>
                                     <input 
@@ -2820,7 +3177,7 @@ export default function App() {
                                   {/* Hunters Slider */}
                                   <div className="flex flex-col gap-1 mt-1">
                                     <div className="flex justify-between text-slate-400 text-[9px]">
-                                      <span>🏹 Hunters (Wildlife hunt)</span>
+                                      <span>Ã°Å¸ÂÂ¹ Hunters (Wildlife hunt)</span>
                                       <span className="text-amber-500 font-bold">{Math.round((t.soc.hunterRatio ?? 0.15) * 100)}%</span>
                                     </div>
                                     <input 
@@ -2837,7 +3194,7 @@ export default function App() {
                                   {/* Scholars Slider */}
                                   <div className="flex flex-col gap-1 mt-1">
                                     <div className="flex justify-between text-slate-400 text-[9px]">
-                                      <span>🧪 Scholars (Technological speed)</span>
+                                      <span>Ã°Å¸Â§Âª Scholars (Technological speed)</span>
                                       <span className="text-cyan-400 font-bold">{Math.round((t.soc.researcherRatio ?? 0.20) * 100)}%</span>
                                     </div>
                                     <input 
@@ -2854,7 +3211,7 @@ export default function App() {
                                   {/* Acolytes Slider */}
                                   <div className="flex flex-col gap-1 mt-1">
                                     <div className="flex justify-between text-slate-400 text-[9px]">
-                                      <span>🔮 Acolytes (Prayer devotion speed)</span>
+                                      <span>Ã°Å¸â€Â® Acolytes (Prayer devotion speed)</span>
                                       <span className="text-purple-400 font-bold">{Math.round((t.soc.acolyteRatio ?? 0.30) * 100)}%</span>
                                     </div>
                                     <input 
@@ -2882,9 +3239,9 @@ export default function App() {
                                         ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 font-extrabold shadow-[0_2px_8px_rgba(244,63,94,0.15)]'
                                         : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:border-white/10'
                                     }`}
-                                    title="🍲 RATION: Cuts consumption by 50% but happiness decreases over time."
+                                    title="Ã°Å¸ÂÂ² RATION: Cuts consumption by 50% but happiness decreases over time."
                                   >
-                                    🍲 RATION
+                                    Ã°Å¸ÂÂ² RATION
                                   </button>
                                   
                                   {/* Strip-mining Toggle */}
@@ -2895,9 +3252,9 @@ export default function App() {
                                         ? 'bg-amber-600/20 text-amber-300 border-amber-500/40 font-extrabold shadow-[0_2px_8px_rgba(217,119,6,0.15)]'
                                         : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:border-white/10'
                                     }`}
-                                    title="⛏️ STRIP-MINE: Double flora harvest speed, but dries out local tiles (reduces humidity, raises temp) and risk permanent grid depletion."
+                                    title="Ã¢â€ºÂÃ¯Â¸Â STRIP-MINE: Double flora harvest speed, but dries out local tiles (reduces humidity, raises temp) and risk permanent grid depletion."
                                   >
-                                    ⛏️ STRIP
+                                    Ã¢â€ºÂÃ¯Â¸Â STRIP
                                   </button>
 
                                   {/* Ritual Tithe Toggle */}
@@ -2908,9 +3265,9 @@ export default function App() {
                                         ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-extrabold shadow-[0_2px_8px_rgba(16,185,129,0.15)]'
                                         : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:border-white/10'
                                     }`}
-                                    title="🩸 TITHE: Autoconsumes 1.5 res/sec to transmute directly into +1.0 Divine Devotion speed."
+                                    title="Ã°Å¸Â©Â¸ TITHE: Autoconsumes 1.5 res/sec to transmute directly into +1.0 Divine Devotion speed."
                                   >
-                                    🩸 TITHE
+                                    Ã°Å¸Â©Â¸ TITHE
                                   </button>
                                 </div>
                               </div>
@@ -2929,7 +3286,7 @@ export default function App() {
                                     }}
                                     className="py-1 px-2.5 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 hover:text-white border border-sky-500/20 hover:border-sky-400 text-[9px] font-mono font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer pointer-events-auto"
                                   >
-                                    ✨ Inspire (+50 Faith)
+                                    Ã¢Å“Â¨ Inspire (+50 Faith)
                                   </button>
                                   <button 
                                     onClick={() => {
@@ -2941,7 +3298,7 @@ export default function App() {
                                     }}
                                     className="py-1 px-2.5 bg-red-500/15 hover:bg-red-500/30 text-rose-400 hover:text-white border border-red-500/20 hover:border-red-400 text-[9px] font-mono font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer pointer-events-auto"
                                   >
-                                    ☄️ Disintegrate
+                                    Ã¢Ëœâ€žÃ¯Â¸Â Disintegrate
                                   </button>
                                 </div>
                               </div>
@@ -2955,10 +3312,10 @@ export default function App() {
                         <div className="flex flex-col gap-1">
                           <span className="text-pink-500 font-mono text-[9px] uppercase tracking-widest block font-bold">Patron Deity Geopolitical Command Board</span>
                           <h4 className="text-lg font-bold text-white flex items-center gap-2 font-sans">
-                            🗺️ Inter-Tribal Relations Matrix
+                            Ã°Å¸â€”ÂºÃ¯Â¸Â Inter-Tribal Relations Matrix
                           </h4>
                           <p className="text-xs text-slate-400 font-light max-w-2xl leading-relaxed">
-                            Mortals forge natural alliances or wage brutal wars based on theological proximity. Intervene with Devotion (Δ) to alter relationships, establish trade pacts, or instigate profitable schisms.
+                            Mortals forge natural alliances or wage brutal wars based on theological proximity. Intervene with Devotion (ÃŽâ€) to alter relationships, establish trade pacts, or instigate profitable schisms.
                           </p>
                         </div>
                         
@@ -2987,24 +3344,24 @@ export default function App() {
                                     // Status styling
                                     let statusText = "Peaceful Coexistence";
                                     let statusColor = "text-slate-400 bg-slate-400/5 border-slate-400/20";
-                                    let statusEmoji = "⚖️";
+                                    let statusEmoji = "Ã¢Å¡â€“Ã¯Â¸Â";
                                     
                                     if (relVal >= 75) {
                                       statusText = "Holy Alliance";
                                       statusColor = "text-teal-400 bg-teal-400/10 border-teal-400/30 font-black animate-pulse";
-                                      statusEmoji = "🛡️";
+                                      statusEmoji = "Ã°Å¸â€ºÂ¡Ã¯Â¸Â";
                                     } else if (relVal >= 35) {
                                       statusText = "Trading Partners";
                                       statusColor = "text-emerald-400 bg-emerald-400/10 border-emerald-400/30 font-bold";
-                                      statusEmoji = "🤝";
+                                      statusEmoji = "Ã°Å¸Â¤Â";
                                     } else if (relVal < -30) {
                                       statusText = "Universal War";
                                       statusColor = "text-rose-400 bg-rose-500/10 border-rose-500/30 font-black animate-pulse";
-                                      statusEmoji = "⚔️";
+                                      statusEmoji = "Ã¢Å¡â€Ã¯Â¸Â";
                                     } else if (relVal < -10) {
                                       statusText = "Border Hostility";
                                       statusColor = "text-amber-500/90 bg-amber-500/5 border-amber-500/20";
-                                      statusEmoji = "⚠️";
+                                      statusEmoji = "Ã¢Å¡Â Ã¯Â¸Â";
                                     }
                                     
                                     return (
@@ -3036,7 +3393,7 @@ export default function App() {
                                               const sim = simulationRef.current;
                                               if (!sim) return;
                                               if (sim.totalDevotion < 20) {
-                                                alert("Need at least 20 Δ Devotion points to establish a Trade Treaty.");
+                                                alert("Need at least 20 ÃŽâ€ Devotion points to establish a Trade Treaty.");
                                                 return;
                                               }
                                               sim.totalDevotion -= 20;
@@ -3044,14 +3401,14 @@ export default function App() {
                                               
                                               const nameA = tribeA.soc.name.split('[')[0].trim();
                                               const nameB = tribeB.soc.name.split('[')[0].trim();
-                                              sim.addEventLog('MIRACLE', `🤝 Divine Broker: Established cross-continent Trade Treaty between ${nameA} and ${nameB} (+30 Affinity).`);
+                                              sim.addEventLog('MIRACLE', `Ã°Å¸Â¤Â Divine Broker: Established cross-continent Trade Treaty between ${nameA} and ${nameB} (+30 Affinity).`);
                                               setLogs([...sim.eventLogs]);
                                               setDevotion(Math.floor(sim.totalDevotion));
                                             }}
                                             className="flex-1 py-1 px-1.5 select-none bg-emerald-500/10 hover:bg-emerald-500/20 active:bg-emerald-500/30 text-emerald-400 disabled:opacity-40 hover:text-white border border-emerald-500/20 rounded text-[9px] font-mono font-bold uppercase tracking-wider transition-all cursor-pointer pointer-events-auto"
-                                            title="Cost: 20 Δ. Increases friendship by +30 points, facilitating trade state."
+                                            title="Cost: 20 ÃŽâ€. Increases friendship by +30 points, facilitating trade state."
                                           >
-                                            🌾 Trade Pact (20Δ)
+                                            Ã°Å¸Å’Â¾ Trade Pact (20ÃŽâ€)
                                           </button>
                                           
                                           {/* Treaty Peace Broker */}
@@ -3061,7 +3418,7 @@ export default function App() {
                                                 const sim = simulationRef.current;
                                                 if (!sim) return;
                                                 if (sim.totalDevotion < 35) {
-                                                  alert("Need at least 35 Δ Devotion points to force an armistice.");
+                                                  alert("Need at least 35 ÃŽâ€ Devotion points to force an armistice.");
                                                   return;
                                                 }
                                                 sim.totalDevotion -= 35;
@@ -3069,14 +3426,14 @@ export default function App() {
                                                 
                                                 const nameA = tribeA.soc.name.split('[')[0].trim();
                                                 const nameB = tribeB.soc.name.split('[')[0].trim();
-                                                sim.addEventLog('MIRACLE', `🕊️ Cosmic Harmony: Imposed divine ceasefire pact; hostilities ceased between ${nameA} and ${nameB}.`);
+                                                sim.addEventLog('MIRACLE', `Ã°Å¸â€¢Å Ã¯Â¸Â Cosmic Harmony: Imposed divine ceasefire pact; hostilities ceased between ${nameA} and ${nameB}.`);
                                                 setLogs([...sim.eventLogs]);
                                                 setDevotion(Math.floor(sim.totalDevotion));
                                               }}
                                               className="flex-1 py-1 px-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 hover:text-white border border-blue-500/20 rounded text-[9px] font-mono font-bold uppercase tracking-wider transition-all cursor-pointer pointer-events-auto"
-                                              title="Cost: 35 Δ. Instantly brokers absolute peace between combatants, updating relation score to +15."
+                                              title="Cost: 35 ÃŽâ€. Instantly brokers absolute peace between combatants, updating relation score to +15."
                                             >
-                                              🕊️ Peace (35Δ)
+                                              Ã°Å¸â€¢Å Ã¯Â¸Â Peace (35ÃŽâ€)
                                             </button>
                                           )}
                                           
@@ -3087,7 +3444,7 @@ export default function App() {
                                               const sim = simulationRef.current;
                                               if (!sim) return;
                                               if (sim.totalDevotion < 15) {
-                                                alert("Need at least 15 Δ Devotion points to sow discourse.");
+                                                alert("Need at least 15 ÃŽâ€ Devotion points to sow discourse.");
                                                 return;
                                               }
                                               sim.totalDevotion -= 15;
@@ -3095,14 +3452,14 @@ export default function App() {
                                               
                                               const nameA = tribeA.soc.name.split('[')[0].trim();
                                               const nameB = tribeB.soc.name.split('[')[0].trim();
-                                              sim.addEventLog('SCHISM', `⚡ Divine Sabotage: Celested whispers incite civil discord between ${nameA} and ${nameB} (-55 Affinity).`);
+                                              sim.addEventLog('SCHISM', `Ã¢Å¡Â¡ Divine Sabotage: Celested whispers incite civil discord between ${nameA} and ${nameB} (-55 Affinity).`);
                                               setLogs([...sim.eventLogs]);
                                               setDevotion(Math.floor(sim.totalDevotion));
                                             }}
                                             className="flex-1 py-1 px-1.5 select-none bg-rose-500/15 hover:bg-rose-500/25 active:bg-rose-500/40 text-rose-400 disabled:opacity-45 hover:text-white border border-rose-500/20 rounded text-[9px] font-mono font-bold uppercase tracking-wider transition-all cursor-pointer pointer-events-auto"
-                                            title="Cost: 15 Δ. Instigates territorial rivalry, decreases relationship score by -55."
+                                            title="Cost: 15 ÃŽâ€. Instigates territorial rivalry, decreases relationship score by -55."
                                           >
-                                            ⚡ Incite War (15Δ)
+                                            Ã¢Å¡Â¡ Incite War (15ÃŽâ€)
                                           </button>
                                         </div>
                                       </div>
@@ -3129,7 +3486,7 @@ export default function App() {
                       </h3>
                     </div>
                     <button onClick={() => setActiveTab('simulation')} className="p-2 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-colors cursor-pointer pointer-events-auto">
-                      ✕
+                      Ã¢Å“â€¢
                     </button>
                   </div>
 
@@ -3170,7 +3527,7 @@ export default function App() {
 
                         {/* Spark of Lights info */}
                         <div className="p-4 bg-indigo-500/10 border border-indigo-500/15 rounded-xl flex items-center gap-3">
-                          <span className="text-2xl animate-bounce">✨</span>
+                          <span className="text-2xl animate-bounce">Ã¢Å“Â¨</span>
                           <div>
                             <span className="text-[9px] font-mono text-indigo-300 font-bold uppercase tracking-wider block">Sparks of Illumination</span>
                             <h5 className="text-base font-black text-indigo-100">{progression.illuminationPoints} Point(s) Available</h5>
@@ -3226,7 +3583,7 @@ export default function App() {
                           </div>
                           <div className="bg-white/[0.01] border border-white/5 p-2 rounded-xl col-span-2 flex justify-between items-center px-3">
                             <span className="text-slate-500 text-[9px]">Devotion Yields (Static):</span>
-                            <span className="text-sm font-bold text-pink-400">{Math.round(progression.actionsCompleted.devotionAccumulated)} Δ</span>
+                            <span className="text-sm font-bold text-pink-400">{Math.round(progression.actionsCompleted.devotionAccumulated)} ÃŽâ€</span>
                           </div>
                         </div>
                       </div>
@@ -3269,7 +3626,7 @@ export default function App() {
                               <div className="shrink-0">
                                 {unlocked ? (
                                   <span className="text-[9px] font-mono font-bold text-emerald-400 uppercase tracking-widest block px-2.5 py-1 bg-emerald-500/5 rounded-lg border border-emerald-500/15">
-                                    ✓ Mastered
+                                    Ã¢Å“â€œ Mastered
                                   </span>
                                 ) : (
                                   <button
@@ -3295,14 +3652,14 @@ export default function App() {
                         <span className="text-[10px] text-amber-500 font-mono font-bold uppercase tracking-widest block">Civilization Developmental Milestones</span>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
                           {[
-                            { lvl: 1, name: "Sentinel Outpost", pop: "1+ Pop", icon: "🛖" },
-                            { lvl: 2, name: "Pioneer Clan", pop: "10+ Pop", icon: "⛺" },
-                            { lvl: 3, name: "Settled Hamlet", pop: "25+ Pop", icon: "🏡" },
-                            { lvl: 4, name: "Cohesive Village", pop: "50+ Pop", icon: "🏰" },
-                            { lvl: 5, name: "Sovereign Town", pop: "150+ Pop", icon: "🏛️" },
-                            { lvl: 6, name: "Capital City", pop: "500+ Pop", icon: "⛪" },
-                            { lvl: 7, name: "Sprawling Metropolis", pop: "1,500+ Pop", icon: "🌌" },
-                            { lvl: 8, name: "Sovereign Cosmic Empire", pop: "4,000+ Pop", icon: "👑" }
+                            { lvl: 1, name: "Sentinel Outpost", pop: "1+ Pop", icon: "Ã°Å¸â€ºâ€“" },
+                            { lvl: 2, name: "Pioneer Clan", pop: "10+ Pop", icon: "Ã¢â€ºÂº" },
+                            { lvl: 3, name: "Settled Hamlet", pop: "25+ Pop", icon: "Ã°Å¸ÂÂ¡" },
+                            { lvl: 4, name: "Cohesive Village", pop: "50+ Pop", icon: "Ã°Å¸ÂÂ°" },
+                            { lvl: 5, name: "Sovereign Town", pop: "150+ Pop", icon: "Ã°Å¸Ââ€ºÃ¯Â¸Â" },
+                            { lvl: 6, name: "Capital City", pop: "500+ Pop", icon: "Ã¢â€ºÂª" },
+                            { lvl: 7, name: "Sprawling Metropolis", pop: "1,500+ Pop", icon: "Ã°Å¸Å’Å’" },
+                            { lvl: 8, name: "Sovereign Cosmic Empire", pop: "4,000+ Pop", icon: "Ã°Å¸â€˜â€˜" }
                           ].map(tier => (
                             <div key={tier.lvl} className="p-2.5 border border-white/5 bg-white/[0.015] rounded-xl flex flex-col justify-between gap-1 shadow-[0_4px_12px_rgba(0,0,0,0.2)] font-mono hover:bg-white/[0.03] transition-all">
                               <div className="flex justify-between items-center">
@@ -3331,7 +3688,7 @@ export default function App() {
                       </h3>
                     </div>
                     <button onClick={() => setActiveTab('simulation')} className="p-2 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-colors cursor-pointer">
-                      ✕
+                      Ã¢Å“â€¢
                     </button>
                   </div>
 
@@ -3427,7 +3784,7 @@ export default function App() {
                               const sim = simulationRef.current;
                               if (sim) {
                                 sim.totalDevotion += 250;
-                                sim.addEventLog('MIRACLE', 'Activated Aura of Saintly Rapture. Mortal devotion focusing amplified global reserves (+250 Δ).');
+                                sim.addEventLog('MIRACLE', 'Activated Aura of Saintly Rapture. Mortal devotion focusing amplified global reserves (+250 ÃŽâ€).');
                               }
                             }
                           },
@@ -3508,7 +3865,7 @@ export default function App() {
                                   disabled={devotion < belief.cost}
                                   className="py-1.5 px-3 rounded-lg text-[9px] font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-purple-500 hover:text-white border border-white/10 hover:border-purple-400 transition-all duration-200 disabled:opacity-20 disabled:pointer-events-none cursor-pointer pointer-events-auto"
                                 >
-                                  EXECUTE ({belief.cost} Δ)
+                                  EXECUTE ({belief.cost} ÃŽâ€)
                                 </button>
                               </div>
                             </div>
@@ -3596,18 +3953,54 @@ export default function App() {
                   });
                   setLogs([...newSim.eventLogs]);
 
-                  if (rendererRef.current) {
-                    rendererRef.current.drawTerrain(newSim.getTerrain());
-                  }
+                  // Don't redraw terrain here - newSim doesn't have terrain yet
+                  // Terrain was already drawn during initial setup in useEffect
 
                   setShowStartMenu(false);
                   setActiveTab('simulation');
-                  newSim.addEventLog('MIRACLE', `🧬 COGNITIVE GENESIS: Seeded "${godObj?.name ?? 'Mortal State'}" at climate temperature ${config.temperature}°C.`);
+                  newSim.addEventLog('MIRACLE', `Ã°Å¸Â§Â¬ COGNITIVE GENESIS: Seeded "${godObj?.name ?? 'Mortal State'}" at climate temperature ${config.temperature}Ã‚Â°C.`);
                 }
               }}
             />
           )}
         </AnimatePresence>
+
+        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Render Debug Panel toggle button Ã¢â€â‚¬Ã¢â€â‚¬ */}
+        <button
+          id="render-debug-toggle"
+          onClick={() => setShowRenderDebug(v => !v)}
+          title="Toggle Render Debug Panel (shows pipeline stages)"
+          style={{
+            position: 'fixed',
+            top: 36,
+            right: 16,
+            zIndex: 9998,
+            background: showRenderDebug
+              ? 'rgba(34, 211, 238, 0.18)'
+              : 'rgba(8, 12, 24, 0.85)',
+            border: `1px solid ${showRenderDebug ? 'rgba(34,211,238,0.5)' : 'rgba(255,255,255,0.08)'}`,
+            borderRadius: 8,
+            color: showRenderDebug ? '#22d3ee' : '#64748b',
+            cursor: 'pointer',
+            fontFamily: 'monospace',
+            fontSize: 10,
+            padding: '4px 10px',
+            letterSpacing: 1,
+            backdropFilter: 'blur(8px)',
+            transition: 'all 0.2s',
+            boxShadow: showRenderDebug ? '0 0 12px rgba(34,211,238,0.25)' : 'none',
+          }}
+        >
+          Ã¢Â¬Â¡ RENDER
+        </button>
+
+        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Render Debug Panel Ã¢â€â‚¬Ã¢â€â‚¬ */}
+        {showRenderDebug && (
+          <RenderDebugPanel
+            renderer={rendererRef.current}
+            onClose={() => setShowRenderDebug(false)}
+          />
+        )}
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'PLAYWRIGHT=1 npm run dev -- --port 3000',
+    command: 'npx cross-env PLAYWRIGHT=1 npm run dev -- --port 3000',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

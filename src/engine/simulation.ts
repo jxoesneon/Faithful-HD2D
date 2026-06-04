@@ -23,7 +23,7 @@ export class SimulationEngine {
   private ecs: ECS;
   
   // Shared Memory Buffers
-  public sharedBuffer: SharedArrayBuffer;
+  public sharedBuffer: SharedArrayBuffer | ArrayBuffer;
   public entityDataView: Float32Array;
 
   public width: number = 64;
@@ -65,6 +65,7 @@ export class SimulationEngine {
   
   private messageIdCounter = 0;
   private pendingRequests = new Map<number, (result: any) => void>();
+  private tickCount = 0;
 
   public static async create(ecs: ECS): Promise<SimulationEngine> {
     const sim = new SimulationEngine(ecs);
@@ -73,8 +74,10 @@ export class SimulationEngine {
   }
 
   constructor(ecs: ECS) {
-    this.sharedBuffer = new SharedArrayBuffer(SHARED_BUFFER_SIZE);
-    this.entityDataView = new Float32Array(this.sharedBuffer);
+    // Graceful fallback: use regular ArrayBuffer if SharedArrayBuffer is unavailable
+    const BufferClass = typeof SharedArrayBuffer !== 'undefined' ? SharedArrayBuffer : ArrayBuffer;
+    this.sharedBuffer = new BufferClass(SHARED_BUFFER_SIZE);
+    this.entityDataView = new Float32Array(this.sharedBuffer as ArrayBuffer);
     this.ecs = ecs;
     
     this.readyPromise = new Promise((resolve) => {
@@ -116,8 +119,12 @@ export class SimulationEngine {
 
   private syncToTsEcsFromExport(exportedState: any) {
     if (exportedState) {
+      console.log('[Sim State Sync] Received state, has ecsState:', !!exportedState.ecsState, 'keys:', Object.keys(exportedState));
       if (exportedState.ecsState) {
+        const beforeCount = this.ecs.getEntitiesWith(['position']).length;
         this.ecs.importState(exportedState.ecsState);
+        const afterCount = this.ecs.getEntitiesWith(['position']).length;
+        console.log('[Sim State Sync] Entities before:', beforeCount, 'after:', afterCount, 'imported entities:', exportedState.ecsState.entities?.length);
       }
       this.totalDevotion = exportedState.totalDevotion ?? this.totalDevotion;
       this.activeGodId = exportedState.activeGodId ?? this.activeGodId;
@@ -140,8 +147,10 @@ export class SimulationEngine {
 
   public update(dt: number) {
     if (!this.isReady) return;
-    const tsExport = this.ecs.exportState();
-    this.worker.postMessage({ type: 'UPDATE', payload: { dt, importState: tsExport } });
+    this.tickCount++;
+    const shouldSync = (this.tickCount % 6 === 0);
+    const tsExport = shouldSync ? this.ecs.exportState() : null;
+    this.worker.postMessage({ type: 'UPDATE', payload: { dt, importState: tsExport, isSyncTick: shouldSync } });
   }
 
   public setWeather(newWeather: 'CLEAR' | 'RAINY' | 'DROUGHT' | 'TEMPEST' | 'AURORA', duration: number = 45, intensity: number = 0.5) {
