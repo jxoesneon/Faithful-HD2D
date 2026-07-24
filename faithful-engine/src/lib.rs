@@ -325,6 +325,59 @@ impl WasmSimulationEngine {
         let effects = fractal.get_aaa_effects(camera_zoom, target_depth, deity_str);
         serde_wasm_bindgen::to_value(&effects).unwrap_or(JsValue::NULL)
     }
+
+    pub fn get_entity_data_flat(&self) -> Vec<f32> {
+        let mut data = Vec::new();
+        for ent in &self.inner.ecs.entities {
+            if let Some(pos) = self.inner.ecs.positions.get(ent) {
+                data.push(pos.x as f32);
+                data.push(pos.y as f32);
+                
+                let (vx, vy) = if let Some(m) = self.inner.ecs.movements.get(ent) {
+                    (m.vx as f32, m.vy as f32)
+                } else {
+                    (0.0, 0.0)
+                };
+                data.push(vx);
+                data.push(vy);
+                
+                let biomass = if let Some(b) = self.inner.ecs.biologies.get(ent) {
+                    b.biomass as f32
+                } else {
+                    0.0
+                };
+                data.push(biomass);
+                
+                let health = if let Some(b) = self.inner.ecs.biologies.get(ent) {
+                    b.health as f32
+                } else if let Some(fa) = self.inner.ecs.faunas.get(ent) {
+                    fa.health as f32
+                } else if let Some(fl) = self.inner.ecs.floras.get(ent) {
+                    fl.growth as f32
+                } else if let Some(s) = self.inner.ecs.structures.get(ent) {
+                    s.durability as f32
+                } else {
+                    100.0
+                };
+                data.push(health);
+                
+                let hash = hash_string_rust(ent) as f32;
+                data.push(hash);
+                
+                data.push(0.0); // state placeholder
+            }
+        }
+        data
+    }
+}
+
+fn hash_string_rust(s: &str) -> i32 {
+    let mut hash: i32 = 0;
+    for c in s.chars() {
+        let code = c as u32;
+        hash = (hash.wrapping_shl(5)).wrapping_sub(hash).wrapping_add(code as i32);
+    }
+    hash
 }
 
 #[cfg(test)]
