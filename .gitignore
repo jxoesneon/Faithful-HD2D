@@ -16,3 +16,22 @@ coverage/
 # Playwright generated artifacts
 playwright-report/
 test-results/
+
+# Coverage artifacts (flat files from local runs)
+coverage.json
+coverage.txt
+coverage_full.txt
+
+# FastEmbed model cache (binary, large, regenerable)
+.fastembed_cache/
+.fastembed_cache_old/
+
+# Ciel working memory (local only)
+.mempalace/
+
+# Local scratch / debug artifacts
+scratch/
+debug-game.ts
+debug-screenshot.png
+screenshot.png
+test_output.txt
