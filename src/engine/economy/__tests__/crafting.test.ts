@@ -81,6 +81,7 @@ describe('CraftingManager', () => {
   });
 
   it('processes crafting queue to completion', () => {
+    const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.5);
     const structure = ecs.createEntity();
     const s: Structure = { type: 'structure', category: 'FARM', subType: 'wheat', durability: 100, efficiency: 1 };
     ecs.addComponent(structure, s);
@@ -98,6 +99,7 @@ describe('CraftingManager', () => {
     expect(onComplete).toHaveBeenCalledOnce();
     expect(onComplete.mock.calls[0][1].success).toBe(true);
     expect(onComplete.mock.calls[0][1].outputQuantity).toBe(5);
+    randomSpy.mockRestore();
   });
 
   it('applies structure efficiency to crafting speed', () => {
