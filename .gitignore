@@ -35,3 +35,7 @@ debug-game.ts
 debug-screenshot.png
 screenshot.png
 test_output.txt
+
+# Antigravity artifacts and protobuf traces
+.antigravity/
+*.pbtxt
